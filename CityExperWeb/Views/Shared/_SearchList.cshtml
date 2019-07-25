@@ -1,0 +1,159 @@
+﻿@{ 
+    CityExperWeb.Entity.CityExperDb2Entities entity = new CityExperWeb.Entity.CityExperDb2Entities(); //db ye bağlanmak için entity
+
+    var cityList = entity.il.ToList();
+}
+<form action="#" class="form-horisontal" id="tasinmazForm" style="background:#76757582; position: absolute;width:250px; margin:6% -1%;z-index: 1; display:none">
+    <div class="row" id="menu" style="margin-top:15px;">
+        <div class="col-md-4  col-sm-2" id="TasınmazSearch" style="margin-top: 1%; width: 250px;">
+            <div class="col-md-12  col-sm-4" id="TasınmazSearch">
+                <div class="form-group">
+                    <select class="form-control " name="input" id="sorguform">
+                        <option value="0" disabled selected>Sorgulama Tipi</option>
+                        <option value="1">Adres Sorgusu</option>
+                        <option value="2">Kadastro Sorgusu</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12  col-sm-4" id="TasınmazSearch">
+                <div class="form-group">
+                    <select class="form-control " name="input" id="sorguform">
+                        <option value="0" disabled selected>Taşınmaz Türü</option>
+                        <option value="1">Konut</option>
+                        <option value="2">Arsa</option>
+                        <option value="3">İş Yeri</option>
+                    </select>
+                </div>
+            </div>
+            @*<div class="col-md-12 col-sm-2" id="TasınmazSearch">
+            <div class="form-group">
+                <select class="form-control " name="input">
+                    <option value="0" selected>Taşınmaz Tipi</option>
+                    <option value="1" selected>Konut</option>
+                    <option value="2" selected>Arsa/Arazi</option>
+                    <option value="3" selected>İş Yeri</option>
+                </select>
+            </div>
+        </div>*@
+        </div>
+
+
+        <div id="AdresForm" class="col-md-12  col-sm-8" style="margin-top:1%; display:none;">
+            <div class="col-md-12 col-sm-2" id="tasınmazsearch">
+                <div class="form-group">
+                    <select class="form-control" id="il" name="input">
+                        <option value="" disabled selected>il</option>
+                        @foreach (var il in cityList)
+                        {
+                            <option value="@il.il_id">@il.ilAdi</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-2">
+                <div class="form-group">
+                    <select class="form-control" id="ilceListAdres" name="input">
+                        <option value="" disabled selected>İlçe</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-2">
+                <div class="form-group">
+                    <select class="form-control" id="MahalleListAdres" name="input">
+                        <option value="" disabled selected>Mahalle</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-2">
+                <div class="form-group">
+                    <select class="form-control" id="SokakListAdres" name="input">
+                        <option value="" disabled selected>Cadde Sokak</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-2">
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="text" name="binaNo" value="" class="form-control" placeholder="Bina Numarası" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-2" style="margin-top: 7%;">
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="text" name="daireNo" value="" class="form-control" placeholder="Daire Numarası" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-1 form-group search-btn-box" id="TasınmazSearch">
+                <button type="submit" id="search-btn" class="btn btn-search focus-color" style="margin-left: 78%;margin-top: 5%;">
+                    <i class="fa fa-search"
+                       style="font-size: 25px;"></i>
+                </button>
+            </div>
+        </div>
+        <div id="KadastroForm" class="col-md-8  col-sm-8" style="margin-top:1%; display:none; width: 275px;">
+        
+            <div class="col-md-12 col-sm-2" id="TasınmazSearch">
+                <div class="form-group">
+                    <select class="form-control" id="il" name="input">
+                        <option value="" disabled selected>il</option>
+                        @foreach (var il in cityList)
+                        {
+                            <option value="@il.il_id">@il.ilAdi</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-2">
+                <div class="form-group">
+                    <select class="form-control" id="ilceListAdres2" name="input">
+                        <option value="" disabled selected>İlçe</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-2">
+                <div class="form-group">
+                    <select class="form-control" id="MahalleList" name="input">
+                        <option value="" disabled selected>Mahalle</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-2">
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="text" name="adaNo" value="" class="form-control" placeholder="Ado Numarası" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-2" style="margin-top: 7%;">
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="text" name="parselNo" value="" class="form-control" placeholder="Parsel Numarası" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-2" style="margin-top: 7%;">
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="text" name="binaNo" value="" class="form-control" placeholder="Bina Numarası" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-2" style="margin-top: 7%;">
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="text" name="daireNo" value="" class="form-control" placeholder="Daire Numarası" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-1 form-group search-btn-box">
+                <button type="submit" id="search-btn2" class="btn btn-search focus-color" style="margin-left: 78%;margin-top: 5%;">
+                    <i class="fa fa-search"
+                       style="font-size: 25px;"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</form>

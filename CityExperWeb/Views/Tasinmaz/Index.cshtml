@@ -1,0 +1,149 @@
+﻿@using CityExperWeb.Models
+@model SearchList
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section SagNavbar{
+    @Html.Partial("_OneCikanListe")
+
+}
+
+@section TasinmazSearch{
+    <!-- bu kısım search yapmak denilince gelicek -->
+   
+}
+
+
+
+@section Scripts
+{
+    <script>
+        $('#sorguform').change(function () {
+            var value = $(this).val();
+
+            if (value == 1) {
+                $("#AdresForm").show();
+                $("#KadastroForm").hide();
+                $("#NitelikForm").hide();
+            }
+            else if (value == 2) {
+                $("#AdresForm").hide();
+                $("#KadastroForm").show();
+                $("#NitelikForm").hide();
+            }
+            else if (value == 3) {
+                $("#AdresForm").hide();
+                $("#KadastroForm").hide();
+                $("#NitelikForm").show();
+
+            }
+            else {
+                $("#AdresForm").hide();
+                $("#KadastroForm").hide();
+                $("#NitelikForm").hide();
+
+                //kadostra formu kapat
+
+                //Yeni Formu kapat
+            }
+        })
+
+        $("#ilSelectedAdres").change(function () {
+            var lat = $("#ilSelectedAdres option:selected").attr("lat");
+            var lng = $("#ilSelectedAdres option:selected").attr("lng");
+            var ilId = $("#ilSelectedAdres option:selected").attr("value");
+            HaritaZoomlamaVeMarkerAtma(lat, lng, ilId, 1);
+            $('#ilceListAdres').find('option').remove();
+            $('#ilceListAdres').append('<option value="" disabled selected>İlçe</option>');
+            var obj = { ilid: ilId };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("IlceGetir", "Tasinmaz")',
+                    contentType: "application/json; charset=utf-8",
+                    data : JSON.stringify(obj),
+                    dataType: "json",
+                    success: function (data) {
+                        $.each(data, function (i, item) {
+                            $('#ilceListAdres').append('<option ilId="' + item.ilId+'" value="' + item.id + '" lat="' + item.ilceLat + '" lng="' + item.ilceLng + '">' + item.ilceAdi + '</option>');
+                        });
+                    }
+            });
+        });
+
+
+        $("#ilSelectedKadastro").change(function () {
+            var lat = $("#ilSelectedKadastro option:selected").attr("lat");
+            var lng = $("#ilSelectedKadastro option:selected").attr("lng");
+            var ilId = $("#ilSelectedKadastro option:selected").attr("value");
+            HaritaZoomlamaVeMarkerAtma(lat, lng, ilId, 1);
+            $('#ilceListKadastro').find('option').remove();
+            $('#ilceListKadastro').append('<option value="" disabled selected>İlçe</option>');
+            var obj = { ilid: ilId };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("IlceGetir", "Tasinmaz")',
+                    contentType: "application/json; charset=utf-8",
+                    data : JSON.stringify(obj),
+                    dataType: "json",
+                    success: function (data) {
+                        $.each(data, function (i, item) {
+                            $('#ilceListKadastro').append('<option ilId="' + item.ilId+'" value="' + item.id + '" lat="' + item.ilceLat + '" lng="' + item.ilceLng + '">' + item.ilceAdi + '</option>');
+                        });
+                    }
+            });
+        });
+
+
+        $("#ilceListAdres").change(function () {
+            var lat = $("#ilceListAdres option:selected").attr("lat");
+            var lng = $("#ilceListAdres option:selected").attr("lng");
+            var ilId = $("#ilceListAdres option:selected").attr("ilId");
+            HaritaZoomlamaVeMarkerAtma(lat, lng, ilId,2);
+        });
+
+
+        $("#ilceListKadastro").change(function () {
+            var lat = $("#ilceListKadastro option:selected").attr("lat");
+            var lng = $("#ilceListKadastro option:selected").attr("lng");
+            var ilId = $("#ilceListKadastro option:selected").attr("ilId");
+            HaritaZoomlamaVeMarkerAtma(lat, lng, ilId, 2);
+        });
+
+
+        function HaritaZoomlamaVeMarkerAtma(lat, lng, ilId, tip) {
+            //eger tip 1 gelirse il seçildi
+            //eger 2 gelirse ileseçildi
+            var location = { lat: parseFloat(lat), lng: parseFloat(lng) };
+            var map = new google.maps.Map(document.getElementById('main-map'), {
+                  //zoomda tip 1 ise 6 değilse 10 zoom yapar
+
+                  zoom: tip == 1 ? 8.5 : 11,
+                    center: location
+                });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+                var layer = new google.maps.FusionTablesLayer({
+                    query: {
+                        select: "il_kodu",
+                        from: "1dmcKD-MJC_uRYmqxsJq31uf4eG5q1FtOXxgagRZ0",
+                        where: "il_kodu=" + ilId + ""
+                    }, styles: [{
+                        polygonOptions: {
+                            fillColor: '#00FF00',
+                            fillOpacity: 0.1
+                        }
+                    }
+                    ]
+            });
+            google.maps.event.addListener(layer, 'click', function (e) {
+            });
+                layer.setMap(map);
+        }
+
+    </script>
+}

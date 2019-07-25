@@ -1,0 +1,82 @@
+﻿<header class="header" >
+    <div class="container">
+        <div class="top-bar color-primary" style="background: black;">
+            <div class="container clearfix">
+                <div class="pull-left">
+                    <ul class="login-menu clearfix" style="margin-left:20px;">
+                        <li><a href="mylistings.html"><i class="fa fa-list"></i> Listem</a></li>
+                        <li><a href="mylistings.html"><i class="fa fa-star"></i> Favorilerim</a></li>
+                        <li><a href="mylistings.html"><i class="fa fa-user"></i> Profilim</a></li>
+                    </ul>
+                </div>
+                <div class="pull-right">
+                    <ul class="social-nav clearfix">
+                        <li>
+                            <a href="https://www.facebook.com/share.php?u=http%3A%2F%2Ftest.com%2F" style="max-width:300px;"
+                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Facebook</a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/home?status=http://test.com"
+                               onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Twitter</a>
+                        </li>
+                        <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=&source=" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">LinkedIn</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar" style="margin-bottom:0px;">
+            <div class="navbar-header">
+                <div class="logo pull-left pull-sm-up col-sm-6 col-xs-12">
+                    <img src="/Assets/img/CityExper.png" alt="" class="mini-logo" />
+                </div>
+            </div>
+            <div id="main-menu">
+                <ul class="nav navbar-nav clearfix" style="padding:21px;">
+                    <li class="nav-item dropdown" style="font-size: 1.4em;">
+                        <a class="nav-link active" role="button" aria-haspopup="true" aria-expanded="false" href="#">
+                            Anasayfa
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown" style="font-size: 1.4em;">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+                           role="button" aria-haspopup="true" aria-expanded="false">
+                            Taşınmaz
+                            <i class="icon-dropdown"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Mal Sahibi Olunan Taşınmaz</a>
+                            <a class="dropdown-item" href="#">Kiracı Olunan Taşınmaz</a>
+                            <a class="dropdown-item" href="#">Teminat Alınan Taşınmaz</a>
+                            <a class="dropdown-item" href="#">Satılık Taşınmaz</a>
+                            <a class="dropdown-item" href="@Url.Action("Tasinmaz","Yonetim")">Taşınmaz Ekle</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" style="font-size: 1.4em;">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+                           role="button" aria-haspopup="true" aria-expanded="false">
+                            Raporlama
+                            <i class="icon-dropdown"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Sahipliğe göre taşınmazlar grafikleri</a>
+                            <a class="dropdown-item" href="#">Taşınmaz Tipine Göre(konut/arsa/işyeri)</a>
+                            <a class="dropdown-item" href="#">Kullanımına Göre(Teminat olarak alındı/kiralandı/kiraya verildi)</a>
+                            <a class="dropdown-item" href="#">İllere Göre</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" style="font-size: 1.4em;">
+                        <a class="nav-link "
+                           role="button" target="_blank" aria-haspopup="true" aria-expanded="false" href="#">
+                            İletişim
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div style="float: right;padding: 29px;">
+                <button type="button" class="btn btn-info" onclick="SignUpOpenForm()">ÜYE OL</button>
+                <button type="button" class="btn btn-info" onclick="LoginOpenForm()">GİRİŞ</button>
+            </div>
+        </nav>
+    </div>
+</header>

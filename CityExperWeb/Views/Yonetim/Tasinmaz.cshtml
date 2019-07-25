@@ -1,0 +1,580 @@
+﻿<style>
+    .button {
+        font-size: 20px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .buttonIleri {
+        float: right;
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #017163;
+        border: none;
+        color: white;
+        text-align: center;
+        font-size: 16px;
+        padding: 4px;
+        width: 110px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+        .buttonIleri span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .buttonIleri span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .buttonIleri:hover {
+            background: #90a19e;
+            transition: 0.5s;
+        }
+
+            .buttonIleri:hover span {
+                padding-right: 25px;
+            }
+
+                .buttonIleri:hover span:after {
+                    opacity: 1;
+                    right: 0;
+                }
+</style>
+
+@{
+    ViewBag.Title = "Tasinmaz";
+    Layout = "~/Views/Shared/_LayoutYonetim.cshtml";
+}
+
+<div class="col-md-3" id="main-map" style=" height:400px;">
+</div>
+<div class="col-md-9">
+    <button class="button" data-toggle="collapse" href="#collapse3a" style="background:#90a19e">
+        <strong>Parsel Bilgileri</strong>
+    </button>
+    <button class="button disabled" style="background:#90a19e">Bina Bilgileri</button>
+    <button class="button disabled" style="background:#90a19e">Bağımsız Bilgileri</button>
+    @*Bu alanda tapu kadastro formu mevcuttur*@
+    <div id="collapse3a" class="panel-collapse collapse in">
+        <div class="panel-heading" style="background:#90a19e;">
+            <h2 class="text-center" style=" text-shadow: 2px 2px 4px #3cbae5, 0 0 30px #3cbae5, 0 0 15px black;">
+                <a style="color:#070707;">
+                    Tapu Kadastro Bilgileri
+                </a>
+            </h2>
+        </div>
+        <div class="widget widget-form" id="form">
+            <form action="#" method="post">
+                <div class="box-container widget-body">
+                    <div class="form-additional">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <div class="col-md-4 col-sm-2" id="TasınmazSearch">
+                                    <div class="form-group">
+                                        <select class="form-control" id="il" name="input">
+                                            <option value="" disabled selected>il</option>
+                                            @*@foreach (var il in cityList)
+                        {
+                            <option value="@il.il_id">@il.ilAdi</option>
+                        }*@
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-2">
+                                    <div class="form-group">
+                                        <select class="form-control" id="ilceListAdres" name="input">
+                                            <option value="" disabled selected>İlçe</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-2">
+                                    <div class="form-group">
+                                        <select class="form-control" id="MahalleListAdres" name="input">
+                                            <option value="" disabled selected>Tapu Mahalle</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <div class="form-group col-md-4">
+                                        <input type="text" id="paftaNo" class="form-control" style="border-radius:7px;"
+                                               placeholder="Pafta Numarası" />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input type="text" id="adaNo" class="form-control" style="border-radius:7px;"
+                                               placeholder="Ada Numarası" />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input type="text" id="parselNo" class="form-control" style="border-radius:7px;"
+                                               placeholder="Parsel Numarası" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <div class="form-group col-md-4">
+                                        <input type="text" id='tapuAlan' class="form-control" style="border-radius:7px;"
+                                               placeholder="Tapu Alanı" />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input type="text" id='zeminTip' class="form-control" style="border-radius:7px;"
+                                               placeholder="Zemin Tipi" />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input type="text" id='zeminRefNo' class="form-control" style="border-radius:7px;"
+                                               placeholder="Zemin Referans Numarası" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <div class="form-group col-md-4">
+                                        <input type="text" id='nitelik' class="form-control" style="border-radius:7px;"
+                                               placeholder="Nitelik" />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input type="text" id='hisseli' class="form-control" style="border-radius:7px;"
+                                               placeholder="Hisseli Evet hayır" />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input type="text" id='isgalci' class="form-control" style="border-radius:7px;"
+                                               placeholder="İşgalci" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <div class="form-group col-md-4">
+                                        <input type="text" id='cilt' class="form-control" style="border-radius:7px;"
+                                               placeholder="Cilt" />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input type="text" id='sayfa' class="form-control" style="border-radius:7px;"
+                                               placeholder="Sayfa" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <div class="form-group col-md-4">
+                                        <input type="text" id='tespitYapan' class="form-control" style="border-radius:7px;"
+                                               placeholder="Tespit Yapan" />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input type="text" id='tespitTarihi' class="form-control" style="border-radius:7px;"
+                                               placeholder="Tespit Tarihi" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group ">
+                                            <input type="text" id='serhNo' class="form-control" style="border-radius:7px;"
+                                                   placeholder="Şerh No" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <input type="text" id='serhTarih' class="form-control" style="border-radius:7px;"
+                                                   placeholder="Şerh Tarih" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <textarea class="form-control" rows="3" id="comment">Şerh Açıklama</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group ">
+                                            <input type="text" id='beyanNo' class="form-control" style="border-radius:7px;"
+                                                   placeholder="Beyan No" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <input type="text" id='beyanTarih' class="form-control" style="border-radius:7px;"
+                                                   placeholder="Beyan Tarih" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <textarea class="form-control" rows="3" id="comment">Beyan Açıklama</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group ">
+                                            <input type="text" id='irtifakNo' class="form-control" style="border-radius:7px;"
+                                                   placeholder="İrtifak No" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <input type="text" id='irtifakTarih' class="form-control" style="border-radius:7px;"
+                                                   placeholder="İrtifak Tarih" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <textarea class="form-control" rows="3" id="comment">İrtifak Açıklama</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group ">
+                                            <input type="text" id='hacizNo' class="form-control" style="border-radius:7px;"
+                                                   placeholder="Haciz No" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <input type="text" id='hacizTarih' class="form-control" style="border-radius:7px;"
+                                                   placeholder="Haciz Tarih" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <textarea class="form-control" rows="3" id="comment">Haciz Açıklama</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group ">
+                                            <input type="text" id='ipotekNo' class="form-control" style="border-radius:7px;"
+                                                   placeholder="İpotek No" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <input type="text" id='ipotekTarih' class="form-control" style="border-radius:7px;"
+                                                   placeholder="İpotek Tarih" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <textarea class="form-control" rows="3" id="comment">İpotek Açıklama</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="row" style="margin-left:20px;">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <span style="margin-right:10px;">Şerh</span>
+                    <span class="radio-inline" style="float:right"><input type="radio" onclick="serhHide()" name="rdSerh" style="margin-top:-7px;">YOK</span>
+                    <span class="radio-inline" style="float:right"><input type="radio" onclick="serhShow()" name="rdSerh" style="margin-top:-7px;">VAR</span>
+                </div>
+                <div class="col-md-8" id="serhForm" style="display:none;">
+                    <div class="form-group col-md-6">
+                        <input type="text" placeholder="Yevmiye no" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="datetime-local" placeholder="tarih" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-left:20px;">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <span>Beyan</span>
+                    <span class="radio-inline" style="float:right"><input type="radio" onclick="beyanHide()" name="rdBeyan" style="margin-top:-7px;">YOK</span>
+                    <span class="radio-inline" style="float:right"><input type="radio" onclick="beyanShow()" name="rdBeyan" style="margin-top:-7px;">VAR</span>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group" id="beyanForm" style="display:none;margin-top:12px">
+                        <div class="form-group col-md-6">
+                            <input type="text" placeholder="Yevmiye no" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="datetime-local" placeholder="tarih" />
+                        </div>
+                        <div class="form-group col-md-12">
+                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-left:20px;">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <span style="margin-right:10px;">İrtifak</span>
+                    <span class="radio-inline" style="float:right"><input type="radio" onclick="irtifakHide()" name="rdIrtifak" style="margin-top:-7px;">YOK</span>
+                    <span class="radio-inline" style="float:right"><input type="radio" onclick="irtifakShow()" name="rdIrtifak" style="margin-top:-7px;">VAR</span>
+                </div>
+                <div class="col-md-8" id="irtifakForm" style="display:none;">
+                    <div class="form-group col-md-6">
+                        <input type="text" placeholder="Yevmiye no" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="datetime-local" placeholder="tarih" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-left:20px;">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <span style="margin-right:10px;">Haciz</span>
+                    <span class="radio-inline" style="float:right"><input type="radio" onclick="hacizHide()" name="rdHaciz" style="margin-top:-7px;">YOK</span>
+                    <span class="radio-inline" style="float:right"><input type="radio" onclick="hacizShow()" name="rdHaciz" style="margin-top:-7px;">VAR</span>
+                </div>
+                <div class="col-md-8" id="hacizForm" style="display:none;">
+                    <div class="form-group col-md-6">
+                        <input type="text" placeholder="Yevmiye no" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="datetime-local" placeholder="tarih" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-left:20px;">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <span style="margin-right:10px;">İpotek</span>
+                    <span class="radio-inline" style="float:right"><input type="radio" onclick="ipotekHide()" name="rdIpotek" style="margin-top:-7px;">YOK</span>
+                    <span class="radio-inline" style="float:right"><input type="radio" onclick="ipotekShow()" name="rdIpotek" style="margin-top:-7px;">VAR</span>
+                </div>
+                <div class="col-md-8" id="ipotekForm" style="display:none;">
+                    <div class="form-group col-md-6">
+                        <input type="text" placeholder="Yevmiye no" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="datetime-local" placeholder="tarih" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+                            <div class="row">
+                                <buttonIleri type="buttonIleri" id="tapuIleri" class="buttonIleri" style="vertical-align:middle;"><span>Devam Et </span></buttonIleri>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    @*Bu alanda Belediye bilgi formu mevcuttur*@
+    <div id="collapse3b" style="display:none; background:#90a19e;" class="panel-collapse collapse">
+        <div class="panel-heading" style="background:#90a19e;">
+            <h2 class="text-center" style=" text-shadow: 2px 2px 4px #3cbae5, 0 0 30px #3cbae5, 0 0 15px black;">
+                <a style="color:#070707;">
+                    Belediye Bilgileri
+                </a>
+            </h2>
+        </div>
+        <div class="widget widget-form" id="form">
+            <form action="#" method="post">
+                <div class="box-container widget-body">
+                    <div class="form-additional">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-6">
+                                    <input type="text" id='planFonk' class="form-control" style="border-radius:7px;"
+                                           placeholder="Plan Fonksiyonu" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="text" id="emsal" class="form-control" style="border-radius:7px;"
+                                           placeholder="Emsal" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-6">
+                                    <input type="text" id="insaatAlani" class="form-control" style="border-radius:7px;"
+                                           placeholder="İnşaat Alanı" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="text" id='insaatalani' class="form-control" style="border-radius:7px;"
+                                           placeholder="Plana Göre İnşaat Alanı" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-6">
+                                    <input type="text" id='planAdi' class="form-control" style="border-radius:7px;"
+                                           placeholder="Plan Adı" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <input type="text" id="planOnamaTarihi" class="form-control" style="border-radius:7px;"
+                                           placeholder="Plan Onama Tarihi" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-4">
+                                    <input type="text" id="hmax" class="form-control" style="border-radius:7px;"
+                                           placeholder="HMAX" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="form-group col-md-4">
+                                    <input type="text" id='kaks' class="form-control" style="border-radius:7px;"
+                                           placeholder="KAKS" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-4">
+                                    <input type="text" id='taks' class="form-control" style="border-radius:7px;"
+                                           placeholder="TAKS" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <buttonIleri type="button" id="belediyeIleri" class="buttonIleri" style="vertical-align:middle"><span>Devam Et </span></buttonIleri>
+                            <buttonIleri type="button" id="belediyeGeri" class="buttonIleri" style="vertical-align:middle"><span>Geri Dön </span></buttonIleri>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    @*Bu alanda Diğer kurum bilgi Formu mevcuttur*@
+    <div id="collapse3c" style="display:none;" class="panel-collapse collapse">
+        <div class="panel-heading" style="background:#90a19e;">
+            <h2 class="text-center" style="text-shadow: 2px 2px 4px #3cbae5, 0 0 30px #3cbae5, 0 0 15px black;">
+                <a style="color:#070707;">
+                    Diğer Bilgileri
+                </a>
+            </h2>
+        </div>
+        <div class="widget widget-form" id="form">
+            <form action="#" method="post">
+                <div class="box-container widget-body">
+                    <div class="form-additional">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-6">
+                                    <input type="text" id='kurumAdi' class="form-control" style="border-radius:7px;"
+                                           placeholder="Kurum Adı" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group col-md-6">
+                                    <input type="text" id="belgeNo" class="form-control" style="border-radius:7px;"
+                                           placeholder="Belge Numarası" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group col-md-6">
+                                    <input type="text" id="alinanTarih" class="form-control" style="border-radius:7px;"
+                                           placeholder="Alınan Tarih" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+
+                                <div class="form-group col-md-6">
+                                    <input type="text" id="belgeTarihi" class="form-control" style="border-radius:7px;"
+                                           placeholder="Belge Tarihi" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <buttonIleri type="button" id="formKaydet" class="buttonIleri" style="vertical-align:middle;"><span>Kaydet</span></buttonIleri>
+                                <buttonIleri type="button" id="digerGeri" class="buttonIleri" style="vertical-align:middle"><span>Geri </span></buttonIleri>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        function serhShow() {
+            $("#serhForm").fadeIn(500);
+        }
+        function serhHide() {
+            $("#serhForm").fadeOut(500);
+        }
+
+        function beyanShow() {
+            $("#beyanForm").fadeIn(500);
+        }
+        function beyanHide() {
+            $("#beyanForm").fadeOut(500);
+        }
+        function irtifakShow() {
+            $("#irtifakForm").fadeIn(500);
+        }
+        function irtifakHide() {
+            $("#irtifakForm").fadeOut(500);
+        }
+        function hacizShow() {
+            $("#hacizForm").fadeIn(500);
+        }
+        function hacizHide() {
+            $("#hacizForm").fadeOut(500);
+        }
+        function ipotekShow() {
+            $("#ipotekForm").fadeIn(500);
+        }
+        function ipotekHide() {
+            $("#ipotekForm").fadeOut(500);
+        }
+
+        $("#tapuIleri").click(function () {
+            $("#collapse3a").fadeOut(100);
+            $("#collapse3b").fadeIn(1000);
+            $("#collapse3c").fadeOut(100);
+        });
+
+        $("#belediyeIleri").click(function () {
+            $("#collapse3a").fadeOut(100);
+            $("#collapse3b").fadeOut(100);
+            $("#collapse3c").fadeIn(1000);
+            $("Baslik").html("Belediye Bilgileri");
+        });
+        $("#belediyeGeri").click(function () {
+            $("#collapse3a").fadeIn(1000);
+            $("#collapse3b").fadeOut(100);
+            $("#collapse3c").fadeOut(100);
+        });
+        $("#digerIleri").click(function () {
+            //AJAX POST EDİLECEK
+        });
+        $("#digerGeri").click(function () {
+            $("#collapse3a").hide();
+            $("#collapse3b").show();
+            $("#collapse3c").hide();
+        });
+    </script>
+
+}
