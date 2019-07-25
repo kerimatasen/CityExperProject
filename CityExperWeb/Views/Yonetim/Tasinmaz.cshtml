@@ -1,4 +1,19 @@
 ﻿<style>
+
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+
+    .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+    }
+
     .button {
         font-size: 20px;
         margin: 4px 2px;
@@ -55,29 +70,136 @@
                     opacity: 1;
                     right: 0;
                 }
-</style>
 
+    .switch {
+        position: relative;
+        display: block;
+        vertical-align: top;
+        width: 100px;
+        height: 30px;
+        padding: 3px;
+        margin: 0 10px 10px 0;
+        background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
+        background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
+        border-radius: 18px;
+        box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+    }
+
+    .switch-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+
+    .switch-label {
+        position: relative;
+        display: block;
+        height: inherit;
+        font-size: 10px;
+        text-transform: uppercase;
+        background: #eceeef;
+        border-radius: inherit;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
+    }
+
+        .switch-label:before, .switch-label:after {
+            position: absolute;
+            top: 50%;
+            margin-top: -.5em;
+            line-height: 1;
+            -webkit-transition: inherit;
+            -moz-transition: inherit;
+            -o-transition: inherit;
+            transition: inherit;
+        }
+
+        .switch-label:before {
+            content: attr(data-off);
+            right: 11px;
+            color: #aaaaaa;
+            text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+        .switch-label:after {
+            content: attr(data-on);
+            left: 11px;
+            color: #FFFFFF;
+            text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+        }
+
+    .switch-input:checked ~ .switch-label {
+        background: #E1B42B;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
+    }
+
+        .switch-input:checked ~ .switch-label:before {
+            opacity: 0;
+        }
+
+        .switch-input:checked ~ .switch-label:after {
+            opacity: 1;
+        }
+
+    .switch-handle {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 28px;
+        height: 28px;
+        background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
+        background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
+        border-radius: 100%;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    }
+
+        .switch-handle:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -6px 0 0 -6px;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
+            background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF);
+            border-radius: 6px;
+            box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
+        }
+
+    .switch-input:checked ~ .switch-handle {
+        left: 74px;
+        box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+    }
+    /* Transition ========================== */
+    .switch-label, .switch-handle {
+        transition: All 0.3s ease;
+        -webkit-transition: All 0.3s ease;
+        -moz-transition: All 0.3s ease;
+        -o-transition: All 0.3s ease;
+    }
+
+    #container {
+        height: 400px;
+        min-width: 310px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+</style>
 @{
     ViewBag.Title = "Tasinmaz";
-    Layout = "~/Views/Shared/_LayoutYonetim.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="col-md-3" id="main-map" style=" height:400px;">
-</div>
-<div class="col-md-9">
-    <button class="button" data-toggle="collapse" href="#collapse3a" style="background:#90a19e">
-        <strong>Parsel Bilgileri</strong>
-    </button>
-    <button class="button disabled" style="background:#90a19e">Bina Bilgileri</button>
-    <button class="button disabled" style="background:#90a19e">Bağımsız Bilgileri</button>
-    @*Bu alanda tapu kadastro formu mevcuttur*@
+<div class="col-md-12">
     <div id="collapse3a" class="panel-collapse collapse in">
-        <div class="panel-heading" style="background:#90a19e;">
-            <h2 class="text-center" style=" text-shadow: 2px 2px 4px #3cbae5, 0 0 30px #3cbae5, 0 0 15px black;">
-                <a style="color:#070707;">
+        <div class="panel-heading col-md-12">
+            <h3 class="text-center">
+                <a>
                     Tapu Kadastro Bilgileri
                 </a>
-            </h2>
+            </h3>
         </div>
         <div class="widget widget-form" id="form">
             <form action="#" method="post">
@@ -85,430 +207,331 @@
                     <div class="form-additional">
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <div class="col-md-4 col-sm-2" id="TasınmazSearch">
+                                <div class="col-md-4 col-sm-2">
                                     <div class="form-group">
-                                        <select class="form-control" id="il" name="input">
+                                        <select class="form-control" id="il" name="input" style="border-radius:20px;">
                                             <option value="" disabled selected>il</option>
-                                            @*@foreach (var il in cityList)
-                        {
-                            <option value="@il.il_id">@il.ilAdi</option>
-                        }*@
+
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-2">
                                     <div class="form-group">
-                                        <select class="form-control" id="ilceListAdres" name="input">
+                                        <select class="form-control" id="ilceListAdres" name="input" style="border-radius:20px;">
                                             <option value="" disabled selected>İlçe</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-2">
                                     <div class="form-group">
-                                        <select class="form-control" id="MahalleListAdres" name="input">
+                                        <select class="form-control" id="MahalleListAdres" name="input" style="border-radius:20px;">
                                             <option value="" disabled selected>Tapu Mahalle</option>
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id="paftaNo" class="form-control" style="border-radius:7px;"
-                                               placeholder="Pafta Numarası" />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id="adaNo" class="form-control" style="border-radius:7px;"
-                                               placeholder="Ada Numarası" />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id="parselNo" class="form-control" style="border-radius:7px;"
-                                               placeholder="Parsel Numarası" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id='tapuAlan' class="form-control" style="border-radius:7px;"
-                                               placeholder="Tapu Alanı" />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id='zeminTip' class="form-control" style="border-radius:7px;"
-                                               placeholder="Zemin Tipi" />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id='zeminRefNo' class="form-control" style="border-radius:7px;"
-                                               placeholder="Zemin Referans Numarası" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id='nitelik' class="form-control" style="border-radius:7px;"
-                                               placeholder="Nitelik" />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id='hisseli' class="form-control" style="border-radius:7px;"
-                                               placeholder="Hisseli Evet hayır" />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id='isgalci' class="form-control" style="border-radius:7px;"
-                                               placeholder="İşgalci" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id='cilt' class="form-control" style="border-radius:7px;"
-                                               placeholder="Cilt" />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id='sayfa' class="form-control" style="border-radius:7px;"
-                                               placeholder="Sayfa" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id='tespitYapan' class="form-control" style="border-radius:7px;"
-                                               placeholder="Tespit Yapan" />
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id='tespitTarihi' class="form-control" style="border-radius:7px;"
-                                               placeholder="Tespit Tarihi" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group ">
-                                            <input type="text" id='serhNo' class="form-control" style="border-radius:7px;"
-                                                   placeholder="Şerh No" />
+                                    <div class="form-group col-md-12">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id="paftaNo" class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Pafta Numarası" />
                                         </div>
-                                        <div class="form-group ">
-                                            <input type="text" id='serhTarih' class="form-control" style="border-radius:7px;"
-                                                   placeholder="Şerh Tarih" />
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id="adaNo" class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Ada Numarası" />
                                         </div>
-                                    </div>
-                                    <div class="form-group col-md-8">
-                                        <textarea class="form-control" rows="3" id="comment">Şerh Açıklama</textarea>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id="parselNo" class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Parsel Numarası" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group ">
-                                            <input type="text" id='beyanNo' class="form-control" style="border-radius:7px;"
-                                                   placeholder="Beyan No" />
+                                    <div class="form-group col-md-12">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='tapuAlan' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Tapu Alanı" />
                                         </div>
-                                        <div class="form-group ">
-                                            <input type="text" id='beyanTarih' class="form-control" style="border-radius:7px;"
-                                                   placeholder="Beyan Tarih" />
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='zeminTip' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Zemin Tipi" />
                                         </div>
-                                    </div>
-                                    <div class="form-group col-md-8">
-                                        <textarea class="form-control" rows="3" id="comment">Beyan Açıklama</textarea>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='zeminRefNo' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Zemin Referans Numarası" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group ">
-                                            <input type="text" id='irtifakNo' class="form-control" style="border-radius:7px;"
-                                                   placeholder="İrtifak No" />
+                                    <div class="form-group col-md-12">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='nitelik' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Nitelik" />
                                         </div>
-                                        <div class="form-group ">
-                                            <input type="text" id='irtifakTarih' class="form-control" style="border-radius:7px;"
-                                                   placeholder="İrtifak Tarih" />
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='cilt' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Cilt" />
                                         </div>
-                                    </div>
-                                    <div class="form-group col-md-8">
-                                        <textarea class="form-control" rows="3" id="comment">İrtifak Açıklama</textarea>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='sayfa' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Sayfa" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group ">
-                                            <input type="text" id='hacizNo' class="form-control" style="border-radius:7px;"
-                                                   placeholder="Haciz No" />
+                                    <div class="form-group col-md-12">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='tespitYapan' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Tespit Yapan" />
                                         </div>
-                                        <div class="form-group ">
-                                            <input type="text" id='hacizTarih' class="form-control" style="border-radius:7px;"
-                                                   placeholder="Haciz Tarih" />
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='tespitTarihi' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Tespit Tarihi" />
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                                <input class="switch-input" type="checkbox" />
+                                                <span class="switch-label" data-on="Evet" data-off="Hayır"></span> <span class="switch-handle"></span>
+                                            </label>
+                                            <input type="text" id='hisseli' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Hisseli" />
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                                <input class="switch-input" type="checkbox" />
+                                                <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                            </label>
+                                            <input type="text" id='isgalci' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="İşgalci" />
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-8">
-                                        <textarea class="form-control" rows="3" id="comment">Haciz Açıklama</textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group col-md-2">
+                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                            <input class="switch-input" type="checkbox" />
+                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                        </label>
+                                        <input type="text" id='malik' class="form-control" style=" height:35px; border-radius:17px;"
+                                               placeholder="Malik" />
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                            <input class="switch-input" type="checkbox" />
+                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                        </label>
+                                        <input type="text" id='serh' class="form-control" style=" height:35px; border-radius:17px;"
+                                               placeholder="Şerh" />
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                            <input class="switch-input" type="checkbox" />
+                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                        </label>
+                                        <input type="text" id='beyan' class="form-control" style=" height:35px; border-radius:17px;"
+                                               placeholder="Beyan" />
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                            <input class="switch-input" type="checkbox" />
+                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                        </label>
+                                        <input type="text" id='irtifak' class="form-control" style=" height:35px; border-radius:17px;"
+                                               placeholder="İrtifak" />
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                            <input class="switch-input" type="checkbox" />
+                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                        </label>
+                                        <input type="text" id='haciz' class="form-control" style=" height:35px; border-radius:17px;"
+                                               placeholder="Haciz " />
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                            <input class="switch-input" type="checkbox" />
+                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                        </label>
+                                        <input type="text" id='ipotek' class="form-control" style=" height:35px; border-radius:17px;"
+                                               placeholder="İpotek" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group ">
-                                            <input type="text" id='ipotekNo' class="form-control" style="border-radius:7px;"
-                                                   placeholder="İpotek No" />
-                                        </div>
-                                        <div class="form-group ">
-                                            <input type="text" id='ipotekTarih' class="form-control" style="border-radius:7px;"
-                                                   placeholder="İpotek Tarih" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-8">
-                                        <textarea class="form-control" rows="3" id="comment">İpotek Açıklama</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            @*<div class="row" style="margin-left:20px;">
-            <div class="col-md-12">
-                <div class="col-md-4">
-                    <span style="margin-right:10px;">Şerh</span>
-                    <span class="radio-inline" style="float:right"><input type="radio" onclick="serhHide()" name="rdSerh" style="margin-top:-7px;">YOK</span>
-                    <span class="radio-inline" style="float:right"><input type="radio" onclick="serhShow()" name="rdSerh" style="margin-top:-7px;">VAR</span>
-                </div>
-                <div class="col-md-8" id="serhForm" style="display:none;">
-                    <div class="form-group col-md-6">
-                        <input type="text" placeholder="Yevmiye no" />
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="datetime-local" placeholder="tarih" />
-                    </div>
-                    <div class="form-group col-md-12">
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin-left:20px;">
-            <div class="col-md-12">
-                <div class="col-md-4">
-                    <span>Beyan</span>
-                    <span class="radio-inline" style="float:right"><input type="radio" onclick="beyanHide()" name="rdBeyan" style="margin-top:-7px;">YOK</span>
-                    <span class="radio-inline" style="float:right"><input type="radio" onclick="beyanShow()" name="rdBeyan" style="margin-top:-7px;">VAR</span>
-                </div>
-                <div class="col-md-8">
-                    <div class="form-group" id="beyanForm" style="display:none;margin-top:12px">
-                        <div class="form-group col-md-6">
-                            <input type="text" placeholder="Yevmiye no" />
                         </div>
-                        <div class="form-group col-md-6">
-                            <input type="datetime-local" placeholder="tarih" />
-                        </div>
-                        <div class="form-group col-md-12">
-                            <textarea class="form-control" rows="5" id="comment"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin-left:20px;">
-            <div class="col-md-12">
-                <div class="col-md-4">
-                    <span style="margin-right:10px;">İrtifak</span>
-                    <span class="radio-inline" style="float:right"><input type="radio" onclick="irtifakHide()" name="rdIrtifak" style="margin-top:-7px;">YOK</span>
-                    <span class="radio-inline" style="float:right"><input type="radio" onclick="irtifakShow()" name="rdIrtifak" style="margin-top:-7px;">VAR</span>
-                </div>
-                <div class="col-md-8" id="irtifakForm" style="display:none;">
-                    <div class="form-group col-md-6">
-                        <input type="text" placeholder="Yevmiye no" />
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="datetime-local" placeholder="tarih" />
-                    </div>
-                    <div class="form-group col-md-12">
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin-left:20px;">
-            <div class="col-md-12">
-                <div class="col-md-4">
-                    <span style="margin-right:10px;">Haciz</span>
-                    <span class="radio-inline" style="float:right"><input type="radio" onclick="hacizHide()" name="rdHaciz" style="margin-top:-7px;">YOK</span>
-                    <span class="radio-inline" style="float:right"><input type="radio" onclick="hacizShow()" name="rdHaciz" style="margin-top:-7px;">VAR</span>
-                </div>
-                <div class="col-md-8" id="hacizForm" style="display:none;">
-                    <div class="form-group col-md-6">
-                        <input type="text" placeholder="Yevmiye no" />
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="datetime-local" placeholder="tarih" />
-                    </div>
-                    <div class="form-group col-md-12">
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin-left:20px;">
-            <div class="col-md-12">
-                <div class="col-md-4">
-                    <span style="margin-right:10px;">İpotek</span>
-                    <span class="radio-inline" style="float:right"><input type="radio" onclick="ipotekHide()" name="rdIpotek" style="margin-top:-7px;">YOK</span>
-                    <span class="radio-inline" style="float:right"><input type="radio" onclick="ipotekShow()" name="rdIpotek" style="margin-top:-7px;">VAR</span>
-                </div>
-                <div class="col-md-8" id="ipotekForm" style="display:none;">
-                    <div class="form-group col-md-6">
-                        <input type="text" placeholder="Yevmiye no" />
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="datetime-local" placeholder="tarih" />
-                    </div>
-                    <div class="form-group col-md-12">
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
-                            <div class="row">
-                                <buttonIleri type="buttonIleri" id="tapuIleri" class="buttonIleri" style="vertical-align:middle;"><span>Devam Et </span></buttonIleri>
-                            </div>
+                        <div class="row">
+                            <buttonIleri type="buttonIleri" id="tapuIleri" class="buttonIleri" style="vertical-align:middle;"><span>İleri</span></buttonIleri>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    @*Bu alanda Belediye bilgi formu mevcuttur*@
-    <div id="collapse3b" style="display:none; background:#90a19e;" class="panel-collapse collapse">
-        <div class="panel-heading" style="background:#90a19e;">
-            <h2 class="text-center" style=" text-shadow: 2px 2px 4px #3cbae5, 0 0 30px #3cbae5, 0 0 15px black;">
-                <a style="color:#070707;">
+    <div id="collapse3b" class="panel-collapse collapse in" style="display:none;">
+        <div class="panel-heading col-md-12">
+            <h3 class="text-center">
+                <a>
                     Belediye Bilgileri
                 </a>
-            </h2>
+            </h3>
         </div>
         <div class="widget widget-form" id="form">
             <form action="#" method="post">
                 <div class="box-container widget-body">
                     <div class="form-additional">
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group col-md-6">
-                                    <input type="text" id='planFonk' class="form-control" style="border-radius:7px;"
-                                           placeholder="Plan Fonksiyonu" />
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="emsal" class="form-control" style="border-radius:7px;"
-                                           placeholder="Emsal" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="insaatAlani" class="form-control" style="border-radius:7px;"
-                                           placeholder="İnşaat Alanı" />
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input type="text" id='insaatalani' class="form-control" style="border-radius:7px;"
-                                           placeholder="Plana Göre İnşaat Alanı" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group col-md-6">
-                                    <input type="text" id='planAdi' class="form-control" style="border-radius:7px;"
-                                           placeholder="Plan Adı" />
-                                </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-md-4 col-sm-2">
+                                    <div class="form-group">
+                                        <select class="form-control" id="il" name="input" style="border-radius:20px;">
+                                            <option value="" disabled selected>il</option>
 
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="planOnamaTarihi" class="form-control" style="border-radius:7px;"
-                                           placeholder="Plan Onama Tarihi" />
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-2">
+                                    <div class="form-group">
+                                        <select class="form-control" id="ilceListAdres" name="input" style="border-radius:20px;">
+                                            <option value="" disabled selected>İlçe</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-2">
+                                    <div class="form-group">
+                                        <select class="form-control" id="MahalleListAdres" name="input" style="border-radius:20px;">
+                                            <option value="" disabled selected>Tapu Mahalle</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id="paftaNo" class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Pafta Numarası" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id="adaNo" class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Ada Numarası" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id="parselNo" class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Parsel Numarası" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='tapuAlan' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Tapu Alanı" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='zeminTip' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Zemin Tipi" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='zeminRefNo' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Zemin Referans Numarası" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='nitelik' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Nitelik" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='cilt' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Cilt" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='sayfa' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Sayfa" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='tespitYapan' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Tespit Yapan" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id='tespitTarihi' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Tespit Tarihi" />
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                                <input class="switch-input" type="checkbox" />
+                                                <span class="switch-label" data-on="Evet" data-off="Hayır"></span> <span class="switch-handle"></span>
+                                            </label>
+                                            <input type="text" id='hisseli' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="Hisseli" />
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                                <input class="switch-input" type="checkbox" />
+                                                <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                            </label>
+                                            <input type="text" id='isgalci' class="form-control" style=" height:35px; border-radius:17px;"
+                                                   placeholder="İşgalci" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group col-md-2">
+                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                            <input class="switch-input" type="checkbox" />
+                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                        </label>
+                                        <input type="text" id='malik' class="form-control" style=" height:35px; border-radius:17px;"
+                                               placeholder="Malik" />
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                            <input class="switch-input" type="checkbox" />
+                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                        </label>
+                                        <input type="text" id='serh' class="form-control" style=" height:35px; border-radius:17px;"
+                                               placeholder="Şerh" />
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                            <input class="switch-input" type="checkbox" />
+                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                        </label>
+                                        <input type="text" id='beyan' class="form-control" style=" height:35px; border-radius:17px;"
+                                               placeholder="Beyan" />
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                            <input class="switch-input" type="checkbox" />
+                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                        </label>
+                                        <input type="text" id='irtifak' class="form-control" style=" height:35px; border-radius:17px;"
+                                               placeholder="İrtifak" />
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                            <input class="switch-input" type="checkbox" />
+                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                        </label>
+                                        <input type="text" id='haciz' class="form-control" style=" height:35px; border-radius:17px;"
+                                               placeholder="Haciz " />
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
+                                            <input class="switch-input" type="checkbox" />
+                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
+                                        </label>
+                                        <input type="text" id='ipotek' class="form-control" style=" height:35px; border-radius:17px;"
+                                               placeholder="İpotek" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group col-md-4">
-                                    <input type="text" id="hmax" class="form-control" style="border-radius:7px;"
-                                           placeholder="HMAX" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-
-                                <div class="form-group col-md-4">
-                                    <input type="text" id='kaks' class="form-control" style="border-radius:7px;"
-                                           placeholder="KAKS" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group col-md-4">
-                                    <input type="text" id='taks' class="form-control" style="border-radius:7px;"
-                                           placeholder="TAKS" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <buttonIleri type="button" id="belediyeIleri" class="buttonIleri" style="vertical-align:middle"><span>Devam Et </span></buttonIleri>
-                            <buttonIleri type="button" id="belediyeGeri" class="buttonIleri" style="vertical-align:middle"><span>Geri Dön </span></buttonIleri>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    @*Bu alanda Diğer kurum bilgi Formu mevcuttur*@
-    <div id="collapse3c" style="display:none;" class="panel-collapse collapse">
-        <div class="panel-heading" style="background:#90a19e;">
-            <h2 class="text-center" style="text-shadow: 2px 2px 4px #3cbae5, 0 0 30px #3cbae5, 0 0 15px black;">
-                <a style="color:#070707;">
-                    Diğer Bilgileri
-                </a>
-            </h2>
-        </div>
-        <div class="widget widget-form" id="form">
-            <form action="#" method="post">
-                <div class="box-container widget-body">
-                    <div class="form-additional">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group col-md-6">
-                                    <input type="text" id='kurumAdi' class="form-control" style="border-radius:7px;"
-                                           placeholder="Kurum Adı" />
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="belgeNo" class="form-control" style="border-radius:7px;"
-                                           placeholder="Belge Numarası" />
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="alinanTarih" class="form-control" style="border-radius:7px;"
-                                           placeholder="Alınan Tarih" />
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="belgeTarihi" class="form-control" style="border-radius:7px;"
-                                           placeholder="Belge Tarihi" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <buttonIleri type="button" id="formKaydet" class="buttonIleri" style="vertical-align:middle;"><span>Kaydet</span></buttonIleri>
-                                <buttonIleri type="button" id="digerGeri" class="buttonIleri" style="vertical-align:middle"><span>Geri </span></buttonIleri>
-                            </div>
+                            <buttonIleri type="buttonIleri" id="belediyeIleri" class="buttonIleri" style="vertical-align:middle;"><span>İleri</span></buttonIleri>
+                            <buttonIleri type="buttonIleri" id="belediyeGeri" class="buttonIleri" style="vertical-align:middle;"><span>Geri</span></buttonIleri>
                         </div>
                     </div>
                 </div>
@@ -517,39 +540,11 @@
     </div>
 </div>
 @section Scripts {
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script type="text/javascript">
-        function serhShow() {
-            $("#serhForm").fadeIn(500);
-        }
-        function serhHide() {
-            $("#serhForm").fadeOut(500);
-        }
-
-        function beyanShow() {
-            $("#beyanForm").fadeIn(500);
-        }
-        function beyanHide() {
-            $("#beyanForm").fadeOut(500);
-        }
-        function irtifakShow() {
-            $("#irtifakForm").fadeIn(500);
-        }
-        function irtifakHide() {
-            $("#irtifakForm").fadeOut(500);
-        }
-        function hacizShow() {
-            $("#hacizForm").fadeIn(500);
-        }
-        function hacizHide() {
-            $("#hacizForm").fadeOut(500);
-        }
-        function ipotekShow() {
-            $("#ipotekForm").fadeIn(500);
-        }
-        function ipotekHide() {
-            $("#ipotekForm").fadeOut(500);
-        }
-
         $("#tapuIleri").click(function () {
             $("#collapse3a").fadeOut(100);
             $("#collapse3b").fadeIn(1000);
@@ -567,14 +562,5 @@
             $("#collapse3b").fadeOut(100);
             $("#collapse3c").fadeOut(100);
         });
-        $("#digerIleri").click(function () {
-            //AJAX POST EDİLECEK
-        });
-        $("#digerGeri").click(function () {
-            $("#collapse3a").hide();
-            $("#collapse3b").show();
-            $("#collapse3c").hide();
-        });
     </script>
-
 }

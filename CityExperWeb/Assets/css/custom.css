@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*------------------------------------------------------------------
 [Table of contents]
 
@@ -202,7 +202,7 @@
     
     body:not(.boxed) .container-side-version .header .websitetitle,
     body:not(.boxed) .container-side-version  .header .top-bar .pull-right {
-       margin-right: 20px;
+       margin-right: 5px;
     }
     
     

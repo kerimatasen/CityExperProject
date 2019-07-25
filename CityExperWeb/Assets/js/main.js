@@ -1,4 +1,10 @@
 ﻿$(document).ready(function () {
+    var data = {
+        Ilid : null,
+        Ilceid : null,
+        Mahalleid : null,
+        CaddeSokakid : null,
+    }
     $('#il').change(function () {
         $.ajax({
             url: "/ilce/ilcelerbyilId", //burdaki url controller/actiondır
@@ -13,13 +19,15 @@
                 });
             }
         });
-        $.ajax({
-            url: "/ilce/PoligonGetir", //burdaki url controller/actiondır
-            data: { plaka: $(this).val() },//datamdacontrollera gönderdiğim parametredir ilId  olarakgönderdim tanımlamalaraynıolcak
-            dataType: "JSON",
-            success: function (result) { //yani controllerdan bana data döndüğünde dönen data result a atılır. 
-            }
-        });
+        //$.ajax({
+        //    url: "/ilce/PoligonGetir", //burdaki url controller/actiondır
+        //    data: { plaka: $(this).val() },//datamdacontrollera gönderdiğim parametredir ilId  olarakgönderdim tanımlamalaraynıolcak
+        //    dataType: "JSON",
+        //    success: function (result) { //yani controllerdan bana data döndüğünde dönen data result a atılır. 
+        //    }
+        //});
+        data.Ilid = $(this).val();
+        LoadMap_main(data);
     });
     //ilceListAdres değiştiğinde  function çalışır
     $('#ilceListAdres').change(function () {
@@ -37,6 +45,8 @@
                 });
             }
         });
+        data.Ilceid = $(this).val();
+        LoadMap_main(data);
     });
     $('#MahalleListAdres').change(function () {
         $.ajax({
@@ -54,5 +64,5 @@
             }
         });
     });
-    //Tapu kadastro ilçe
+ 
 });

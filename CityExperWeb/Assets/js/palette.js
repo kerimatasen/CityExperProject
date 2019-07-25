@@ -6,7 +6,6 @@
  * 
  */
 function palette_init() {
-
     /* ini  colorpicker */
     $('#color-primary').colorpicker()
             .colorpicker('setValue', '#0f7ad5');
@@ -22,14 +21,14 @@ function palette_init() {
             .colorpicker('setValue', '#7D881E');
     var _h = $('head');
     var _body = $('body');
-    /* end ini  colorpicker */
+    /* son renklendirici */
 
-    // close and open palette panel
+    // palet panelini kapatýp açýn
     $('.custom-palette-btn').on('click', function () {
         $('.custom-palette').toggleClass('palette-closed');
     })
 
-    // change primary color
+    // ana rengi deðiþtirme
     $('#color-primary').colorpicker().on('changeColor.colorpicker', function (event) {
         var color = event.color.toString();
         $('.color-primary').css('background-color', color);
@@ -204,7 +203,6 @@ function palette_init() {
             _par.css('background', 'url(' + bg + ') no-repeat fixed');
         }
     })
-
     //type-site (full-width, wide)
     $('.custom-palette-box input[name="type-site"]').change(function (e) {
         e.preventDefault();
@@ -212,11 +210,9 @@ function palette_init() {
                 .removeClass('boxed');
         _body.addClass($('.custom-palette-box input[name="type-site"]:checked').val());
     })
-
     //reset 
     $('#pallete-reset').on('click', function (e) {
         e.preventDefault();
-
         $('#color-primary').colorpicker('setValue', '#0f7ad5');
         $('#color-secondary').colorpicker('setValue', '#004790');
         $('#color-background').colorpicker('setValue', '#EDEEF0');
@@ -224,13 +220,10 @@ function palette_init() {
         _body.attr('class', '');
         var type = $('input[name="type-site"]').last().val();
         _body.attr('class', type);
-        
-
         $('.color-primary').css('background-color', '#0f7ad5');
         $('.border-color-primary').css('border-color', '#0f7ad5');
         $('.text-color-primary').css('color', '#0f7ad5');
         $('.widget .widget-header').css('border-color', '#0f7ad5');
-
         // main menu
         $(".dropdown-item:not(.active)").on({
             'mouseover': function () {

@@ -344,23 +344,6 @@ $(document).on('ready', function () {
         // On page load
         stickyToggle(sticky, stickyWrapper, $(window));
     });
-    /* End Top bar fixed */
-
-    /* Start Image gallery 
-     *    use css/blueimp-gallery.min.css
-     *    use js/blueimp-gallery.min.js
-     *    Site https://github.com/blueimp/Gallery/blob/master/README.md#setup
-     */
-
-    $('body').append('<div id="blueimp-gallery" class="blueimp-gallery">\n\
-                    <div class="slides"></div>\n\
-                    <h3 class="title"></h3>\n\
-                    <a class="prev">&lsaquo;</a>\n\
-                    <a class="next">&rsaquo;</a>\n\
-                    <a class="close">&times;</a>\n\
-                    <a class="play-pause"></a>\n\
-                    <ol class="indicator"></ol>\n\
-                    </div>')
     $(document).on('touchstart click', '.images-gallery a.preview', function (e) {
         e.preventDefault();
         var myLinks = new Array();
@@ -663,7 +646,7 @@ $(document).on('ready', function () {
     })
     
     $("#route_from_button").on('click', function () {
-        window.open("https://maps.google.com/maps?saddr=" + $("#route_from").val() + "&daddr=Ilica 345, HR-10000 Zagreb@45.812231, 15.920618", '_blank');
+        window.open("https://maps.google.com/maps?saddr=" + $("#route_from").val() + "&daddr=Tomtom, Muammer Karaca Tiyatro Çk. No:3, 34433 Beyoðlu/Ýstanbul@41.031187, 28.976089", '_blank');
         return false;
     });
     

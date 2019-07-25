@@ -1,90 +1,404 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "TasinmazDurum";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-@section TasinmazOpenPage{
+<style>
+    #tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+    }
 
-    <div class="col-md-4" style="margin-top: 1%;border:1px solid black; height:790px;">
-        <div class="property-slider-box">
-            <div id="property-slider" class="property-slider carousel slide" data-ride="carousel">
-                <div class="carousel-inner" role="listbox">
+        #tooltip #tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+        }
 
-                    <div class="item active">
-                        <img src="Assets/img/placeholders/120x35.png" alt="Sunset over beach" />
+        #tooltip:hover #tooltiptext {
+            visibility: visible;
+        }
+</style>
+<link rel="stylesheet" href="../Assets/libraries/tether/dist/css/tether.min.css" />
+<link rel="stylesheet" href="../Assets/css/winter-flat.css" />
+<link rel="stylesheet" href="../Assets/css/custom.css" />
+<link rel="stylesheet" href="../Assets/libraries/owl.carousel/assets/owl.carousel.css" />
+<link rel="stylesheet" href="../Assets/css/map.css" />
+<link rel="icon" href="Assets/img/favicon.ico" type="image/x-icon" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="../Assets/libraries/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" href="../Assets/libraries/tether/dist/css/tether.min.css" />
+<link rel="stylesheet" href="../Assets/libraries/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../Assets/libraries/bootstrap-colorpicker-master/dist/css/bootstrap-colorpicker.min.css" />
+<link rel="stylesheet" href="../Assets/libraries/bootstrap-colorpicker-master/dist/css/bootstrap-colorpicker.min.css" />
+<div class="container container-wrapper">
+    <main class="main section-color-primary">
+        <div class="widget-body" style="padding:20px;">
+            <div class="widget-header widget-title text-uppercase">
+                <h2>Taşınmaz Hakkında Açıklama</h2>
+            </div>
+            <div class="widget-content wide-p">
+                <p class='clearfix'>
+                    <img src="~/Assets/img/placeholders/ofis1.jpg" class="pull-right-img" alt="" />
+                    This is simply dummy text of the printing and typesetting industry. That has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Layout passages. This is simply dummy text of the printing and typesetting industry.
+                </p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-md-9">
+                <div class="widget widget-box box-container widget-property-map" style="background:none;">
+                    <div class="places_select">
+                        <a class="btn btn-large" data-toggle="tooltip" data-rel="hospital,health" title="Hastane"><img src="~/Assets/img/places_icons/hospital.png" alt='hospital,health' /></a>
+                        <a class="btn btn-large" data-toggle="tooltip" data-rel="park" title="Yeşil Alan"><img src="~/Assets/img/places_icons/park.png" alt='park' /></a>
+                        <a class="btn btn-large" data-toggle="tooltip" data-rel="atm,bank" title="Bankamatik"><img src="~/Assets/img/places_icons/atm.png" alt='atm' /></a>
+                        <a class="btn btn-large" data-toggle="tooltip" data-rel="gas_station" title="Petrol Ofisi"><img src="~/Assets/img/places_icons/petrol.png" alt="gas_station" /></a>
+                        <a class="btn btn-large" data-toggle="tooltip" data-rel="food,bar,cafe,restourant" title="Resaourant"><img src="~/Assets/img/places_icons/restourant.png" alt="food" /></a>
+                        <a class="btn btn-large" data-toggle="tooltip" data-rel="store" title="Mağaza"><img src="~/Assets/img/places_icons/store.png" alt="store" /></a>
+                        <a class="btn btn-large" data-toggle="tooltip" data-rel="school" title="Okul"><img src="##" alt="okul" /></a>
+                        <a class="btn btn-large" data-toggle="tooltip" data-rel="university" title="üniversite"><img src="##" alt="üniversite" /></a>
                     </div>
-                    <div class="item">
-                        <img src="Assets/img/placeholders/120x35.png" alt="Sunset over beach" />
-                    </div>
-                    <div class="item">
-                        <img src="Assets/img/placeholders/120x35.png" alt="Rob Roy Glacier" />
-                    </div>
-                    <div class="item">
-                        <img src="Assets/img/placeholders/120x35.png" alt="Longtail boats at Phi Phi" />
+                    <div class="property-map" id='property-map' style='height: 580px;'></div>
+                    <div class="route_suggestion form-additional">
+                        <input id="route_from" class="inputtext w360 form-control" type="text" value="" placeholder="Adres Yazınız." name="route_from" />
+                        <a id="route_from_button" href="#" class="btn-second"> Google Haritalar</a>
                     </div>
                 </div>
-                <a class="left carousel-control" href="#property-slider" role="button"
-                   data-slide="prev">
-                    <span class="icon-prev" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#property-slider" role="button"
-                   data-slide="next">
-                    <span class="icon-next" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+                <section class="header-slider">
+                    <!-- Carousel container -->
+                    <div id="header-slider" class="carousel slide slider-tall slider-full-height" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#header-slider" data-slide-to="0" class="active">
+                                <div class="carousel-indicators-preview"></div>
+                            </li>
+                            <li data-target="#header-slider" data-slide-to="1">
+                                <div class="carousel-indicators-preview"></div>
+                            </li>
+                            <li data-target="#header-slider" data-slide-to="2">
+                                <div class="carousel-indicators-preview"></div>
+                            </li>
+                        </ol>
+                        <!-- Content -->
+                        <div class="carousel-inner" role="listbox" style="height: 793px!important">
+                            <!-- Slide 1 -->
+                            <div class="item active" style="user-select: none;">
+                                <img src="~/Assets/img/placeholders/ofis1.jpg" alt="Sunset over beach" />
+                                <div class="carousel-caption">
+                                    <h3 class="carousel-caption-title"><span>Taşınmaz Adı</span><i class="line-bottom color-primary"></i></h3>
+                                    <div class="s-description"><p>This is simply dummy text of the printing and the typesetting industry. That has been the industry standard dummy text ever since the 1500s ...</p></div>
+                                    <a href="#.html" class="btn btn-primary color-primary"><span>Click to show</span></a>
+                                </div>
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="item" style="user-select: none;">
+                                <img src="~/Assets/img/placeholders/ofis3.jpg" alt="Rob Roy Glacier" />
+                                <div class="carousel-caption">
+                                    <h3 class="carousel-caption-title"><span>Taşınmaz Adı</span><i class="line-bottom color-primary"></i></h3>
+                                    <div class="s-description"><p>This is simply dummy text of the printing and the typesetting industry. That has been the industry standard dummy text ever since the 1500s ...</p></div>
+                                    <a href="#.html" class="btn btn-primary color-primary"><span>Click to show</span></a>
+                                </div>
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="item" style="user-select: none;">
+                                <img src="~/Assets/img/placeholders/ofis5.jpg" alt="Longtail boats at Phi Phi" />
+                                <div class="carousel-caption">
+                                    <h3 class="carousel-caption-title"><span>Taşınmaz Adı</span> <i class="line-bottom color-primary"></i></h3>
+                                    <div class="s-description"><p>This is simply dummy text of the printing and the typesetting industry. That has been the industry standard dummy text ever since the 1500s ...</p></div>
+                                    <a href="#.html" class="btn btn-primary color-primary"><span>Click to show</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Previous/Next controls -->
+                        <a class="left carousel-control" href="#header-slider" role="button" data-slide="prev">
+                            <span class="icon-prev" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#header-slider" role="button" data-slide="next">
+                            <span class="icon-next" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <!-- Carousel container -->
+                </section>
+            </div>
+            <div class="col-md-3" style="margin-top:80px;">
+                <div class="widget widget-box box-container widget-overview hidden-sm  hidden-xs">
+                    <div class="widget-header text-uppercase">
+                        <h2>Genel Bakış</h2>
+                    </div>
+                    <ul class="list-overview">
+                        <li class="custom-address">
+                            <span class="list-overview-option">adres</span>
+                            <span class="list-overview-value" title="il ilce mahalle cadda sokak">il ilce mahalle cadde sokak</span>
+                        </li>
+                        <li>
+                            <span class="list-overview-option">Durum: </span>
+                            <span class="list-overview-value"><span class="label label-default label-tag-primary">satılık/kiralık</span></span>
+                        </li>
+                        <li>
+                            <span class="list-overview-option">tip: </span>
+                            <span class="list-overview-value">konut/arsa/işyeri</span>
+                        </li>
+                        <li>
+                            <span class="list-overview-option">Ülke: </span>
+                            <span class="list-overview-value">Türkey</span>
+                        </li>
+                        <li>
+                            <span class="list-overview-option">il </span>
+                            <span class="list-overview-value">iladi</span>
+                        </li>
+                        <li>
+                            <span class="list-overview-option">alan: </span>
+                            <span class="list-overview-value">150.. m² </span>
+                        </li>
+                        <li>
+                            <span class="list-overview-option">net alan:    </span>
+                            <span class="list-overview-value"> 130 m²</span>
+                        </li>
+                        <li>
+                            <span class="list-overview-option">Enerji verimliliği   </span>
+                            <span class="list-overview-value">-</span>
+                        </li>
+                        <li>
+                            <span class="list-overview-option">Banyo Sayısı: </span>
+                            <span class="list-overview-value">3</span>
+                        </li>
+                        <li>
+                            <span class="list-overview-option">Yatak Odaları: </span>
+                            <span class="list-overview-value">2</span>
+                        </li>
+                        <li>
+                            <span class="list-overview-option">Balkon Sayısı: </span>
+                            <span class="list-overview-value">20</span>
+                        </li>
+                        <li>
+                            <span class="list-overview-option">Cephe: </span>
+                            <span class="list-overview-value">Kuzey Güney vs</span>
+                        </li>
+                        <li class="custom-en">
+                            <span class="list-overview-option">Kat: </span>
+                            <span class="list-overview-value">3</span>
+                        </li>
+                        <li class="custom-en">
+                            <span class="list-overview-option">Enerji Tüketimi</span>
+                            <span class="list-overview-value" title="80 kWh EP / m">80 kWh EP / m<sup><small>2</small></sup></span>
+                        </li>
+                        <li class="custom-en">
+                            <span class="list-overview-option">Gaz Tüketimi </span>
+                            <span class="list-overview-value" title="30 kg CO2 / m">30 kg CO2 / m<sup><small>2</small></sup></span>
+                        </li>
+                        <li>
+                            <span class="list-overview-option">Sayac No 	 </span>
+                            <span class="list-overview-value">15119</span>
+                        </li>
+                        <li>
+                            <span class="list-overview-option">Puan</span>
+                            <span class="list-overview-value">
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="widget widget-form" id="form">
+                    <form action="#" method="post">
+                        <div class="box-container widget-body" style="padding:10px;">
+                            <div class="widget-header text-uppercaser"><h2>Talep Formu</h2></div>
+                            <div class="form-additional">
+                                <div class="form-group">
+                                    <input type="text" name='name' class="form-control" placeholder="Kullanıcı Adı" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="phone" class="form-control" placeholder="Telefon" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="mail" class="form-control" placeholder="Mail" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name='address' class="form-control" placeholder="Adres" />
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="message" placeholder="Mesaj" rows='3'></textarea>
+                                </div>
+                                <div class="form-group form-group-submit">
+                                    <input type="submit" name='address' class="btn btn-primary btn-wide color-primary btn-property" value="Gönder" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="widget widget-box box-container widget-overview visible-sm visible-xs">
+                <div class="widget-header text-uppercase">
+                    <h2>Genel Bakış</h2>
+                    <!-- küçük ekran boyutu için  -->
+                </div>
+                <ul class="list-overview">
+                    <li class="custom-address">
+                        <span class="list-overview-option">adres</span>
+                        <span class="list-overview-value" title="il ilce mahalle cadda sokak">il ilce mahalle cadde sokak</span>
+                    </li>
+                    <li>
+                        <span class="list-overview-option">Durum: </span>
+                        <span class="list-overview-value"><span class="label label-default label-tag-primary">satılık/kiralık</span></span>
+                    </li>
+                    <li>
+                        <span class="list-overview-option">tip: </span>
+                        <span class="list-overview-value">konut/arsa/işyeri</span>
+                    </li>
+                    <li>
+                        <span class="list-overview-option">Ülke: </span>
+                        <span class="list-overview-value">Türkey</span>
+                    </li>
+                    <li>
+                        <span class="list-overview-option">il </span>
+                        <span class="list-overview-value">iladi</span>
+                    </li>
+                    <li>
+                        <span class="list-overview-option">alan: </span>
+                        <span class="list-overview-value">150.. m² </span>
+                    </li>
+                    <li>
+                        <span class="list-overview-option">net alan:    </span>
+                        <span class="list-overview-value"> 130 m²</span>
+                    </li>
+                    <li>
+                        <span class="list-overview-option">Enerji verimliliği   </span>
+                        <span class="list-overview-value">-</span>
+                    </li>
+                    <li>
+                        <span class="list-overview-option">Banyo Sayısı: </span>
+                        <span class="list-overview-value">3</span>
+                    </li>
+                    <li>
+                        <span class="list-overview-option">Yatak Odaları: </span>
+                        <span class="list-overview-value">2</span>
+                    </li>
+                    <li>
+                        <span class="list-overview-option">Balkon Sayısı: </span>
+                        <span class="list-overview-value">20</span>
+                    </li>
+                    <li>
+                        <span class="list-overview-option">Cephe: </span>
+                        <span class="list-overview-value">Kuzey Güney vs</span>
+                    </li>
+                    <li class="custom-en">
+                        <span class="list-overview-option">Kat: </span>
+                        <span class="list-overview-value">3</span>
+                    </li>
+                    <li class="custom-en">
+                        <span class="list-overview-option">Enerji Tüketimi</span>
+                        <span class="list-overview-value" title="80 kWh EP / m">80 kWh EP / m<sup><small>2</small></sup></span>
+                    </li>
+                    <li class="custom-en">
+                        <span class="list-overview-option">Gaz Tüketimi </span>
+                        <span class="list-overview-value" title="30 kg CO2 / m">30 kg CO2 / m<sup><small>2</small></sup></span>
+                    </li>
+                    <li>
+                        <span class="list-overview-option">Sayac No 	 </span>
+                        <span class="list-overview-value">15119</span>
+                    </li>
+                    <li>
+                        <span class="list-overview-option">Puan</span>
+                        <span class="list-overview-value">
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                        </span>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="aciklamalar" style="margin:10% 0%;">
-            <h3>
-                Vucino Han
-            </h3>
-            <p>
-                İlçe : Beyoğlu
-            </p>
-            <p>
-                Mahalle : Tomtom mahallesi
-            </p>
-            <p>
-                No : 193
-            </p>
-            <p> Kapalı Alan: 60 m2, Açık Alan: 0 m2 </p>
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    </main>
+    <a class="btn btn-scoll-up color-secondary" id="btn-scroll-up"></a>
+</div>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script>
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Monthly Average Rainfall'
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com'
+        },
+        xAxis: {
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Rainfall (mm)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Tokyo',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
 
-            <h4>Mal Sahibi:</h4>
-        </div>
-    </div>
-    <div class="col-md-3" style="margin-top: 1%; border:1px solid black; height:790px;">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-1" style="margin-top: 1%;">
-        <div class="places_select" style="margin-left:1.5%; margin-top:1%;">
-            <div class="btn-group-vertical">
-                <a class="btn btn-large" style="margin-top:2%;" data-rel="Durum"> Durum</a>
-                <a class="btn btn-large" style="margin-top:2%;" data-rel="park"> Detay</a>
-                <a class="btn btn-large" style="margin-top:2%;" data-rel="atm,bank"> Kullanım</a>
-                <a class="btn btn-large" style="margin-top:2%;" data-rel="gas_station">Tapu</a>
-            </div>
-        </div>
-    </div>
-}
-@section Scripts
-{
-    <script>
-        $(document).ready(function () {
-            var resultMap = $('#main-map').attr('class').replace('12', '4');
-            $('#main-map').removeAttr('class');
-            $('#main-map').attr('class', resultMap);
-        });
-    </script>
+        }, {
+            name: 'New York',
+            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
 
-}
+        }, {
+            name: 'London',
+            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+
+        }, {
+            name: 'Berlin',
+            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+
+        }]
+    });
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
 
