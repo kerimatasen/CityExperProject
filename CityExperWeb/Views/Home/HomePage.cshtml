@@ -1,0 +1,456 @@
+﻿@{
+    Layout = null;
+}
+<head>
+    <title>CityExper</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="../Assets/cityexper/images/icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../Assets/cityexper/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Assets/cityexper/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../Assets/cityexper/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="../Assets/cityexper/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="../Assets/cityexper/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="../Assets/cityexper/css/util.css">
+    <link rel="stylesheet" type="text/css" href="../Assets/cityexper/css/main.css">
+    <link href="~/Assets/css/winter-flat.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background-image: url(../Assets/img/homepage/background.png);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .wrap-input100:after {
+            display: block;
+        }
+
+        .video, .background {
+            position: fixed;
+        }
+
+        @@media(max-width:768px) {
+            .video, .background {
+                position: fixed;
+                min-width: 100%;
+                height: 0;
+            }
+        }
+
+        #uyeOLScreen {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+
+            #uyeOLScreen .limiter .container-login100 #uyeOlform {
+                margin-left: 4%;
+                margin-right: auto;
+            }
+
+        @@media(max-width:992px) {
+            #firstScreen .limiter .container-login100 .wrap-login100 .login100-form .login100-pic img {
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            #satilikScreen .limiter .container-login100 form {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            #uyeOLScreen .limiter .container-login100 #uyeOlform {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            .verticle, #firstScreen .limiter .container-login100 .wrap-login100 .horizontal {
+                display: none;
+            }
+
+            #gayrimenkulMobilLogo, #satilikKiralikMobilLogo, #uyeOlMobilLogo {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="firstScreen" style="display:block;z-index:10;">
+        <div class="limiter">
+            <div class="container-login100" style="flex-wrap: wrap;">
+                <div class="wrap-login100">
+                    <form class="login100-form validate-form">
+                        <div class="login100-pic js-tilt" id="loginLogo" style="display:block !important">
+                            <img src="../Assets/cityexper/logo.png" alt="IMG">
+                        </div>
+                        <div class="horizontal" style="height:1px;width:530px;margin-top:1.5%; background:white;position:absolute;z-index:1000;margin-left:auto;margin-right:auto;"></div>
+                        <div class="row" style="margin-top: 6%;">
+                            <div class="col-md-6" style="margin-top:28px;">
+                                <button id="gayrimenkulButton" class="login100-form-btn">
+                                    GAYRİMENKUL YÖNETİMİ
+                                </button>
+                            </div>
+                            <div class="col-md-6" style="margin-top:28px;">
+                                <button id="satilikButton" class="login100-form-btn">
+                                    SATILIK / KİRALIK
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="gayrimenkulScreen" style="display:none;">
+        <div class="container-login100">
+            <div class="login100-pic js-tilt" style="margin-right: 0 !important;">
+                <img src="../Assets/cityexper/logo.png" alt="img" style="width:100%;height:100%;">
+            </div>
+            <div class="verticle" style=" width: 1px;height: 260px;background-color: white;position:absolute;z-index:100; margin-left:2.5%;"></div>
+            <form style="width:260px;margin-left:5%;margin-right: auto;margin-top:6%;position:relative;z-index:10;">
+                <div class="login100-pic js-tilt" id="gayrimenkulMobilLogo" style="display: none;margin-left: -51px;margin-bottom: 18%;">
+                    <img src="../Assets/cityexper/logo.png" alt="IMG">
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Geçerli bir e-posta gerekli: ex@abc.xyz">
+                    <input class="input100" type="text" id="gayriMenkulEmail" name="gayriMenkulEmail" placeholder="Email">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Şifre girmelisiniz">
+                    <input class="input100" type="password" id="gayriMenkulPassword" name="gayriMenkulPassword" placeholder="Şifre">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button type="button" id="gayrimenkulLoginButton" class="login100-form-btn">
+                        GİRİŞ
+                    </button>
+                </div>
+                <div class="horizontal" style="height:1px;width:260px;margin:20px 0; background:white;position:absolute;z-index:1000;margin-left:auto;margin-right:auto;"></div>
+                <div class="text-center p-t-136" style="margin-top:30px;">
+                    <a class="txt2" href="#">
+                        ŞİFREMİ UNUTTUM!
+                    </a>
+                </div>
+                <div class="text-center p-t-136" style="margin-top:5px;">
+                    <a id="gayrimenkulButtonBack" class="txt2" href="#">
+                        <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i> GERİ DÖN
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="satilikScreen" style="display:none">
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="login100-pic js-tilt" style="margin-right: 0 !important;margin-top: 60px; ">
+                    <img src="../Assets/cityexper/logo.png" alt="img" style="width:100%;height:100%;">
+                </div>
+                <div class="verticle" style=" width:1px;height: 260px;background-color: white;position:absolute;z-index:100; margin:1% 0 0 3%;"></div>
+                <form style="width:260px;margin-left:5%;margin-right: auto;position:relative;z-index:10;margin-top: 8%;">
+                    <div class="login100-pic js-tilt" id="satilikKiralikMobilLogo" style="display: none;margin-left: -51px;margin-bottom: 18%;">
+                        <img src="../Assets/cityexper/logo.png" alt="IMG">
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Geçerli bir e-posta gerekli: ex@abc.xyz">
+                        <input class="input100" type="text" id="satilikKiralıkEmail" name="satilikKiralıkEmailLogin" placeholder="Email">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Şifre girmelisiniz">
+                        <input class="input100" type="password" id="satilikKiralikPassword" name="satilikKiralikPassword" placeholder="Şifre">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button type="button" id="satilikKiralikLoginButton" class="login100-form-btn">
+                            GİRİŞ
+                        </button>
+                    </div>
+                    <div class="horizontal" style="height:1px;width:260px;margin:20px 0; background:white;position:absolute;z-index:1000;margin-left:auto;margin-right:auto;"></div>
+                    <div class="text-center p-t-136" style="padding:0px;margin-top:14%;">
+                        <a id="satilikButtonBack" class="txt2" href="#" style="margin-right:5%;">
+                            <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i> GERİ DÖN
+                        </a>
+                        <a class="txt2" id="uyeOl" href="#">
+                            <span> ÜYE OL</span>
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                    </div>    
+                    <div class="text-center p-t-136">
+                        <a class="txt2" href="#">
+                            ŞİFREMİ UNUTTUM!
+                        </a>
+                    </div>
+
+                    <div class="text-center p-t-136">
+                        <a class="txt2" id="uyeOl" href="/anasayfa">
+                            <span> ÜYE OLMADAN DEVAM ET</span>
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="uyeOLScreen" style="display:none;">
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="login100-pic js-tilt" style="margin-right: 2% !important;margin-left: auto;">
+                    <img src="../Assets/cityexper/logo.png" alt="img">
+                </div>
+                <div class="verticle" style=" width:1px;height: 430px;background-color: white;position:absolute;z-index:100; margin:-2% 0 0 3%;"></div>
+                <form id="uyeOlform">
+                    <div class="login100-pic js-tilt" id="uyeOlMobilLogo" style="display:none;width: 253px;">
+                        <img src="../Assets/cityexper/logo.png" alt="IMG">
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Geçerli bir e-posta gerekli: ex@abc.xyz">
+                        <input class="input100" type="text" id="emailRegister" name="emailRegister" placeholder="Email">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Şifre girmelisiniz">
+                        <input class="input100" type="password" id="passwordRegister" name="passwordRegister" placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Şifre girmelisiniz">
+                        <input class="input100" type="password" id="rePasswordRegister" name="rePasswordRegister" placeholder="Re-Password ">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="İsim girmelesiniz">
+                        <input class="input100" type="text" name="nameRegister" id="nameRegister" placeholder="İsim">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-address-book" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Soyad girmelisiniz">
+                        <input class="input100" type="text" name="surnameRegister" id="surnameRegister" placeholder="Soyad">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-address-book" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Telefon numarası girmelisiniz">
+                        <input class="input100" type="text" name="phoneNumberRegister" id="phoneNumberRegister" placeholder="Telefon No">
+
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-phone-square" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button type="button" class="login100-form-btn" id="uyeOlButton">ÜYE OL</button>
+                    </div>
+                    <div id="errorRegister" style="display:none">
+                    </div>
+                    <div class="text-center p-t-136" style="margin-top:13px;position:relative;z-index:1000;">
+                        <a id="uyeOlBack" class="txt2" href="#" style="margin-right:10px;">
+                            <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i> GERİ DÖN
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container footer-mask">
+            <div class="container footer-contant">
+                <div class="row">
+                    <div class="col-md-136 hidden-sm hidden-xs">
+                        <div class="social">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row"> <p>KENTİST HARİTA MÜHENDİSLİĞİ VE MİMARLIK DANIŞMANLIK HİZMETLERİ SAN. VE TİC. LTD. ŞTİ. © 2012</p> </div>
+                <div class="row" id="adress"> <p style="font-size:12px!important;">Dikilitaş Mah. Eren Sok. Özsoy Plaza K:5 D:11, Beşiktaş/ İstanbul +0212 *** ** ** info@kentist.com.tr</p></div>
+            </div>
+        </div>
+    </footer>
+    @*<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="~/Assets/cityexper/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/Assets/js/notify.min.js"></script>
+    <script src="~/Assets/cityexper/js/main.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            var x = $("#errorMessage").val();
+            if (x != "" && typeof x !== "undefined") {
+                $("#firstScreen").hide();
+                $("#gayrimenkulScreen").hide();
+                $("#uyeOlScreen").hide();
+                $("#satilikScreen").show();
+            }
+            var y = $("#errorMessageRegister").val();
+            if (y != "" && typeof y !== "undefined") {
+                $("#firstScreen").hide();
+                $("#satilikScreen").hide();
+                $("#gayrimenkulScreen").hide();
+                $("#uyeOlScreen").show();
+            }
+            $("#gayrimenkulButton").click(function () {
+                $("#firstScreen").hide();
+                $("#gayrimenkulScreen").show();
+            });
+            $("#gayrimenkulButtonBack").click(function () {
+                $("#gayrimenkulScreen").hide();
+                $("#satilikScreen").hide();
+                $("#firstScreen").show();
+            });
+            $("#satilikButton").click(function () {
+                $("#satilikScreen").show();
+                $("#firstScreen").hide();
+                $("#gayrimenkulScreen").hide();
+            });
+            $("#satilikButtonBack").click(function () {
+                $("#satilikScreen").hide();
+                $("#firstScreen").show();
+                $("#gayrimenkulScreen").hide();
+            });
+            $("#uyeOl").click(function () {
+                $("#satilikScreen").hide();
+                $("#firstScreen").hide();
+                $("#gayrimenkulScreen").hide();
+                $("#uyeOLScreen").show();
+            });
+            $("#uyeOlBack").click(function () {
+                $("#satilikScreen").show();
+                $("#firstScreen").hide();
+                $("#gayrimenkulScreen").hide();
+                $("#uyeOLScreen").hide();
+            });
+
+            $('#uyeOlButton').click(function () {
+                const email = $('#emailRegister').val();
+                const password = $('#passwordRegister').val();
+                const rePassword = $('#rePasswordRegister').val();
+                const name = $('#nameRegister').val();
+                const surname = $('#surnameRegister').val();
+                const phoneNumber = $('#phoneNumberRegister').val();
+
+                var registerModel = {
+                    email: email,
+                    password: password,
+                    rePassword: rePassword,
+                    name: name,
+                    surname: surname,
+                    phoneNumber: phoneNumber,
+                };
+                var registerJSON = JSON.stringify(registerModel);
+                $.ajax({
+                    type: "POST",
+                    url: "/User/Register",
+                    contentType: "application/json; charset=utf-8",
+                    data: registerJSON,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.Success) {
+                            $.notify(data.Message, "success");
+
+                        }
+                        else {
+                            $.notify(data.Message, "error");
+                        }
+                    },
+                    failure: function (errMsg) {
+                        alert("No response");
+                    }
+                });
+            });
+
+            $('#satilikKiralikLoginButton').click(function () {
+                const email = $('#satilikKiralıkEmail').val();
+                const password = $('#satilikKiralikPassword').val();
+                var registerModel = {
+                    email: email,
+                    password: password,
+                };
+                var registerJSON = JSON.stringify(registerModel);
+                $.ajax({
+                    type: "POST",
+                    url: "/User/Login",
+                    contentType: "application/json; charset=utf-8",
+                    data: registerJSON,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.Success) {
+                            window.location.href = data.Message;
+                        }
+                        else {
+                            $.notify(data.Message, "error");
+                        }
+                    },
+                    failure: function (errMsg) {
+                        alert("No response");
+                    }
+                });
+            });
+
+            $('#gayrimenkulLoginButton').click(function () {
+                debugger;
+                const email = $('#gayriMenkulEmail').val();
+                const password = $('#gayriMenkulPassword').val();
+                var registerModel = {
+                    email: email,
+                    password: password,
+                };
+                var registerJSON = JSON.stringify(registerModel);
+                $.ajax({
+                    type: "POST",
+                    url: "/User/GLogin",
+                    contentType: "application/json; charset=utf-8",
+                    data: registerJSON,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.Success) {
+                            window.location.href = data.Message;
+                        }
+                        else {
+                            $.notify(data.Message, "error");
+                        }
+                    },
+                    failure: function (errMsg) {
+                        alert("No response");
+                    }
+                });
+            });
+        });
+                                                                                                                                                                                                                                    //$('.js-tilt').tilt({
+                                                                                                                                                                                                                                    //    scale: 1.1
+                                                                                                                                                                                                                                    //})
+
+    </script>
+
+</body>

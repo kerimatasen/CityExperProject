@@ -13,10 +13,10 @@ namespace CityExperWeb.Entity
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CityExperDb2Entities : DbContext
+    public partial class CityExperDbEntities : DbContext
     {
-        public CityExperDb2Entities()
-            : base("name=CityExperDb2Entities")
+        public CityExperDbEntities()
+            : base("name=CityExperDbEntities")
         {
         }
     
@@ -27,13 +27,19 @@ namespace CityExperWeb.Entity
     
         public virtual DbSet<ada> ada { get; set; }
         public virtual DbSet<bagimsiz> bagimsiz { get; set; }
+        public virtual DbSet<bina> bina { get; set; }
         public virtual DbSet<caddeSokak> caddeSokak { get; set; }
         public virtual DbSet<il> il { get; set; }
         public virtual DbSet<ilce> ilce { get; set; }
         public virtual DbSet<mahalle> mahalle { get; set; }
+        public virtual DbSet<malik> malik { get; set; }
+        public virtual DbSet<Mulkiyet> Mulkiyet { get; set; }
         public virtual DbSet<parsel> parsel { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<sahiplikDurum> sahiplikDurum { get; set; }
         public virtual DbSet<tapuMahalle> tapuMahalle { get; set; }
-        public virtual DbSet<tasinmaz> tasinmaz { get; set; }
+        public virtual DbSet<tasinmazTürü> tasinmazTürü { get; set; }
+        public virtual DbSet<UserRole> UserRole { get; set; }
+        public virtual DbSet<UserRoleRelation> UserRoleRelation { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

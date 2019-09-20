@@ -1,107 +1,173 @@
-﻿<style>
-    .form-control {
-        color: #565656;
-        border: 1px #7bb1e0 solid;
-        font-size: 14px;
-        height: 42px;
-        min-width: 150px;
-        font-family: Roboto;
-    }
-
-    .col-md-1 {
-        margin-right: 5px;
-    }
-</style>
+﻿<link href="~/Assets/css/SearchList.css" rel="stylesheet" />
+<link href="~/Assets/mobilMenu/css/component.css" rel="stylesheet" />
 @{
-    CityExperWeb.Entity.CityExperDb2Entities entity = new CityExperWeb.Entity.CityExperDb2Entities(); //db ye bağlanmak için entity
+    CityExperWeb.Entity.CityExperDbEntities entity = new CityExperWeb.Entity.CityExperDbEntities(); //db ye bağlanmak için entity
 
     var cityList = entity.il.ToList();
 }
-<form action="#" class="form-horisontal" id="tasinmazForm">
-    <div class="row shadow-lg" id="menu" style="padding:15px;">
-        <div class="col-md-12  col-sm-2" id="TasınmazSearch">
-            <!-- Search form -->
-            <div class="col-md-1">
-                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-            </div>
-            <div class="btn-group-justified col-md-1">
-                <a style="margin:0px 20px;" href=""> <img src="~/Assets/img/extra/shape2.png" /></a>
-                <a href=""><img src="~/Assets/img/extra/shape.png" /></a>
-            </div>
-            <div class="">
-                <div class="col-md-1  col-sm-2">
-                    <select class="form-control " name="input">
-                        <option value="0" disabled selected>Taşınmaz Tipi</option>
-                        <option value="1">Satılık</option>
-                        <option value="2">Kiralık</option>
-                        <option value="3">Teminat Alınan</option>
-                    </select>
-                </div>
-                <div class="col-md-1  col-sm-2">
-                    <select class="form-control " name="input">
-                        <option value="0" disabled selected>Taşınmaz Türü</option>
-                        <option value="1">Konut</option>
-                        <option value="2">Arsa</option>
-                        <option value="3">İş Yeri</option>
-                    </select>
-                </div>
-                <div class="col-md-1  col-sm-2">
-                    <select class="form-control" id="il" name="input">
-                        <option value="" disabled selected>İl</option>
-                        @foreach (var il in cityList)
-                        {
-                            <option value="@il.il_id">@il.ilAdi</option>
-                        }
-                    </select>
-                </div>
-                <div class="col-md-1  col-sm-2">
-                    <select class="form-control" id="ilceListAdres" name="input">
-                        <option value="" disabled selected>İlçe</option>
-                    </select>
-                </div>
-                <div class="col-md-1  col-sm-2">
-                    <select class="form-control" id="MahalleListAdres" name="input">
-                        <option value="" disabled selected>Mahalle</option>
-                    </select>
-                </div>
-                <div class="col-md-1  col-sm-2">
-                    <select class="form-control" id="SokakListAdres" name="input">
-                        <option value="" disabled selected>Cadde Sokak</option>
-                    </select>
-                </div>
-                <div class="col-md-1  col-sm-2">
-                    <input type="text" name="binaNo" value="" class="form-control" placeholder="Bina Numarası" />
-                </div>
-                <div class="col-md-1  col-sm-2">
-                    <input type="text" name="daireNo" value="" class="form-control" placeholder="Daire Numarası" />
-                </div>
-                <div class="col-md-1  col-sm-2">
-                    <button style="background:none; border:none;">
-                        <img src="/Assets/img/ara.png" />
-                    </button>
-                </div>
-            </div>
+
+<form action="#" class="form-horisontal col-md-12" id="tasinmazForm" style="background:#f9f3f3;border-radius:5px;padding-left:15px;padding-right:15px;height:50px;">
+
+    <div class="pull-left-img" id="adresSorguCol" style="margin-top:5px;">
+        <a id="adresSorgu">
+            <img src="~/Assets/img/extra/shape2.png" />
+            <span class="tooltiptext">Adres sorgusu için tıklayınız.</span>
+        </a>
+    </div>
+    <div class="pull-left-img" id="kadastroSorguCol" style="margin-top:5px;">
+        <a id="kadastroSorgu">
+            <img src="~/Assets/img/extra/shape.png" />
+            <span class="tooltiptext1">Tapu ve kadastro sorgusu için tıklayınız.</span>
+        </a>
+    </div>
+    <div class="shadow-lg" id="AdresSorguForm" style="display:block;float:right;width: 94.8%;padding: 10px;">
+        <div class="row" style="padding:0px;">
+            <select class="form-control col-md-2" name="input">
+                <option value="0" disabled selected>G. Tipi</option>
+                <option value="1">Konut</option>
+                <option value="2">Arsa</option>
+                <option value="3">İş Yeri</option>
+            </select>
+            <select class="form-control col-md-2" id="il" name="input">
+                <option value="" disabled selected>İl</option>
+                @foreach (var il in cityList)
+                {
+                    <option value="@il.il_id">@il.ilAdi</option>
+                }
+            </select>
+            <select class="form-control col-md-2" id="ilceListAdres" name="input">
+                <option value="" disabled selected>İlçe</option>
+            </select>
+            <select class="form-control col-md-2" id="MahalleListAdres" name="input">
+                <option value="" disabled selected>Mahalle</option>
+            </select>
+            <select class="form-control col-md-2" id="SokakListAdres" name="input">
+                <option id="cadde" value="" disabled selected>Cadde</option>
+            </select>
+            <input type="text" name="binaNo" value="" class="form-control col-lg-2" placeholder="Bina No" />
+            <input type="text" name="daireNo" value="" class="form-control col-lg-2" placeholder="Daire No" />
+            <button>Ara <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
         </div>
     </div>
-    <div class="col-md-8  col-sm-8" id="KadastroForm" style="display:none;">
-        <select class="form-control" id="il" name="input">
-            <option value="" disabled selected>il</option>
-            @foreach (var il in cityList)
-            {
-                <option value="@il.il_id">@il.ilAdi</option>
-            }
-        </select>
-        <select class="form-control" id="ilceListAdres2" name="input">
-            <option value="" disabled selected>İlçe</option>
-        </select>
-        <select class="form-control" id="MahalleList" name="input">
-            <option value="" disabled selected>Tapu Mahalle</option>
-        </select>
-        <input class="form-control" type="text" name="adaNo" value="" placeholder="Ado Numarası" />
-        <input class="form-control" type="text" name="parselNo" value="" placeholder="Parsel Numarası" />
-        <input class="form-control" type="text" name="binaNo" value="" placeholder="Bina Numarası" />
-        <input class="form-control" type="text" name="daireNo" value="" placeholder="Daire Numarası" />
-        <button type="button" class="form-control" id="search-btn" style=" color:white; background:#403f3f;">Ara</button>
-    </div>
-</form>
+    <div class="shadow-lg" id="KadastroForm" style="display:none;float:right;;width: 94.8%;padding: 10px;">
+        <div class="row" style="padding:0px;">
+            <select class="form-control col-md-2" name="input">
+                <option value="0" disabled selected>G. Tipi</option>
+                <option value="1">Konut</option>
+                <option value="2">Arsa</option>
+                <option value="3">İş Yeri</option>
+            </select>
+            <select class="form-control col-md-2" id="il" name="input">
+                <option value="" disabled selected>İl</option>
+                @foreach (var il in cityList)
+                {
+                    <option value="@il.il_id">@il.ilAdi</option>
+                }
+            </select>
+            <select class="form-control col-md-2" id="ilceListAdres" name="input">
+                <option value="" disabled selected>İlçe</option>
+            </select>
+            <select class="form-control col-md-2" id="MahalleListAdres" name="input">
+                <option value="" disabled selected>T. Mahalle</option>
+            </select>
+            <input type="text" name="adaNo" value="" class="form-control col-lg-2" placeholder="Ada No" style="font-family:Roboto;font-size:16px;" />
+            <input type="text" name="parselNo" value="" class="form-control col-lg-2" placeholder="Parsel No" style="font-family:Roboto;font-size:16px;" />
 
+            <input type="text" name="binaNo" value="" class="form-control col-lg-2" placeholder="Bina No" />
+            <input type="text" name="daireNo" value="" class="form-control col-lg-2" placeholder="Daire No" />
+            <button>Ara <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        </div>
+    </div>
+
+</form>
+<div id="mobileMenu" style="display:none;">
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+        <section class="buttonset" style="position:absolute;z-index:1000;margin-left:100%;">
+            <a id="showLeftPush"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+        </section>
+        <div class="row" style="margin:0 auto;background: #226d72;display:table;width:100%;">
+            <a id="mobileAdresSorgu"> <img src="~/Assets/img/extra/shape2.png" /></a>
+            <h1 style="display:table-cell; vertical-align:middle;color:white;">  Arama </h1>
+            <a id="mobileKadastroSorgu" style="margin-right:auto;"><img src="~/Assets/img/extra/shape.png" /></a>
+        </div>
+        <div class="shadow-lg" id="mobileAdresSorguForm" style="display:block;">
+            <select class="form-control col-md-12" name="input">
+                <option value="0" disabled selected>Gayrimenkul Tipi</option>
+                <option value="1">Konut</option>
+                <option value="2">Arsa</option>
+                <option value="3">İş Yeri</option>
+            </select>
+            <select class="form-control col-md-12" id="il" name="input">
+                <option value="" disabled selected>İl</option>
+                @foreach (var il in cityList)
+                {
+                    <option value="@il.il_id">@il.ilAdi</option>
+                }
+            </select>
+            <select class="form-control col-md-12" id="ilceListAdres" name="input">
+                <option value="" disabled selected>İlçe</option>
+            </select>
+            <select class="form-control col-md-12" id="MahalleListAdres" name="input">
+                <option value="" disabled selected>Mahalle</option>
+            </select>
+            <select class="form-control col-md-12" id="SokakListAdres" name="input">
+                <option id="cadde" value="" disabled selected>Cadde</option>
+            </select>
+            <input type="text" name="binaNo" value="" class="form-control col-md-12" placeholder="Bina No" />
+            <input type="text" name="daireNo" value="" class="form-control col-md-12" placeholder="Daire No" />
+            <div class="row">
+                <button>Ara<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            </div>
+        </div>
+
+        <div class="shadow-lg" id="mobileKadastroSorguForm" style="display:none;">
+            <select class="form-control col-md-12" name="input">
+                <option value="0" disabled selected>Gayrimenkul Tipi</option>
+                <option value="1">Konut</option>
+                <option value="2">Arsa</option>
+                <option value="3">İş Yeri</option>
+            </select>
+            <select class="form-control col-md-12" id="il" name="input">
+                <option value="" disabled selected>İl</option>
+                @foreach (var il in cityList)
+                {
+                    <option value="@il.il_id">@il.ilAdi</option>
+                }
+            </select>
+            <select class="form-control col-md-12" id="ilceListAdres" name="input">
+                <option value="" disabled selected>İlçe</option>
+            </select>
+            <select class="form-control col-md-12" id="MahalleListAdres" name="input">
+                <option value="" disabled selected>T. Mahalle</option>
+            </select>
+            <input type="text" name="adaNo" value="" class="form-control col-md-12" placeholder="Ada No" style="font-family:Roboto;font-size:16px;" />
+            <input type="text" name="parselNo" value="" class="form-control col-md-12" placeholder="Parsel No" style="font-family:Roboto;font-size:16px;" />
+
+            <input type="text" name="binaNo" value="" class="form-control col-md-12" placeholder="Bina No" />
+            <input type="text" name="daireNo" value="" class="form-control col-md-12" placeholder="Daire No" />
+            <div class="row">
+                <button>Ara <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            </div>
+        </div>
+    </nav>
+</div>
+<script src="~/Assets/mobilMenu/js/classie.js"></script>
+<script src="~/Assets/mobilMenu/js/modernizr.custom.js"></script>
+<script>
+    var menuLeft = document.getElementById('cbp-spmenu-s1'),
+        body = document.body;
+
+
+    showLeftPush.onclick = function () {
+        classie.toggle(this, 'active');
+        classie.toggle(body, 'cbp-spmenu-push-toright');
+        classie.toggle(menuLeft, 'cbp-spmenu-open');
+        disableOther('showLeftPush');
+    };
+
+    function disableOther(button) {
+        if (button !== 'showLeftPush') {
+            classie.toggle(showLeftPush, 'disabled');
+        }
+    }
+</script>

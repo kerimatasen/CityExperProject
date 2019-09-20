@@ -17,17 +17,60 @@ namespace CityExperWeb.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public parsel()
         {
-            this.tasinmaz = new HashSet<tasinmaz>();
+            this.bina = new HashSet<bina>();
+            this.malik1 = new HashSet<malik>();
         }
     
         public int parsel_id { get; set; }
-        public int ada_id { get; set; }
-        public string parselNo { get; set; }
+        public Nullable<int> ada_id { get; set; }
+        public Nullable<int> tapuMahalle_id { get; set; }
+        public string mülkiyet { get; set; }
+        public string hisseli { get; set; }
+        public string paftaNo { get; set; }
         public string adaNo { get; set; }
-        public int paftaNo { get; set; }
+        public string parselNo { get; set; }
+        public string nitelik { get; set; }
+        public Nullable<decimal> tapuAlani { get; set; }
+        public string rayicBedel { get; set; }
+        public string zemintipi { get; set; }
+        public string cilt { get; set; }
+        public string sayfa { get; set; }
+        public string tespitYapan { get; set; }
+        public Nullable<System.DateTime> tespitTarih { get; set; }
+        public string aciklama { get; set; }
+        public string gorusler { get; set; }
+        public string planFonksiyonu { get; set; }
+        public string emsal { get; set; }
+        public Nullable<decimal> insaatAlani { get; set; }
+        public Nullable<decimal> hmax { get; set; }
+        public string kaks { get; set; }
+        public string taks { get; set; }
+        public string planAdi { get; set; }
+        public string planaGöreİnsaatAlani { get; set; }
+        public Nullable<System.DateTime> tespittarihi { get; set; }
+        public string kurumAdi { get; set; }
+        public string alinanTarih { get; set; }
+        public string belgeNo { get; set; }
+        public string belgeTarih { get; set; }
+        public string zeminReferansNo { get; set; }
+        public string durum { get; set; }
+        public Nullable<decimal> metreKareBirimFiyat { get; set; }
+        public string arsaDegeri { get; set; }
+        public Nullable<int> isgalci { get; set; }
+        public string beyan { get; set; }
+        public string serh { get; set; }
+        public string haciz { get; set; }
+        public string irtifak { get; set; }
+        public string rehin { get; set; }
+        public Nullable<int> malik { get; set; }
+        public Nullable<int> mahkeme { get; set; }
+        public Nullable<System.DateTime> mahkemeTarih { get; set; }
+        public string yevmiye { get; set; }
     
-        public virtual ada ada { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tasinmaz> tasinmaz { get; set; }
+        public virtual ICollection<bina> bina { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<malik> malik1 { get; set; }
+        public virtual tapuMahalle tapuMahalle { get; set; }
     }
 }

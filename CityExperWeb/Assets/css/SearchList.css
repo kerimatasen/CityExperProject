@@ -1,0 +1,592 @@
+﻿@media only screen and (min-width : 1367px) and (max-width : 1920px) {
+
+    .pull-left-img #adresSorgu, .pull-left-img #kadastroSorgu {
+        position: relative;
+        display: inline-block;
+    }
+
+        .pull-left-img #adresSorgu .tooltiptext {
+            font-family: 'Roboto',serif;
+            font-size: 13px;
+            visibility: hidden;
+            color: white;
+            display: block;
+            width: 250px;
+            background-color: #0d394a;
+            text-align: center;
+            padding: 5px 0;
+            position: absolute;
+            border-radius: 2px;
+            z-index: 1;
+            top: 125%;
+            left: -64%;
+            margin-left: 25px;
+            transition: opacity 0.3s;
+        }
+
+        .pull-left-img #kadastroSorgu .tooltiptext1 {
+            font-family: 'Roboto',serif;
+            font-size: 13px;
+            visibility: hidden;
+            color: white;
+            display: block;
+            border-radius: 2px;
+            width: 250px;
+            background-color: #308d8c;
+            text-align: center;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: -87%;
+            left: -64%;
+            margin-left: 25px;
+            transition: opacity 0.3s;
+        }
+
+        .pull-left-img #adresSorgu .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: -35%;
+            left: 8%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent #0d394a transparent;
+        }
+
+        .pull-left-img #kadastroSorgu .tooltiptext1::after {
+            content: "";
+            position: absolute;
+            top: -35%;
+            left: 8%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent #308d8c transparent;
+        }
+
+        .pull-left-img #adresSorgu:hover .tooltiptext, .pull-left-img #kadastroSorgu:hover .tooltiptext1 {
+            visibility: visible;
+            display: block;
+            opacity: 1;
+        }
+
+    .shadow-lg {
+        box-shadow: none !important;
+    }
+
+    .form-horisontal .shadow-lg .row .col-md-2 {
+        color: #565656;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+        border: 1px solid #7bb1e0;
+        height: 40px !important;
+        max-width: 225px !important;
+    }
+
+    .form-horisontal .shadow-lg .row .col-lg-2 {
+        color: #565656;
+        border: 1px solid #7bb1e0;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+        height: 40px !important;
+        max-width: 225px !important;
+    }
+
+    #KadastroForm .row .col-lg-2 {
+        color: #565656;
+        border: 1px solid #7bb1e0;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+        height: 40px !important;
+        max-width: 195px !important;
+    }
+
+    #KadastroForm .row .col-md-2 {
+        color: #565656;
+        border: 1px solid #7bb1e0;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+        height: 40px !important;
+        max-width: 195px !important;
+    }
+
+    button {
+        display: inline-block;
+        border: none;
+        background: none;
+        height: 40px;
+        padding: 0;
+        margin: 0;
+        vertical-align: top;
+        width: 100px;
+    }
+
+    .form-horisontal .shadow-lg .row button {
+        background: #104050;
+        color: white;
+        font-family: 'Roboto', serif;
+        font-size: 16px;
+        height: 38px;
+        max-width: 100px;
+        margin-top: 1px;
+    }
+
+
+    #close-image {
+        display: block;
+        height: 38px;
+        width: 100px;
+    }
+
+    .form-horisontal .shadow-lg .row .pull-left-img {
+        padding: 0 0 0 0;
+        margin-right: 5px;
+    }
+
+    .form-horisontal .shadow-lg .row input {
+        font-family: 'Roboto', serif;
+        font-size: 16px;
+        height: 40px;
+    }
+
+    .form-horisontal .shadow-lg .row ::-webkit-input-placeholder { /* Edge */
+        color: #565656;
+        font-family: 'Roboto', serif;
+        font-size: 16px;
+        padding: 0 5px;
+    }
+
+    #cbp-spmenu-s1 .form-control {
+        font-family: 'Roboto', serif;
+        font-size: 16px;
+        font-weight: 600;
+        height: 40px;
+        max-width: 228px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 4%;
+    }
+}
+
+@media only screen and (min-width : 1025px) and (max-width : 1366px) {
+
+    #cbp-spmenu-s1 .form-control {
+        font-family: 'Roboto', serif;
+        font-size: 16px;
+        font-weight: 600;
+        height: 40px;
+        max-width: 228px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 4%;
+    }
+    .form-horisontal .shadow-lg .row button {
+        background: #104050;
+        color: white;
+        border: none;
+        font-family: 'Roboto', serif;
+        font-size: 16px;
+        height: 38px;
+        max-width: 100px !important;
+        margin-top: 1px;
+    }
+
+    .pull-left-img #adresSorgu .tooltiptext {
+        font-family: 'Roboto',serif;
+        font-size: 13px;
+        visibility: hidden;
+        color: white;
+        display: block;
+        width: 250px;
+        background-color: #0d394a;
+        text-align: center;
+        padding: 5px 0;
+        position: absolute;
+        border-radius: 2px;
+        z-index: 1;
+        top: 125%;
+        left: -64%;
+        margin-left: 25px;
+        transition: opacity 0.3s;
+    }
+
+    .pull-left-img #kadastroSorgu .tooltiptext1 {
+        font-family: 'Roboto',serif;
+        font-size: 13px;
+        visibility: hidden;
+        color: white;
+        display: block;
+        border-radius: 2px;
+        width: 250px;
+        background-color: #308d8c;
+        text-align: center;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: -87%;
+        left: -64%;
+        margin-left: 25px;
+        transition: opacity 0.3s;
+    }
+
+    .pull-left-img #adresSorgu .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: -35%;
+        left: 8%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent #0d394a transparent;
+    }
+
+    .pull-left-img #kadastroSorgu .tooltiptext1::after {
+        content: "";
+        position: absolute;
+        top: -35%;
+        left: 8%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent #308d8c transparent;
+    }
+
+    .pull-left-img #adresSorgu:hover .tooltiptext, .pull-left-img #kadastroSorgu:hover .tooltiptext1 {
+        visibility: visible;
+        display: block;
+        opacity: 1;
+    }
+
+    .form-horisontal .shadow-lg {
+        padding: 10px 0 !important;
+        box-shadow: none !important;
+    }
+
+    #AdresSorguForm {
+        width: 92.7% !important;
+    }
+
+    #KadastroForm {
+        width: 92.7% !important;
+    }
+
+    .form-horisontal .shadow-lg .row .col-md-2 {
+        max-width: 152px !important;
+        color: #565656;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+        height: 40px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    #KadastroForm .row .col-md-2 {
+        max-width: 131px !important;
+        color: #565656;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+    }
+
+    #KadastroForm .row .col-lg-2 {
+        max-width: 131px !important;
+        color: #565656;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+    }
+
+    .form-horisontal .shadow-lg .row .col-lg-2 {
+        max-width: 152px !important;
+        padding: 0px;
+        color: #565656;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+    }
+
+    .form-horisontal .shadow-lg .row input {
+        margin-left: 4px;
+        margin-right: 4px;
+        height: 40px;
+        color: #565656;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+    }
+
+    .form-horisontal .shadow-lg .row ::-webkit-input-placeholder { /* Edge */
+        color: #565656;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+        padding: 0 15px;
+    }
+
+    .form-horisontal .shadow-lg .row button {
+        max-width: 100px;
+        font-size: 16px;
+        height: 38px;
+        border-radius: 2px;
+    }
+
+    .property-preview-f-left {
+        font-size: 12px !important;
+    }
+
+    .card-footer {
+        padding-left: 0px;
+    }
+
+    .fa, .fas {
+        padding-right: 2px !important;
+    }
+}
+/*ipad pro için*/
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+
+    #cbp-spmenu-s1 .form-control {
+        font-family: 'Roboto', serif;
+        font-size: 16px;
+        font-weight: 600;
+        height: 40px;
+        max-width: 228px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 4%;
+    }
+
+    .form-horisontal .shadow-lg .row ::-webkit-input-placeholder { /* Edge */
+        color: #565656;
+        font-family: 'Roboto', serif;
+        font-size: 16px;
+        padding: 0 15px;
+    }
+
+    .form-horisontal .shadow-lg .row button {
+        background: #104050;
+        color: white;
+        border: none;
+        font-family: 'Roboto', serif;
+        font-size: 16px;
+        height: 38px;
+        max-width: 100px;
+        margin-top: 1px;
+    }
+
+    .pull-left-img #adresSorgu .tooltiptext {
+        font-family: 'Roboto',serif;
+        font-size: 13px;
+        visibility: hidden;
+        color: white;
+        display: block;
+        width: 250px;
+        background-color: #0d394a;
+        text-align: center;
+        padding: 5px 0;
+        position: absolute;
+        border-radius: 2px;
+        z-index: 1;
+        top: 125%;
+        left: -64%;
+        margin-left: 25px;
+        transition: opacity 0.3s;
+    }
+
+    .pull-left-img #kadastroSorgu .tooltiptext1 {
+        font-family: 'Roboto',serif;
+        font-size: 13px;
+        visibility: hidden;
+        color: white;
+        display: block;
+        border-radius: 2px;
+        width: 250px;
+        background-color: #308d8c;
+        text-align: center;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: -87%;
+        left: -64%;
+        margin-left: 25px;
+        transition: opacity 0.3s;
+    }
+
+    .pull-left-img #adresSorgu .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: -35%;
+        left: 8%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent #0d394a transparent;
+    }
+
+    .pull-left-img #kadastroSorgu .tooltiptext1::after {
+        content: "";
+        position: absolute;
+        top: -35%;
+        left: 8%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent #308d8c transparent;
+    }
+
+    .pull-left-img #adresSorgu:hover .tooltiptext, .pull-left-img #kadastroSorgu:hover .tooltiptext1 {
+        visibility: visible;
+        display: block;
+        opacity: 1;
+    }
+
+    #AdresSorguForm {
+        width: 90.3% !important;
+    }
+
+    #KadastroForm {
+        width: 90.3% !important;
+    }
+
+    #main-map {
+        max-width: 100% !important;
+        height: 400px !important;
+    }
+
+    #oneCikanFormu {
+        max-width: 100% !important;
+        height: 800px;
+    }
+
+    #okIcon {
+        display: none;
+    }
+
+    .card-group {
+        max-width: 50% !important;
+    }
+
+    .form-horisontal .shadow-lg .row .col-md-2 {
+        max-width: 110px !important;
+        color: #565656;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+    }
+
+    .form-horisontal .shadow-lg .row .col-lg-2 {
+        max-width: 105px !important;
+        height: 40px;
+        color: #565656;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+    }
+
+    #KadastroForm .col-md-2 {
+        max-width: 94px !important;
+        color: #565656;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+    }
+
+    #KadastroForm .col-lg-2 {
+        max-width: 93px !important;
+        color: #565656;
+        font-size: 16px;
+        font-family: 'Roboto', serif;
+    }
+
+    .form-horisontal .shadow-lg .row .pull-left-img {
+        padding: 0 0 0 0;
+        margin-left: 2px !important;
+        margin-right: 2px !important;
+    }
+
+    .form-horisontal .shadow-lg .row .col-md-2 {
+        font-size: 16px;
+        height: 40px;
+        padding-left: 2px;
+        padding-right: 2px;
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    .form-horisontal .shadow-lg .row input {
+        max-width: 150px !important;
+        padding: 0px;
+    }
+
+    .shadow-lg {
+        box-shadow: none !important;
+    }
+}
+
+@media(max-width:768px) {
+
+    #cbp-spmenu-s1 .form-control {
+        font-family: 'Roboto', serif;
+        font-size: 16px;
+        font-weight: 600;
+        height: 40px;
+        max-width: 228px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 4%;
+    }
+    .form-horisontal .shadow-lg .row ::-webkit-input-placeholder { /* Edge */
+        color: #565656;
+        font-family: 'Roboto', serif;
+        font-size: 16px;
+        padding: 0 15px;
+    }
+
+    .form-horisontal .shadow-lg .row .pull-left-img {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        /*background: #0d394a;*/
+        margin-top: 1%;
+    }
+
+    .form-horisontal {
+        display: none;
+    }
+
+        .form-horisontal .shadow-lg .row .col-md-2 {
+            max-width: none !important;
+            margin-top: 1%;
+            color: #565656;
+            font-size: 16px;
+            font-family: 'Roboto', serif;
+        }
+
+        .form-horisontal .shadow-lg .row input {
+            margin-top: 1%;
+            max-width: none !important;
+            margin-top: 1%;
+            color: #565656;
+            font-size: 16px;
+            font-family: 'Roboto', serif;
+        }
+
+        .form-horisontal .shadow-lg .row button {
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 1%;
+        }
+
+    #oneCikanButton {
+        display: none;
+    }
+
+    .panel2 .col-md-3 {
+        font-size: 16px;
+        font-family: Roboto;
+    }
+
+    .row .anasayfa .main #AdresSorguForm {
+        display: none !important;
+    }
+
+    .row .anasayfa .main #mobileMenu {
+        display: block !important;
+    }
+}

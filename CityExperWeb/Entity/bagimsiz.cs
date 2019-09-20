@@ -14,20 +14,49 @@ namespace CityExperWeb.Entity
     
     public partial class bagimsiz
     {
-        public int bagimsiz_id { get; set; }
-        public int tasinmaz_id { get; set; }
-        public string bagimsizNo { get; set; }
-        public string kullanımTürü { get; set; }
-        public string odaSayısı { get; set; }
-        public bool balkon { get; set; }
-        public bool esyaDurumu { get; set; }
-        public string cephe { get; set; }
-        public string nitelik { get; set; }
-        public string elektrik { get; set; }
-        public string su { get; set; }
-        public string dogalGaz { get; set; }
-        public decimal rayicBedel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public bagimsiz()
+        {
+            this.malik = new HashSet<malik>();
+        }
     
-        public virtual tasinmaz tasinmaz { get; set; }
+        public int bagimsiz_id { get; set; }
+        public Nullable<int> bina_id { get; set; }
+        public Nullable<int> il_id { get; set; }
+        public Nullable<int> ilce_id { get; set; }
+        public Nullable<int> mahalle_id { get; set; }
+        public Nullable<int> tapuMahalle_id { get; set; }
+        public Nullable<int> caddeSokak_id { get; set; }
+        public Nullable<int> ada_id { get; set; }
+        public Nullable<int> parsel_id { get; set; }
+        public Nullable<int> malik_id { get; set; }
+        public string kullanimTürü { get; set; }
+        public Nullable<decimal> bagimsizAlani { get; set; }
+        public string nitelik { get; set; }
+        public string elektrikNo { get; set; }
+        public string suNo { get; set; }
+        public string isinmaTürü { get; set; }
+        public string dogalGazNo { get; set; }
+        public string yapiKayitBelgesi { get; set; }
+        public string bagimsizNo { get; set; }
+        public string katNo { get; set; }
+        public string cephe { get; set; }
+        public string manzara { get; set; }
+        public Nullable<int> odaSayisi { get; set; }
+        public Nullable<int> banyoSayisi { get; set; }
+        public string mutfakTipi { get; set; }
+        public Nullable<int> balkon { get; set; }
+        public Nullable<decimal> metreKareBirimFiyat { get; set; }
+        public Nullable<decimal> toplamBedel { get; set; }
+        public string hisseDurum { get; set; }
+        public string esyaDurum { get; set; }
+        public string aidat { get; set; }
+        public string konutTipi { get; set; }
+        public string murfakTipi { get; set; }
+        public string durum { get; set; }
+    
+        public virtual bina bina { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<malik> malik { get; set; }
     }
 }

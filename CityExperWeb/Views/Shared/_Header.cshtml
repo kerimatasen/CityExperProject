@@ -1,50 +1,41 @@
-﻿<style>
-    .navbar-light {
-        margin-bottom: 0px;
-        border-radius: 0px;
-        background-color: green;
-        /* For browsers that do not support gradients */
-        background-image: linear-gradient(to right,#0d394a,#2f8c8b);
-        border-bottom: 4px solid #a99975;
-        font-family: Roboto, bold;
-    }
-
-        .navbar-light .navbar-nav .nav-link {
-            font-size: 16px;
-            color: white;
-            font-family: Roboto, bold;
-        }
-
-            .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
-                font-size: 16px;
-                color: white;
-                font-family: Roboto, bold;
-            }
-
-    .navbar-brand {
-        padding: 0px;
-        height: 28px;
-        margin-top: 1px;
-        font-family: Roboto, bold;
-    }
-</style>
+﻿<link href="~/Assets/css/header.css" rel="stylesheet" />
 <header class="header">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <a href="#" class="navbar-brand">
-            <img src="/Assets/img/CityExper3.png" />
+            <img src="/Assets/img/CityExper3.png" style="height:100%;width:100%;" />
         </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <button type="button" class="navbar-toggler " data-toggle="collapse" data-target="#navbarCollapse" aria-expanded="true" style="margin:0px;">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav">
-                <a href="#" class="nav-item nav-link" style="border-left: 4px solid #a99975;"><span>Anasayfa</span></a>
-                <a class="nav-link" role="button" aria-haspopup="true" aria-expanded="false" href="@Url.Action("Tasinmaz","Yonetim")">Taşınmaz Ekle</a>
-                <a href="#" class="nav-item nav-link">Raporlama</a>
+            <div class="navbar-nav" style="margin:0;">
+                <div id="verticle" style=" width: 1px;height: 45px;background-color: #a99975;"></div>
+                <a class="nav-item nav-link" href="/anasayfa"><span class="glyphicon glyphicon-home" style="margin-right:2px;"></span>Anasayfa</a>
+                <a class="nav-link" href="@Url.Action("Tasinmaz","Yonetim")"><span class="glyphicon glyphicon-edit" style="margin-right:2px;"></span>Gayrimenkul Ekle</a>
+                <a class="nav-link" href="@Url.Action("Index","SatilikTasinmaz")"><span class="glyphicon glyphicon-edit" style="margin-right:2px;"></span>Satılık Ekle</a>
+                <a class="nav-link" href="@Url.Action("Raporlama","SatilikTasinmaz")"><span class="glyphicon glyphicon-dashboard" style="margin-right:2px;"></span>Raporlama</a>
             </div>
-            <div class="navbar-nav ml-auto" style="border-left: 4px solid #a99975;">
-                <a href="#" class="nav-item nav-link"><span class="glyphicon glyphicon-user"></span>  Profilim</a>
+            <div class="navbar-nav ml-auto" style="float:right;">
+                <div id="verticle" style=" width: 1px;height: 45px;background-color: #a99975;"></div>
+
+                @{
+                    var sessionModel = new CityExperWeb.Models.User.UserSessionModel();
+                    if (Session["UserSessionModel"] != null)
+                    {
+                        sessionModel = (CityExperWeb.Models.User.UserSessionModel)Session["UserSessionModel"];
+                        <div style="font-family:'Roboto',serif;font-size:16px;margin:auto;">
+                            <a class="nav-item nav-link" href="@Url.Action("Logout","User")">
+                                <span class="glyphicon glyphicon-user"></span> @sessionModel.AdSoyad
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <a class="nav-item nav-link" href="@Url.Action("HomePage","Home")" style="font-family:'Roboto',serif;font-size:16px;">
+                            <span class="glyphicon glyphicon-user"></span>Giriş Yap
+                        </a>
+                    }
+                }
             </div>
         </div>
     </nav>

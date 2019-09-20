@@ -1,0 +1,86 @@
+﻿.header .navbar img {
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+.navbar-light {
+    margin-bottom: 0px;
+    border-radius: 0px;
+    background-image: linear-gradient(to right,#0d394a,#2f8c8b);
+    border-bottom: 3px solid #a99975;
+    font-family: 'Roboto', serif;
+}
+
+    .navbar-light .navbar-brand {
+        margin-right: auto;
+        margin-left: 0px;
+    }
+
+.nav-link {
+    padding: 0 2%;
+    font-family: 'Roboto', serif;
+    font-size: 16px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    font-size: 14px;
+    margin: auto;
+    color: white;
+    font-family: 'Roboto', serif;
+}
+
+    .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+        font-size: 16px;
+        color: white;
+        font-family: 'Roboto', serif;
+    }
+@media (min-width: 768px) {
+    .header .navbar {
+        border-radius: 0px!important;
+        height:40px;
+    }
+
+}
+.navbar-brand {
+    float:left;
+    padding: 0px!important;
+    height: 28px!important;
+    margin-top: 1px;
+    font-family: 'Roboto', serif;
+}
+
+.navbar-nav .nav-link span {
+    margin-right: 10px;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #b39f72;
+}
+
+@media(max-width:768px) {
+    .navbar-nav .nav-link {
+        font-family: 'Roboto', serif;
+        font-size: 16px;
+        margin: 0px;
+    }
+
+        .navbar-nav .nav-link span {
+            margin-right: 10px;
+        }
+
+    .header .navbar .collapse .navbar-nav {
+        margin: 0px;
+    }
+    .navbar-collapse{
+        margin-top:1%;
+    }
+    #verticle {
+        display: none;
+    }
+   .navbar-collapse .navbar-nav{
+        float:left;
+    }
+    .navbar-light .navbar-nav .nav-link {
+        margin: 0px;
+    }
+}

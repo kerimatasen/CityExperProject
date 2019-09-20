@@ -6,6 +6,8 @@
         CaddeSokakid : null,
     }
     $('#il').change(function () {
+        //$("#loading").css({ display: "block" });
+        //loading başlangıcı
         $.ajax({
             url: "/ilce/ilcelerbyilId", //burdaki url controller/actiondır
             data: { ilid: $(this).val() },//datamdacontrollera gönderdiğim parametredir ilId  olarakgönderdim tanımlamalaraynıolcak
@@ -17,6 +19,10 @@
                     ilce.append($("<option></option>").attr("value", item.ilce_id).html(item.ilceAdi));
                     //append eklemektir ilce sayısıkadar option ekledim + attr  budaoption value="ilce_id" html ile ilceadlarınıyazdırdım
                 });
+                setTimeout(function () {
+                    $("#loading").css({ display: "none" });
+                }, 800);
+                
             }
         });
         //$.ajax({
@@ -36,7 +42,6 @@
             data: { ilceid: $(this).val() },//datamdacontrollera gönderdiğim parametredir ilId  olarakgönderdim tanımlamalaraynıolcak
             dataType: "JSON",
             success: function (result) { //yani controllerdan bana data döndüğünde dönen data result a atılır. 
-                console.log(result);
                 var mahalle = $("#MahalleListAdres"); //ilce select optionumu aldım
                 mahalle.empty();
                 $.each(result, function (i, item) { // each javascript döngsüdür ilce sayısıkadar döner. 
@@ -54,7 +59,6 @@
             data: { mahalleid: $(this).val() },//datamdacontrollera gönderdiğim parametredir ilId  olarakgönderdim tanımlamalaraynıolcak
             dataType: "JSON",
             success: function (result) { //yani controllerdan bana data döndüğünde dönen data result a atılır. 
-                console.log(result);
                 var sokak = $("#SokakListAdres"); //ilce select optionumu aldım
                 sokak.empty();
                 $.each(result, function (i, item) { // each javascript döngsüdür ilce sayısıkadar döner. 

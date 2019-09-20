@@ -4,34 +4,107 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CityExperDb2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CityExperDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ada">
           <Key>
             <PropertyRef Name="ada_id" />
           </Key>
           <Property Name="ada_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="mahalle_id" Type="int" Nullable="false" />
-          <Property Name="adaNo" Type="nvarchar" MaxLength="400" Nullable="false" />
-          <Property Name="paftaNo" Type="int" Nullable="false" />
-          <Property Name="aciklama" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="tapuMahalle_id" Type="int" Nullable="false" />
+          <Property Name="adaNo" Type="int" Nullable="false" />
+          <Property Name="aciklama" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="bagimsiz">
           <Key>
             <PropertyRef Name="bagimsiz_id" />
           </Key>
           <Property Name="bagimsiz_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tasinmaz_id" Type="int" Nullable="false" />
-          <Property Name="bagimsizNo" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="kullanımTürü" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="odaSayısı" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="balkon" Type="bit" Nullable="false" />
-          <Property Name="esyaDurumu" Type="bit" Nullable="false" />
-          <Property Name="cephe" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="nitelik" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="elektrik" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="su" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="dogalGaz" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="rayicBedel" Type="money" Nullable="false" />
+          <Property Name="bina_id" Type="int" />
+          <Property Name="il_id" Type="int" />
+          <Property Name="ilce_id" Type="int" />
+          <Property Name="mahalle_id" Type="int" />
+          <Property Name="tapuMahalle_id" Type="int" />
+          <Property Name="caddeSokak_id" Type="int" />
+          <Property Name="ada_id" Type="int" />
+          <Property Name="parsel_id" Type="int" />
+          <Property Name="malik_id" Type="int" />
+          <Property Name="kullanimTürü" Type="nvarchar" MaxLength="50" />
+          <Property Name="bagimsizAlani" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="nitelik" Type="nvarchar" MaxLength="50" />
+          <Property Name="elektrikNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="suNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="isinmaTürü" Type="nvarchar" MaxLength="50" />
+          <Property Name="dogalGazNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="yapiKayitBelgesi" Type="nvarchar" MaxLength="50" />
+          <Property Name="bagimsizNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="katNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="cephe" Type="nvarchar" MaxLength="50" />
+          <Property Name="manzara" Type="nvarchar" MaxLength="50" />
+          <Property Name="odaSayisi" Type="int" />
+          <Property Name="banyoSayisi" Type="int" />
+          <Property Name="mutfakTipi" Type="nvarchar" MaxLength="50" />
+          <Property Name="balkon" Type="int" />
+          <Property Name="metreKareBirimFiyat" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="toplamBedel" Type="money" />
+          <Property Name="hisseDurum" Type="nvarchar" MaxLength="50" />
+          <Property Name="esyaDurum" Type="nvarchar" MaxLength="50" />
+          <Property Name="aidat" Type="nvarchar" MaxLength="50" />
+          <Property Name="konutTipi" Type="nvarchar" MaxLength="50" />
+          <Property Name="murfakTipi" Type="nvarchar" MaxLength="50" />
+          <Property Name="durum" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="bina">
+          <Key>
+            <PropertyRef Name="bina_id" />
+          </Key>
+          <Property Name="bina_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="caddeSokak_id" Type="int" />
+          <Property Name="ada_id" Type="int" />
+          <Property Name="parsel_id" Type="int" />
+          <Property Name="uavt" Type="nvarchar" MaxLength="50" />
+          <Property Name="koav" Type="nvarchar" MaxLength="50" />
+          <Property Name="kapiNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="tabanAlani" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="nitelik" Type="nvarchar" MaxLength="50" />
+          <Property Name="insaatAlani" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="yapıNizami" Type="nvarchar" MaxLength="50" />
+          <Property Name="katAdedi" Type="int" />
+          <Property Name="isYeriAdadi" Type="int" />
+          <Property Name="konutAdedi" Type="int" />
+          <Property Name="bagimsizAdedi" Type="int" />
+          <Property Name="binaYasi" Type="int" />
+          <Property Name="otopark" Type="int" />
+          <Property Name="kullanımAmacı" Type="nvarchar" MaxLength="50" />
+          <Property Name="binaYüksekligi" Type="nvarchar" MaxLength="50" />
+          <Property Name="metreKareBirimFiyat" Type="money" />
+          <Property Name="binaDegeri" Type="nvarchar" MaxLength="50" />
+          <Property Name="bodrum" Type="int" />
+          <Property Name="zemin" Type="int" />
+          <Property Name="asmaKat" Type="int" />
+          <Property Name="normalKat" Type="int" />
+          <Property Name="catiKat" Type="int" />
+          <Property Name="toplamKatAdedi" Type="int" />
+          <Property Name="tespitDurum" Type="int" />
+          <Property Name="tespitYapan" Type="nvarchar" MaxLength="50" />
+          <Property Name="tespitTarih" Type="date" />
+          <Property Name="aciklama" Type="nvarchar" MaxLength="4000" />
+          <Property Name="görüsler" Type="nvarchar" MaxLength="4000" />
+          <Property Name="iskan" Type="int" />
+          <Property Name="iskanTarih" Type="date" />
+          <Property Name="iskanNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="yapiRuhsat" Type="nvarchar" MaxLength="50" />
+          <Property Name="yapiRuhsatTarihi" Type="date" />
+          <Property Name="yapiRuhsatNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="proje" Type="int" />
+          <Property Name="projeTarih" Type="date" />
+          <Property Name="yapiKayit" Type="int" />
+          <Property Name="yapiKayitTarih" Type="date" />
+          <Property Name="yapiKayitNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="degerleme" Type="nvarchar" MaxLength="50" />
+          <Property Name="catiTip" Type="nvarchar" MaxLength="50" />
+          <Property Name="asansor" Type="nvarchar" MaxLength="50" />
+          <Property Name="muhit" Type="nvarchar" MaxLength="50" />
+          <Property Name="durum" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="caddeSokak">
           <Key>
@@ -45,74 +118,172 @@
           <Key>
             <PropertyRef Name="il_id" />
           </Key>
-          <Property Name="il_id" Type="int" Nullable="false" />
+          <Property Name="il_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ilAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Enlem" Type="decimal" Precision="18" Scale="8" />
-          <Property Name="boylam" Type="decimal" Precision="18" Scale="8" />
-          <Property Name="geography" Type="geography" />
+          <Property Name="lat" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="long" Type="decimal" Precision="18" Scale="8" />
         </EntityType>
         <EntityType Name="ilce">
           <Key>
             <PropertyRef Name="ilce_id" />
           </Key>
-          <Property Name="ilce_id" Type="int" Nullable="false" />
+          <Property Name="ilce_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="il_id" Type="int" Nullable="false" />
           <Property Name="ilceAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lat" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="long" Type="decimal" Precision="18" Scale="8" />
         </EntityType>
         <EntityType Name="mahalle">
           <Key>
             <PropertyRef Name="mahalle_id" />
           </Key>
-          <Property Name="mahalle_id" Type="int" Nullable="false" />
+          <Property Name="mahalle_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ilce_id" Type="int" Nullable="false" />
           <Property Name="mahalleAdi" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="malik">
+          <Key>
+            <PropertyRef Name="malik_id" />
+          </Key>
+          <Property Name="malik_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parsel_id" Type="int" />
+          <Property Name="ada_id" Type="int" />
+          <Property Name="bina_id" Type="int" />
+          <Property Name="bagimsiz_id" Type="int" />
+          <Property Name="parselNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="hissePay" Type="int" />
+          <Property Name="hissePayda" Type="int" />
+          <Property Name="hisseMiktarı" Type="int" />
+          <Property Name="hisseEdinmeTarih" Type="date" />
+          <Property Name="hisseEdinmeNedeni" Type="nvarchar" MaxLength="500" />
+          <Property Name="beyan" Type="nvarchar" MaxLength="50" />
+          <Property Name="beyanYevmiyeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="beyanYevmiyeTarih" Type="date" />
+          <Property Name="haciz" Type="nvarchar" MaxLength="50" />
+          <Property Name="hacizYevmiyeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="hacizYevmiyeTarih" Type="date" />
+          <Property Name="mahkeme" Type="int" />
+          <Property Name="malikAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="malikSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="malikTc" Type="int" />
+          <Property Name="malikBabaAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="malikTelNo" Type="int" />
+        </EntityType>
+        <EntityType Name="Mulkiyet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mülkiyetAdi" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="parsel">
           <Key>
             <PropertyRef Name="parsel_id" />
           </Key>
           <Property Name="parsel_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ada_id" Type="int" Nullable="false" />
-          <Property Name="parselNo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="adaNo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="paftaNo" Type="int" Nullable="false" />
+          <Property Name="ada_id" Type="int" />
+          <Property Name="tapuMahalle_id" Type="int" />
+          <Property Name="mülkiyet" Type="nvarchar" MaxLength="50" />
+          <Property Name="hisseli" Type="nvarchar" MaxLength="50" />
+          <Property Name="paftaNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="adaNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="parselNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="nitelik" Type="nvarchar" MaxLength="50" />
+          <Property Name="tapuAlani" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="rayicBedel" Type="nvarchar" MaxLength="50" />
+          <Property Name="zemintipi" Type="nvarchar" MaxLength="50" />
+          <Property Name="cilt" Type="nvarchar" MaxLength="50" />
+          <Property Name="sayfa" Type="nvarchar" MaxLength="50" />
+          <Property Name="tespitYapan" Type="nvarchar" MaxLength="50" />
+          <Property Name="tespitTarih" Type="date" />
+          <Property Name="aciklama" Type="nvarchar" MaxLength="500" />
+          <Property Name="gorusler" Type="nvarchar" MaxLength="500" />
+          <Property Name="planFonksiyonu" Type="nvarchar" MaxLength="50" />
+          <Property Name="emsal" Type="nvarchar" MaxLength="50" />
+          <Property Name="insaatAlani" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="hmax" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="kaks" Type="nvarchar" MaxLength="50" />
+          <Property Name="taks" Type="nvarchar" MaxLength="50" />
+          <Property Name="planAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="planaGöreİnsaatAlani" Type="nvarchar" MaxLength="50" />
+          <Property Name="tespittarihi" Type="datetime" />
+          <Property Name="kurumAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="alinanTarih" Type="nvarchar" MaxLength="50" />
+          <Property Name="belgeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="belgeTarih" Type="nvarchar" MaxLength="50" />
+          <Property Name="zeminReferansNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="durum" Type="nvarchar" MaxLength="50" />
+          <Property Name="metreKareBirimFiyat" Type="money" />
+          <Property Name="arsaDegeri" Type="nvarchar" MaxLength="50" />
+          <Property Name="isgalci" Type="int" />
+          <Property Name="beyan" Type="nvarchar" MaxLength="50" />
+          <Property Name="serh" Type="nvarchar" MaxLength="50" />
+          <Property Name="haciz" Type="nvarchar" MaxLength="50" />
+          <Property Name="irtifak" Type="nvarchar" MaxLength="50" />
+          <Property Name="rehin" Type="nvarchar" MaxLength="50" />
+          <Property Name="malik" Type="int" />
+          <Property Name="mahkeme" Type="int" />
+          <Property Name="mahkemeTarih" Type="date" />
+          <Property Name="yevmiye" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="sahiplikDurum">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="sahiplikDurum_id" />
           </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="sahiplikDurum_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bagimsiz_id" Type="int" />
+          <Property Name="bina_id" Type="int" />
+          <Property Name="sahiplikAdi" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tapuMahalle">
           <Key>
             <PropertyRef Name="tapuMahalle_id" />
           </Key>
-          <Property Name="tapuMahalle_id" Type="int" Nullable="false" />
+          <Property Name="tapuMahalle_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ilce_id" Type="int" Nullable="false" />
-          <Property Name="mahalleKoyAdi" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="tapuMahalleAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id" Type="int" />
         </EntityType>
-        <EntityType Name="tasinmaz">
+        <EntityType Name="tasinmazTürü">
           <Key>
-            <PropertyRef Name="tasinmaz_id" />
+            <PropertyRef Name="tasinmazTür_id" />
           </Key>
-          <Property Name="tasinmaz_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="kapıNo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="il_id" Type="int" Nullable="false" />
-          <Property Name="ilce_id" Type="int" Nullable="false" />
-          <Property Name="mahalle_id" Type="int" Nullable="false" />
-          <Property Name="tapumahalle_id" Type="int" Nullable="false" />
-          <Property Name="caddeSokak_id" Type="int" Nullable="false" />
-          <Property Name="ada_id" Type="int" Nullable="false" />
-          <Property Name="parsel_id" Type="int" Nullable="false" />
-          <Property Name="binaNo" Type="int" Nullable="false" />
-          <Property Name="binaYaşı" Type="int" Nullable="false" />
-          <Property Name="rayicBedel" Type="money" Nullable="false" />
+          <Property Name="tasinmazTür_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tasimazTürAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="bina_id" Type="int" />
+          <Property Name="bagimsiz_id" Type="int" />
         </EntityType>
-        <Association Name="FK_ada_tapuMahalle">
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserRoleRelation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FkUserId" Type="int" />
+          <Property Name="FkUserRoleId" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="150" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Status" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_ada_tapuMahalle1">
           <End Role="tapuMahalle" Type="Self.tapuMahalle" Multiplicity="1" />
           <End Role="ada" Type="Self.ada" Multiplicity="*" />
           <ReferentialConstraint>
@@ -120,19 +291,31 @@
               <PropertyRef Name="tapuMahalle_id" />
             </Principal>
             <Dependent Role="ada">
-              <PropertyRef Name="mahalle_id" />
+              <PropertyRef Name="tapuMahalle_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_bagimsiz_tasinmaz">
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="1" />
+        <Association Name="FK_bagimsiz_bina">
+          <End Role="bina" Type="Self.bina" Multiplicity="0..1" />
           <End Role="bagimsiz" Type="Self.bagimsiz" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tasinmaz">
-              <PropertyRef Name="tasinmaz_id" />
+            <Principal Role="bina">
+              <PropertyRef Name="bina_id" />
             </Principal>
             <Dependent Role="bagimsiz">
-              <PropertyRef Name="tasinmaz_id" />
+              <PropertyRef Name="bina_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bina_parsel">
+          <End Role="parsel" Type="Self.parsel" Multiplicity="0..1" />
+          <End Role="bina" Type="Self.bina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parsel">
+              <PropertyRef Name="parsel_id" />
+            </Principal>
+            <Dependent Role="bina">
+              <PropertyRef Name="parsel_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -172,15 +355,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_parsel_ada">
-          <End Role="ada" Type="Self.ada" Multiplicity="1" />
+        <Association Name="FK_malik_bagimsiz">
+          <End Role="bagimsiz" Type="Self.bagimsiz" Multiplicity="0..1" />
+          <End Role="malik" Type="Self.malik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bagimsiz">
+              <PropertyRef Name="bagimsiz_id" />
+            </Principal>
+            <Dependent Role="malik">
+              <PropertyRef Name="bagimsiz_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_malik_bina">
+          <End Role="bina" Type="Self.bina" Multiplicity="0..1" />
+          <End Role="malik" Type="Self.malik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bina">
+              <PropertyRef Name="bina_id" />
+            </Principal>
+            <Dependent Role="malik">
+              <PropertyRef Name="bina_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_malik_parsel">
+          <End Role="parsel" Type="Self.parsel" Multiplicity="0..1" />
+          <End Role="malik" Type="Self.malik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parsel">
+              <PropertyRef Name="parsel_id" />
+            </Principal>
+            <Dependent Role="malik">
+              <PropertyRef Name="parsel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_parsel_tapuMahalle">
+          <End Role="tapuMahalle" Type="Self.tapuMahalle" Multiplicity="0..1" />
           <End Role="parsel" Type="Self.parsel" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ada">
-              <PropertyRef Name="ada_id" />
+            <Principal Role="tapuMahalle">
+              <PropertyRef Name="tapuMahalle_id" />
             </Principal>
             <Dependent Role="parsel">
-              <PropertyRef Name="ada_id" />
+              <PropertyRef Name="tapuMahalle_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -196,108 +415,58 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tasinmaz_ada">
-          <End Role="ada" Type="Self.ada" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
+        <Association Name="FK_UserRoleRelation_UserRole">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1" />
+          <End Role="UserRoleRelation" Type="Self.UserRoleRelation" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ada">
-              <PropertyRef Name="ada_id" />
+            <Principal Role="UserRole">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="tasinmaz">
-              <PropertyRef Name="ada_id" />
+            <Dependent Role="UserRoleRelation">
+              <PropertyRef Name="FkUserRoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tasinmaz_caddeSokak">
-          <End Role="caddeSokak" Type="Self.caddeSokak" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
+        <Association Name="FK_UserRoleRelation_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UserRoleRelation" Type="Self.UserRoleRelation" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="caddeSokak">
-              <PropertyRef Name="caddeSokak_id" />
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="tasinmaz">
-              <PropertyRef Name="caddeSokak_id" />
+            <Dependent Role="UserRoleRelation">
+              <PropertyRef Name="FkUserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tasinmaz_il">
-          <End Role="il" Type="Self.il" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="il">
-              <PropertyRef Name="il_id" />
-            </Principal>
-            <Dependent Role="tasinmaz">
-              <PropertyRef Name="il_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tasinmaz_ilce">
-          <End Role="ilce" Type="Self.ilce" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ilce">
-              <PropertyRef Name="ilce_id" />
-            </Principal>
-            <Dependent Role="tasinmaz">
-              <PropertyRef Name="ilce_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tasinmaz_mahalle">
-          <End Role="mahalle" Type="Self.mahalle" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="mahalle">
-              <PropertyRef Name="mahalle_id" />
-            </Principal>
-            <Dependent Role="tasinmaz">
-              <PropertyRef Name="mahalle_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tasinmaz_parsel">
-          <End Role="parsel" Type="Self.parsel" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="parsel">
-              <PropertyRef Name="parsel_id" />
-            </Principal>
-            <Dependent Role="tasinmaz">
-              <PropertyRef Name="parsel_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tasinmaz_tapuMahalle">
-          <End Role="tapuMahalle" Type="Self.tapuMahalle" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tapuMahalle">
-              <PropertyRef Name="tapuMahalle_id" />
-            </Principal>
-            <Dependent Role="tasinmaz">
-              <PropertyRef Name="tapumahalle_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="CityExperDb2ModelStoreContainer">
+        <EntityContainer Name="CityExperDbModelStoreContainer">
           <EntitySet Name="ada" EntityType="Self.ada" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bagimsiz" EntityType="Self.bagimsiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bina" EntityType="Self.bina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="caddeSokak" EntityType="Self.caddeSokak" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="il" EntityType="Self.il" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ilce" EntityType="Self.ilce" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mahalle" EntityType="Self.mahalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="malik" EntityType="Self.malik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mulkiyet" EntityType="Self.Mulkiyet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="parsel" EntityType="Self.parsel" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sahiplikDurum" EntityType="Self.sahiplikDurum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tapuMahalle" EntityType="Self.tapuMahalle" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tasinmaz" EntityType="Self.tasinmaz" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_ada_tapuMahalle" Association="Self.FK_ada_tapuMahalle">
+          <EntitySet Name="tasinmazTürü" EntityType="Self.tasinmazTürü" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoleRelation" EntityType="Self.UserRoleRelation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ada_tapuMahalle1" Association="Self.FK_ada_tapuMahalle1">
             <End Role="tapuMahalle" EntitySet="tapuMahalle" />
             <End Role="ada" EntitySet="ada" />
           </AssociationSet>
-          <AssociationSet Name="FK_bagimsiz_tasinmaz" Association="Self.FK_bagimsiz_tasinmaz">
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
+          <AssociationSet Name="FK_bagimsiz_bina" Association="Self.FK_bagimsiz_bina">
+            <End Role="bina" EntitySet="bina" />
             <End Role="bagimsiz" EntitySet="bagimsiz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bina_parsel" Association="Self.FK_bina_parsel">
+            <End Role="parsel" EntitySet="parsel" />
+            <End Role="bina" EntitySet="bina" />
           </AssociationSet>
           <AssociationSet Name="FK_caddeSokak_mahalle" Association="Self.FK_caddeSokak_mahalle">
             <End Role="mahalle" EntitySet="mahalle" />
@@ -311,79 +480,215 @@
             <End Role="ilce" EntitySet="ilce" />
             <End Role="mahalle" EntitySet="mahalle" />
           </AssociationSet>
-          <AssociationSet Name="FK_parsel_ada" Association="Self.FK_parsel_ada">
-            <End Role="ada" EntitySet="ada" />
+          <AssociationSet Name="FK_malik_bagimsiz" Association="Self.FK_malik_bagimsiz">
+            <End Role="bagimsiz" EntitySet="bagimsiz" />
+            <End Role="malik" EntitySet="malik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_malik_bina" Association="Self.FK_malik_bina">
+            <End Role="bina" EntitySet="bina" />
+            <End Role="malik" EntitySet="malik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_malik_parsel" Association="Self.FK_malik_parsel">
+            <End Role="parsel" EntitySet="parsel" />
+            <End Role="malik" EntitySet="malik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_parsel_tapuMahalle" Association="Self.FK_parsel_tapuMahalle">
+            <End Role="tapuMahalle" EntitySet="tapuMahalle" />
             <End Role="parsel" EntitySet="parsel" />
           </AssociationSet>
           <AssociationSet Name="FK_tapuMahalle_ilce" Association="Self.FK_tapuMahalle_ilce">
             <End Role="ilce" EntitySet="ilce" />
             <End Role="tapuMahalle" EntitySet="tapuMahalle" />
           </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_ada" Association="Self.FK_tasinmaz_ada">
-            <End Role="ada" EntitySet="ada" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
+          <AssociationSet Name="FK_UserRoleRelation_UserRole" Association="Self.FK_UserRoleRelation_UserRole">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="UserRoleRelation" EntitySet="UserRoleRelation" />
           </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_caddeSokak" Association="Self.FK_tasinmaz_caddeSokak">
-            <End Role="caddeSokak" EntitySet="caddeSokak" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_il" Association="Self.FK_tasinmaz_il">
-            <End Role="il" EntitySet="il" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_ilce" Association="Self.FK_tasinmaz_ilce">
-            <End Role="ilce" EntitySet="ilce" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_mahalle" Association="Self.FK_tasinmaz_mahalle">
-            <End Role="mahalle" EntitySet="mahalle" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_parsel" Association="Self.FK_tasinmaz_parsel">
-            <End Role="parsel" EntitySet="parsel" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_tapuMahalle" Association="Self.FK_tasinmaz_tapuMahalle">
-            <End Role="tapuMahalle" EntitySet="tapuMahalle" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
+          <AssociationSet Name="FK_UserRoleRelation_Users" Association="Self.FK_UserRoleRelation_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoleRelation" EntitySet="UserRoleRelation" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CityExperDb2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="CityExperDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CityExperDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ada" EntityType="CityExperDbModel.ada" />
+          <EntitySet Name="bagimsiz" EntityType="CityExperDbModel.bagimsiz" />
+          <EntitySet Name="bina" EntityType="CityExperDbModel.bina" />
+          <EntitySet Name="caddeSokak" EntityType="CityExperDbModel.caddeSokak" />
+          <EntitySet Name="il" EntityType="CityExperDbModel.il" />
+          <EntitySet Name="ilce" EntityType="CityExperDbModel.ilce" />
+          <EntitySet Name="mahalle" EntityType="CityExperDbModel.mahalle" />
+          <EntitySet Name="malik" EntityType="CityExperDbModel.malik" />
+          <EntitySet Name="Mulkiyet" EntityType="CityExperDbModel.Mulkiyet" />
+          <EntitySet Name="parsel" EntityType="CityExperDbModel.parsel" />
+          <EntitySet Name="sahiplikDurum" EntityType="CityExperDbModel.sahiplikDurum" />
+          <EntitySet Name="tapuMahalle" EntityType="CityExperDbModel.tapuMahalle" />
+          <EntitySet Name="tasinmazTürü" EntityType="CityExperDbModel.tasinmazTürü" />
+          <EntitySet Name="UserRole" EntityType="CityExperDbModel.UserRole" />
+          <EntitySet Name="UserRoleRelation" EntityType="CityExperDbModel.UserRoleRelation" />
+          <EntitySet Name="Users" EntityType="CityExperDbModel.Users" />
+          <AssociationSet Name="FK_ada_tapuMahalle1" Association="CityExperDbModel.FK_ada_tapuMahalle1">
+            <End Role="tapuMahalle" EntitySet="tapuMahalle" />
+            <End Role="ada" EntitySet="ada" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bagimsiz_bina" Association="CityExperDbModel.FK_bagimsiz_bina">
+            <End Role="bina" EntitySet="bina" />
+            <End Role="bagimsiz" EntitySet="bagimsiz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_malik_bagimsiz" Association="CityExperDbModel.FK_malik_bagimsiz">
+            <End Role="bagimsiz" EntitySet="bagimsiz" />
+            <End Role="malik" EntitySet="malik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bina_parsel" Association="CityExperDbModel.FK_bina_parsel">
+            <End Role="parsel" EntitySet="parsel" />
+            <End Role="bina" EntitySet="bina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_malik_bina" Association="CityExperDbModel.FK_malik_bina">
+            <End Role="bina" EntitySet="bina" />
+            <End Role="malik" EntitySet="malik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_caddeSokak_mahalle" Association="CityExperDbModel.FK_caddeSokak_mahalle">
+            <End Role="mahalle" EntitySet="mahalle" />
+            <End Role="caddeSokak" EntitySet="caddeSokak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ilce_il" Association="CityExperDbModel.FK_ilce_il">
+            <End Role="il" EntitySet="il" />
+            <End Role="ilce" EntitySet="ilce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mahalle_ilce" Association="CityExperDbModel.FK_mahalle_ilce">
+            <End Role="ilce" EntitySet="ilce" />
+            <End Role="mahalle" EntitySet="mahalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tapuMahalle_ilce" Association="CityExperDbModel.FK_tapuMahalle_ilce">
+            <End Role="ilce" EntitySet="ilce" />
+            <End Role="tapuMahalle" EntitySet="tapuMahalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_malik_parsel" Association="CityExperDbModel.FK_malik_parsel">
+            <End Role="parsel" EntitySet="parsel" />
+            <End Role="malik" EntitySet="malik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_parsel_tapuMahalle" Association="CityExperDbModel.FK_parsel_tapuMahalle">
+            <End Role="tapuMahalle" EntitySet="tapuMahalle" />
+            <End Role="parsel" EntitySet="parsel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleRelation_UserRole" Association="CityExperDbModel.FK_UserRoleRelation_UserRole">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="UserRoleRelation" EntitySet="UserRoleRelation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleRelation_Users" Association="CityExperDbModel.FK_UserRoleRelation_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoleRelation" EntitySet="UserRoleRelation" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="ada">
           <Key>
             <PropertyRef Name="ada_id" />
           </Key>
           <Property Name="ada_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="mahalle_id" Type="Int32" Nullable="false" />
-          <Property Name="adaNo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="paftaNo" Type="Int32" Nullable="false" />
-          <Property Name="aciklama" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="tapuMahalle" Relationship="Self.FK_ada_tapuMahalle" FromRole="ada" ToRole="tapuMahalle" />
-          <NavigationProperty Name="parsel" Relationship="Self.FK_parsel_ada" FromRole="ada" ToRole="parsel" />
-          <NavigationProperty Name="tasinmaz" Relationship="Self.FK_tasinmaz_ada" FromRole="ada" ToRole="tasinmaz" />
+          <Property Name="tapuMahalle_id" Type="Int32" Nullable="false" />
+          <Property Name="adaNo" Type="Int32" Nullable="false" />
+          <Property Name="aciklama" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tapuMahalle" Relationship="CityExperDbModel.FK_ada_tapuMahalle1" FromRole="ada" ToRole="tapuMahalle" />
         </EntityType>
         <EntityType Name="bagimsiz">
           <Key>
             <PropertyRef Name="bagimsiz_id" />
           </Key>
           <Property Name="bagimsiz_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tasinmaz_id" Type="Int32" Nullable="false" />
-          <Property Name="bagimsizNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="kullanımTürü" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="odaSayısı" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="balkon" Type="Boolean" Nullable="false" />
-          <Property Name="esyaDurumu" Type="Boolean" Nullable="false" />
-          <Property Name="cephe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="nitelik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="elektrik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="su" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="dogalGaz" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="rayicBedel" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <NavigationProperty Name="tasinmaz" Relationship="Self.FK_bagimsiz_tasinmaz" FromRole="bagimsiz" ToRole="tasinmaz" />
+          <Property Name="bina_id" Type="Int32" />
+          <Property Name="il_id" Type="Int32" />
+          <Property Name="ilce_id" Type="Int32" />
+          <Property Name="mahalle_id" Type="Int32" />
+          <Property Name="tapuMahalle_id" Type="Int32" />
+          <Property Name="caddeSokak_id" Type="Int32" />
+          <Property Name="ada_id" Type="Int32" />
+          <Property Name="parsel_id" Type="Int32" />
+          <Property Name="malik_id" Type="Int32" />
+          <Property Name="kullanimTürü" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bagimsizAlani" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="nitelik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="elektrikNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="suNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isinmaTürü" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dogalGazNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yapiKayitBelgesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bagimsizNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="katNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cephe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="manzara" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="odaSayisi" Type="Int32" />
+          <Property Name="banyoSayisi" Type="Int32" />
+          <Property Name="mutfakTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="balkon" Type="Int32" />
+          <Property Name="metreKareBirimFiyat" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="toplamBedel" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="hisseDurum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="esyaDurum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="aidat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="konutTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="murfakTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="bina" Relationship="CityExperDbModel.FK_bagimsiz_bina" FromRole="bagimsiz" ToRole="bina" />
+          <NavigationProperty Name="malik" Relationship="CityExperDbModel.FK_malik_bagimsiz" FromRole="bagimsiz" ToRole="malik" />
+        </EntityType>
+        <EntityType Name="bina">
+          <Key>
+            <PropertyRef Name="bina_id" />
+          </Key>
+          <Property Name="bina_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="caddeSokak_id" Type="Int32" />
+          <Property Name="ada_id" Type="Int32" />
+          <Property Name="parsel_id" Type="Int32" />
+          <Property Name="uavt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="koav" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kapiNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tabanAlani" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="nitelik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="insaatAlani" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="yapıNizami" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="katAdedi" Type="Int32" />
+          <Property Name="isYeriAdadi" Type="Int32" />
+          <Property Name="konutAdedi" Type="Int32" />
+          <Property Name="bagimsizAdedi" Type="Int32" />
+          <Property Name="binaYasi" Type="Int32" />
+          <Property Name="otopark" Type="Int32" />
+          <Property Name="kullanımAmacı" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="binaYüksekligi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="metreKareBirimFiyat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="binaDegeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bodrum" Type="Int32" />
+          <Property Name="zemin" Type="Int32" />
+          <Property Name="asmaKat" Type="Int32" />
+          <Property Name="normalKat" Type="Int32" />
+          <Property Name="catiKat" Type="Int32" />
+          <Property Name="toplamKatAdedi" Type="Int32" />
+          <Property Name="tespitDurum" Type="Int32" />
+          <Property Name="tespitYapan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tespitTarih" Type="DateTime" Precision="0" />
+          <Property Name="aciklama" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="görüsler" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="iskan" Type="Int32" />
+          <Property Name="iskanTarih" Type="DateTime" Precision="0" />
+          <Property Name="iskanNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yapiRuhsat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yapiRuhsatTarihi" Type="DateTime" Precision="0" />
+          <Property Name="yapiRuhsatNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="proje" Type="Int32" />
+          <Property Name="projeTarih" Type="DateTime" Precision="0" />
+          <Property Name="yapiKayit" Type="Int32" />
+          <Property Name="yapiKayitTarih" Type="DateTime" Precision="0" />
+          <Property Name="yapiKayitNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="degerleme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="catiTip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="asansor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="muhit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="bagimsiz" Relationship="CityExperDbModel.FK_bagimsiz_bina" FromRole="bina" ToRole="bagimsiz" />
+          <NavigationProperty Name="parsel" Relationship="CityExperDbModel.FK_bina_parsel" FromRole="bina" ToRole="parsel" />
+          <NavigationProperty Name="malik" Relationship="CityExperDbModel.FK_malik_bina" FromRole="bina" ToRole="malik" />
         </EntityType>
         <EntityType Name="caddeSokak">
           <Key>
@@ -391,154 +696,260 @@
           </Key>
           <Property Name="caddeSokak_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="mahalle_id" Type="Int32" Nullable="false" />
-          <Property Name="caddeSokakAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="mahalle" Relationship="Self.FK_caddeSokak_mahalle" FromRole="caddeSokak" ToRole="mahalle" />
-          <NavigationProperty Name="tasinmaz" Relationship="Self.FK_tasinmaz_caddeSokak" FromRole="caddeSokak" ToRole="tasinmaz" />
+          <Property Name="caddeSokakAdi" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mahalle" Relationship="CityExperDbModel.FK_caddeSokak_mahalle" FromRole="caddeSokak" ToRole="mahalle" />
         </EntityType>
         <EntityType Name="il">
           <Key>
             <PropertyRef Name="il_id" />
           </Key>
-          <Property Name="il_id" Type="Int32" Nullable="false" />
-          <Property Name="ilAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Enlem" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="boylam" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="geography" Type="Geography" />
-          <NavigationProperty Name="ilce" Relationship="Self.FK_ilce_il" FromRole="il" ToRole="ilce" />
-          <NavigationProperty Name="tasinmaz" Relationship="Self.FK_tasinmaz_il" FromRole="il" ToRole="tasinmaz" />
+          <Property Name="il_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lat" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="long" Type="Decimal" Precision="18" Scale="8" />
+          <NavigationProperty Name="ilce" Relationship="CityExperDbModel.FK_ilce_il" FromRole="il" ToRole="ilce" />
         </EntityType>
         <EntityType Name="ilce">
           <Key>
             <PropertyRef Name="ilce_id" />
           </Key>
-          <Property Name="ilce_id" Type="Int32" Nullable="false" />
+          <Property Name="ilce_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="il_id" Type="Int32" Nullable="false" />
-          <Property Name="ilceAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="il" Relationship="Self.FK_ilce_il" FromRole="ilce" ToRole="il" />
-          <NavigationProperty Name="mahalle" Relationship="Self.FK_mahalle_ilce" FromRole="ilce" ToRole="mahalle" />
-          <NavigationProperty Name="tapuMahalle" Relationship="Self.FK_tapuMahalle_ilce" FromRole="ilce" ToRole="tapuMahalle" />
-          <NavigationProperty Name="tasinmaz" Relationship="Self.FK_tasinmaz_ilce" FromRole="ilce" ToRole="tasinmaz" />
+          <Property Name="ilceAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lat" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="long" Type="Decimal" Precision="18" Scale="8" />
+          <NavigationProperty Name="il" Relationship="CityExperDbModel.FK_ilce_il" FromRole="ilce" ToRole="il" />
+          <NavigationProperty Name="mahalle" Relationship="CityExperDbModel.FK_mahalle_ilce" FromRole="ilce" ToRole="mahalle" />
+          <NavigationProperty Name="tapuMahalle" Relationship="CityExperDbModel.FK_tapuMahalle_ilce" FromRole="ilce" ToRole="tapuMahalle" />
         </EntityType>
         <EntityType Name="mahalle">
           <Key>
             <PropertyRef Name="mahalle_id" />
           </Key>
-          <Property Name="mahalle_id" Type="Int32" Nullable="false" />
+          <Property Name="mahalle_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ilce_id" Type="Int32" Nullable="false" />
-          <Property Name="mahalleAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="caddeSokak" Relationship="Self.FK_caddeSokak_mahalle" FromRole="mahalle" ToRole="caddeSokak" />
-          <NavigationProperty Name="ilce" Relationship="Self.FK_mahalle_ilce" FromRole="mahalle" ToRole="ilce" />
-          <NavigationProperty Name="tasinmaz" Relationship="Self.FK_tasinmaz_mahalle" FromRole="mahalle" ToRole="tasinmaz" />
+          <Property Name="mahalleAdi" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="caddeSokak" Relationship="CityExperDbModel.FK_caddeSokak_mahalle" FromRole="mahalle" ToRole="caddeSokak" />
+          <NavigationProperty Name="ilce" Relationship="CityExperDbModel.FK_mahalle_ilce" FromRole="mahalle" ToRole="ilce" />
+        </EntityType>
+        <EntityType Name="malik">
+          <Key>
+            <PropertyRef Name="malik_id" />
+          </Key>
+          <Property Name="malik_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parsel_id" Type="Int32" />
+          <Property Name="ada_id" Type="Int32" />
+          <Property Name="bina_id" Type="Int32" />
+          <Property Name="bagimsiz_id" Type="Int32" />
+          <Property Name="parselNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hissePay" Type="Int32" />
+          <Property Name="hissePayda" Type="Int32" />
+          <Property Name="hisseMiktarı" Type="Int32" />
+          <Property Name="hisseEdinmeTarih" Type="DateTime" Precision="0" />
+          <Property Name="hisseEdinmeNedeni" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="beyan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="beyanYevmiyeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="beyanYevmiyeTarih" Type="DateTime" Precision="0" />
+          <Property Name="haciz" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hacizYevmiyeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hacizYevmiyeTarih" Type="DateTime" Precision="0" />
+          <Property Name="mahkeme" Type="Int32" />
+          <Property Name="malikAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="malikSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="malikTc" Type="Int32" />
+          <Property Name="malikBabaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="malikTelNo" Type="Int32" />
+          <NavigationProperty Name="bagimsiz" Relationship="CityExperDbModel.FK_malik_bagimsiz" FromRole="malik" ToRole="bagimsiz" />
+          <NavigationProperty Name="bina" Relationship="CityExperDbModel.FK_malik_bina" FromRole="malik" ToRole="bina" />
+          <NavigationProperty Name="parsel" Relationship="CityExperDbModel.FK_malik_parsel" FromRole="malik" ToRole="parsel" />
+        </EntityType>
+        <EntityType Name="Mulkiyet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mülkiyetAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="parsel">
           <Key>
             <PropertyRef Name="parsel_id" />
           </Key>
           <Property Name="parsel_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ada_id" Type="Int32" Nullable="false" />
-          <Property Name="parselNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="adaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="paftaNo" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ada" Relationship="Self.FK_parsel_ada" FromRole="parsel" ToRole="ada" />
-          <NavigationProperty Name="tasinmaz" Relationship="Self.FK_tasinmaz_parsel" FromRole="parsel" ToRole="tasinmaz" />
+          <Property Name="ada_id" Type="Int32" />
+          <Property Name="tapuMahalle_id" Type="Int32" />
+          <Property Name="mülkiyet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hisseli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="paftaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parselNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nitelik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tapuAlani" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="rayicBedel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="zemintipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cilt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sayfa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tespitYapan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tespitTarih" Type="DateTime" Precision="0" />
+          <Property Name="aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="gorusler" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="planFonksiyonu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emsal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="insaatAlani" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="hmax" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="kaks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="taks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="planAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="planaGöreİnsaatAlani" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tespittarihi" Type="DateTime" Precision="3" />
+          <Property Name="kurumAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="alinanTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="belgeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="belgeTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="zeminReferansNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="metreKareBirimFiyat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="arsaDegeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isgalci" Type="Int32" />
+          <Property Name="beyan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="serh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="haciz" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="irtifak" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rehin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="malik" Type="Int32" />
+          <Property Name="mahkeme" Type="Int32" />
+          <Property Name="mahkemeTarih" Type="DateTime" Precision="0" />
+          <Property Name="yevmiye" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="bina" Relationship="CityExperDbModel.FK_bina_parsel" FromRole="parsel" ToRole="bina" />
+          <NavigationProperty Name="malik1" Relationship="CityExperDbModel.FK_malik_parsel" FromRole="parsel" ToRole="malik" />
+          <NavigationProperty Name="tapuMahalle" Relationship="CityExperDbModel.FK_parsel_tapuMahalle" FromRole="parsel" ToRole="tapuMahalle" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="sahiplikDurum">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="sahiplikDurum_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="sahiplikDurum_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bagimsiz_id" Type="Int32" />
+          <Property Name="bina_id" Type="Int32" />
+          <Property Name="sahiplikAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tapuMahalle">
           <Key>
             <PropertyRef Name="tapuMahalle_id" />
           </Key>
-          <Property Name="tapuMahalle_id" Type="Int32" Nullable="false" />
+          <Property Name="tapuMahalle_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ilce_id" Type="Int32" Nullable="false" />
-          <Property Name="mahalleKoyAdi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ada" Relationship="Self.FK_ada_tapuMahalle" FromRole="tapuMahalle" ToRole="ada" />
-          <NavigationProperty Name="ilce" Relationship="Self.FK_tapuMahalle_ilce" FromRole="tapuMahalle" ToRole="ilce" />
-          <NavigationProperty Name="tasinmaz" Relationship="Self.FK_tasinmaz_tapuMahalle" FromRole="tapuMahalle" ToRole="tasinmaz" />
+          <Property Name="tapuMahalleAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" />
+          <NavigationProperty Name="ada" Relationship="CityExperDbModel.FK_ada_tapuMahalle1" FromRole="tapuMahalle" ToRole="ada" />
+          <NavigationProperty Name="ilce" Relationship="CityExperDbModel.FK_tapuMahalle_ilce" FromRole="tapuMahalle" ToRole="ilce" />
+          <NavigationProperty Name="parsel" Relationship="CityExperDbModel.FK_parsel_tapuMahalle" FromRole="tapuMahalle" ToRole="parsel" />
         </EntityType>
-        <EntityType Name="tasinmaz">
+        <EntityType Name="tasinmazTürü">
           <Key>
-            <PropertyRef Name="tasinmaz_id" />
+            <PropertyRef Name="tasinmazTür_id" />
           </Key>
-          <Property Name="tasinmaz_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="kapıNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="il_id" Type="Int32" Nullable="false" />
-          <Property Name="ilce_id" Type="Int32" Nullable="false" />
-          <Property Name="mahalle_id" Type="Int32" Nullable="false" />
-          <Property Name="tapumahalle_id" Type="Int32" Nullable="false" />
-          <Property Name="caddeSokak_id" Type="Int32" Nullable="false" />
-          <Property Name="ada_id" Type="Int32" Nullable="false" />
-          <Property Name="parsel_id" Type="Int32" Nullable="false" />
-          <Property Name="binaNo" Type="Int32" Nullable="false" />
-          <Property Name="binaYaşı" Type="Int32" Nullable="false" />
-          <Property Name="rayicBedel" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <NavigationProperty Name="ada" Relationship="Self.FK_tasinmaz_ada" FromRole="tasinmaz" ToRole="ada" />
-          <NavigationProperty Name="bagimsiz" Relationship="Self.FK_bagimsiz_tasinmaz" FromRole="tasinmaz" ToRole="bagimsiz" />
-          <NavigationProperty Name="caddeSokak" Relationship="Self.FK_tasinmaz_caddeSokak" FromRole="tasinmaz" ToRole="caddeSokak" />
-          <NavigationProperty Name="il" Relationship="Self.FK_tasinmaz_il" FromRole="tasinmaz" ToRole="il" />
-          <NavigationProperty Name="ilce" Relationship="Self.FK_tasinmaz_ilce" FromRole="tasinmaz" ToRole="ilce" />
-          <NavigationProperty Name="mahalle" Relationship="Self.FK_tasinmaz_mahalle" FromRole="tasinmaz" ToRole="mahalle" />
-          <NavigationProperty Name="parsel" Relationship="Self.FK_tasinmaz_parsel" FromRole="tasinmaz" ToRole="parsel" />
-          <NavigationProperty Name="tapuMahalle" Relationship="Self.FK_tasinmaz_tapuMahalle" FromRole="tasinmaz" ToRole="tapuMahalle" />
+          <Property Name="tasinmazTür_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tasimazTürAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bina_id" Type="Int32" />
+          <Property Name="bagimsiz_id" Type="Int32" />
         </EntityType>
-        <Association Name="FK_ada_tapuMahalle">
-          <End Role="tapuMahalle" Type="Self.tapuMahalle" Multiplicity="1" />
-          <End Role="ada" Type="Self.ada" Multiplicity="*" />
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserRoleRelation" Relationship="CityExperDbModel.FK_UserRoleRelation_UserRole" FromRole="UserRole" ToRole="UserRoleRelation" />
+        </EntityType>
+        <EntityType Name="UserRoleRelation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkUserId" Type="Int32" />
+          <Property Name="FkUserRoleId" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserRole" Relationship="CityExperDbModel.FK_UserRoleRelation_UserRole" FromRole="UserRoleRelation" ToRole="UserRole" />
+          <NavigationProperty Name="Users" Relationship="CityExperDbModel.FK_UserRoleRelation_Users" FromRole="UserRoleRelation" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserRoleRelation" Relationship="CityExperDbModel.FK_UserRoleRelation_Users" FromRole="Users" ToRole="UserRoleRelation" />
+        </EntityType>
+        <Association Name="FK_ada_tapuMahalle1">
+          <End Type="CityExperDbModel.tapuMahalle" Role="tapuMahalle" Multiplicity="1" />
+          <End Type="CityExperDbModel.ada" Role="ada" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tapuMahalle">
               <PropertyRef Name="tapuMahalle_id" />
             </Principal>
             <Dependent Role="ada">
-              <PropertyRef Name="mahalle_id" />
+              <PropertyRef Name="tapuMahalle_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_parsel_ada">
-          <End Role="ada" Type="Self.ada" Multiplicity="1" />
-          <End Role="parsel" Type="Self.parsel" Multiplicity="*" />
+        <Association Name="FK_bagimsiz_bina">
+          <End Type="CityExperDbModel.bina" Role="bina" Multiplicity="0..1" />
+          <End Type="CityExperDbModel.bagimsiz" Role="bagimsiz" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ada">
-              <PropertyRef Name="ada_id" />
-            </Principal>
-            <Dependent Role="parsel">
-              <PropertyRef Name="ada_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tasinmaz_ada">
-          <End Role="ada" Type="Self.ada" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ada">
-              <PropertyRef Name="ada_id" />
-            </Principal>
-            <Dependent Role="tasinmaz">
-              <PropertyRef Name="ada_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_bagimsiz_tasinmaz">
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="1" />
-          <End Role="bagimsiz" Type="Self.bagimsiz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tasinmaz">
-              <PropertyRef Name="tasinmaz_id" />
+            <Principal Role="bina">
+              <PropertyRef Name="bina_id" />
             </Principal>
             <Dependent Role="bagimsiz">
-              <PropertyRef Name="tasinmaz_id" />
+              <PropertyRef Name="bina_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_malik_bagimsiz">
+          <End Type="CityExperDbModel.bagimsiz" Role="bagimsiz" Multiplicity="0..1" />
+          <End Type="CityExperDbModel.malik" Role="malik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bagimsiz">
+              <PropertyRef Name="bagimsiz_id" />
+            </Principal>
+            <Dependent Role="malik">
+              <PropertyRef Name="bagimsiz_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bina_parsel">
+          <End Type="CityExperDbModel.parsel" Role="parsel" Multiplicity="0..1" />
+          <End Type="CityExperDbModel.bina" Role="bina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parsel">
+              <PropertyRef Name="parsel_id" />
+            </Principal>
+            <Dependent Role="bina">
+              <PropertyRef Name="parsel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_malik_bina">
+          <End Type="CityExperDbModel.bina" Role="bina" Multiplicity="0..1" />
+          <End Type="CityExperDbModel.malik" Role="malik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bina">
+              <PropertyRef Name="bina_id" />
+            </Principal>
+            <Dependent Role="malik">
+              <PropertyRef Name="bina_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_caddeSokak_mahalle">
-          <End Role="mahalle" Type="Self.mahalle" Multiplicity="1" />
-          <End Role="caddeSokak" Type="Self.caddeSokak" Multiplicity="*" />
+          <End Type="CityExperDbModel.mahalle" Role="mahalle" Multiplicity="1" />
+          <End Type="CityExperDbModel.caddeSokak" Role="caddeSokak" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="mahalle">
               <PropertyRef Name="mahalle_id" />
@@ -548,21 +959,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tasinmaz_caddeSokak">
-          <End Role="caddeSokak" Type="Self.caddeSokak" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="caddeSokak">
-              <PropertyRef Name="caddeSokak_id" />
-            </Principal>
-            <Dependent Role="tasinmaz">
-              <PropertyRef Name="caddeSokak_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ilce_il">
-          <End Role="il" Type="Self.il" Multiplicity="1" />
-          <End Role="ilce" Type="Self.ilce" Multiplicity="*" />
+          <End Type="CityExperDbModel.il" Role="il" Multiplicity="1" />
+          <End Type="CityExperDbModel.ilce" Role="ilce" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="il">
               <PropertyRef Name="il_id" />
@@ -572,21 +971,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tasinmaz_il">
-          <End Role="il" Type="Self.il" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="il">
-              <PropertyRef Name="il_id" />
-            </Principal>
-            <Dependent Role="tasinmaz">
-              <PropertyRef Name="il_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_mahalle_ilce">
-          <End Role="ilce" Type="Self.ilce" Multiplicity="1" />
-          <End Role="mahalle" Type="Self.mahalle" Multiplicity="*" />
+          <End Type="CityExperDbModel.ilce" Role="ilce" Multiplicity="1" />
+          <End Type="CityExperDbModel.mahalle" Role="mahalle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ilce">
               <PropertyRef Name="ilce_id" />
@@ -597,8 +984,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tapuMahalle_ilce">
-          <End Role="ilce" Type="Self.ilce" Multiplicity="1" />
-          <End Role="tapuMahalle" Type="Self.tapuMahalle" Multiplicity="*" />
+          <End Type="CityExperDbModel.ilce" Role="ilce" Multiplicity="1" />
+          <End Type="CityExperDbModel.tapuMahalle" Role="tapuMahalle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ilce">
               <PropertyRef Name="ilce_id" />
@@ -608,242 +995,351 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tasinmaz_ilce">
-          <End Role="ilce" Type="Self.ilce" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ilce">
-              <PropertyRef Name="ilce_id" />
-            </Principal>
-            <Dependent Role="tasinmaz">
-              <PropertyRef Name="ilce_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tasinmaz_mahalle">
-          <End Role="mahalle" Type="Self.mahalle" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="mahalle">
-              <PropertyRef Name="mahalle_id" />
-            </Principal>
-            <Dependent Role="tasinmaz">
-              <PropertyRef Name="mahalle_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tasinmaz_parsel">
-          <End Role="parsel" Type="Self.parsel" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
+        <Association Name="FK_malik_parsel">
+          <End Type="CityExperDbModel.parsel" Role="parsel" Multiplicity="0..1" />
+          <End Type="CityExperDbModel.malik" Role="malik" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="parsel">
               <PropertyRef Name="parsel_id" />
             </Principal>
-            <Dependent Role="tasinmaz">
+            <Dependent Role="malik">
               <PropertyRef Name="parsel_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tasinmaz_tapuMahalle">
-          <End Role="tapuMahalle" Type="Self.tapuMahalle" Multiplicity="1" />
-          <End Role="tasinmaz" Type="Self.tasinmaz" Multiplicity="*" />
+        <Association Name="FK_parsel_tapuMahalle">
+          <End Type="CityExperDbModel.tapuMahalle" Role="tapuMahalle" Multiplicity="0..1" />
+          <End Type="CityExperDbModel.parsel" Role="parsel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tapuMahalle">
               <PropertyRef Name="tapuMahalle_id" />
             </Principal>
-            <Dependent Role="tasinmaz">
-              <PropertyRef Name="tapumahalle_id" />
+            <Dependent Role="parsel">
+              <PropertyRef Name="tapuMahalle_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CityExperDb2Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ada" EntityType="Self.ada" />
-          <EntitySet Name="bagimsiz" EntityType="Self.bagimsiz" />
-          <EntitySet Name="caddeSokak" EntityType="Self.caddeSokak" />
-          <EntitySet Name="il" EntityType="Self.il" />
-          <EntitySet Name="ilce" EntityType="Self.ilce" />
-          <EntitySet Name="mahalle" EntityType="Self.mahalle" />
-          <EntitySet Name="parsel" EntityType="Self.parsel" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="tapuMahalle" EntityType="Self.tapuMahalle" />
-          <EntitySet Name="tasinmaz" EntityType="Self.tasinmaz" />
-          <AssociationSet Name="FK_ada_tapuMahalle" Association="Self.FK_ada_tapuMahalle">
-            <End Role="tapuMahalle" EntitySet="tapuMahalle" />
-            <End Role="ada" EntitySet="ada" />
-          </AssociationSet>
-          <AssociationSet Name="FK_parsel_ada" Association="Self.FK_parsel_ada">
-            <End Role="ada" EntitySet="ada" />
-            <End Role="parsel" EntitySet="parsel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_ada" Association="Self.FK_tasinmaz_ada">
-            <End Role="ada" EntitySet="ada" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_bagimsiz_tasinmaz" Association="Self.FK_bagimsiz_tasinmaz">
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
-            <End Role="bagimsiz" EntitySet="bagimsiz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_caddeSokak_mahalle" Association="Self.FK_caddeSokak_mahalle">
-            <End Role="mahalle" EntitySet="mahalle" />
-            <End Role="caddeSokak" EntitySet="caddeSokak" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_caddeSokak" Association="Self.FK_tasinmaz_caddeSokak">
-            <End Role="caddeSokak" EntitySet="caddeSokak" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ilce_il" Association="Self.FK_ilce_il">
-            <End Role="il" EntitySet="il" />
-            <End Role="ilce" EntitySet="ilce" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_il" Association="Self.FK_tasinmaz_il">
-            <End Role="il" EntitySet="il" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_mahalle_ilce" Association="Self.FK_mahalle_ilce">
-            <End Role="ilce" EntitySet="ilce" />
-            <End Role="mahalle" EntitySet="mahalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tapuMahalle_ilce" Association="Self.FK_tapuMahalle_ilce">
-            <End Role="ilce" EntitySet="ilce" />
-            <End Role="tapuMahalle" EntitySet="tapuMahalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_ilce" Association="Self.FK_tasinmaz_ilce">
-            <End Role="ilce" EntitySet="ilce" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_mahalle" Association="Self.FK_tasinmaz_mahalle">
-            <End Role="mahalle" EntitySet="mahalle" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_parsel" Association="Self.FK_tasinmaz_parsel">
-            <End Role="parsel" EntitySet="parsel" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tasinmaz_tapuMahalle" Association="Self.FK_tasinmaz_tapuMahalle">
-            <End Role="tapuMahalle" EntitySet="tapuMahalle" />
-            <End Role="tasinmaz" EntitySet="tasinmaz" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        <Association Name="FK_UserRoleRelation_UserRole">
+          <End Type="CityExperDbModel.UserRole" Role="UserRole" Multiplicity="0..1" />
+          <End Type="CityExperDbModel.UserRoleRelation" Role="UserRoleRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleRelation">
+              <PropertyRef Name="FkUserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleRelation_Users">
+          <End Type="CityExperDbModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="CityExperDbModel.UserRoleRelation" Role="UserRoleRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleRelation">
+              <PropertyRef Name="FkUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CityExperDb2ModelStoreContainer" CdmEntityContainer="CityExperDb2Entities">
+        <EntityContainerMapping StorageEntityContainer="CityExperDbModelStoreContainer" CdmEntityContainer="CityExperDbEntities">
           <EntitySetMapping Name="ada">
-            <EntityTypeMapping TypeName="CityExperDb2Model.ada">
+            <EntityTypeMapping TypeName="CityExperDbModel.ada">
               <MappingFragment StoreEntitySet="ada">
-                <ScalarProperty Name="ada_id" ColumnName="ada_id" />
-                <ScalarProperty Name="mahalle_id" ColumnName="mahalle_id" />
-                <ScalarProperty Name="adaNo" ColumnName="adaNo" />
-                <ScalarProperty Name="paftaNo" ColumnName="paftaNo" />
                 <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="adaNo" ColumnName="adaNo" />
+                <ScalarProperty Name="tapuMahalle_id" ColumnName="tapuMahalle_id" />
+                <ScalarProperty Name="ada_id" ColumnName="ada_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="bagimsiz">
-            <EntityTypeMapping TypeName="CityExperDb2Model.bagimsiz">
+            <EntityTypeMapping TypeName="CityExperDbModel.bagimsiz">
               <MappingFragment StoreEntitySet="bagimsiz">
-                <ScalarProperty Name="bagimsiz_id" ColumnName="bagimsiz_id" />
-                <ScalarProperty Name="tasinmaz_id" ColumnName="tasinmaz_id" />
-                <ScalarProperty Name="bagimsizNo" ColumnName="bagimsizNo" />
-                <ScalarProperty Name="kullanımTürü" ColumnName="kullanımTürü" />
-                <ScalarProperty Name="odaSayısı" ColumnName="odaSayısı" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="murfakTipi" ColumnName="murfakTipi" />
+                <ScalarProperty Name="konutTipi" ColumnName="konutTipi" />
+                <ScalarProperty Name="aidat" ColumnName="aidat" />
+                <ScalarProperty Name="esyaDurum" ColumnName="esyaDurum" />
+                <ScalarProperty Name="hisseDurum" ColumnName="hisseDurum" />
+                <ScalarProperty Name="toplamBedel" ColumnName="toplamBedel" />
+                <ScalarProperty Name="metreKareBirimFiyat" ColumnName="metreKareBirimFiyat" />
                 <ScalarProperty Name="balkon" ColumnName="balkon" />
-                <ScalarProperty Name="esyaDurumu" ColumnName="esyaDurumu" />
+                <ScalarProperty Name="mutfakTipi" ColumnName="mutfakTipi" />
+                <ScalarProperty Name="banyoSayisi" ColumnName="banyoSayisi" />
+                <ScalarProperty Name="odaSayisi" ColumnName="odaSayisi" />
+                <ScalarProperty Name="manzara" ColumnName="manzara" />
                 <ScalarProperty Name="cephe" ColumnName="cephe" />
+                <ScalarProperty Name="katNo" ColumnName="katNo" />
+                <ScalarProperty Name="bagimsizNo" ColumnName="bagimsizNo" />
+                <ScalarProperty Name="yapiKayitBelgesi" ColumnName="yapiKayitBelgesi" />
+                <ScalarProperty Name="dogalGazNo" ColumnName="dogalGazNo" />
+                <ScalarProperty Name="isinmaTürü" ColumnName="isinmaTürü" />
+                <ScalarProperty Name="suNo" ColumnName="suNo" />
+                <ScalarProperty Name="elektrikNo" ColumnName="elektrikNo" />
                 <ScalarProperty Name="nitelik" ColumnName="nitelik" />
-                <ScalarProperty Name="elektrik" ColumnName="elektrik" />
-                <ScalarProperty Name="su" ColumnName="su" />
-                <ScalarProperty Name="dogalGaz" ColumnName="dogalGaz" />
-                <ScalarProperty Name="rayicBedel" ColumnName="rayicBedel" />
+                <ScalarProperty Name="bagimsizAlani" ColumnName="bagimsizAlani" />
+                <ScalarProperty Name="kullanimTürü" ColumnName="kullanimTürü" />
+                <ScalarProperty Name="malik_id" ColumnName="malik_id" />
+                <ScalarProperty Name="parsel_id" ColumnName="parsel_id" />
+                <ScalarProperty Name="ada_id" ColumnName="ada_id" />
+                <ScalarProperty Name="caddeSokak_id" ColumnName="caddeSokak_id" />
+                <ScalarProperty Name="tapuMahalle_id" ColumnName="tapuMahalle_id" />
+                <ScalarProperty Name="mahalle_id" ColumnName="mahalle_id" />
+                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
+                <ScalarProperty Name="il_id" ColumnName="il_id" />
+                <ScalarProperty Name="bina_id" ColumnName="bina_id" />
+                <ScalarProperty Name="bagimsiz_id" ColumnName="bagimsiz_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bina">
+            <EntityTypeMapping TypeName="CityExperDbModel.bina">
+              <MappingFragment StoreEntitySet="bina">
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="muhit" ColumnName="muhit" />
+                <ScalarProperty Name="asansor" ColumnName="asansor" />
+                <ScalarProperty Name="catiTip" ColumnName="catiTip" />
+                <ScalarProperty Name="degerleme" ColumnName="degerleme" />
+                <ScalarProperty Name="yapiKayitNo" ColumnName="yapiKayitNo" />
+                <ScalarProperty Name="yapiKayitTarih" ColumnName="yapiKayitTarih" />
+                <ScalarProperty Name="yapiKayit" ColumnName="yapiKayit" />
+                <ScalarProperty Name="projeTarih" ColumnName="projeTarih" />
+                <ScalarProperty Name="proje" ColumnName="proje" />
+                <ScalarProperty Name="yapiRuhsatNo" ColumnName="yapiRuhsatNo" />
+                <ScalarProperty Name="yapiRuhsatTarihi" ColumnName="yapiRuhsatTarihi" />
+                <ScalarProperty Name="yapiRuhsat" ColumnName="yapiRuhsat" />
+                <ScalarProperty Name="iskanNo" ColumnName="iskanNo" />
+                <ScalarProperty Name="iskanTarih" ColumnName="iskanTarih" />
+                <ScalarProperty Name="iskan" ColumnName="iskan" />
+                <ScalarProperty Name="görüsler" ColumnName="görüsler" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="tespitTarih" ColumnName="tespitTarih" />
+                <ScalarProperty Name="tespitYapan" ColumnName="tespitYapan" />
+                <ScalarProperty Name="tespitDurum" ColumnName="tespitDurum" />
+                <ScalarProperty Name="toplamKatAdedi" ColumnName="toplamKatAdedi" />
+                <ScalarProperty Name="catiKat" ColumnName="catiKat" />
+                <ScalarProperty Name="normalKat" ColumnName="normalKat" />
+                <ScalarProperty Name="asmaKat" ColumnName="asmaKat" />
+                <ScalarProperty Name="zemin" ColumnName="zemin" />
+                <ScalarProperty Name="bodrum" ColumnName="bodrum" />
+                <ScalarProperty Name="binaDegeri" ColumnName="binaDegeri" />
+                <ScalarProperty Name="metreKareBirimFiyat" ColumnName="metreKareBirimFiyat" />
+                <ScalarProperty Name="binaYüksekligi" ColumnName="binaYüksekligi" />
+                <ScalarProperty Name="kullanımAmacı" ColumnName="kullanımAmacı" />
+                <ScalarProperty Name="otopark" ColumnName="otopark" />
+                <ScalarProperty Name="binaYasi" ColumnName="binaYasi" />
+                <ScalarProperty Name="bagimsizAdedi" ColumnName="bagimsizAdedi" />
+                <ScalarProperty Name="konutAdedi" ColumnName="konutAdedi" />
+                <ScalarProperty Name="isYeriAdadi" ColumnName="isYeriAdadi" />
+                <ScalarProperty Name="katAdedi" ColumnName="katAdedi" />
+                <ScalarProperty Name="yapıNizami" ColumnName="yapıNizami" />
+                <ScalarProperty Name="insaatAlani" ColumnName="insaatAlani" />
+                <ScalarProperty Name="nitelik" ColumnName="nitelik" />
+                <ScalarProperty Name="tabanAlani" ColumnName="tabanAlani" />
+                <ScalarProperty Name="kapiNo" ColumnName="kapiNo" />
+                <ScalarProperty Name="koav" ColumnName="koav" />
+                <ScalarProperty Name="uavt" ColumnName="uavt" />
+                <ScalarProperty Name="parsel_id" ColumnName="parsel_id" />
+                <ScalarProperty Name="ada_id" ColumnName="ada_id" />
+                <ScalarProperty Name="caddeSokak_id" ColumnName="caddeSokak_id" />
+                <ScalarProperty Name="bina_id" ColumnName="bina_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="caddeSokak">
-            <EntityTypeMapping TypeName="CityExperDb2Model.caddeSokak">
+            <EntityTypeMapping TypeName="CityExperDbModel.caddeSokak">
               <MappingFragment StoreEntitySet="caddeSokak">
-                <ScalarProperty Name="caddeSokak_id" ColumnName="caddeSokak_id" />
-                <ScalarProperty Name="mahalle_id" ColumnName="mahalle_id" />
                 <ScalarProperty Name="caddeSokakAdi" ColumnName="caddeSokakAdi" />
+                <ScalarProperty Name="mahalle_id" ColumnName="mahalle_id" />
+                <ScalarProperty Name="caddeSokak_id" ColumnName="caddeSokak_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="il">
-            <EntityTypeMapping TypeName="CityExperDb2Model.il">
+            <EntityTypeMapping TypeName="CityExperDbModel.il">
               <MappingFragment StoreEntitySet="il">
-                <ScalarProperty Name="il_id" ColumnName="il_id" />
+                <ScalarProperty Name="long" ColumnName="long" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
                 <ScalarProperty Name="ilAdi" ColumnName="ilAdi" />
-                <ScalarProperty Name="Enlem" ColumnName="Enlem" />
-                <ScalarProperty Name="boylam" ColumnName="boylam" />
-                <ScalarProperty Name="geography" ColumnName="geography" />
+                <ScalarProperty Name="il_id" ColumnName="il_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ilce">
-            <EntityTypeMapping TypeName="CityExperDb2Model.ilce">
+            <EntityTypeMapping TypeName="CityExperDbModel.ilce">
               <MappingFragment StoreEntitySet="ilce">
-                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
-                <ScalarProperty Name="il_id" ColumnName="il_id" />
+                <ScalarProperty Name="long" ColumnName="long" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
                 <ScalarProperty Name="ilceAdi" ColumnName="ilceAdi" />
+                <ScalarProperty Name="il_id" ColumnName="il_id" />
+                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="mahalle">
-            <EntityTypeMapping TypeName="CityExperDb2Model.mahalle">
+            <EntityTypeMapping TypeName="CityExperDbModel.mahalle">
               <MappingFragment StoreEntitySet="mahalle">
-                <ScalarProperty Name="mahalle_id" ColumnName="mahalle_id" />
-                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
                 <ScalarProperty Name="mahalleAdi" ColumnName="mahalleAdi" />
+                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
+                <ScalarProperty Name="mahalle_id" ColumnName="mahalle_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="malik">
+            <EntityTypeMapping TypeName="CityExperDbModel.malik">
+              <MappingFragment StoreEntitySet="malik">
+                <ScalarProperty Name="malikTelNo" ColumnName="malikTelNo" />
+                <ScalarProperty Name="malikBabaAdi" ColumnName="malikBabaAdi" />
+                <ScalarProperty Name="malikTc" ColumnName="malikTc" />
+                <ScalarProperty Name="malikSoyad" ColumnName="malikSoyad" />
+                <ScalarProperty Name="malikAd" ColumnName="malikAd" />
+                <ScalarProperty Name="mahkeme" ColumnName="mahkeme" />
+                <ScalarProperty Name="hacizYevmiyeTarih" ColumnName="hacizYevmiyeTarih" />
+                <ScalarProperty Name="hacizYevmiyeNo" ColumnName="hacizYevmiyeNo" />
+                <ScalarProperty Name="haciz" ColumnName="haciz" />
+                <ScalarProperty Name="beyanYevmiyeTarih" ColumnName="beyanYevmiyeTarih" />
+                <ScalarProperty Name="beyanYevmiyeNo" ColumnName="beyanYevmiyeNo" />
+                <ScalarProperty Name="beyan" ColumnName="beyan" />
+                <ScalarProperty Name="hisseEdinmeNedeni" ColumnName="hisseEdinmeNedeni" />
+                <ScalarProperty Name="hisseEdinmeTarih" ColumnName="hisseEdinmeTarih" />
+                <ScalarProperty Name="hisseMiktarı" ColumnName="hisseMiktarı" />
+                <ScalarProperty Name="hissePayda" ColumnName="hissePayda" />
+                <ScalarProperty Name="hissePay" ColumnName="hissePay" />
+                <ScalarProperty Name="parselNo" ColumnName="parselNo" />
+                <ScalarProperty Name="bagimsiz_id" ColumnName="bagimsiz_id" />
+                <ScalarProperty Name="bina_id" ColumnName="bina_id" />
+                <ScalarProperty Name="ada_id" ColumnName="ada_id" />
+                <ScalarProperty Name="parsel_id" ColumnName="parsel_id" />
+                <ScalarProperty Name="malik_id" ColumnName="malik_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mulkiyet">
+            <EntityTypeMapping TypeName="CityExperDbModel.Mulkiyet">
+              <MappingFragment StoreEntitySet="Mulkiyet">
+                <ScalarProperty Name="mülkiyetAdi" ColumnName="mülkiyetAdi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="parsel">
-            <EntityTypeMapping TypeName="CityExperDb2Model.parsel">
+            <EntityTypeMapping TypeName="CityExperDbModel.parsel">
               <MappingFragment StoreEntitySet="parsel">
-                <ScalarProperty Name="parsel_id" ColumnName="parsel_id" />
-                <ScalarProperty Name="ada_id" ColumnName="ada_id" />
+                <ScalarProperty Name="yevmiye" ColumnName="yevmiye" />
+                <ScalarProperty Name="mahkemeTarih" ColumnName="mahkemeTarih" />
+                <ScalarProperty Name="mahkeme" ColumnName="mahkeme" />
+                <ScalarProperty Name="malik" ColumnName="malik" />
+                <ScalarProperty Name="rehin" ColumnName="rehin" />
+                <ScalarProperty Name="irtifak" ColumnName="irtifak" />
+                <ScalarProperty Name="haciz" ColumnName="haciz" />
+                <ScalarProperty Name="serh" ColumnName="serh" />
+                <ScalarProperty Name="beyan" ColumnName="beyan" />
+                <ScalarProperty Name="isgalci" ColumnName="isgalci" />
+                <ScalarProperty Name="arsaDegeri" ColumnName="arsaDegeri" />
+                <ScalarProperty Name="metreKareBirimFiyat" ColumnName="metreKareBirimFiyat" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="zeminReferansNo" ColumnName="zeminReferansNo" />
+                <ScalarProperty Name="belgeTarih" ColumnName="belgeTarih" />
+                <ScalarProperty Name="belgeNo" ColumnName="belgeNo" />
+                <ScalarProperty Name="alinanTarih" ColumnName="alinanTarih" />
+                <ScalarProperty Name="kurumAdi" ColumnName="kurumAdi" />
+                <ScalarProperty Name="tespittarihi" ColumnName="tespittarihi" />
+                <ScalarProperty Name="planaGöreİnsaatAlani" ColumnName="planaGöreİnsaatAlani" />
+                <ScalarProperty Name="planAdi" ColumnName="planAdi" />
+                <ScalarProperty Name="taks" ColumnName="taks" />
+                <ScalarProperty Name="kaks" ColumnName="kaks" />
+                <ScalarProperty Name="hmax" ColumnName="hmax" />
+                <ScalarProperty Name="insaatAlani" ColumnName="insaatAlani" />
+                <ScalarProperty Name="emsal" ColumnName="emsal" />
+                <ScalarProperty Name="planFonksiyonu" ColumnName="planFonksiyonu" />
+                <ScalarProperty Name="gorusler" ColumnName="gorusler" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="tespitTarih" ColumnName="tespitTarih" />
+                <ScalarProperty Name="tespitYapan" ColumnName="tespitYapan" />
+                <ScalarProperty Name="sayfa" ColumnName="sayfa" />
+                <ScalarProperty Name="cilt" ColumnName="cilt" />
+                <ScalarProperty Name="zemintipi" ColumnName="zemintipi" />
+                <ScalarProperty Name="rayicBedel" ColumnName="rayicBedel" />
+                <ScalarProperty Name="tapuAlani" ColumnName="tapuAlani" />
+                <ScalarProperty Name="nitelik" ColumnName="nitelik" />
                 <ScalarProperty Name="parselNo" ColumnName="parselNo" />
                 <ScalarProperty Name="adaNo" ColumnName="adaNo" />
                 <ScalarProperty Name="paftaNo" ColumnName="paftaNo" />
+                <ScalarProperty Name="hisseli" ColumnName="hisseli" />
+                <ScalarProperty Name="mülkiyet" ColumnName="mülkiyet" />
+                <ScalarProperty Name="tapuMahalle_id" ColumnName="tapuMahalle_id" />
+                <ScalarProperty Name="ada_id" ColumnName="ada_id" />
+                <ScalarProperty Name="parsel_id" ColumnName="parsel_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="CityExperDb2Model.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+          <EntitySetMapping Name="sahiplikDurum">
+            <EntityTypeMapping TypeName="CityExperDbModel.sahiplikDurum">
+              <MappingFragment StoreEntitySet="sahiplikDurum">
+                <ScalarProperty Name="sahiplikAdi" ColumnName="sahiplikAdi" />
+                <ScalarProperty Name="bina_id" ColumnName="bina_id" />
+                <ScalarProperty Name="bagimsiz_id" ColumnName="bagimsiz_id" />
+                <ScalarProperty Name="sahiplikDurum_id" ColumnName="sahiplikDurum_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tapuMahalle">
-            <EntityTypeMapping TypeName="CityExperDb2Model.tapuMahalle">
+            <EntityTypeMapping TypeName="CityExperDbModel.tapuMahalle">
               <MappingFragment StoreEntitySet="tapuMahalle">
-                <ScalarProperty Name="tapuMahalle_id" ColumnName="tapuMahalle_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tapuMahalleAdi" ColumnName="tapuMahalleAdi" />
                 <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
-                <ScalarProperty Name="mahalleKoyAdi" ColumnName="mahalleKoyAdi" />
+                <ScalarProperty Name="tapuMahalle_id" ColumnName="tapuMahalle_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tasinmaz">
-            <EntityTypeMapping TypeName="CityExperDb2Model.tasinmaz">
-              <MappingFragment StoreEntitySet="tasinmaz">
-                <ScalarProperty Name="tasinmaz_id" ColumnName="tasinmaz_id" />
-                <ScalarProperty Name="kapıNo" ColumnName="kapıNo" />
-                <ScalarProperty Name="il_id" ColumnName="il_id" />
-                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
-                <ScalarProperty Name="mahalle_id" ColumnName="mahalle_id" />
-                <ScalarProperty Name="tapumahalle_id" ColumnName="tapumahalle_id" />
-                <ScalarProperty Name="caddeSokak_id" ColumnName="caddeSokak_id" />
-                <ScalarProperty Name="ada_id" ColumnName="ada_id" />
-                <ScalarProperty Name="parsel_id" ColumnName="parsel_id" />
-                <ScalarProperty Name="binaNo" ColumnName="binaNo" />
-                <ScalarProperty Name="binaYaşı" ColumnName="binaYaşı" />
-                <ScalarProperty Name="rayicBedel" ColumnName="rayicBedel" />
+          <EntitySetMapping Name="tasinmazTürü">
+            <EntityTypeMapping TypeName="CityExperDbModel.tasinmazTürü">
+              <MappingFragment StoreEntitySet="tasinmazTürü">
+                <ScalarProperty Name="bagimsiz_id" ColumnName="bagimsiz_id" />
+                <ScalarProperty Name="bina_id" ColumnName="bina_id" />
+                <ScalarProperty Name="tasimazTürAd" ColumnName="tasimazTürAd" />
+                <ScalarProperty Name="tasinmazTür_id" ColumnName="tasinmazTür_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRole">
+            <EntityTypeMapping TypeName="CityExperDbModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleRelation">
+            <EntityTypeMapping TypeName="CityExperDbModel.UserRoleRelation">
+              <MappingFragment StoreEntitySet="UserRoleRelation">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FkUserRoleId" ColumnName="FkUserRoleId" />
+                <ScalarProperty Name="FkUserId" ColumnName="FkUserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CityExperDbModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TelNo" ColumnName="TelNo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

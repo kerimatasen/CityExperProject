@@ -19,19 +19,18 @@ namespace CityExperWeb.Entity
         {
             this.mahalle = new HashSet<mahalle>();
             this.tapuMahalle = new HashSet<tapuMahalle>();
-            this.tasinmaz = new HashSet<tasinmaz>();
         }
     
         public int ilce_id { get; set; }
         public int il_id { get; set; }
         public string ilceAdi { get; set; }
+        public Nullable<decimal> lat { get; set; }
+        public Nullable<decimal> @long { get; set; }
     
         public virtual il il { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<mahalle> mahalle { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tapuMahalle> tapuMahalle { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tasinmaz> tasinmaz { get; set; }
     }
 }

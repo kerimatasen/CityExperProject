@@ -10,21 +10,17 @@ namespace CityExperWeb.Controllers
 {
     public class IlceController : Controller
     {
-        CityExperDb2Entities entity = new CityExperDb2Entities();
+        CityExperDbEntities entity = new CityExperDbEntities();
         // GET: Ilce
         public JsonResult ilcelerbyilId(int ilid)
         {
-            var ilceler = entity.ilce.Where(x => x.il_id == ilid).ToList(); // 
-
-            var jsonModel = ilceler.Select(x => new
-            {
-                ilce_id=x.ilce_id,
-                ilceAdi=x.ilceAdi
-            });
-
-
-            return Json(jsonModel, JsonRequestBehavior.AllowGet);
+            var ilceler = entity.ilce.Where(x => x.il_id == ilid).Select(x => new{ilce_id=x.ilce_id,ilceAdi=x.ilceAdi}).ToList(); // 
+            return Json(ilceler, JsonRequestBehavior.AllowGet);
         }
+
+
+
+
         // GET: Ilce
         //public JsonResult PoligonGetir(int plaka)
         //{

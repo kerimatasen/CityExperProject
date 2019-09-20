@@ -1,0 +1,620 @@
+﻿@model CityExperWeb.Models.Gayrimenkul.TapuKadastroBilgiViewModel
+
+<div class="tapubilgileri" style="display:block;margin-top:1%;">
+    <button class="accordion1" disabled>TAPU VE KADASTRO BİLGİLERİ</button>
+    <div class="panel2">
+        <div class="" style="margin:1% 0px;">
+            <div class="col-md-12" style="padding:0px;">
+                <div class="col-md-3">
+                    <select class="form-control" id="ilListesi" name="ilListesi">
+                        <option value="0">İl Seçiniz</option>
+                        @foreach (var il in Model.Iller)
+                        {
+                            <option value="@il.Id">@il.Adi</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="ilceListesi" name="ilceListesi">
+                        <option value="0">İlçe</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="tapuMahalle" name="input">
+                        <option value="" disabled selected>Tapu Mahalle</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="mulkiyet" name="input">
+                        <option value="" disabled selected>Mülkiyet</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-12" style="padding:0px;">
+
+                <div class="col-md-3"id="hisseliSecim" style="border:1px solid #d8dde2;
+height:35px;
+margin-top:0.6%;
+border-radius:5px;
+padding:0px;
+max-width: 273px;
+margin-left: 3px;
+margin-right: 3px;">
+                    <div class="col-md-2" style="margin-top: 1%;margin-left:-2%;">
+                        <p>Hisseli</p>
+                    </div>
+                    <div class="col-md-10">
+                        <ul>
+                            <li class="col-md-2">
+                                <input type="radio" id="yes-option" name="selector">
+                                <label for="yes-option">Evet</label>
+                                <div class="check"></div>
+                            </li>
+
+                            <li class="col-md-2" id="noHisseli">
+                                <input type="radio" id="no-option" name="selector">
+                                <label for="no-option">Hayır</label>
+                                <div class="check"><div class="inside"></div></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <input name="paftaNo" id="paftaNo" type="text" class="form-control" placeholder="Pafta No" required />
+                </div>
+                <div class="col-md-3">
+                    <input name="adaNo" id="adaNo" type="text" class="form-control" placeholder="Ada No" />
+                </div>
+                <div class="col-md-3">
+                    <input type="text" id="parselNo" name="parselNo" class="form-control" placeholder="Parsel No" />
+                </div>
+            </div>
+            <div class="col-md-12" style="padding:0px;">
+                <div class="col-md-3">
+                    <input type="text" id="nitelik" name="nitelik" class="form-control" placeholder="Nitelik" />
+                </div>
+                <div class="col-md-3">
+                    <input type="text" id="tapuAlani" class="form-control" placeholder="Tapu Alanı" />
+                </div>
+                <div class="col-md-3">
+                    <input type="text" id="rayicBedel" class="form-control" placeholder="Rayiç Bedel" />
+                </div>
+                <div class="col-md-3">
+                    <input type="text" id="zeminTipi" class="form-control" placeholder="Zemin Tipi" />
+                </div>
+            </div>
+            <div class="col-md-12" style="padding:0px;">
+                <div class="col-md-3">
+                    <input type="text" id="cilt" class="form-control" placeholder="Cilt" />
+                </div>
+                <div class="col-md-3">
+                    <input type="text" id="sayfa" class="form-control" placeholder="Sayfa" />
+                </div>
+                <div class="col-md-3">
+                    <input type="text" id="tespitYapan" class="form-control" placeholder="Tespit Yapan" />
+                </div>
+                <div class='col-md-3'>
+                    <input id="datepicker4" placeholder="Tespit Tarihi" />
+                </div>
+            </div>
+            <div class="col-md-12" id="aciklamaAlani" style="padding:0px;">
+                    <form action="#">
+                        <div class="form-group col-md-6" style="padding:0px 0.4% 0px 0.4%;">
+                            <textarea class="form-control" rows="4" id="parselTKAciklama" name="text" placeholder="Açıklama">@Model.Aciklama</textarea>
+                        </div>
+                        <div class="form-group col-md-6" style="padding:0px 0.4% 0px 0.4%;">
+                            <textarea class="form-control" rows="4" id="parselTKGorus" name="text" placeholder="Görüşler"></textarea>
+                        </div>
+                    </form>
+                <div class="col-md-12"id="dragDropAlani" style="padding:0px;margin:0.4% 0px 0 0;">
+                    <form action="/" method="post" class="dropzone" id="my-awesome-dropzone"></form>
+                </div>
+                <div class="gwc-drag-drop-wrapper">
+                    <div class="gwc-drag-drop-wrapper__dashes">
+                        <div class="gwc-drag-drop-wrapper__dashes__message">
+                            <i class="material-icons text-muted">cloud_upload</i>
+                            <div class="gwc-drag-drop-wrapper__dashes__message__title">
+                                Drag & Drop
+                            </div>
+                            <div class="gwc-drag-drop-wrapper__dashes__message__desc">
+                                your files here
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="float:right;padding:0px;">
+                    <div class="col-md-3" style="float:right;padding:0.4%;">
+                        <div class="autoCenter">
+                            <button class="col-md-5" id="nextTapu">İleri</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #region Tapu Kadastro Ekleme Dışı -->
+    <div style="display:block">
+        <div class="bilgigoruntuleme">
+            <button class="accordion">
+                MALİK BİLGİLERİ
+                <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+                    <li>
+                        <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+                    </li>
+                    <li>
+                        <a class=" navbar-right "><i class="far fa-plus-square" data-toggle="modal" data-target="#modal"></i></a>
+                    </li>
+                </ul>
+            </button>
+
+            <div class="panel1">
+                <div class="col-md-12" style="padding:0px;width:100%!important;">
+                    <div class="malikBilgiAlanı col-md-10" style="height:40px;display:table;">
+                        <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;"> Ad: <span> Abcdefg</span> </p>
+                        <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;"> Soyad: <span> Abcdefg</span></p>
+                        <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;"> Tc: <span> Abcdefg</span></p>
+                        <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;"> Baba Adı: <span> Abcdefg</span></p>
+                        <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;"> Vs: <span> Abcdefg</span></p>
+                        <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;"> Vs: <span> Abcdefg</span></p>
+                    </div>
+                    <div class="buttons col-md-2" style="float:right;">
+                        <button type="button" class="malikSilButton" style="height:40px;width:50px;">
+                            <img src="~/Assets/img/sil.png" />
+                        </button>
+                        <button type="button" class="malikDuzenleButton" style="height:40px;width:50px;">
+                            <img src="~/Assets/duzenleicon.png" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="container">
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="background: rgba(0, 0, 0, 0.47)">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="accordionMalik">MALİK BİLGİLERİ</button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="panel2">
+                        <div class="" style="margin:1% 0px;">
+                            <div class="col-md-12" style="padding:0px;">
+                                <div class="col-md-3">
+                                    <select class="form-control" id="MahalleListAdres" name="input">
+                                        <option value="" disabled selected>Malik Türü</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" value="" class="form-control" placeholder="Tc" />
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" value="" class="form-control" placeholder="Ad" />
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" value="" class="form-control" placeholder="Soyad" />
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding:0px;">
+                                <div class="col-md-3">
+                                    <input type="text" value="" class="form-control" placeholder="Baba Adı" />
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" value="" class="form-control" placeholder="Hisse Oranı" />
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" value="" class="form-control" placeholder="Hisse Miktarı" />
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding:0px;">
+                                <div class="col-md-3">
+                                    <input type="text" value="" class="form-control" placeholder="Edinme Sebebi" />
+                                </div>
+                                <div class='col-md-3'>
+                                    <input id="datepicker5" placeholder="Edinme Tarihi" />
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding:0px;margin:1% 0px;">
+                                <div class="gwc-drag-drop-wrapper">
+                                    <div class="gwc-drag-drop-wrapper__dashes">
+                                        <div class="gwc-drag-drop-wrapper__dashes__message">
+                                            <i class="material-icons text-muted">cloud_upload</i>
+                                            <div class="gwc-drag-drop-wrapper__dashes__message__title">
+                                                Drag & Drop
+                                            </div>
+                                            <div class="gwc-drag-drop-wrapper__dashes__message__desc">
+                                                your files here
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background: #328e8d;">Kapat</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background: #328e8d;">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @*-------------------------------------------------------------------------------------------------------  ŞERH BİLGİLERİ   ---------------------------------------------------------------------------*@
+
+    <button class="accordion">
+        ŞERH BİLGİLERİ
+        <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+            <li>
+                <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+            </li>
+            <li>
+                <a class=" navbar-right "><i class="far fa-plus-square" data-toggle="modal" data-target="#modalSerh"></i></a>
+            </li>
+        </ul>
+    </button>
+    <div class="panel1">
+        <div class="malikBilgiAlanı col-md-10" style="height:40px;display:table;">
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Malik bilgilerinden türetilecektir</p>
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Şerh Tarih:</p>
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Şerh Açıklama:</p>
+        </div>
+        <div class="buttons col-md-2" style="float:right;">
+            <button type="button" class="malikSilButton" style="height:40px;width:50px;">
+                <img src="~/Assets/img/sil.png" />
+            </button>
+            <button type="button" class="malikDuzenleButton" style="height:40px;width:50px;">
+                <img src="~/Assets/duzenleicon.png" />
+            </button>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalSerh" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="accordionMalik">Serh Bilgileri</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12" style="padding:0px;">
+                        <div class="col-md-6" style="padding:0px 0.4% 0px 0;border-radius:5px;">
+                            <input type="text" value="" class="form-control" placeholder="Şerh No" />
+                        </div>
+                        <div class="col-md-6" style="padding:0px 0.4% 0px 0;border-radius:5px;">
+                            <input id="datepicker6" placeholder="Şerh Tarihi" />
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="padding:0px;">
+                        <form action="#">
+                            <div class="form-group col-md-12" style="padding:0px 0.8% 0 0;border-radius:5px;">
+                                <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Yevmiye Açıklama"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*-------------------------------------------------------------------------------------------------------   BEYAN BİLGİLERİ  ---------------------------------------------------------------------------*@
+    <button class="accordion">
+        BEYAN BİLGİLERİ
+        <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+            <li>
+                <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+            </li>
+            <li>
+                <a class=" navbar-right "><i class="far fa-plus-square" data-toggle="modal" data-target="#modalBeyan"></i></a>
+            </li>
+        </ul>
+    </button>
+    <div class="panel1">
+        <div class="malikBilgiAlanı col-md-10" style="height:40px;display:table;">
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Malik bilgilerinden türetilecektir</p>
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Beyan Tarih:</p>
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Beyan Açıklama:</p>
+        </div>
+        <div class="buttons col-md-2" style="float:right;">
+            <button type="button" class="malikSilButton" style="height:40px;width:50px;">
+                <img src="~/Assets/img/sil.png" />
+            </button>
+            <button type="button" class="malikDuzenleButton" style="height:40px;width:50px;">
+                <img src="~/Assets/duzenleicon.png" />
+            </button>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalBeyan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="accordionMalik">Beyan Bilgileri</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12" style="padding:0px;">
+                        <div class="col-md-6" style="padding:0px 0.4% 0px 0;border-radius:5px;">
+                            <input type="text" value="" class="form-control" placeholder="Beyan No" />
+                        </div>
+                        <div class="col-md-6" style="padding:0px 0px 0.4% 0%;border-radius:5px;">
+                            <input id="datepicker7" placeholder="Beyan Tarihi" />
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="padding:0px;">
+                        <form action="#">
+                            <div class="form-group col-md-12" style="padding:0px 0.8% 0 0;border-radius:5px;">
+                                <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Beyan Açıklama"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*-------------------------------------------------------------------------------------------------------  İŞGALCİ BİLGİLERİ   ---------------------------------------------------------------------------*@
+
+    <button class="accordion">
+        İŞGALCİ BİLGİLERİ
+        <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+            <li>
+                <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+            </li>
+            <li>
+                <a class=" navbar-right "><i class="far fa-plus-square" data-toggle="modal" data-target="#modalIsgalci"></i></a>
+            </li>
+        </ul>
+    </button>
+    <div class="panel1">
+        <div class="malikBilgiAlanı col-md-10" style="height:40px;display:table;">
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Malik bilgilerinden türetilecektir</p>
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">İşgalci Tarih:</p>
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">İşgalci Açıklama:</p>
+        </div>
+        <div class="buttons col-md-2" style="float:right;">
+            <button type="button" class="malikSilButton" style="height:40px;width:50px;">
+                <img src="~/Assets/img/sil.png" />
+            </button>
+            <button type="button" class="malikDuzenleButton" style="height:40px;width:50px;">
+                <img src="~/Assets/duzenleicon.png" />
+            </button>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalIsgalci" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="accordionMalik">İşgalci Bilgileri</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12" style="padding:0px;">
+                        <div class="col-md-6" style="padding:0px 0.4% 0px 0;border-radius:5px;">
+                            <input type="text" value="" class="form-control" placeholder="İşgalci No" />
+                        </div>
+                        <div class="col-md-6" style="padding:0px 0px 0.4% 0%;border-radius:5px;">
+                            <input id="datepicker8" placeholder="İşgalci Tarihi" />
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="padding:0px;">
+                        <form action="#">
+                            <div class="form-group col-md-12" style="padding:0px 0.8% 0 0;border-radius:5px;">
+                                <textarea class="form-control" rows="4" id="comment" name="text" placeholder="İşgalci Açıklama"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*-------------------------------------------------------------------------------------------------------   İRTİFAK BİLGİLERİ  ---------------------------------------------------------------------------*@
+
+    <button class="accordion">
+        İRTİFAK BİLGİLERİ
+        <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+            <li>
+                <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+            </li>
+            <li>
+                <a class=" navbar-right "><i class="far fa-plus-square" data-toggle="modal" data-target="#modalIrtifak"></i></a>
+            </li>
+        </ul>
+    </button>
+    <div class="panel1">
+        <div class="malikBilgiAlanı col-md-10" style="height:40px;display:table;">
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Malik bilgilerinden türetilecektir</p>
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">İrtifak Tarih:</p>
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">İrtifak Açıklama:</p>
+        </div>
+        <div class="buttons col-md-2" style="float:right;">
+            <button type="button" class="malikSilButton" style="height:40px;width:50px;">
+                <img src="~/Assets/img/sil.png" />
+            </button>
+            <button type="button" class="malikDuzenleButton" style="height:40px;width:50px;">
+                <img src="~/Assets/duzenleicon.png" />
+            </button>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalIrtifak" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="accordionMalik">İrtifak Bilgileri</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12" style="padding:0px;">
+                        <div class="col-md-6" style="padding:0px 0.4% 0px 0;border-radius:5px;">
+                            <input type="text" value="" class="form-control" placeholder="İrtifak No" />
+                        </div>
+                        <div class="col-md-6" style="padding:0px 0px 0.4% 0%;border-radius:5px;">
+                            <input id="datepicker9" placeholder="İrtifak Tarihi" />
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="padding:0px;">
+                        <form action="#">
+                            <div class="form-group col-md-12" style="padding:0px 0.8% 0 0;border-radius:5px;">
+                                <textarea class="form-control" rows="4" id="comment" name="text" placeholder="İrtifak Açıklama"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*------------------------------------------------------------------------------------------------------- HACİZ BİLGİLERİ ---------------------------------------------------------------------------*@
+
+    <button class="accordion">
+        HACİZ BİLGİLERİ
+        <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+            <li>
+                <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+            </li>
+            <li>
+                <a class=" navbar-right "><i class="far fa-plus-square" data-toggle="modal" data-target="#modalHaciz"></i></a>
+            </li>
+        </ul>
+    </button>
+    <div class="panel1">
+        <div class="malikBilgiAlanı col-md-10" style="height:40px;display:table;">
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Malik bilgilerinden türetilecektir</p>
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Haciz Tarih:</p>
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Haciz Açıklama:</p>
+        </div>
+        <div class="buttons col-md-2" style="float:right;">
+            <button type="button" class="malikSilButton" style="height:40px;width:50px;">
+                <img src="~/Assets/img/sil.png" />
+            </button>
+            <button type="button" class="malikDuzenleButton" style="height:40px;width:50px;">
+                <img src="~/Assets/duzenleicon.png" />
+            </button>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalHaciz" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Haciz Bilgileri</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12" style="padding:0px;">
+                        <div class="col-md-6" style="padding:0px 0.4% 0px 0;border-radius:5px;">
+                            <input type="text" value="" class="form-control" placeholder="Haciz No" />
+                        </div>
+                        <div class="col-md-6" style="padding:0px 0px 0.4% 0%;border-radius:5px;">
+                            <input id="datepicker10" placeholder="Haciz Tarihi" />
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="padding:0px;">
+                        <form action="#">
+                            <div class="form-group col-md-12" style="padding:0px 0.8% 0 0;border-radius:5px;">
+                                <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Haciz Açıklama"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*------------------------------------------------------------------------------------------------------- İPOTEK BİLGİLERİ ---------------------------------------------------------------------------*@
+    <button class="accordion">
+        İPOTEK BİLGİLERİ
+        <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+            <li>
+                <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+            </li>
+            <li>
+                <a class=" navbar-right "><i class="far fa-plus-square" data-toggle="modal" data-target="#modalIpotek"></i></a>
+            </li>
+        </ul>
+    </button>
+    <div class="panel1">
+        <div class="malikBilgiAlanı col-md-10" style="height:40px;display:table;">
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">İpotek No:</p>
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">İpotek Tarih:</p>
+            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">İpotek Açıklama:</p>
+        </div>
+        <div class="buttons col-md-2" style="float:right;">
+            <button type="button" class="malikSilButton" style="height:40px;width:50px;">
+                <img src="~/Assets/img/sil.png" />
+            </button>
+            <button type="button" class="malikDuzenleButton" style="height:40px;width:50px;">
+                <img src="~/Assets/duzenleicon.png" />
+            </button>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalIpotek" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="accordionMalik">İpotek Bilgileri</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12" style="padding:0px;">
+                        <div class="col-md-6" style="padding:0px 0.4% 0px 0;border-radius:5px;">
+                            <input type="text" value="" class="form-control" placeholder="İpotek No" />
+                        </div>
+                        <div class="col-md-6" style="padding:0px 0px 0.4% 0%;border-radius:5px;">
+                            <input id="datepicker11" placeholder="İpotek Tarihi" />
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="padding:0px;">
+                        <form action="#">
+                            <div class="form-group col-md-12" style="padding:0px 0.8% 0 0;border-radius:5px;">
+                                <textarea class="form-control" rows="4" id="comment" name="text" placeholder="İpotek Açıklama"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

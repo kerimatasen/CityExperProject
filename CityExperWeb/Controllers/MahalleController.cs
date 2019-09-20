@@ -12,7 +12,7 @@ namespace CityExperWeb.Controllers
 {
     public class MahalleController : Controller
     {
-        CityExperDb2Entities entity = new CityExperDb2Entities();
+        CityExperDbEntities entity = new CityExperDbEntities();
         public JsonResult mahallebyilceid(int ilceid)
         {
             var mahalleler = entity.mahalle.Where(x => x.ilce_id == ilceid).ToList(); // 

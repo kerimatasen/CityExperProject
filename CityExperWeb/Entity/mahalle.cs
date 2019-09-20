@@ -18,7 +18,6 @@ namespace CityExperWeb.Entity
         public mahalle()
         {
             this.caddeSokak = new HashSet<caddeSokak>();
-            this.tasinmaz = new HashSet<tasinmaz>();
         }
     
         public int mahalle_id { get; set; }
@@ -28,7 +27,5 @@ namespace CityExperWeb.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<caddeSokak> caddeSokak { get; set; }
         public virtual ilce ilce { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tasinmaz> tasinmaz { get; set; }
     }
 }

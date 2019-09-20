@@ -3,275 +3,77 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
+<link href="~/Assets/css/tasinmazDurum.css" rel="stylesheet" />
+<div class="container-fluid">
+    <div class="panel-heading" style="font-size:24px;font-family:Roboto">
+        Taşınmaz Durum
+        @*kerim*@
+    </div>
+    <div class="row" style="border: 1px solid #CDEBF4;">
+        <div class="col-md-9 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="places_select">
+                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="hospital,health" title="Hastane" style="background:#236f74;argin-top:auto;  margin-bottom:auto;">
 
-<style>
-    #tooltip {
-        position: relative;
-        display: inline-block;
-        border-bottom: 1px dotted black;
-    }
+                        <img src="~/Assets/img/places_icons/hospital.png" alt='hospital,health' style="height:30px; width:30px;" />
+                        <p>HASTANE </p>
 
-        #tooltip #tooltiptext {
-            visibility: hidden;
-            width: 120px;
-            background-color: black;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            /* Position the tooltip */
-            position: absolute;
-            z-index: 1;
-        }
+                    </a>
+                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="park" title="Yeşil Alan" style="background:#236f74; margin-top:auto;  margin-bottom:auto;">
 
-        #tooltip:hover #tooltiptext {
-            visibility: visible;
-        }
-</style>
-<link rel="stylesheet" href="../Assets/libraries/tether/dist/css/tether.min.css" />
-<link rel="stylesheet" href="../Assets/css/winter-flat.css" />
-<link rel="stylesheet" href="../Assets/css/custom.css" />
-<link rel="stylesheet" href="../Assets/libraries/owl.carousel/assets/owl.carousel.css" />
-<link rel="stylesheet" href="../Assets/css/map.css" />
-<link rel="icon" href="Assets/img/favicon.ico" type="image/x-icon" />
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css' />
-<link rel="stylesheet" href="../Assets/libraries/font-awesome/css/font-awesome.min.css" />
-<link rel="stylesheet" href="../Assets/libraries/tether/dist/css/tether.min.css" />
-<link rel="stylesheet" href="../Assets/libraries/bootstrap/dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../Assets/libraries/bootstrap-colorpicker-master/dist/css/bootstrap-colorpicker.min.css" />
-<link rel="stylesheet" href="../Assets/libraries/bootstrap-colorpicker-master/dist/css/bootstrap-colorpicker.min.css" />
-<div class="container container-wrapper">
-    <main class="main section-color-primary">
-        <div class="widget-body" style="padding:20px;">
-            <div class="widget-header widget-title text-uppercase">
-                <h2>Taşınmaz Hakkında Açıklama</h2>
+                        <img src="~/Assets/img/places_icons/park.png" alt='park' style="height:30px; width:30px;"/>
+
+                        <p> YEŞİL ALAN</p>
+                    </a>
+                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="atm,bank" title="Bankamatik" style="background:#236f74; margin-top:auto;  margin-bottom:auto;">
+
+                        <img src="~/Assets/img/places_icons/atm.png" alt='atm' style="height:30px; width:30px;"/>
+                        <p> ATM</p>
+
+                    </a>
+                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="gas_station" title="Petrol Ofisi" style="background:#236f74; argin-top:auto;  margin-bottom:auto;">
+
+                        <img src="~/Assets/img/places_icons/benzinlik.png" alt="gas_station" style="height:30px; width:30px;"/>
+                        <p> BENZİNLİK</p>
+
+                    </a>
+                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="food,bar,cafe,restourant" title="Restaurant" style="background:#236f74;argin-top:auto;  margin-bottom:auto; ">
+
+                        <img src="~/Assets/img/places_icons/restaurant.png" alt="food" style="height:30px; width:30px;" />
+                        <p> RESTAURANT </p>
+                    </a>
+                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="store" title="Mağaza" style="background:#236f74;argin-top:auto;  margin-bottom:auto;">
+
+                        <img src="~/Assets/img/places_icons/magaza.png" alt="store" style="height:30px; width:30px;"/>
+                        <p>MAĞAZA </p>
+
+                    </a>
+                </div>
             </div>
-            <div class="widget-content wide-p">
-                <p class='clearfix'>
-                    <img src="~/Assets/img/placeholders/ofis1.jpg" class="pull-right-img" alt="" />
-                    This is simply dummy text of the printing and typesetting industry. That has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Layout passages. This is simply dummy text of the printing and typesetting industry.
-                </p>
-            </div>
+            <div class="property-map " id='property-map'></div>
         </div>
-        <div class="container">
-            <div class="col-md-9">
-                <div class="widget widget-box box-container widget-property-map" style="background:none;">
-                    <div class="places_select">
-                        <a class="btn btn-large" data-toggle="tooltip" data-rel="hospital,health" title="Hastane"><img src="~/Assets/img/places_icons/hospital.png" alt='hospital,health' /></a>
-                        <a class="btn btn-large" data-toggle="tooltip" data-rel="park" title="Yeşil Alan"><img src="~/Assets/img/places_icons/park.png" alt='park' /></a>
-                        <a class="btn btn-large" data-toggle="tooltip" data-rel="atm,bank" title="Bankamatik"><img src="~/Assets/img/places_icons/atm.png" alt='atm' /></a>
-                        <a class="btn btn-large" data-toggle="tooltip" data-rel="gas_station" title="Petrol Ofisi"><img src="~/Assets/img/places_icons/petrol.png" alt="gas_station" /></a>
-                        <a class="btn btn-large" data-toggle="tooltip" data-rel="food,bar,cafe,restourant" title="Resaourant"><img src="~/Assets/img/places_icons/restourant.png" alt="food" /></a>
-                        <a class="btn btn-large" data-toggle="tooltip" data-rel="store" title="Mağaza"><img src="~/Assets/img/places_icons/store.png" alt="store" /></a>
-                        <a class="btn btn-large" data-toggle="tooltip" data-rel="school" title="Okul"><img src="##" alt="okul" /></a>
-                        <a class="btn btn-large" data-toggle="tooltip" data-rel="university" title="üniversite"><img src="##" alt="üniversite" /></a>
-                    </div>
-                    <div class="property-map" id='property-map' style='height: 580px;'></div>
-                    <div class="route_suggestion form-additional">
-                        <input id="route_from" class="inputtext w360 form-control" type="text" value="" placeholder="Adres Yazınız." name="route_from" />
-                        <a id="route_from_button" href="#" class="btn-second"> Google Haritalar</a>
-                    </div>
-                </div>
-                <section class="header-slider">
-                    <!-- Carousel container -->
-                    <div id="header-slider" class="carousel slide slider-tall slider-full-height" data-ride="carousel">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators">
-                            <li data-target="#header-slider" data-slide-to="0" class="active">
-                                <div class="carousel-indicators-preview"></div>
-                            </li>
-                            <li data-target="#header-slider" data-slide-to="1">
-                                <div class="carousel-indicators-preview"></div>
-                            </li>
-                            <li data-target="#header-slider" data-slide-to="2">
-                                <div class="carousel-indicators-preview"></div>
-                            </li>
-                        </ol>
-                        <!-- Content -->
-                        <div class="carousel-inner" role="listbox" style="height: 793px!important">
-                            <!-- Slide 1 -->
-                            <div class="item active" style="user-select: none;">
-                                <img src="~/Assets/img/placeholders/ofis1.jpg" alt="Sunset over beach" />
-                                <div class="carousel-caption">
-                                    <h3 class="carousel-caption-title"><span>Taşınmaz Adı</span><i class="line-bottom color-primary"></i></h3>
-                                    <div class="s-description"><p>This is simply dummy text of the printing and the typesetting industry. That has been the industry standard dummy text ever since the 1500s ...</p></div>
-                                    <a href="#.html" class="btn btn-primary color-primary"><span>Click to show</span></a>
-                                </div>
-                            </div>
-                            <!-- Slide 2 -->
-                            <div class="item" style="user-select: none;">
-                                <img src="~/Assets/img/placeholders/ofis3.jpg" alt="Rob Roy Glacier" />
-                                <div class="carousel-caption">
-                                    <h3 class="carousel-caption-title"><span>Taşınmaz Adı</span><i class="line-bottom color-primary"></i></h3>
-                                    <div class="s-description"><p>This is simply dummy text of the printing and the typesetting industry. That has been the industry standard dummy text ever since the 1500s ...</p></div>
-                                    <a href="#.html" class="btn btn-primary color-primary"><span>Click to show</span></a>
-                                </div>
-                            </div>
-                            <!-- Slide 3 -->
-                            <div class="item" style="user-select: none;">
-                                <img src="~/Assets/img/placeholders/ofis5.jpg" alt="Longtail boats at Phi Phi" />
-                                <div class="carousel-caption">
-                                    <h3 class="carousel-caption-title"><span>Taşınmaz Adı</span> <i class="line-bottom color-primary"></i></h3>
-                                    <div class="s-description"><p>This is simply dummy text of the printing and the typesetting industry. That has been the industry standard dummy text ever since the 1500s ...</p></div>
-                                    <a href="#.html" class="btn btn-primary color-primary"><span>Click to show</span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Previous/Next controls -->
-                        <a class="left carousel-control" href="#header-slider" role="button" data-slide="prev">
-                            <span class="icon-prev" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#header-slider" role="button" data-slide="next">
-                            <span class="icon-next" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                    <!-- Carousel container -->
-                </section>
-            </div>
-            <div class="col-md-3" style="margin-top:80px;">
-                <div class="widget widget-box box-container widget-overview hidden-sm  hidden-xs">
-                    <div class="widget-header text-uppercase">
-                        <h2>Genel Bakış</h2>
-                    </div>
-                    <ul class="list-overview">
-                        <li class="custom-address">
-                            <span class="list-overview-option">adres</span>
-                            <span class="list-overview-value" title="il ilce mahalle cadda sokak">il ilce mahalle cadde sokak</span>
-                        </li>
-                        <li>
-                            <span class="list-overview-option">Durum: </span>
-                            <span class="list-overview-value"><span class="label label-default label-tag-primary">satılık/kiralık</span></span>
-                        </li>
-                        <li>
-                            <span class="list-overview-option">tip: </span>
-                            <span class="list-overview-value">konut/arsa/işyeri</span>
-                        </li>
-                        <li>
-                            <span class="list-overview-option">Ülke: </span>
-                            <span class="list-overview-value">Türkey</span>
-                        </li>
-                        <li>
-                            <span class="list-overview-option">il </span>
-                            <span class="list-overview-value">iladi</span>
-                        </li>
-                        <li>
-                            <span class="list-overview-option">alan: </span>
-                            <span class="list-overview-value">150.. m² </span>
-                        </li>
-                        <li>
-                            <span class="list-overview-option">net alan:    </span>
-                            <span class="list-overview-value"> 130 m²</span>
-                        </li>
-                        <li>
-                            <span class="list-overview-option">Enerji verimliliği   </span>
-                            <span class="list-overview-value">-</span>
-                        </li>
-                        <li>
-                            <span class="list-overview-option">Banyo Sayısı: </span>
-                            <span class="list-overview-value">3</span>
-                        </li>
-                        <li>
-                            <span class="list-overview-option">Yatak Odaları: </span>
-                            <span class="list-overview-value">2</span>
-                        </li>
-                        <li>
-                            <span class="list-overview-option">Balkon Sayısı: </span>
-                            <span class="list-overview-value">20</span>
-                        </li>
-                        <li>
-                            <span class="list-overview-option">Cephe: </span>
-                            <span class="list-overview-value">Kuzey Güney vs</span>
-                        </li>
-                        <li class="custom-en">
-                            <span class="list-overview-option">Kat: </span>
-                            <span class="list-overview-value">3</span>
-                        </li>
-                        <li class="custom-en">
-                            <span class="list-overview-option">Enerji Tüketimi</span>
-                            <span class="list-overview-value" title="80 kWh EP / m">80 kWh EP / m<sup><small>2</small></sup></span>
-                        </li>
-                        <li class="custom-en">
-                            <span class="list-overview-option">Gaz Tüketimi </span>
-                            <span class="list-overview-value" title="30 kg CO2 / m">30 kg CO2 / m<sup><small>2</small></sup></span>
-                        </li>
-                        <li>
-                            <span class="list-overview-option">Sayac No 	 </span>
-                            <span class="list-overview-value">15119</span>
-                        </li>
-                        <li>
-                            <span class="list-overview-option">Puan</span>
-                            <span class="list-overview-value">
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="widget widget-form" id="form">
-                    <form action="#" method="post">
-                        <div class="box-container widget-body" style="padding:10px;">
-                            <div class="widget-header text-uppercaser"><h2>Talep Formu</h2></div>
-                            <div class="form-additional">
-                                <div class="form-group">
-                                    <input type="text" name='name' class="form-control" placeholder="Kullanıcı Adı" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="phone" class="form-control" placeholder="Telefon" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="mail" class="form-control" placeholder="Mail" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name='address' class="form-control" placeholder="Adres" />
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control" name="message" placeholder="Mesaj" rows='3'></textarea>
-                                </div>
-                                <div class="form-group form-group-submit">
-                                    <input type="submit" name='address' class="btn btn-primary btn-wide color-primary btn-property" value="Gönder" />
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="widget widget-box box-container widget-overview visible-sm visible-xs">
-                <div class="widget-header text-uppercase">
-                    <h2>Genel Bakış</h2>
-                    <!-- küçük ekran boyutu için  -->
-                </div>
+        <div class="widget widget-box col-md-3 col-sm-12 col-xs-12">
+            <div class="panel-heading1" style="font-size:24px;font-family:Roboto;height:40px;">Hakkında</div>
+            <div class="widget widget-box box-container widget-overview hidden-sm  hidden-xs" style="background:white;margin-top:10px;">
                 <ul class="list-overview">
                     <li class="custom-address">
-                        <span class="list-overview-option">adres</span>
+                        <span class="list-overview-option">Adres:</span>
                         <span class="list-overview-value" title="il ilce mahalle cadda sokak">il ilce mahalle cadde sokak</span>
                     </li>
                     <li>
                         <span class="list-overview-option">Durum: </span>
-                        <span class="list-overview-value"><span class="label label-default label-tag-primary">satılık/kiralık</span></span>
+                        <span class="list-overview-value"><span class="label label-default label-tag-primary" style="background-color:#c3716d">satılık/kiralık</span></span>
                     </li>
                     <li>
-                        <span class="list-overview-option">tip: </span>
+                        <span class="list-overview-option">Tip: </span>
                         <span class="list-overview-value">konut/arsa/işyeri</span>
                     </li>
                     <li>
-                        <span class="list-overview-option">Ülke: </span>
-                        <span class="list-overview-value">Türkey</span>
-                    </li>
-                    <li>
-                        <span class="list-overview-option">il </span>
-                        <span class="list-overview-value">iladi</span>
-                    </li>
-                    <li>
-                        <span class="list-overview-option">alan: </span>
+                        <span class="list-overview-option">Alan: </span>
                         <span class="list-overview-value">150.. m² </span>
                     </li>
                     <li>
-                        <span class="list-overview-option">net alan:    </span>
+                        <span class="list-overview-option">Net alan:    </span>
                         <span class="list-overview-value"> 130 m²</span>
                     </li>
                     <li>
@@ -323,82 +125,666 @@
                 </ul>
             </div>
         </div>
-        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-    </main>
-    <a class="btn btn-scoll-up color-secondary" id="btn-scroll-up"></a>
+    </div>
+    <div class="container-fluid" style="margin: 1% 0px; padding:0px;">
+        <div class="panel panel-default">
+            <div class="panel-body" style="background:#F9F9F9;">
+                <div class="panel panel-default col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-md-12" style="background:white;padding:0px;">
+                        <div class="panel-heading" id="galeryButton" style="padding:0;height:40px;border:none;">
+                            <button class="slButton" id="tapuPhotoButton" style="width: 100%;"><p>Tapu ve Kadastro  </p></button>
+                            <button class="slButton" id="belediyePhotoButton" style="margin-left:5.5px;margin-right:5.5px;width: 100%;"><p>Belediye </p></button>
+                            <button class="slButton" id="digerPhotoButton" style="width: 100%;"><p>Diğer Kurum +</p></button>
+                        </div>
+                    </div>
+                    <div class="row" id="tapuPhoto">
+                        <div class="col-md-12">
+                            <div id="mdb-lightbox-ui" style="text-align:center;font-family:'Roboto',serif;font-size:16px;"> Tapu ve Kadastro Görselleri</div>
+                            <div class="container mdb-lightbox no-margin" style="padding:0px;">
+                                <div class="col-md-12">
+                                    <figure class="btn01">
+                                        <img alt="picture" src="~/Assets/img/placeholders/450x300.png" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-close"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(115).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid" />
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid" />
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(98).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(131).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(115).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="belediyePhoto" style="display:none;">
+                        <div class="col-md-12">
+                            <div id="mdb-lightbox-ui" style="text-align:center;font-family:'Roboto',serif;font-size:16px;"> Tapu ve Kadastro Görselleri</div>
+                            <div class="container mdb-lightbox no-margin" style="padding:0px;">
+                                <div class="col-md-12">
+                                    <figure class="btn01">
+                                        <img alt="picture" src="~/Assets/img/placeholders/450x300.png" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-close"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(115).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid" />
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid" />
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(98).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(131).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(115).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="digerPhoto" style="overflow: auto;border:1px solid #E7DCCB;margin: 6.1% 0px 0 0;height: 1033px;display:none;">
+                        <div class="col-md-12">
+                            <div id="mdb-lightbox-ui" style="text-align:center;font-family:'Roboto',serif;font-size:16px;"> Tapu ve Kadastro Görselleri</div>
+                            <div class="container mdb-lightbox no-margin" style="padding:0px;">
+                                <div class="col-md-12">
+                                    <figure class="btn01">
+                                        <img alt="picture" src="~/Assets/img/placeholders/450x300.png" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-close"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(115).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid" />
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid" />
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(98).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(131).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(115).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="col-md-4">
+                                    <figure class="btn08">
+                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
+                                        <div class="ovrly"></div>
+                                        <div class="buttons">
+                                            <a href="#" class="fa fa-link"></a>
+                                            <a href="#" class="fa fa-search"></a>
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default col-md-6 col-sm-12 col-xs-12">
+                    <div class="panel-heading" id="detayTitle">DETAYLI BİLGİ</div>
+                    <div class="container" id="detayliBilgi" style="border:1px solid #E7DCCB;">
+                        <div class="col-md-12" style="text-align:center; margin-top:1%;">
+                            <img src="~/Assets/img/placeholders/420x245.png" />
+                        </div>
+                        <div class="col-md-12" style="margin-top:3%;text-align:center;">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold;color:#134a57;">
+                                İstanbul İli,  Bahçelievler İlçesi,  Kartaltepe Mahallesi’nde  15 Bağımsız Bölümden Oluşan Taşınmaz
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold;color: #134a57;">
+                                Taşınmazların Mevcut Durumu :
+                                <span style="font-family:'Roboto',serif;font-size:16px;font-weight:100;color:black;">
+                                    920,00 m2 yüzölçümlü arsa üzerinde inşa edilmiş 2 bodrum kat, zemin kat ve 3 normal kattan oluşan binada yer alan 15 adet mesken.
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold;color: #134a57;">
+                                Taşınmazların Tapu Bilgileri :
+                                <span style="font-family:'Roboto',serif;font-size:16px;font-weight:100;color:black;">
+                                    İstanbul ili, Bahçelievler ilçesi, Kartaltepe Mahallesi, 458 ada 12 parselde kayıtlı 15 adet mesken nitelikli bağımsız bölüm.
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold;color: #134a57;">
+                                Taşınmazların İmar Durumu :
+                                <span style="font-family:'Roboto',serif;font-size:16px;font-weight:100;color:black;">
+                                    Taşınmazlar, 21.06.2009 onay tarihli, 1/1000 ölçekli Bahçelievler Revizyon Uygulama İmar Planına göre; Taks:0,25, Hmaks:13,50 ‘’Konut Alanı” lejantında kalmaktadır.
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold;color: #134a57;">
+                                Hizmet Sözleşme Tarihi :
+                                <span style="font-family:'Roboto',serif;font-size:16px;font-weight:100;color:black;">
+                                    30.07.2019
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold;color: #134a57;">
+                                Rapor Tarihi :
+                                <span style="font-family:'Roboto',serif;font-size:16px;font-weight:100;color:black;">
+                                    15.08.2019
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold;color: #134a57;">
+                                Rapor No :
+                                <span style="font-family:'Roboto',serif;font-size:16px;font-weight:100;color:black;">
+                                    2019_GataProje_056
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold;color: #134a57;">
+                                Rapor Tanımı :
+                                <span style="font-family:'Roboto',serif;font-size:16px;font-weight:100;color:black;">
+                                    Konut niteliğindeki bağımsız bölümlerin onaylı mimari projedeki alansal veriler dikkate alınarak
+                                    mevcut durumdaki toplam piyasa satış değerinin tespit edilmesi çalışması ve avan projede yer alan
+                                    19 adet daire nitelikli taşınmazın belediyesinde incelenen proje bilgileri doğrultusunda proje değer tespit çalışması.
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold;color: #134a57;">
+                                Rapor Amacı :
+                                <span style="font-family:'Roboto',serif;font-size:16px;font-weight:100;color:black;">
+                                    Bu değerleme raporu, “6306 sayılı Afet Riski Altindaki Alanlarin Dönüştürülmesi Hakkında Kanun”
+                                    doğrultusunda yapılacak işlemlerde kullanılmak için yukarıda bilgileri verilen taşınmazların
+                                    piyasa satış değer tespitine yöneliktir.
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold;color: #134a57;">
+                                Raporu Hazırlayan :
+                                <span style="font-family:'Roboto',serif;font-size:16px;font-weight:100;color:black;">
+                                    ****** Taşınmaz Değerleme ve Danışmanlık Hizmetleri A.Ş.
+                                    ******* Mahallesi, Bayar Cad., Gülbahar Sk.,
+                                    *** ***** ******, ** * **, * ****, *** * * * * * ***** * * * *
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="col-md-12">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold;color: #134a57;">
+                                Raporu Talep Eden :
+                                <span style="font-family:'Roboto',serif;font-size:16px;font-weight:100;color:black;">
+                                    ****** ****** Bahçelievler Mah. Bursalı ***** *** ***. ** :**  Bahçelievler/İstanbul
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold;color: #134a57;">
+                                458 Ada 12 Parselde Kayıtlı Taşınmazların Yasal Durum Toplam Piyasa Satış Değeri (KDV Hariç):
+                                <span style="font-family:'Roboto',serif;font-size:16px;font-weight:100;color:black;">
+                                    8.050.000,00.-TL (SekizMilyonElliBin–Türk Lirası)
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold; color: #134a57;">
+                                458 Ada 12 Parselde Tasarlanması Planlanan Projenin Toplam Piyasa Satış Değeri (KDV Hariç):
+                                <span style="font-family:'Roboto',serif;font-size:16px;font-weight:100;color:black;">
+                                    13.740.000,00.-TL (OnÜçMilyonYediYüzKırkBin–Türk Lirası)
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <button class="tdButton col-md-4" style="float:left;"><img class="tdImg" src="~/Assets/img/tBilgileri.png" style="float:left;" /><p style="color:white!important;font-family:'Roboto',serif;font-size:16px;">Tapu Bilgileri </p></button>
+                            <button class="tdButton col-md-4" style="float:right;"><img class="tdImg" src="~/Assets/img/detaylırapor.png" style="float:left;" /><p style="color:white!important;font-family:'Roboto',serif;font-size:16px;">Detaylı Rapor </p></button>
+                            <button class="tdButton col-md-4" style="float:right; margin-right:1%;"><img class="tdImg" src="~/Assets/img/ozetrapor.png" style="float:left;" /><p style="color:white!important;font-family:'Roboto',serif;font-size:16px;">Özet Rapor </p></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto;padding: 0 15px;"></div>
 </div>
+<a class="btn btn-scoll-up color-secondary" id="btn-scroll-up"></a>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script>
+    $('#tapuPhotoButton').on('click', function () {
+        $('#belediyePhoto').css('display', 'none');
+        $('#digerPhoto').css('display', 'none');
+        $('#tapuPhoto').css('display', 'block');
+    });
+    $('#belediyePhotoButton').on('click', function () {
+        $('#belediyePhoto').css('display', 'block');
+        $('#digerPhoto').css('display', 'none');
+        $('#tapuPhoto').css('display', 'none');
+    });
+    $('#digerPhotoButton').on('click', function () {
+        $('#belediyePhoto').css('display', 'none');
+        $('#digerPhoto').css('display', 'block');
+        $('#tapuPhoto').css('display', 'none');
+    });
     Highcharts.chart('container', {
         chart: {
-            type: 'column'
+            type: 'line'
         },
         title: {
-            text: 'Monthly Average Rainfall'
+            text: 'Monthly Average Temperature'
         },
         subtitle: {
             text: 'Source: WorldClimate.com'
         },
         xAxis: {
-            categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
-            ],
-            crosshair: true
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         },
         yAxis: {
-            min: 0,
             title: {
-                text: 'Rainfall (mm)'
+                text: 'Temperature (°C)'
             }
         },
-        tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
-        },
         plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
             }
         },
         series: [{
-            name: 'Tokyo',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
+            name: 'adsdsa',
+            data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
         }, {
-            name: 'New York',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-        }, {
-            name: 'London',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-        }, {
-            name: 'Berlin',
-            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-
+            name: 'asdsadsas',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
         }]
     });
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
 </script>
-
-

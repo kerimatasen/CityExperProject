@@ -1,101 +1,249 @@
 ﻿@{
     Layout = null;
 }
-<style>
-    .card-group {
-        margin-top: 10px;
-    }
-
-    .property-card-value {
-        margin: 0px 5px;
-    }
-
-    .card {
-        border: 2px solid #fff;
-        background: white;
-        box-shadow: 10px 10px 5px #000;
-        -moz-box-shadow: 10px 10px 5px #ccc;
-        -webkit-box-shadow: 10px 10px 5px #ccc;
-    }
-
-    #oneCikanButton {
-        position: absolute;
-        align-items: center;
-        z-index: 100;
-        display: flex;
-        justify-content: center;
-        margin: 0 auto;
-        vertical-align:middle;
-        
-    }
-</style>
-<div class="anasayfa" style="margin:10px;">
+    <link href="~/Assets/css/oneCikanListe.css" rel="stylesheet" />
+<div class="anasayfa">
     <main class="main section-color-primary">
         @Html.Partial("_SearchList")
     </main>
-    <div class="col-md-10 shadow-lg p-3 mb-5 bg-white rounded" id="main-map" style="height:759px;border: 1px #7bb1e0 solid;"></div>
-    <button class="oneCikanButton" id="oneCikanButton" aria-hidden="true">
-        <img src="~/Assets/img/left.png" />
-    </button>
-    <div id="oneCikanFormu" class="col-md-2" style="overflow:auto;height:759px;border: 1px #7bb1e0 solid;">
-        <header class="w3-container w3-light-grey">
+
+    <div class="loading" id="loading"></div>
+    <div class="hide_list col-md-10" style="background:none;">
+        <div class="hide_list1" id="oneCikanButton">
+            <img id="okIcon" src="https://page-assets.foxtons.co.uk/img/icons/chevron-left.svg" style="height: 31px; width: 31px;" />
+        </div>
+    </div>
+    <div class="col-md-10 shadow-lg p-3 mb-5 bg-white rounded" id="main-map" style="display:block;height:794px;margin-bottom:0px!important;border:1px solid #1f656c">
+    </div>
+    <div id="oneCikanFormu" class="col-md-2" style="overflow:auto; height:794px;border: 1px #1f656c solid;padding:0px;">
+        <header class="w3-container1 w3-light-grey" style="background:#f9f3f3;">
             <div class="properties">
                 <div class="row ">
-                    <div class="col-md-12" style="border-left:14px solid #0e3b4c; margin-top:10px;">
-                        <a class="navbar-brand" href="#" style="color:#0e3b4c; font-size:18px;font-family:Roboto;"> Öne Çıkanlar</a>
-                        <button type="button" class="btn btn-outline-info">Sıralama</button>
-                    </div>
-                    <div class="card-group col-md-6">
-                        <div class="card">
-                            <img class="card-img-top" src="Assets/img/placeholders/ofis1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <div class="property-card-tags">
-                                    <span class="label label-default label-tag-primary">Satılık</span>
-                                </div>
-                                <div class="col-md-3" style="right:0px;">
-                                    <a href=""><img src="~/Assets/img/favoriEkle.png" /></a>
-
-                                </div>
-                                <div class="col-md-12">
-                                    <h3><a href="@Url.Action("TasinmazDurum","Tasinmaz")">Vucino Han</a></h3>
-                                </div>
-                                <div class="col-md-12">
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="property-preview-f-left text-color-primary">
-                                    <span class="property-card-value">
-                                        <i class="fa fa-home"></i>İş Hanı
-                                    </span>
-                                    <span class="property-card-value">
-                                        <i class="fa fa-square-o"></i>4+1
-                                    </span>
-                                    <span class="property-card-value">
-                                        <i class="fa fa-square-o"></i>800 m²
-                                    </span>
-                                    <span class="property-card-value">
-                                        <i class="fa fa-try"></i>
-                                        *****
-                                    </span>
-                                </div>
-                            </div>
+                    @*<div class="left" style="position:absolute;z-index:100;right: 0px;">
+                        <div class="item" style="float: right;">
+                            <i class="fas fa-fw fa-bars"></i>
                         </div>
-                    </div>
-                    <div class="card-group col-md-6">
+                        <div class="item">
+                            <i class="fas fa-fw fa-map-marked-alt"></i> Havuz
+                        </div>
+                        <div class="item">
+                            <i class="fas fa-fw fa-columns"></i> Fiyata göre azalan
+                        </div>
+                        <div class="item">
+                            <i class="fas fa-fw fa-th"></i> Fiyata göre artan
+                        </div>
+                        <div class="item">
+                            <i class="fas fa-fw fa-user-circle"></i> Banyo sayısına göre azalan
+                        </div>
+                    </div>*@
+                    <button class=" col-md-12" disabled style="font-size:20px;font-family:Roboto;font-weight:bold;">Öne Çıkanlar</button>
+                    <div class="card-group col-md-12 kerim">
                         <div class="card">
-                            <img class="card-img-top" src="Assets/img/placeholders/ofis3.jpg" alt="Card image cap">
+                            <div class="row mt-30">
+                                <div class="box14">
+                                    <img class="card-img-top" src="Assets/img/placeholders/ofis3.jpg" alt="Card image cap">
+                                    <div class="box-content">
+                                        <h3 class="title">Vucino Han</h3>
+                                        <span class="post">İş Yeri</span>
+                                        <ul class="icon">
+                                            <li style="margin-left: 78%;"><a href="@Url.Action("TasinmazDurum","Tasinmaz")"><i style="font-size: 16px;padding: 12px;" class="fa fa-search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card-body">
                                 <div class="col-md-9">
-                                    <h3><a href="@Url.Action("TasinmazDurum","Tasinmaz")">Asmalı Han</a></h3>
+                                    <h3><a href="@Url.Action("TasinmazDurum","Tasinmaz")" style="color:#103f4f">Vucino Han</a></h3>
                                 </div>
                                 <div class="col-md-3" style="right:0px;">
                                     <img src="~/Assets/img/favoriEkle.png" />
                                 </div>
                                 <div class="col-md-12">
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text">This is a wider card with </p>
                                 </div>
                             </div>
+
+                            <div class="card-footer">
+                                <div class="property-preview-f-left text-color-primary">
+                                    <span class="property-card-value" style="border-right:1px solid white;padding:2px;">
+                                        <i class="fa fa-home"></i>İş Hanı
+                                    </span>
+                                    <span class="property-card-value" style="border-right:1px solid white;padding:2px;">
+                                        <i class="fa fa-square-o"></i>4+1
+                                    </span>
+                                    <span class="property-card-value" style="border-right:1px solid white;padding:2px;">
+                                        <i class="fa fa-square-o"></i>800 m²
+                                    </span>
+                                    <span class="property-card-value" >
+                                        <i class="fa fa-try"></i>
+                                        *****
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-group col-md-12 kerim">
+                        <div class="card">
+                            <div class="row mt-30">
+                                <div class="box14">
+                                    <img class="card-img-top" src="Assets/img/placeholders/ofis1.jpg" alt="Card image cap">
+                                    <div class="box-content">
+                                        <h3 class="title">Asmalı Han</h3>
+                                        <span class="post">Konut</span>
+                                        <ul class="icon">
+                                            <li style="margin-left: 78%;"><a href="@Url.Action("TasinmazDurum","Tasinmaz")"><i style="font-size: 16px;padding: 12px;" class="fa fa-search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-md-9">
+                                    <h3><a href="@Url.Action("TasinmazDurum","Tasinmaz")" style="color:#103f4f">Asmalı Han</a></h3>
+                                </div>
+                                <div class="col-md-3" style="right:0px;">
+                                    <img src="~/Assets/img/favoriEkle.png" />
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="card-text">This is a wider card with.</p>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="property-preview-f-left text-color-primary">
+                                    <span class="property-card-value">
+                                        <i class="fa fa-home"></i>İş Hanı
+                                    </span>
+                                    <span class="property-card-value">
+                                        <i class="fa fa-square-o"></i>4+1
+                                    </span>
+                                    <span class="property-card-value">
+                                        <i class="fa fa-square-o"></i>800 m²
+                                    </span>
+                                    <span class="property-card-value">
+                                        <i class="fa fa-try"></i>
+                                        *****
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-group col-md-12 kerim">
+                        <div class="card">
+                            <div class="row mt-30">
+                                <div class="box14">
+                                    <img class="card-img-top" src="Assets/img/placeholders/ofis1.jpg" alt="Card image cap">
+                                    <div class="box-content">
+                                        <h3 class="title">Asmalı Han</h3>
+                                        <span class="post">Konut</span>
+                                        <ul class="icon">
+                                            <li style="margin-left: 78%;"><a href="@Url.Action("TasinmazDurum","Tasinmaz")"><i style="font-size: 16px;padding: 12px;" class="fa fa-search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-md-9">
+                                    <h3><a href="@Url.Action("TasinmazDurum","Tasinmaz")" style="color:#103f4f">Asmalı Han</a></h3>
+                                </div>
+                                <div class="col-md-3" style="right:0px;">
+                                    <img src="~/Assets/img/favoriEkle.png" />
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="card-text">This is a wider card with.</p>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="property-preview-f-left text-color-primary">
+                                    <span class="property-card-value">
+                                        <i class="fa fa-home"></i>İş Hanı
+                                    </span>
+                                    <span class="property-card-value">
+                                        <i class="fa fa-square-o"></i>4+1
+                                    </span>
+                                    <span class="property-card-value">
+                                        <i class="fa fa-square-o"></i>800 m²
+                                    </span>
+                                    <span class="property-card-value">
+                                        <i class="fa fa-try"></i>
+                                        *****
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-group col-md-12 kerim">
+                        <div class="card">
+                            <div class="row mt-30">
+                                <div class="box14">
+                                    <img class="card-img-top" src="Assets/img/placeholders/ofis1.jpg" alt="Card image cap">
+                                    <div class="box-content">
+                                        <h3 class="title">Asmalı Han</h3>
+                                        <span class="post">Konut</span>
+                                        <ul class="icon">
+                                            <li style="margin-left: 78%;"><a href="@Url.Action("TasinmazDurum","Tasinmaz")"><i style="font-size: 16px;padding: 12px;" class="fa fa-search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-md-9">
+                                    <h3><a href="@Url.Action("TasinmazDurum","Tasinmaz")" style="color:#103f4f">Asmalı Han</a></h3>
+                                </div>
+                                <div class="col-md-3" style="right:0px;">
+                                    <img src="~/Assets/img/favoriEkle.png" />
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="card-text">This is a wider card with.</p>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="property-preview-f-left text-color-primary">
+                                    <span class="property-card-value">
+                                        <i class="fa fa-home"></i>İş Hanı
+                                    </span>
+                                    <span class="property-card-value">
+                                        <i class="fa fa-square-o"></i>4+1
+                                    </span>
+                                    <span class="property-card-value">
+                                        <i class="fa fa-square-o"></i>800 m²
+                                    </span>
+                                    <span class="property-card-value">
+                                        <i class="fa fa-try"></i>
+                                        *****
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-group col-md-12 kerim">
+                        <div class="card">
+                            <div class="row mt-30">
+                                <div class="box14">
+                                    <img class="card-img-top" src="Assets/img/placeholders/ofis1.jpg" alt="Card image cap">
+                                    <div class="box-content">
+                                        <h3 class="title">Zafer Han</h3>
+                                        <span class="post">İş Yeri</span>
+                                        <ul class="icon">
+                                            <li style="margin-left: 78%;"><a href="@Url.Action("TasinmazDurum","Tasinmaz")"><i style="font-size: 16px;padding: 12px;" class="fa fa-search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-md-9">
+                                    <h3><a href="@Url.Action("TasinmazDurum","Tasinmaz")" style="color:#103f4f">Zafer Han</a></h3>
+                                </div>
+                                <div class="col-md-3" style="right:0px;">
+                                    <img src="~/Assets/img/favoriEkle.png" />
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="card-text">This is a wider card with supporting</p>
+                                </div>
+                            </div>
+
                             <div class="card-footer">
                                 <div class="property-preview-f-left text-color-primary">
                                     <span class="property-card-value">
@@ -116,324 +264,55 @@
                         </div>
                     </div>
 
-                    <div>
-                        <div class="property-card card shadow-lg p-3 mb-5 bg-white rounded" id="tasinmazlar">
-                <div class="property-card-header image-box">
-                    <img src="Assets/img/placeholders/vucinohan.png" alt="" class="" />
-                    <a href="@Url.Action("TasinmazDurum","Tasinmaz")" class="property-card-hover">
-                        <img src="Assets/img/property-hover-arrow.png" alt="" class="left-icon" />
-                        <img src="Assets/img/plus.png" alt="" class="center-icon" />
-                        <img src="Assets/img/icon-notice.png" alt="" class="right-icon" />
-                    </a>
-                </div>
-                <div class="property-card-tags">
-                    <span class="label label-default label-tag-primary">Satılık</span>
-                </div>
-                <div class="property-card-box card-box card-block">
-                    <h3 class="property-card-title" style="text-align:center;">
-                        <a href="@Url.Action("TasinmazDurum","Tasinmaz")">Vucino Han</a>
-                    </h3>
-                    <div class="property-card-descr">
-                        Bina                : Vucino Han
-                        İlçe                : Beyoğlu
-                        Mahalle             : Tomtom Mahallesi
-                        Cadde               : Muammer Karaca
-                        No                  : 3
-                    </div>
-                    <div class="property-preview-footer  clearfix">
-                        <div class="property-preview-f-left text-color-primary">
-                            <span class="property-card-value">
-                                <i class="fa fa-home"></i>İş Hanı
-                            </span>
-                            <span class="property-card-value">
-                                <i class="fa fa-square-o"></i>800 m²
-                            </span>
-                            <span class="property-card-value">
-                                *****
-                                <i class="fa fa-try"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                        @*<div class="property-card card" id="tasinmazlar">
-                <div class="property-card-header image-box">
-                    <img src="Assets/img/placeholders/ofis1.jpg" alt="" class="" />
-                    <a href="@Url.Action("TasinmazDurum","Tasinmaz")" class="property-card-hover">
-                        <img src="Assets/img/property-hover-arrow.png" alt="" class="left-icon" />
-                        <img src="Assets/img/plus.png" alt="" class="center-icon" />
-                        <img src="Assets/img/icon-notice.png" alt="" class="right-icon" />
-                    </a>
-                </div>
-                <div class="property-card-tags">
-                    <span class="label label-default label-tag-primary">Satılık</span>
-                </div>
-                <div class="property-card-box card-box card-block">
-                    <h3 class="property-card-title" style="text-align:center;">
-                        <a href="@Url.Action("TasinmazDurum","Tasinmaz")">Vucino Han</a>
-                    </h3>
-                    <div class="property-card-descr">
-                        Bina                : Vucino Han
-                        İlçe                : Beyoğlu
-                        Mahalle             : Tomtom Mahallesi
-                        Cadde               : Muammer Karaca
-                        No                  : 3
-                    </div>
-                    <div class="property-preview-footer  clearfix">
-                        <div class="property-preview-f-left text-color-primary">
-                            <span class="property-card-value">
-                                <i class="fa fa-home"></i>İş Hanı
-                            </span>
-                            <span class="property-card-value">
-                                <i class="fa fa-square-o"></i>800 m²
-                            </span>
-                            <span class="property-card-value">
-                                *****
-                                <i class="fa fa-try"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    <div class="card-group col-md-12 kerim">
+                        <div class="card">
+                            <div class="row mt-30">
+                                <div class="box14">
+                                    <img class="card-img-top" src="Assets/img/placeholders/ofis1.jpg" alt="Card image cap">
+                                    <div class="box-content">
+                                        <h3 class="title">Zafer Han</h3>
+                                        <span class="post">İş Yeri</span>
+                                        <ul class="icon">
+                                            <li style="margin-left: 78%;"><a href="@Url.Action("TasinmazDurum","Tasinmaz")"><i style="font-size: 16px;padding: 12px;" class="fa fa-search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-md-9">
+                                    <h3><a href="@Url.Action("TasinmazDurum","Tasinmaz")" style="color:#103f4f">Zafer Han</a></h3>
+                                </div>
+                                <div class="col-md-3" style="right:0px;">
+                                    <img src="~/Assets/img/favoriEkle.png" />
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="card-text">This is a wider card with supporting</p>
+                                </div>
+                            </div>
 
-            <div class="property-card card" id="tasinmazlar">
-                <div class="property-card-header image-box">
-                    <img src="Assets/img/placeholders/ofis3.jpg" alt="" class="" />
-                    <a href="@Url.Action("TasinmazDurum","Tasinmaz")" class="property-card-hover">
-                        <img src="Assets/img/property-hover-arrow.png" alt="" class="left-icon" />
-                        <img src="Assets/img/plus.png" alt="" class="center-icon" />
-                        <img src="Assets/img/icon-notice.png" alt="" class="right-icon" />
-                    </a>
-                </div>
-                <div class="property-card-tags">
-                    <span class="label label-default label-tag-primary">Satılık</span>
-                </div>
-                <div class="property-card-box card-box card-block">
-                    <h3 class="property-card-title" style="text-align:center;">
-                        <a href="@Url.Action("TasinmazDurum","Tasinmaz")">Vucino Han</a>
-                    </h3>
-                    <div class="property-card-descr">
-                        Bina                : Vucino Han
-                        İlçe                : Beyoğlu
-                        Mahalle             : Tomtom Mahallesi
-                        Cadde               : Muammer Karaca
-                        No                  : 3
-                    </div>
-                    <div class="property-preview-footer  clearfix">
-                        <div class="property-preview-f-left text-color-primary">
-                            <span class="property-card-value">
-                                <i class="fa fa-home"></i>İş Hanı
-                            </span>
-                            <span class="property-card-value">
-                                <i class="fa fa-square-o"></i>800 m²
-                            </span>
-                            <span class="property-card-value">
-                                *****
-                                <i class="fa fa-try"></i>
-                            </span>
+                            <div class="card-footer">
+                                <div class="property-preview-f-left text-color-primary">
+                                    <span class="property-card-value">
+                                        <i class="fa fa-home"></i>İş Hanı
+                                    </span>
+                                    <span class="property-card-value">
+                                        <i class="fa fa-square-o"></i>4+1
+                                    </span>
+                                    <span class="property-card-value">
+                                        <i class="fa fa-square-o"></i>800 m²
+                                    </span>
+                                    <span class="property-card-value">
+                                        <i class="fa fa-try"></i>
+                                        *****
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="property-card card" id="tasinmazlar">
-                <div class="property-card-header image-box">
-                    <img src="Assets/img/placeholders/ofis4.jpg" alt="" class="" />
-                    <a href="@Url.Action("TasinmazDurum","Tasinmaz")" class="property-card-hover">
-                        <img src="Assets/img/property-hover-arrow.png" alt="" class="left-icon" />
-                        <img src="Assets/img/plus.png" alt="" class="center-icon" />
-                        <img src="Assets/img/icon-notice.png" alt="" class="right-icon" />
-                    </a>
-                </div>
-                <div class="property-card-tags">
-                    <span class="label label-default label-tag-primary">Satılık</span>
-                </div>
-                <div class="property-card-box card-box card-block">
-                    <h3 class="property-card-title" style="text-align:center;">
-                        <a href="@Url.Action("TasinmazDurum","Tasinmaz")">Vucino Han</a>
-                    </h3>
-                    <div class="property-card-descr">
-                        Bina                : Vucino Han
-                        İlçe                : Beyoğlu
-                        Mahalle             : Tomtom Mahallesi
-                        Cadde               : Muammer Karaca
-                        No                  : 3
-                    </div>
-                    <div class="property-preview-footer  clearfix">
-                        <div class="property-preview-f-left text-color-primary">
-                            <span class="property-card-value">
-                                <i class="fa fa-home"></i>İş Hanı
-                            </span>
-                            <span class="property-card-value">
-                                <i class="fa fa-square-o"></i>800 m²
-                            </span>
-                            <span class="property-card-value">
-                                *****
-                                <i class="fa fa-try"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="property-card card" id="tasinmazlar">
-                <div class="property-card-header image-box">
-                    <img src="Assets/img/placeholders/ofis5.jpg" alt="" class="" />
-                    <a href="@Url.Action("TasinmazDurum","Tasinmaz")" class="property-card-hover">
-                        <img src="Assets/img/property-hover-arrow.png" alt="" class="left-icon" />
-                        <img src="Assets/img/plus.png" alt="" class="center-icon" />
-                        <img src="Assets/img/icon-notice.png" alt="" class="right-icon" />
-                    </a>
-                </div>
-                <div class="property-card-tags">
-                    <span class="label label-default label-tag-primary">Satılık</span>
-                </div>
-                <div class="property-card-box card-box card-block">
-                    <h3 class="property-card-title" style="text-align:center;">
-                        <a href="@Url.Action("TasinmazDurum","Tasinmaz")">Vucino Han</a>
-                    </h3>
-                    <div class="property-card-descr">
-                        Bina                : Vucino Han
-                        İlçe                : Beyoğlu
-                        Mahalle             : Tomtom Mahallesi
-                        Cadde               : Muammer Karaca
-                        No                  : 3
-                    </div>
-                    <div class="property-preview-footer  clearfix">
-                        <div class="property-preview-f-left text-color-primary">
-                            <span class="property-card-value">
-                                <i class="fa fa-home"></i>İş Hanı
-                            </span>
-                            <span class="property-card-value">
-                                <i class="fa fa-square-o"></i>800 m²
-                            </span>
-                            <span class="property-card-value">
-                                *****
-                                <i class="fa fa-try"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="property-card card" id="tasinmazlar">
-                <div class="property-card-header image-box">
-                    <img src="Assets/img/placeholders/ofis1.jpg" alt="" class="" />
-                    <a href="@Url.Action("TasinmazDurum","Tasinmaz")" class="property-card-hover">
-                        <img src="Assets/img/property-hover-arrow.png" alt="" class="left-icon" />
-                        <img src="Assets/img/plus.png" alt="" class="center-icon" />
-                        <img src="Assets/img/icon-notice.png" alt="" class="right-icon" />
-                    </a>
-                </div>
-                <div class="property-card-tags">
-                    <span class="label label-default label-tag-primary">Satılık</span>
-                </div>
-                <div class="property-card-box card-box card-block">
-                    <h3 class="property-card-title" style="text-align:center;">
-                        <a href="@Url.Action("TasinmazDurum","Tasinmaz")">Vucino Han</a>
-                    </h3>
-                    <div class="property-card-descr">
-                        Bina                : Vucino Han
-                        İlçe                : Beyoğlu
-                        Mahalle             : Tomtom Mahallesi
-                        Cadde               : Muammer Karaca
-                        No                  : 3
-                    </div>
-                    <div class="property-preview-footer  clearfix">
-                        <div class="property-preview-f-left text-color-primary">
-                            <span class="property-card-value">
-                                <i class="fa fa-home"></i>İş Hanı
-                            </span>
-                            <span class="property-card-value">
-                                <i class="fa fa-square-o"></i>800 m²
-                            </span>
-                            <span class="property-card-value">
-                                *****
-                                <i class="fa fa-try"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="property-card card" id="tasinmazlar">
-                <div class="property-card-header image-box">
-                    <img src="Assets/img/placeholders/ofis1.jpg" alt="" class="" />
-                    <a href="@Url.Action("TasinmazDurum","Tasinmaz")" class="property-card-hover">
-                        <img src="Assets/img/property-hover-arrow.png" alt="" class="left-icon" />
-                        <img src="Assets/img/plus.png" alt="" class="center-icon" />
-                        <img src="Assets/img/icon-notice.png" alt="" class="right-icon" />
-                    </a>
-                </div>
-                <div class="property-card-tags">
-                    <span class="label label-default label-tag-primary">Satılık</span>
-                </div>
-                <div class="property-card-box card-box card-block">
-                    <h3 class="property-card-title" style="text-align:center;">
-                        <a href="@Url.Action("TasinmazDurum","Tasinmaz")">Vucino Han</a>
-                    </h3>
-                    <div class="property-card-descr">
-                        Bina                : Vucino Han
-                        İlçe                : Beyoğlu
-                        Mahalle             : Tomtom Mahallesi
-                        Cadde               : Muammer Karaca
-                        No                  : 3
-                    </div>
-                    <div class="property-preview-footer  clearfix">
-                        <div class="property-preview-f-left text-color-primary">
-                            <span class="property-card-value">
-                                <i class="fa fa-home"></i>İş Hanı
-                            </span>
-                            <span class="property-card-value">
-                                <i class="fa fa-square-o"></i>800 m²
-                            </span>
-                            <span class="property-card-value">
-                                *****
-                                <i class="fa fa-try"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="property-card card" id="tasinmazlar">
-                <div class="property-card-header image-box">
-                    <img src="Assets/img/placeholders/vucinohan.png" alt="" class="" />
-                    <a href="@Url.Action("TasinmazDurum","Tasinmaz")" class="property-card-hover">
-                        <img src="Assets/img/property-hover-arrow.png" alt="" class="left-icon" />
-                        <img src="Assets/img/plus.png" alt="" class="center-icon" />
-                        <img src="Assets/img/icon-notice.png" alt="" class="right-icon" />
-                    </a>
-                </div>
-                <div class="property-card-tags">
-                    <span class="label label-default label-tag-primary">Satılık</span>
-                </div>
-                <div class="property-card-box card-box card-block">
-                    <h3 class="property-card-title" style="text-align:center;">
-                        <a href="@Url.Action("TasinmazDurum","Tasinmaz")">Vucino Han</a>
-                    </h3>
-                    <div class="property-card-descr">
-                        Bina                : Vucino Han
-                        İlçe                : Beyoğlu
-                        Mahalle             : Tomtom Mahallesi
-                        Cadde               : Muammer Karaca
-                        No                  : 3
-                    </div>
-                    <div class="property-preview-footer  clearfix">
-                        <div class="property-preview-f-left text-color-primary">
-                            <span class="property-card-value">
-                                <i class="fa fa-home"></i>İş Hanı
-                            </span>
-                            <span class="property-card-value">
-                                <i class="fa fa-square-o"></i>800 m²
-                            </span>
-                            <span class="property-card-value">
-                                *****
-                                <i class="fa fa-try"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
                     </div>
                 </div>
             </div>
         </header>
     </div>
 </div>
+
 

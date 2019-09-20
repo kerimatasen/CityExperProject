@@ -1,566 +1,808 @@
-﻿<style>
-
-    input[type=text], select, textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        resize: vertical;
-    }
-
-    .col-75 {
-        float: left;
-        width: 75%;
-        margin-top: 6px;
-    }
-
-    .button {
-        font-size: 20px;
-        margin: 4px 2px;
-        cursor: pointer;
-    }
-
-    .disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
-
-    .buttonIleri {
-        float: right;
-        display: inline-block;
-        border-radius: 4px;
-        background-color: #017163;
-        border: none;
-        color: white;
-        text-align: center;
-        font-size: 16px;
-        padding: 4px;
-        width: 110px;
-        transition: all 0.5s;
-        cursor: pointer;
-        margin: 5px;
-    }
-
-        .buttonIleri span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
-
-            .buttonIleri span:after {
-                content: '\00bb';
-                position: absolute;
-                opacity: 0;
-                top: 0;
-                right: -20px;
-                transition: 0.5s;
-            }
-
-        .buttonIleri:hover {
-            background: #90a19e;
-            transition: 0.5s;
-        }
-
-            .buttonIleri:hover span {
-                padding-right: 25px;
-            }
-
-                .buttonIleri:hover span:after {
-                    opacity: 1;
-                    right: 0;
-                }
-
-    .switch {
-        position: relative;
-        display: block;
-        vertical-align: top;
-        width: 100px;
-        height: 30px;
-        padding: 3px;
-        margin: 0 10px 10px 0;
-        background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
-        background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
-        border-radius: 18px;
-        box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
-        cursor: pointer;
-    }
-
-    .switch-input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-    }
-
-    .switch-label {
-        position: relative;
-        display: block;
-        height: inherit;
-        font-size: 10px;
-        text-transform: uppercase;
-        background: #eceeef;
-        border-radius: inherit;
-        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
-    }
-
-        .switch-label:before, .switch-label:after {
-            position: absolute;
-            top: 50%;
-            margin-top: -.5em;
-            line-height: 1;
-            -webkit-transition: inherit;
-            -moz-transition: inherit;
-            -o-transition: inherit;
-            transition: inherit;
-        }
-
-        .switch-label:before {
-            content: attr(data-off);
-            right: 11px;
-            color: #aaaaaa;
-            text-shadow: 0 1px rgba(255, 255, 255, 0.5);
-        }
-
-        .switch-label:after {
-            content: attr(data-on);
-            left: 11px;
-            color: #FFFFFF;
-            text-shadow: 0 1px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-        }
-
-    .switch-input:checked ~ .switch-label {
-        background: #E1B42B;
-        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
-    }
-
-        .switch-input:checked ~ .switch-label:before {
-            opacity: 0;
-        }
-
-        .switch-input:checked ~ .switch-label:after {
-            opacity: 1;
-        }
-
-    .switch-handle {
-        position: absolute;
-        top: 4px;
-        left: 4px;
-        width: 28px;
-        height: 28px;
-        background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
-        background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
-        border-radius: 100%;
-        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-    }
-
-        .switch-handle:before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin: -6px 0 0 -6px;
-            width: 12px;
-            height: 12px;
-            background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
-            background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF);
-            border-radius: 6px;
-            box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
-        }
-
-    .switch-input:checked ~ .switch-handle {
-        left: 74px;
-        box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
-    }
-    /* Transition ========================== */
-    .switch-label, .switch-handle {
-        transition: All 0.3s ease;
-        -webkit-transition: All 0.3s ease;
-        -moz-transition: All 0.3s ease;
-        -o-transition: All 0.3s ease;
-    }
-
-    #container {
-        height: 400px;
-        min-width: 310px;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-</style>
+﻿@model CityExperWeb.Models.Gayrimenkul.GayrimenkulViewModel
 @{
     ViewBag.Title = "Tasinmaz";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="col-md-12">
-    <div id="collapse3a" class="panel-collapse collapse in">
-        <div class="panel-heading col-md-12">
-            <h3 class="text-center">
-                <a>
-                    Tapu Kadastro Bilgileri
-                </a>
-            </h3>
+<link href="~/Assets/css/tasinmazEklemeSayfasi.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="container">
+    <ul class="nav nav-tabs wizard">
+        <li style="pointer-events:none" id="mainstep1" class="active">
+            <a href="#" data-toggle="tab" aria-expanded="false">
+                <p>
+                    <span class="nmbr">1</span>
+                    <b>Parsel</b>
+                </p>
+            </a>
+        </li>
+        <li style="pointer-events:none" id="mainstep2"><a href="#" data-toggle="tab" aria-expanded="false"><p><span class="nmbr">2</span> <b>Bina</b>   </p> </a></li>
+        <li style="pointer-events:none" id="mainstep3"><a href="#" data-toggle="tab" aria-expanded="true"><p> <span class="nmbr">3</span> <b>Bağımsız</b>   </p> </a></li>
+    </ul>
+    <div class="container" id="altStep" style="display:block">
+        <div class="row line">
+            <div class="col-xs-4 stepText1"><p>Tapu Kadastro</p></div>
+            <div class="col-xs-4 stepText2"><p>Belediye</p></div>
+            <div class="col-xs-4 stepText3"><p>Diğer Kurum</p></div>
         </div>
-        <div class="widget widget-form" id="form">
-            <form action="#" method="post">
-                <div class="box-container widget-body">
-                    <div class="form-additional">
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <div class="col-md-4 col-sm-2">
-                                    <div class="form-group">
-                                        <select class="form-control" id="il" name="input" style="border-radius:20px;">
-                                            <option value="" disabled selected>il</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-2">
-                                    <div class="form-group">
-                                        <select class="form-control" id="ilceListAdres" name="input" style="border-radius:20px;">
-                                            <option value="" disabled selected>İlçe</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-2">
-                                    <div class="form-group">
-                                        <select class="form-control" id="MahalleListAdres" name="input" style="border-radius:20px;">
-                                            <option value="" disabled selected>Tapu Mahalle</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12">
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id="paftaNo" class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Pafta Numarası" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id="adaNo" class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Ada Numarası" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id="parselNo" class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Parsel Numarası" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12">
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='tapuAlan' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Tapu Alanı" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='zeminTip' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Zemin Tipi" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='zeminRefNo' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Zemin Referans Numarası" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12">
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='nitelik' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Nitelik" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='cilt' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Cilt" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='sayfa' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Sayfa" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12">
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='tespitYapan' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Tespit Yapan" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='tespitTarihi' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Tespit Tarihi" />
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                                <input class="switch-input" type="checkbox" />
-                                                <span class="switch-label" data-on="Evet" data-off="Hayır"></span> <span class="switch-handle"></span>
-                                            </label>
-                                            <input type="text" id='hisseli' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Hisseli" />
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                                <input class="switch-input" type="checkbox" />
-                                                <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                            </label>
-                                            <input type="text" id='isgalci' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="İşgalci" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group col-md-2">
-                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                            <input class="switch-input" type="checkbox" />
-                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                        </label>
-                                        <input type="text" id='malik' class="form-control" style=" height:35px; border-radius:17px;"
-                                               placeholder="Malik" />
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                            <input class="switch-input" type="checkbox" />
-                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                        </label>
-                                        <input type="text" id='serh' class="form-control" style=" height:35px; border-radius:17px;"
-                                               placeholder="Şerh" />
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                            <input class="switch-input" type="checkbox" />
-                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                        </label>
-                                        <input type="text" id='beyan' class="form-control" style=" height:35px; border-radius:17px;"
-                                               placeholder="Beyan" />
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                            <input class="switch-input" type="checkbox" />
-                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                        </label>
-                                        <input type="text" id='irtifak' class="form-control" style=" height:35px; border-radius:17px;"
-                                               placeholder="İrtifak" />
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                            <input class="switch-input" type="checkbox" />
-                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                        </label>
-                                        <input type="text" id='haciz' class="form-control" style=" height:35px; border-radius:17px;"
-                                               placeholder="Haciz " />
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                            <input class="switch-input" type="checkbox" />
-                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                        </label>
-                                        <input type="text" id='ipotek' class="form-control" style=" height:35px; border-radius:17px;"
-                                               placeholder="İpotek" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <buttonIleri type="buttonIleri" id="tapuIleri" class="buttonIleri" style="vertical-align:middle;"><span>İleri</span></buttonIleri>
-                        </div>
-                    </div>
-                </div>
-            </form>
+        <div class="row">
+            <div class="col-xs-4"><div class="step step1 active"></div></div>
+            <div class="col-xs-4"><div class="step step2"></div></div>
+            <div class="col-xs-4"><div class="step step3"></div></div>
         </div>
     </div>
-    <div id="collapse3b" class="panel-collapse collapse in" style="display:none;">
-        <div class="panel-heading col-md-12">
-            <h3 class="text-center">
-                <a>
-                    Belediye Bilgileri
-                </a>
-            </h3>
-        </div>
-        <div class="widget widget-form" id="form">
-            <form action="#" method="post">
-                <div class="box-container widget-body">
-                    <div class="form-additional">
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <div class="col-md-4 col-sm-2">
-                                    <div class="form-group">
-                                        <select class="form-control" id="il" name="input" style="border-radius:20px;">
-                                            <option value="" disabled selected>il</option>
 
-                                        </select>
-                                    </div>
+    @*-------------------------------------------------------------------------------     TAPU KADASTRO BİLGİLERİ          ------------------------------------------------------------------------*@
+    @Html.Partial("Partial_TapuKadastro", Model.ParselViewModel.TapuKadastroBilgiViewModel)
+    @*-------------------------------------------------------------------------------     BELEDİYE BİLGİLERİ          ------------------------------------------------------------------------*@
+
+    <div class="belediyeBilgileri" style="display:none;margin-top:1%;">
+        <button class="accordion1" disabled>BELEDİYE BİLGİLERİ</button>
+        <div class="panel2">
+            <div class="" style="margin:1% 0px;">
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <select class="form-control" id="MahalleListAdres" name="input">
+                                <option value="" disabled selected>Plan Fonksiyonu</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" value="" class="form-control" placeholder="Emsal" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" value="" class="form-control" placeholder="İnşaat Alanı" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" value="" class="form-control" placeholder="Hmax" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <input type="text" value="" class="form-control" placeholder="Kaks" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" value="" class="form-control" placeholder="Taks" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" value="" class="form-control" placeholder="Plan Adı" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" value="" class="form-control" placeholder="Plana Göre İnşaat Alanı" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="row">
+                        <div class='col-md-3'>
+                            <input id="datepicker" placeholder="Tespit Tarihi" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;margin:1% 0px;">
+                    <div class="gwc-drag-drop-wrapper">
+                        <div class="gwc-drag-drop-wrapper__dashes">
+                            <div class="gwc-drag-drop-wrapper__dashes__message">
+                                <i class="material-icons text-muted">cloud_upload</i>
+                                <div class="gwc-drag-drop-wrapper__dashes__message__title">
+                                    Sürükle & Bırak
+
                                 </div>
-                                <div class="col-md-4 col-sm-2">
-                                    <div class="form-group">
-                                        <select class="form-control" id="ilceListAdres" name="input" style="border-radius:20px;">
-                                            <option value="" disabled selected>İlçe</option>
-                                        </select>
-                                    </div>
+                                <div class="gwc-drag-drop-wrapper__dashes__message__desc">
+                                    Belge Ekle
                                 </div>
-                                <div class="col-md-4 col-sm-2">
-                                    <div class="form-group">
-                                        <select class="form-control" id="MahalleListAdres" name="input" style="border-radius:20px;">
-                                            <option value="" disabled selected>Tapu Mahalle</option>
-                                        </select>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="float:right;padding:0px;">
+                    <div class="col-md-3" style="float:right;padding:0.4%;">
+                        <div class="autoCenter">
+                            <button class="col-md-5" id="nextBelediye">İleri</button>
+                            <button class="col-md-5" id="prevBelediye">Geri</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*-------------------------------------------------------------------------------     DİĞER KURUM BİLGİLERİ          ------------------------------------------------------------------------*@
+
+    <div class="digerKurumBilgileri" style="display:none;margin-top:1%;">
+        <button class="accordion1" disabled>DİĞER KURUM BİLGİLERİ</button>
+        <div class="panel2">
+            <div class="" style="margin:1% 0px;">
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Kurum Adı</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Alınan Tarih" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Belge No" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Belge Tarih" />
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;margin:1% 0px;">
+                    <div class="gwc-drag-drop-wrapper">
+                        <div class="gwc-drag-drop-wrapper__dashes">
+                            <div class="gwc-drag-drop-wrapper__dashes__message">
+                                <i class="material-icons text-muted">cloud_upload</i>
+                                <div class="gwc-drag-drop-wrapper__dashes__message__title">
+                                    Sürükle & Bırak
+
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12">
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id="paftaNo" class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Pafta Numarası" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id="adaNo" class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Ada Numarası" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id="parselNo" class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Parsel Numarası" />
-                                        </div>
-                                    </div>
+                                <div class="gwc-drag-drop-wrapper__dashes__message__desc">
+                                    Belge Ekle
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12">
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='tapuAlan' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Tapu Alanı" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='zeminTip' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Zemin Tipi" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='zeminRefNo' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Zemin Referans Numarası" />
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="float:right;padding:0px;">
+                <div class="col-md-3" style="float:right;padding:0.4%;">
+                    <div class="autoCenter">
+                        <button class="col-md-5" id="nextDigerKurum">İleri</button>
+                        <button class="col-md-5" id="prevDigerKurum">Geri</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    @*-------------------------------------------------------------------------------     BİNA BİLGİLERİ          ------------------------------------------------------------------------*@
+    <div class="binaBilgileri" style="display:none; margin-top:1%;">
+        <button class="accordion1" disabled>BİNA BİLGİLERİ</button>
+        <div class="panel2">
+            <div class="" style="margin:1% 0px;">
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Cadde/Sokak</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Kapı No" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="UAVT No" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Bina Türü" />
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Yapı Nizami" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="İşyeri Adedi" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Konut Adedi" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Bağımsız Adedi" />
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Bodrum Kat" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Zemin Kat" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Normal Kat" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Asma Kat" />
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Çatı Katı" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Toplam Kat Adedi" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Taban Alan" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="İnşaat Alanı" />
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="İnşaat m² Birim Fiyatı" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Öngörülen m² Değeri" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Bina Değeri" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Yak Yapı Yüksekliği" />
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3">
+
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Bina Konumu</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Yapı Yaşı</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>İnşaat Türü</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Otopark</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Asansör</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Çatı Tipi</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Şerefiye</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Site İçinde</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Tespit Yapan</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Tespit Tarihi</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <form action="#">
+                        <div class="form-group col-md-6" style="padding:0px 0.4% 0px 0.4%;">
+                            <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Açıklama"></textarea>
+                        </div>
+                        @*<button type="submit" class="btn btn-primary">Submit</button>*@
+                        <div class="form-group col-md-6" style="padding:0px 0.4% 0px 0.4%;">
+                            <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Görüşler"></textarea>
+                        </div>
+                        @*<button type="submit" class="btn btn-primary">Submit</button>*@
+                    </form>
+                </div>
+
+                <div class="col-md-12" style="padding:0px;margin:1% 0px;">
+                    <div class="gwc-drag-drop-wrapper">
+                        <div class="gwc-drag-drop-wrapper__dashes">
+                            <div class="gwc-drag-drop-wrapper__dashes__message">
+                                <i class="material-icons text-muted">cloud_upload</i>
+                                <div class="gwc-drag-drop-wrapper__dashes__message__title">
+                                    Sürükle & Bırak
+
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12">
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='nitelik' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Nitelik" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='cilt' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Cilt" />
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='sayfa' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Sayfa" />
-                                        </div>
-                                    </div>
+                                <div class="gwc-drag-drop-wrapper__dashes__message__desc">
+                                    Belge Ekle
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12">
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='tespitYapan' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Tespit Yapan" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3" style="float:right;padding:0.4%;">
+                        <div class="autoCenter">
+                            <button class="col-md-5" style="float:right" id="nextBina">İleri</button>
+                            <button class="col-md-5" style="float:right" id="prevBina">Geri</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*----------------------------------------------------------------------------------- İSKAN ------------------------------------------------------------------------*@
+        <div class="bilgigoruntuleme">
+            <button class="accordion">
+                İSKAN
+                <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+                    <li>
+                        <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+                    </li>
+                    <li>
+                        <a class=" navbar-right "><i class="far fa-plus-square" data-toggle="modal" data-target="#modalIskan"></i></a>
+                    </li>
+                </ul>
+            </button>
+            <div class="panel1">
+                <div class="col-md-12" style="padding:0px;">
+                    <form action="#">
+                        <div class="col-md-6" style="padding:0 0.4%;">
+                            <input type="text" value="" class="form-control" placeholder="İskan No: " style="background:white;pointer-events:none" />
+                        </div>
+                        <div class="col-md-6" style="padding:0 0.4%;">
+                            <input type="text" value="" class="form-control" placeholder="İskan Tarih: " style="background:white;pointer-events:none" />
+                        </div>
+                        <div class="form-group col-md-12" style="padding:0.4% 0.4%;">
+                            <textarea class="form-control" rows="4" id="comment" name="text" placeholder="İskan Açıklama: " style="background:white;pointer-events:none"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="modalIskan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="accordionMalik">İskan Bilgileri</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-md-6" style="padding:0 0.4%;">
+                                <input type="text" value="" class="form-control" placeholder="İskan No " />
+                            </div>
+                            <div class="col-md-6" style="padding:0 0.4%;">
+                                <input type="text" value="" class="form-control" placeholder="İskan Tarih " />
+                            </div>
+                            <div class="form-group col-md-12" id="form-group" style="padding:1% 0.4%;">
+                                <textarea class="form-control" rows="4" id="comment" name="text" placeholder="İskan Açıklama "></textarea>
+                            </div>
+                            <div class="col-md-12" style="padding:0px;margin:1% 0px;">
+                                <div class="gwc-drag-drop-wrapper">
+                                    <div class="gwc-drag-drop-wrapper__dashes">
+                                        <div class="gwc-drag-drop-wrapper__dashes__message">
+                                            <i class="material-icons text-muted">cloud_upload</i>
+                                            <div class="gwc-drag-drop-wrapper__dashes__message__title">
+                                                Sürükle & Bırak
+
+                                            </div>
+                                            <div class="gwc-drag-drop-wrapper__dashes__message__desc">
+                                                Belge Ekle
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-4">
-                                            <input type="text" id='tespitTarihi' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Tespit Tarihi" />
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                                <input class="switch-input" type="checkbox" />
-                                                <span class="switch-label" data-on="Evet" data-off="Hayır"></span> <span class="switch-handle"></span>
-                                            </label>
-                                            <input type="text" id='hisseli' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="Hisseli" />
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                                <input class="switch-input" type="checkbox" />
-                                                <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                            </label>
-                                            <input type="text" id='isgalci' class="form-control" style=" height:35px; border-radius:17px;"
-                                                   placeholder="İşgalci" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group col-md-2">
-                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                            <input class="switch-input" type="checkbox" />
-                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                        </label>
-                                        <input type="text" id='malik' class="form-control" style=" height:35px; border-radius:17px;"
-                                               placeholder="Malik" />
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                            <input class="switch-input" type="checkbox" />
-                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                        </label>
-                                        <input type="text" id='serh' class="form-control" style=" height:35px; border-radius:17px;"
-                                               placeholder="Şerh" />
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                            <input class="switch-input" type="checkbox" />
-                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                        </label>
-                                        <input type="text" id='beyan' class="form-control" style=" height:35px; border-radius:17px;"
-                                               placeholder="Beyan" />
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                            <input class="switch-input" type="checkbox" />
-                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                        </label>
-                                        <input type="text" id='irtifak' class="form-control" style=" height:35px; border-radius:17px;"
-                                               placeholder="İrtifak" />
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                            <input class="switch-input" type="checkbox" />
-                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                        </label>
-                                        <input type="text" id='haciz' class="form-control" style=" height:35px; border-radius:17px;"
-                                               placeholder="Haciz " />
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label class="switch" style="position:absolute;z-index:10;right:1px;background:none ">
-                                            <input class="switch-input" type="checkbox" />
-                                            <span class="switch-label" data-on="Var" data-off="Yok"></span> <span class="switch-handle"></span>
-                                        </label>
-                                        <input type="text" id='ipotek' class="form-control" style=" height:35px; border-radius:17px;"
-                                               placeholder="İpotek" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <buttonIleri type="buttonIleri" id="belediyeIleri" class="buttonIleri" style="vertical-align:middle;"><span>İleri</span></buttonIleri>
-                            <buttonIleri type="buttonIleri" id="belediyeGeri" class="buttonIleri" style="vertical-align:middle;"><span>Geri</span></buttonIleri>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydet</button>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
+            @*---------------------------------------------------------------------------------------------- YAPI RUHSAT ---------------------------------------------------------------------------------*@
+            <button class="accordion">
+                YAPI RUHSAT
+                <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+                    <li>
+                        <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+                    </li>
+                    <li>
+                        <a class=" navbar-right "><i class="far fa-plus-square" data-toggle="modal" data-target="#modalYapıRuhsat"></i></a>
+                    </li>
+                </ul>
+            </button>
+            <div class="panel1">
+                <div class="col-md-6" style="padding:0 0.4%;">
+                    <input type="text" value="" class="form-control" placeholder="Yapı Ruhsat No: " style="background:white;pointer-events:none" />
+                </div>
+                <div class="col-md-6" style="padding:0 0.4%;">
+                    <input type="text" value="" class="form-control" placeholder="Yapı Ruhsat Tarih: " style="background:white;pointer-events:none" />
+                </div>
+                <div class="form-group col-md-12" style="padding:0.4% 0.4%;">
+                    <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Yapı Ruhsat Açıklama: " style="background:white;pointer-events:none"></textarea>
+                </div>
+
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="modalYapıRuhsat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="accordionMalik">Yapı Ruhsat Bilgileri</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-md-6" style="padding:0 0.4%;">
+                                <input type="text" value="" class="form-control" placeholder="Yapı Ruhsat No " />
+                            </div>
+                            <div class="col-md-6" style="padding:0 0.4%;">
+                                <input type="text" value="" class="form-control" placeholder="Yapı Ruhsat Tarih " />
+                            </div>
+                            <div class="form-group col-md-12" style="padding:1% 0.4%;">
+                                <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Yapı Ruhsat Açıklama "></textarea>
+                            </div>
+                            <div class="col-md-12" style="padding:0px;margin:1% 0px;">
+                                <div class="gwc-drag-drop-wrapper">
+                                    <div class="gwc-drag-drop-wrapper__dashes">
+                                        <div class="gwc-drag-drop-wrapper__dashes__message">
+                                            <i class="material-icons text-muted">cloud_upload</i>
+                                            <div class="gwc-drag-drop-wrapper__dashes__message__title">
+                                                Sürükle & Bırak
+
+                                            </div>
+                                            <div class="gwc-drag-drop-wrapper__dashes__message__desc">
+                                                Belge Ekle
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*---------------------------------------------------------------------------------------------- ONAYLI PROJE ---------------------------------------------------------------------------------*@
+
+            <button class="accordion">
+                ONAYLI PROJE
+                <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+                    <li>
+                        <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+                    </li>
+                    <li>
+                        <a class=" navbar-right "><i class="far fa-plus-square" data-toggle="modal" data-target="#modalOnayliProje"></i></a>
+                    </li>
+                </ul>
+            </button>
+            <div class="panel1">
+                <div class="col-md-6" style="padding:0 0.4%;">
+                    <input type="text" value="" class="form-control" placeholder="Onaylı Proje No: " style="background:white;pointer-events:none" />
+                </div>
+                <div class="col-md-6" style="padding:0 0.4%;">
+                    <input type="text" value="" class="form-control" placeholder="Onaylı Proje Tarih: " style="background:white;pointer-events:none" />
+                </div>
+                <div class="form-group col-md-12" style="padding:0.4% 0.4%;">
+                    <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Onaylı Proje Açıklama: " style="background:white;pointer-events:none"></textarea>
+                </div>
+
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="modalOnayliProje" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="accordionMalik">Onaylı Proje Bilgileri</button>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-md-6" style="padding:0 0.4%;">
+                                <input type="text" value="" class="form-control" placeholder="Onaylı Proje No " />
+                            </div>
+                            <div class="col-md-6" style="padding:0 0.4%;">
+                                <input type="text" value="" class="form-control" placeholder="Onaylı Proje Tarih " />
+                            </div>
+                            <div class="form-group col-md-12" style="padding:1% 0.4%;">
+                                <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Onaylı Proje Açıklama "></textarea>
+                            </div>
+                            <div class="col-md-12" style="padding:0px;margin:1% 0px;">
+                                <div class="gwc-drag-drop-wrapper">
+                                    <div class="gwc-drag-drop-wrapper__dashes">
+                                        <div class="gwc-drag-drop-wrapper__dashes__message">
+                                            <i class="material-icons text-muted">cloud_upload</i>
+                                            <div class="gwc-drag-drop-wrapper__dashes__message__title">
+                                                Sürükle & Bırak
+
+                                            </div>
+                                            <div class="gwc-drag-drop-wrapper__dashes__message__desc">
+                                                Belge Ekle
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*---------------------------------------------------------------------------------------------- YAPI KAYIT BELGESİ ---------------------------------------------------------------------------------*@
+
+            <button class="accordion">
+                YAPI KAYIT BELGESİ
+                <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+                    <li>
+                        <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+                    </li>
+                    <li>
+                        <a class=" navbar-right "><i class="far fa-plus-square" data-toggle="modal" data-target="#modalYapıKayıtBelgesi"></i></a>
+                    </li>
+                </ul>
+            </button>
+            <div class="panel1">
+                <div class="col-md-6" style="padding:0 0.4%;">
+                    <input type="text" value="" class="form-control" placeholder="Yapı Kayıt No: " style="background:white;pointer-events:none" />
+                </div>
+                <div class="col-md-6" style="padding:0 0.4%;">
+                    <input type="text" value="" class="form-control" placeholder="Yapı Kayıt Tarih: " style="background:white;pointer-events:none" />
+                </div>
+                <div class="form-group col-md-12" style="padding:0.4% 0.4%;">
+                    <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Yapı Kayıt Açıklama: " style="background:white;pointer-events:none"></textarea>
+                </div>
+
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="modalYapıKayıtBelgesi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="accordionMalik">Yapı Kayıt Bilgileri</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-md-6" style="padding:0 0.4%;">
+                                <input type="text" value="" class="form-control" placeholder="Yapı Kayıt No " />
+                            </div>
+                            <div class="col-md-6" style="padding:0 0.4%;">
+                                <input type="text" value="" class="form-control" placeholder="Yapı Kayıt Tarih " />
+                            </div>
+                            <div class="form-group col-md-12" style="padding:0.4% 0.4%;">
+                                <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Yapı Kayıt Açıklama "></textarea>
+                            </div>
+                            <div class="col-md-12" style="padding:0px;margin:1% 0px;">
+                                <div class="gwc-drag-drop-wrapper">
+                                    <div class="gwc-drag-drop-wrapper__dashes">
+                                        <div class="gwc-drag-drop-wrapper__dashes__message">
+                                            <i class="material-icons text-muted">cloud_upload</i>
+                                            <div class="gwc-drag-drop-wrapper__dashes__message__title">
+                                                Sürükle & Bırak
+
+                                            </div>
+                                            <div class="gwc-drag-drop-wrapper__dashes__message__desc">
+                                                Belge Ekle
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    @*-------------------------------------------------------------------------------     BAĞIMSIZ BİLGİLERİ          ------------------------------------------------------------------------*@
+
+    <div class="bagimsizBilgileri" style="display:none; margin-top:1%;">
+        <button class="accordion1" disabled>BAĞIMSIZ BİLGİLERİ</button>
+        <div class="panel2">
+            <div class="" style="margin:1% 0px;">
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Bağımsız Bölüm No" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Bağımsız Kat No" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Elektrik Sayaç No" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Su Sayaç No" />
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Kullanım Türü</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Doğalgaz Sayaç No" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Isınma Türü" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="m² Birim Fiyatı" />
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Manzara</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Bağımsız Alan" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Oda Sayısı" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Banyo Sayısı" />
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Balkon</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Hisse Durumu" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Aidat" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Şerefiye" />
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Cephe</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Toplam Bedel" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Tespit Yapan" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="" class="form-control" placeholder="Tespit Tarihi" />
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <div class="col-md-3">
+                        <select class="form-control" id="MahalleListAdres" name="input">
+                            <option value="" disabled selected>Balkon</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px;">
+                    <form action="#">
+                        <div class="form-group col-md-6" style="padding: 0px 0.4% 0px 0.4%;">
+                            <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Açıklama"></textarea>
+                        </div>
+                        <div class="form-group col-md-6" style="padding: 0px 0.4% 0px 0.4%;">
+                            <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Görüşler"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-12" style="padding:0px;margin:0% 0px;">
+                    <div class="gwc-drag-drop-wrapper" style="padding: 0 0.4% 0 0.4%;">
+                        <div class="gwc-drag-drop-wrapper__dashes">
+                            <div class="gwc-drag-drop-wrapper__dashes__message">
+                                <i class="material-icons text-muted">cloud_upload</i>
+                                <div class="gwc-drag-drop-wrapper__dashes__message__title">
+                                    Sürükle & Bırak
+                                </div>
+                                <div class="gwc-drag-drop-wrapper__dashes__message__desc">
+                                    Belge Ekle
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="float:right;padding:0px;">
+                <div class="col-md-3" style="float:right;padding:0.4%;">
+                    <div class="autoCenter">
+                        <button class="col-md-5" id="nextBagimsiz">İleri</button>
+                        <button class="col-md-5" id="prevBagimsiz">Geri</button>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-@section Scripts {
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script type="text/javascript">
-        $("#tapuIleri").click(function () {
-            $("#collapse3a").fadeOut(100);
-            $("#collapse3b").fadeIn(1000);
-            $("#collapse3c").fadeOut(100);
-        });
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
 
-        $("#belediyeIleri").click(function () {
-            $("#collapse3a").fadeOut(100);
-            $("#collapse3b").fadeOut(100);
-            $("#collapse3c").fadeIn(1000);
-            $("Baslik").html("Belediye Bilgileri");
+<script>
+
+    $('#datepicker').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#datepicker2').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#datepicker3').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#datepicker4').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#datepicker5').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#datepicker6').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#datepicker7').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#datepicker8').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#datepicker9').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#datepicker10').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#datepicker11').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#ilListesi').change(function () {
+        $.ajax({
+            url: "/yonetim/IlceListele", //burdaki url controller/actiondır
+            data: { ilId: $(this).val() },//datamdacontrollera gönderdiğim parametredir ilId  olarakgönderdim tanımlamalaraynıolcak
+            dataType: "JSON",
+            success: function (result) { //yani controllerdan bana data döndüğünde dönen data result a atılır.
+                var ilce = $("#ilceListesi"); //ilce select optionumu aldım
+                ilce.empty();
+                $.each(result, function (i, item) { // each javascript döngsüdür ilce sayısıkadar döner.
+                    ilce.append($("<option></option>").attr("value", item.Id).html(item.Adi));
+                    //append eklemektir ilce sayısıkadar option ekledim + attr  budaoption value="ilce_id" html ile ilceadlarınıyazdırdım
+                });
+            }
         });
-        $("#belediyeGeri").click(function () {
-            $("#collapse3a").fadeIn(1000);
-            $("#collapse3b").fadeOut(100);
-            $("#collapse3c").fadeOut(100);
-        });
-    </script>
-}
+    });
+</script>

@@ -1,39 +1,7 @@
 ﻿@charset "UTF-8";
-/*------------------------------------------------------------------
-[Table of contents]
-
-1. Body
-2. Icons
-3. Widgets
-    3.1 Menu Right
-4. Animation
-5. Header
-    5.1 Navigation
-6. Forms elements
-7. Results
-    7.1 Classfied
-    7.2 Agents and Blogs
-    7.3 properties list small / .properties-list-smal
-8. Carousel
-9. Listing Preview
-10. Breadcrumb
-11. Images gallery
-12. Panel
-13. Sharing
-13. Footer / .footer
-14. Components
-    14.1 Categories list
-15. Invoice
-16. Custom Mixins
-
--------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------
-[1. Body ]
-*/
 
 @font-face {
-    font-family: 'Open Sans Light';
+    font-family: 'Roboto', serif;
     src: url("../fonts/OpenSansLight/OpenSans-Light.ttf") format("truetype"), url("../fonts/OpenSansLight/opensans-light-webfont.woff");
 }
 
@@ -43,7 +11,7 @@ html, body {
 
 body {
     color: #4E4E4E;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', serif;
     font-size: 14px;
     margin: 0;
     padding: 0;
@@ -51,12 +19,12 @@ body {
 
     /* full-width */
     body.full-width .row,
-    body.full-width .container {
+    body.full-width .container1 {
         margin-left: 0;
         margin-right: 0;
     }
 
-    body.full-width .container {
+    body.full-width .container1 {
         max-width: 100%;
         width: 100%;
     }
@@ -66,6 +34,7 @@ body {
     body.full-width .container {
         padding-left: 0;
         padding-right: 0;
+        width: 100%;
     }
 }
 
@@ -179,12 +148,12 @@ a {
 }
 
     a:hover {
-        color: #353333;
+        color: #0d394a;
         text-decoration: none;
     }
 
 body p {
-    line-height: 1.8;
+    /*line-height: 1.8;*/
     font-size: 13px;
 }
 
@@ -195,7 +164,9 @@ body p {
 }
 
 .text-color-primary {
-    color: #0f7ad5;
+    color: white;
+    font-family:'Roboto',serif;
+    font-size:14px;
 }
 
 .border-color-primary {
@@ -223,6 +194,7 @@ body .color-secondary.btn {
     -o-transition: all .15s;
     width: 100%;
     z-index: 2;
+
 }
 
 .color-primary.btn:hover:after,
@@ -563,7 +535,7 @@ img {
 }
 
 .widget .widget-list {
-    font-family: 'Open Sans Light', sans-serif;
+    font-family: 'Roboto', serif;
     font-weight: 600;
     list-style: none;
     margin: 0;
@@ -653,7 +625,6 @@ img {
     .widget.widget-properties .property-card {
         box-shadow: none;
         -webkit-box-shadow: none;
-        -ms-box-shadow: none;
         -moz-box-shadow: none;
     }
 
@@ -838,7 +809,6 @@ body .form-additional.npad {
 
 .widget-form-cart .widget-body .list-overview {
     padding: 0 5px;
-    ;
 }
 
 .select-default {
@@ -1060,7 +1030,7 @@ ul.categories > li {
 
         ul.categories > li > a:after {
             content: " \f105";
-            font-family: 'FontAwesome', sans-serif;
+            font-family: 'Roboto', serif;
             float: right;
             position: relative;
             top: 0;
@@ -1201,7 +1171,6 @@ ul.categories > li {
     color: #fff;
     font-size: 11px;
     line-height: 30px;
-    ;
 }
 
     .header .top-bar ul {
@@ -1487,7 +1456,6 @@ body .top-box > .container {
     transition: all .65s ease-in;
     -webkit-transition: all .65s ease-in;
     -moz-transition: all .65s ease-in;
-    -ms-transition: all .65s ease-in;
 }
 
 .top-bar-fixed .header-inner .logo,
@@ -1495,18 +1463,15 @@ body .top-box > .container {
     transition: all .30s ease-in;
     -webkit-transition: all .30s ease-in;
     -moz-transition: all .30s ease-in;
-    -ms-transition: all .30s ease-in;
     transition-delay: .0s;
     -webkit-transition-delay: .0s;
     -moz-transition-delay: .0s;
-    -ms-transition-delay: .0s;
 }
 
 .websitetitle {
     transition: all .15s ease;
     -webkit-transition: all .15s ease;
     -moz-transition: all .15s ease;
-    -ms-transition: all .15s ease;
 }
 
 .header-inner .logo {
@@ -2019,20 +1984,16 @@ body .top-box > .container {
 .menu {
     transition: padding-top .2745s ease-in;
     -webkit-transition: padding-top .2745s ease-in;
-    -moz-transition: ppadding-top .2745s ease-in;
-    -ms-transition: padding-top .2745s ease-in;
-    transition-delay: .0;
+    -moz-transition: padding-top .2745s ease-in;
 }
 
 .top-bar-fixed .menu {
     transition: padding-top .3s ease-in;
     -webkit-transition: padding-top .3s ease-in;
     -moz-transition: padding-top .3s ease-in;
-    -ms-transition: padding-top .3s ease-in;
     transition-delay: .0s;
     -webkit-transition-delay: .0s;
     -moz-transition-delay: .0s;
-    -ms-transition-delay: .0s;
 }
 
 .menu .navbar .dropdown-mega,
@@ -2129,7 +2090,6 @@ body .top-box > .container {
     .lang-manu .dropdown-menu {
         border-radius: 0;
         left: 0px;
-        min-width: auto;
         padding: 0;
     }
 
@@ -2150,20 +2110,17 @@ body .top-box > .container {
         margin-top: 2px;
     }
 
-.header-slider .carousel .carousel-inner .item {
+/*.header-slider .carousel .carousel-inner .item {
     height: 527px;
-}
+}*/
 
-    .header-slider .carousel .carousel-inner .item img {
-        height: 100%;
-        margin: 0 auto;
-        object-fit: cover;
-        -ms-object-fit: cover;
-        -o-object-fit: cover;
-        -webkit--object-fit: cover;
-        -moz-object-fit: cover;
-        width: 100%;
-    }
+.header-slider .carousel .carousel-inner .item img {
+    height: 100%;
+    margin: 0 auto;
+    object-fit: cover;
+    -o-object-fit: cover;
+    width: 100%;
+}
 
 .header-over-search .container {
     position: relative;
@@ -2196,7 +2153,7 @@ body .top-box > .container {
 }
 
 .carousel-caption .carousel-caption-title {
-    font-family: 'Open Sans Light', sans-serif;
+    font-family: 'Roboto', serif;
     font-size: 34px;
     font-weight: 600;
     margin-bottom: 50px;
@@ -2241,7 +2198,7 @@ body .top-box > .container {
 }
 
 .carousel-caption .btn {
-    margin-top: 20px;
+    margin-top: 100%;
 }
 
 /*------------------------------------------------------------------
@@ -2299,15 +2256,13 @@ form textarea.form-control {
     color: #000;
 }
 
-.widget .form-additional input::placeholder {
+.widget .form-additional input-placeholder {
     color: #000;
 }
 
-.widget .form-additional input::-ms-input-placeholder {
-    color: #000;
-}
 
-.widget .form-additional input::placeholder {
+
+.widget .form-additional input-placeholder {
     color: #000;
 }
 
@@ -2319,15 +2274,13 @@ form textarea.form-control {
     color: #000;
 }
 
-.widget .form-additional textarea::placeholder {
+.widget .form-additional textarea-placeholder {
     color: #000;
 }
 
-.widget .form-additional textarea::-ms-input-placeholder {
-    color: #000;
-}
 
-.widget .form-additional textarea::placeholder {
+
+.widget .form-additional textarea-placeholder {
     color: #000;
 }
 
@@ -2377,7 +2330,7 @@ form textarea.form-control {
     }
 
 .btn-primary {
-    background: #0f7ad5;
+    /*background: #0f7ad5;*/
     border-radius: 0;
     white-space: normal;
     padding: 10px 0;
@@ -2428,7 +2381,7 @@ form textarea.form-control {
 .form-additional {
     margin-bottom: 40px;
     margin-top: 30px;
-    padding:0px 10px;
+    padding: 0px 10px;
 }
 
     .form-additional textarea,
@@ -2596,7 +2549,6 @@ form textarea.form-control {
         height: 100%;
         opacity: .5;
         position: absolute;
-        ;
         right: 0;
         top: 0;
         transition: opacity .15s ease-in;
@@ -2770,7 +2722,6 @@ body > div:not(.container-side-version) .h-side.h-side-results {
     background: #fff;
     box-shadow: 0 1px 2px rgba(0,0,0,.1);
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
-    -ms-box-shadow: 0 1px 2px rgba(0,0,0,.1);
     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
     margin-bottom: 20px;
     overflow: hidden;
@@ -2800,10 +2751,7 @@ body > div:not(.container-side-version) .h-side.h-side-results {
 .property-card .property-card-header img {
     height: 100%;
     object-fit: cover;
-    -ms-object-fit: cover;
     -o-object-fit: cover;
-    -webkit--object-fit: cover;
-    -moz-object-fit: cover;
     width: 100%;
 }
 
@@ -2836,7 +2784,7 @@ body > div:not(.container-side-version) .h-side.h-side-results {
         color: #545454;
         font-size: 18px;
         font-weight: 600;
-        font-family: 'Open Sans Light', sans-serif;
+        font-family: 'Roboto', serif;
         height: 24px;
         overflow: hidden;
         margin-top: 5px;
@@ -2894,13 +2842,15 @@ body > div:not(.container-side-version) .h-side.h-side-results {
 }
 
 .property-preview-f-left {
-    font-size:11px;
+    font-size: 14px;
     overflow: hidden;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
+.card-group .card .card-footer {
+    background: #419e9d;
+}
 .property-card-list .property-preview-f-left {
     text-align: left;
 }
@@ -3032,7 +2982,6 @@ body > div:not(.container-side-version) .h-side.h-side-results {
     .classfied-card * {
         color: #fff;
         -o-transition: .3s;
-        -ms-transition: .3s;
         -moz-transition: .3s;
         -webkit-transition: .3s;
         transition: .35s;
@@ -3204,10 +3153,7 @@ body > div:not(.container-side-version) .h-side.h-side-results {
         .properties-list-small .property .image img {
             height: 100%;
             object-fit: cover;
-            -webkit-object-fit: cover;
             -o-object-fit: cover;
-            -moz-object-fit: cover;
-            -ms-object-fit: cover;
             width: 100%;
         }
 
@@ -3419,19 +3365,13 @@ body > div:not(.container-side-version) .h-side.h-side-results {
         }
 
     .blogs-listing .card .description {
-        box-orient: vertical;
         display: -webkit-box;
         line-height: 1.8;
-        line-clamp: 8;
         max-height: 160px;
         overflow: hidden;
         text-overflow: ellipsis;
-        -webkit-text-overflow: ellipsis;
         -webkit-line-clamp: 8;
         -webkit-box-orient: vertical;
-        -ms-line-clamp: 8;
-        -ms-box-orient: vertical;
-        -moz-line-clamp: 8;
         -moz-box-orient: vertical;
     }
 
@@ -3457,7 +3397,7 @@ body > div:not(.container-side-version) .h-side.h-side-results {
     .news .card .title {
         color: #545454;
         font-size: 18px;
-        font-family: "Open Sans Light", "Open Sans";
+        font-family: 'Roboto', serif;
         font-weight: 600;
         line-height: 1;
         overflow: hidden;
@@ -3620,7 +3560,7 @@ section.page-body .h4 {
     display: block;
     font-size: 18px;
     font-weight: 600;
-    font-family: "open Sans Light", sans-serif;
+    font-family: 'Roboto', serif;
     margin-bottom: 5px;
     overflow: hidden;
     text-decoration: none;
@@ -3630,7 +3570,7 @@ section.page-body .h4 {
 
 .agents-corousel-item span {
     display: block;
-    font-family: "open Sans Light", sans-serif;
+    font-family: 'Roboto', serif;
 }
 
 .property-corousel {
@@ -3680,12 +3620,9 @@ section.page-body .h4 {
 .property-slider .carousel-inner > .item > img,
 .property-slider .img-fluid {
     height: 100%;
-    width:100%;
+    width: 100%;
     object-fit: cover;
-    -ms-object-fit: cover;
     -o-object-fit: cover;
-    -webkit--object-fit: cover;
-    -moz-object-fit: cover;
 }
 
 .property-slider .carousel-control.right,
@@ -3875,10 +3812,7 @@ section.page-body .h4 {
         .images-gallery li img {
             height: 100%;
             object-fit: cover;
-            -ms-object-fit: cover;
             -o-object-fit: cover;
-            -webkit--object-fit: cover;
-            -moz-object-fit: cover;
             width: 100%;
         }
 
@@ -4055,7 +3989,7 @@ section.page-body .h4 {
 
             .sharing-buttons li a:before {
                 content: "\f1e0";
-                font-family: 'FontAwesome', sans-serif;
+                font-family: 'Roboto', serif;
                 font-size: 17px;
                 -webkit-font-smoothing: antialiased;
                 left: 50%;
@@ -4099,7 +4033,7 @@ section.page-body .h4 {
 */
 
 body .footer .footer-mask {
-    background: #464646;
+    background: #46464600;
     color: #fefefe;
     padding: 0;
     padding-top: 20px;
@@ -4107,7 +4041,7 @@ body .footer .footer-mask {
 
 .footer .footer-contant {
     background: url(../img/footer-bg.png) no-repeat 50% 100%;
-    padding-bottom: 20px;
+    height: 94px;
 }
 
 body .footer .logo {
@@ -4130,7 +4064,6 @@ body .footer .logo {
 
 .footer .social ul {
     text-align: center;
-    width: 250px;
 }
 
 .footer .social ul {
@@ -4152,16 +4085,21 @@ body .footer .logo {
 
         .footer .social ul li a {
             background: #fefefe;
-            border-radius: 5px;
+            border-radius: 30px;
             color: #595959;
-            display: block;
-            font-size: 33px;
+            display: table;
+            font-size: 24px;
+            border: 1px solid #827f7f;
             height: 30px;
             line-height: 30px;
             text-align: center;
             text-decoration: none;
             width: 30px;
         }
+            .footer .social ul li a .fa{
+                display:table-cell;
+                vertical-align:middle;
+            }
 
             .footer .social ul li a:hover {
                 background: #ddd;
@@ -4330,11 +4268,7 @@ body .btn-scoll-up.btn {
 
     .img-circle-cover img {
         height: 100%;
-        -webkit-object-fit: cover;
-        -moz-object-fit: cover;
         object-fit: cover;
-        -webkit-object-position: center;
-        -moz-object-position: center;
         object-position: center;
         width: 100% !important;
     }
@@ -4397,7 +4331,6 @@ body .btn-scoll-up.btn {
     -moz-box-sizing: border-box;
     -webkit-box-shadow: 0 0 1px #888;
     -moz-box-shadow: 0 0 1px #888;
-    -o-box-shadow: 0 0 1px #888;
     max-width: 840px;
     margin: auto;
     position: relative;
@@ -4988,10 +4921,9 @@ body .footable-details.table {
 
 .components-examples ul,
 .box-container-title .sub-title,
-body p {
+/*body p {
     word-spacing: 1px;
-    max-width: 590px;
-}
+}*/
 
 .box-container-title .sub-title {
     display: inline-block;
@@ -5005,7 +4937,7 @@ body p {
 
 .pull-left-img {
     float: left;
-    padding: 5px 30px 15px 0;
+    padding: 5px 8px 0px 0;
     max-width: 230px;
 }
 

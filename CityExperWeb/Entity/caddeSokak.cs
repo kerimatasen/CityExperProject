@@ -14,18 +14,10 @@ namespace CityExperWeb.Entity
     
     public partial class caddeSokak
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public caddeSokak()
-        {
-            this.tasinmaz = new HashSet<tasinmaz>();
-        }
-    
         public int caddeSokak_id { get; set; }
         public int mahalle_id { get; set; }
         public string caddeSokakAdi { get; set; }
     
         public virtual mahalle mahalle { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tasinmaz> tasinmaz { get; set; }
     }
 }

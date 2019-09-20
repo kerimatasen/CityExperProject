@@ -4,31 +4,36 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="76074318017c4e1cbd96c240af901360" Name="Diagram1">
-        <EntityTypeShape EntityType="CityExperDb2Model.ada" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CityExperDb2Model.bagimsiz" Width="1.5" PointX="14.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CityExperDb2Model.caddeSokak" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CityExperDb2Model.il" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CityExperDb2Model.ilce" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CityExperDb2Model.mahalle" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CityExperDb2Model.parsel" Width="1.5" PointX="9.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CityExperDb2Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CityExperDb2Model.tapuMahalle" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CityExperDb2Model.tasinmaz" Width="1.5" PointX="12" PointY="2.875" IsExpanded="true" />
-        <AssociationConnector Association="CityExperDb2Model.FK_ada_tapuMahalle" ManuallyRouted="false" />
-        <AssociationConnector Association="CityExperDb2Model.FK_parsel_ada" ManuallyRouted="false" />
-        <AssociationConnector Association="CityExperDb2Model.FK_tasinmaz_ada" ManuallyRouted="false" />
-        <AssociationConnector Association="CityExperDb2Model.FK_bagimsiz_tasinmaz" ManuallyRouted="false" />
-        <AssociationConnector Association="CityExperDb2Model.FK_caddeSokak_mahalle" ManuallyRouted="false" />
-        <AssociationConnector Association="CityExperDb2Model.FK_tasinmaz_caddeSokak" ManuallyRouted="false" />
-        <AssociationConnector Association="CityExperDb2Model.FK_ilce_il" ManuallyRouted="false" />
-        <AssociationConnector Association="CityExperDb2Model.FK_tasinmaz_il" ManuallyRouted="false" />
-        <AssociationConnector Association="CityExperDb2Model.FK_mahalle_ilce" ManuallyRouted="false" />
-        <AssociationConnector Association="CityExperDb2Model.FK_tapuMahalle_ilce" ManuallyRouted="false" />
-        <AssociationConnector Association="CityExperDb2Model.FK_tasinmaz_ilce" ManuallyRouted="false" />
-        <AssociationConnector Association="CityExperDb2Model.FK_tasinmaz_mahalle" ManuallyRouted="false" />
-        <AssociationConnector Association="CityExperDb2Model.FK_tasinmaz_parsel" ManuallyRouted="false" />
-        <AssociationConnector Association="CityExperDb2Model.FK_tasinmaz_tapuMahalle" ManuallyRouted="false" />
+      <Diagram DiagramId="63f49ec08dcd401a9088b0f60631a517" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="CityExperDbModel.ada" Width="1.5" PointX="7.5" PointY="1.625" />
+        <EntityTypeShape EntityType="CityExperDbModel.bagimsiz" Width="1.5" PointX="12" PointY="5.75" />
+        <EntityTypeShape EntityType="CityExperDbModel.bina" Width="1.5" PointX="9.75" PointY="4.375" />
+        <EntityTypeShape EntityType="CityExperDbModel.caddeSokak" Width="1.5" PointX="7.5" PointY="16" />
+        <EntityTypeShape EntityType="CityExperDbModel.il" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="CityExperDbModel.ilce" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="CityExperDbModel.mahalle" Width="1.5" PointX="5.25" PointY="16" />
+        <EntityTypeShape EntityType="CityExperDbModel.malik" Width="1.5" PointX="14.25" PointY="6.75" />
+        <EntityTypeShape EntityType="CityExperDbModel.Mulkiyet" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="CityExperDbModel.parsel" Width="1.5" PointX="7.5" PointY="4.625" />
+        <EntityTypeShape EntityType="CityExperDbModel.sahiplikDurum" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CityExperDbModel.tapuMahalle" Width="1.5" PointX="5.25" PointY="7.25" />
+        <EntityTypeShape EntityType="CityExperDbModel.tasinmazTürü" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CityExperDbModel.UserRole" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="CityExperDbModel.UserRoleRelation" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="CityExperDbModel.Users" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="CityExperDbModel.FK_ada_tapuMahalle1" />
+        <AssociationConnector Association="CityExperDbModel.FK_bagimsiz_bina" />
+        <AssociationConnector Association="CityExperDbModel.FK_malik_bagimsiz" />
+        <AssociationConnector Association="CityExperDbModel.FK_bina_parsel" />
+        <AssociationConnector Association="CityExperDbModel.FK_malik_bina" />
+        <AssociationConnector Association="CityExperDbModel.FK_caddeSokak_mahalle" />
+        <AssociationConnector Association="CityExperDbModel.FK_ilce_il" />
+        <AssociationConnector Association="CityExperDbModel.FK_mahalle_ilce" />
+        <AssociationConnector Association="CityExperDbModel.FK_tapuMahalle_ilce" />
+        <AssociationConnector Association="CityExperDbModel.FK_malik_parsel" />
+        <AssociationConnector Association="CityExperDbModel.FK_parsel_tapuMahalle" />
+        <AssociationConnector Association="CityExperDbModel.FK_UserRoleRelation_UserRole" />
+        <AssociationConnector Association="CityExperDbModel.FK_UserRoleRelation_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

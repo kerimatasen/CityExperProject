@@ -1,0 +1,35 @@
+
+.footer .footer {
+    height: 40px;
+    background: #195560;
+    margin-top: 3px;
+}
+
+    .footer .footer .company {
+        font-family: 'Roboto';
+        font-size: 14px;
+        padding: 9px;
+        float: left !important;
+        margin-left: 10px;
+        border: none;
+    }
+
+    .footer .footer p {
+        padding: 11px;
+        float: right;
+        color: white;
+    }
+
+        .footer .footer p i {
+            font-size: 18px;
+        }
+
+    .footer .footer .instagram, .footer .footer .twitter, .footer .footer .facebook {
+        border-left: 1px solid white;
+    }
+.footer .footer .linkedin {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    margin-right:10px;
+}
+

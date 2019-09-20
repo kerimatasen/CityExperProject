@@ -1,0 +1,502 @@
+﻿
+@{
+    ViewBag.Title = "SatilikTasinmaz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Assets/css/satilikEklemeSayfasi.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="container" style="max-width:1200px;">
+    <ul class="nav nav-tabs wizard">
+        <li style="" id="mainstep1" class="active"><a href="#" data-toggle="tab" aria-expanded="false"><span class="nmbr">1</span>Katagori Seçimi</a></li>
+        <li style="" id="mainstep2"><a href="#" data-toggle="tab" aria-expanded="false"><span class="nmbr">2</span>İlan Detayları</a></li>
+        <li style="" id="mainstep3"><a href="#" data-toggle="tab" aria-expanded="false"><span class="nmbr">3</span>Ön İzleme</a></li>
+        <li style="" id="mainstep4"><a href="#" data-toggle="tab" aria-expanded="true"><span class="nmbr">4</span>İlan Onayı</a></li>
+    </ul>
+    @*-------------------------------------------------------------------------------     TAPU KADASTRO BİLGİLERİ          ------------------------------------------------------------------------*@
+    <div class="katagoriSecimi" style="display:block;margin-top:1%;">
+        <button class="accordion1" disabled style="margin-bottom:10px;background:none;color:#4e4e4e;font-family:Roboto;font-weight:bold; font-size:18px;border-bottom:2px solid #124553;border-left:13px solid #124553;">KATAGORİ SEÇİMİ</button>
+        <div class="panel2">
+            <ul class="breadcrumb" style="background:none;border-bottom:1px solid #5f5f5f4d;">
+                <li class="item active" style="color:#124553; background:none;"> Konut </li>
+                <li class="item" style="color:#124553;"> Kiralık </li>
+                <li class="item" style="color:#124553;"> Residence </li>
+            </ul>
+            <div class="row">
+                <div id="list-example" class="list-group col-md-3">
+                    <a class="list-group-item list-group-item-action " href="#" style="border:none;">Konut</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">İşyeri</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Arsa</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Bina</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Devrenmülk</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Turistik</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Tesis</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Diğer</a>
+                </div>
+                <div id="list-example" class="list-group col-md-3">
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Satılık</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Kiralık</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Devren Satılık</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Devren Kiralık</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Diğer</a>
+                </div>
+                <div id="list-example" class="list-group col-md-3">
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Daire</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Residence</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Müstakil Ev</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Villa</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Çiftlik Evi</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Köşk & Konak</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Yalı</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Yazlık</a>
+                    <a class="list-group-item list-group-item-action" href="#" style="border:none;">Diğer</a>
+                </div>
+                <div id="list-example" class="list-group col-md-3">
+                    <p class="list-group-item list-group-item-action" href="#" style="border:none;margin-top:auto;margin-bottom:20px;">Kategori seçimi tamamlanmıştır.</p>
+                    <button type="button" style="height:40px;width:100px;border-radius:0;margin-left:auto;margin-right:auto;margin-bottom:20px;" id="nextKatagoriButton">Devam</button>
+                </div>
+            </div>
+            <div class="row">
+                <div style="height:15px; border:1px solid #5f5f5f4d;position:relative;width:100%;margin-top:15px;border-radius:3px;">
+                    <div id="cubuk" style="height:10px; background-color:#104050; position:relative;width:45%;margin:auto;margin-top:1.25px;border-radius:3px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*-------------------------------------------------------------------------------     İLAN DETAYLARI İKİNCİ SAYFA          ------------------------------------------------------------------------*@
+
+    <div class="ilanDetaylari" style="display:none;margin-top:1%;">
+        <button class="accordion1" disabled style="margin:10px 0;background:none;color:#4e4e4e;font-family:Roboto;font-weight:bold; font-size:18px;border-bottom:2px solid #124553;border-left:13px solid #124553;">İLAN DETAYLARI</button>
+        <div class="panel2">
+            <div class="row">
+                <div class=" col-md-12">
+                    <a>İlan Başlığı</a>
+                    <input type="text" value="" class="form-control" style="background:white;" />
+                    <a>Açıklama</a>
+                    <textarea class="form-control" rows="4" id="comment" name="text" style="background:white;height:90px;"></textarea>
+                    <div class="col-md-4">
+                        <a>Fiyat(TL)</a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                    <div class="col-md-4">
+                        <a>m²(Brüt) </a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                    <div class=" col-md-4">
+                        <a>m²(Net) </a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                    <div class=" col-md-4">
+                        <a>Oda Sayısı</a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                    <div class=" col-md-4">
+                        <a>Bina Yaşı</a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                    <div class=" col-md-4">
+                        <a>Bulunduğu Kat</a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                    <div class=" col-md-4">
+                        <a>Kat Sayısı</a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                    <div class=" col-md-4">
+                        <a>Banyo Sayısı</a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                    <div class=" col-md-4">
+                        <a>Isıtma</a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                    <div class=" col-md-4">
+                        <a>Balkon</a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                    <div class=" col-md-4">
+                        <a>Eşyalı</a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                    <div class=" col-md-4">
+                        <a>Kullanım Durumu</a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                    <div class=" col-md-4">
+                        <a>Aidat(TL)</a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                    <div class=" col-md-4">
+                        <a>Depozito(TL)</a>
+                        <input type="text" value="" class="form-control" style="background:white;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="accordion1" disabled style=" margin:10px 0;background:none;color:#4e4e4e;font-family:Roboto;font-weight:bold;font-size:16px;border-bottom:2px solid #124553;border-left:13px solid #124553;">
+            <div class="col-md-10" style="font-family:Roboto;font-size:18px;font-weight:bold;"> Adres Bilgileri</div>
+            <p href="" class="col-md-2" style="font-family:Roboto;text-align:right;padding:0px;font-size:14px;"> Ülke Değiştir</p>
+        </button>
+        <div class="panel2">
+            <div class="row">
+                <div class=" col-md-12">
+                    <select class="form-control col-md-4" id="il" name="input" style="padding:0px 10px;">
+                        <option value="" disabled selected>İl</option>
+                    </select>
+                    <select class="form-control col-md-4" id="il" name="input">
+                        <option value="" disabled selected>İlçe</option>
+                    </select>
+                    <select class="form-control col-md-4" id="il" name="input">
+                        <option value="" disabled selected>Mahalle</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button class="accordion1" disabled style=" margin:10px 0;background:none;color:#4e4e4e;font-family:Roboto;font-weight:bold;font-size:16px;border-bottom:2px solid #124553;border-left:13px solid #124553;">
+            <div class="col-md-12" style="font-family:Roboto;font-size:18px;font-weight:bold;"> Detaylı Bilgi</div>
+        </button>
+        <button class="accordion active">
+            CEPHE
+            <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+                <li>
+                    <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+                </li>
+                <li>
+                    <a class=" navbar-right "><i class="far fa-plus-square"></i></a>
+                </li>
+            </ul>
+        </button>
+        <div class="panel1" style="display: none;">
+            <div class="container">
+                <ul>
+                    <li class="col-md-2">
+                        <input type="radio" id="d-option" name="selector">
+                        <label for="d-option">Doğu</label>
+                        <div class="check"></div>
+                    </li>
+
+                    <li class="col-md-2">
+                        <input type="radio" id="b-option" name="selector">
+                        <label for="b-option">Batı</label>
+                        <div class="check"><div class="inside"></div></div>
+                    </li>
+
+                    <li class="col-md-2">
+                        <input type="radio" id="k-option" name="selector">
+                        <label for="k-option">Kuzey</label>
+                        <div class="check"><div class="inside"></div></div>
+                    </li>
+
+                    <li class="col-md-2">
+                        <input type="radio" id="g-option" name="selector">
+                        <label for="g-option">Güney</label>
+                        <div class="check"><div class="inside"></div></div>
+                    </li>
+
+                    <li class="col-md-4">
+                        <input type="radio" id="c-option" name="selector">
+                        <label for="c-option">Cephe seçimi yapmak istemiyorum.</label>
+                        <div class="check"><div class="inside"></div></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <button class="accordion active">
+            İÇ ÖZELLİKLERİ
+            <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+                <li>
+                    <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+                </li>
+                <li>
+                    <a class=" navbar-right "><i class="far fa-plus-square"></i></a>
+                </li>
+            </ul>
+        </button>
+        <div class="panel1" style="display: none;">
+            daskjlhdsaASDDASSD
+        </div>
+        <button class="accordion active">
+            DIŞ ÖZELLİKLERİ
+            <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+                <li>
+                    <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+                </li>
+                <li>
+                    <a class=" navbar-right "><i class="far fa-plus-square"></i></a>
+                </li>
+            </ul>
+        </button>
+        <div class="panel1" style="display: none;">
+            daskjlhdsaASDDASSD
+        </div>
+        <button class="accordion active">
+            ENGELLİYE UYGUN
+            <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+                <li>
+                    <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+                </li>
+                <li>
+                    <a class=" navbar-right "><i class="far fa-plus-square"></i></a>
+                </li>
+            </ul>
+        </button>
+        <div class="panel1" style="display: none;">
+            daskjlhdsaASDDASSD
+        </div>
+        <button class="accordion active">
+            MUHİT
+            <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+                <li>
+                    <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+                </li>
+                <li>
+                    <a class=" navbar-right "><i class="far fa-plus-square"></i></a>
+                </li>
+            </ul>
+        </button>
+        <div class="panel1" style="display: none;">
+            daskjlhdsaASDDASSD
+        </div>
+        <button class="accordion active">
+            ULAŞIM
+            <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+                <li>
+                    <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+                </li>
+                <li>
+                    <a class=" navbar-right "><i class="far fa-plus-square"></i></a>
+                </li>
+            </ul>
+        </button>
+        <div class="panel1" style="display: none;">
+            daskjlhdsaASDDASSD
+        </div>
+        <button class="accordion active">
+            MANZARA
+            <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
+                <li>
+                    <a class=" navbar-right "><i class="fa fa-chevron-down"></i></a>
+                </li>
+                <li>
+                    <a class=" navbar-right "><i class="far fa-plus-square"></i></a>
+                </li>
+            </ul>
+        </button>
+        <div class="panel1" style="display: none;">
+            daskjlhdsaASDDASSD
+        </div>
+
+        <div class="col-md-12" style="padding:0px;margin:0.4% 0px 0 0;">
+            <div class="gwc-drag-drop-wrapper">
+                <div class="gwc-drag-drop-wrapper__dashes">
+                    <div class="gwc-drag-drop-wrapper__dashes__message">
+                        <i class="material-icons text-muted">cloud_upload</i>
+                        <div class="gwc-drag-drop-wrapper__dashes__message__title">
+                            Drag & Drop
+                        </div>
+                        <div class="gwc-drag-drop-wrapper__dashes__message__desc">
+                            your files here
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" style="height:40px;width:100px;border-radius:0;margin-left:1%;margin-right:auto;margin-bottom:20px;float:right;" id="nextİlanDetayButton">Devam</button>
+            <button type="button" style="height:40px;width:100px;border-radius:0;margin-left:auto;margin-right:auto;margin-bottom:20px;float:right;" id="prevİlanDetayButton">Geri</button>
+        </div>
+    </div>
+    <div class="satilikDuzenleForm" style="display:none;">
+        <div class="container-fluid" style="text-align:center">
+            <h4>İlanınızla ilgili aşağıdaki bilgiler doğruysa "<b>Devam Et</b>" butonuna tıklayıp bir sonraki aşamaya geçin.</h4>
+            <h4>Değilse "<b>Düzenle</b>" butonuna tıklayın.</h4>
+            <button type="button" id="satilikDuzenleButton">Düzenle</button>
+            <button type="button" id="satilikDevamButton" style="background:#144957;">Devam</button>
+        </div>
+        <div class="horizontal" style="width:100%; height:1px; background-color:#666666; margin-top:3%;"></div>
+        <div class="container-fluid">
+            <form>
+                <div class="row">
+                    <h3>satılık adı</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" style="border:1px solid #f5f1a2; background:white;">
+                        <div class="row" style="border:1px solid #f5f1a2;margin-top:3%;">
+                            <div id="carouselExampleControls col-md-12" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="~/Assets/img/placeholders/360x210.png" alt="First slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="~/Assets/img/placeholders/345x250.png" alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="~/Assets/img/placeholders/360x85.png" alt="Third slide">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="comment">Açıklama</label>
+                            <textarea class="form-control" rows="5" id="comment" placeholder="Açıklama..."></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="border:1px solid #f5f1a2; margin:0 1%;background:white;">
+                        <div class="row">
+                            <div class="col-md-12" style="margin-top:1%;">
+                                <h4><b>3.000 TL</b></h4>
+                                <h4><b>İstanbul/Beşiktaş</b></h4>
+                                <h4>İlan No: <span>21552365221</span> </h4>
+                                <h4>İlan Tarihi: <span>6 Ağustos 2019</span> </h4>
+                                <h4>Emlak Tipi: <span>Kiralık Residance</span> </h4>
+                                <h4>m² (Brüt): <span>100</span> </h4>
+                                <h4>m² (Net): <span>20</span> </h4>
+                                <h4>Oda Sayısı: <span>2+0</span> </h4>
+                                <h4>Bina Yaşı: <span>0</span> </h4>
+                                <h4>Bulunduğu Kat: <span>6</span> </h4>
+                                <h4>Kat Sayısı: <span>5</span> </h4>
+                                <h4>Isıtma: <span>Doğazgaz</span> </h4>
+                                <h4>Balkon: <span>1</span> </h4>
+                                <h4>Balkon Sayısı: <span>Var</span> </h4>
+                                <h4>Eşya: <span>Hayır</span> </h4>
+                                <h4>Kullanım Durumu: <span>Boş</span> </h4>
+                                <h4>Site İçerisinde: <span>Evet</span> </h4>
+                                <h4>Aidat (TL): <span>1000</span> </h4>
+                                <h4>Depozito (TL): <span>5000</span> </h4>
+                                <h4>Kimden: <span>Emlak Ofisi</span> </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="border:1px solid #f5f1a2;background:white;">
+                        <h4>İlan sahibi bilgileri</h4>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <button class="accordion active">CEPHE <i class="fa fa-check"></i><i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i> </button>
+        <div class="panel1" style="display: none;border:1px solid #d0deec;">
+            <div class="container">
+                <ul>
+                    <li class="col-md-2">
+                        <input type="radio" id="d1-option" name="selector">
+                        <label for="d1-option">Doğu</label>
+                        <div class="check"></div>
+                    </li>
+
+                    <li class="col-md-2">
+                        <input type="radio" id="b1-option" name="selector">
+                        <label for="b1-option">Batı</label>
+                        <div class="check"><div class="inside"></div></div>
+                    </li>
+
+                    <li class="col-md-2">
+                        <input type="radio" id="k1-option" name="selector">
+                        <label for="k1-option">Kuzey</label>
+                        <div class="check"><div class="inside"></div></div>
+                    </li>
+
+                    <li class="col-md-2">
+                        <input type="radio" id="g1-option" name="selector">
+                        <label for="g1-option">Güney</label>
+                        <div class="check"><div class="inside"></div></div>
+                    </li>
+                    <li class="col-md-4">
+                        <input type="radio" id="c1-option" name="selector">
+                        <label for="c1-option">Cephe Seçimi yapmak istemiyorum</label>
+                        <div class="check"><div class="inside"></div></div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <button class="accordion active">İÇ ÖZELLİKLERİ<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i> </button>
+        <div class="panel1" style="display: none;border:1px solid #d0deec;">
+            <div class="container">
+                <div class="col-md-12">
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <span class="checkmark"></span>
+                </div>
+            </div>
+        </div> <button class="accordion active">DIŞ ÖZELLİKLERİ<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i> </button>
+        <div class="panel1" style="display: none;border:1px solid #d0deec;">
+            <div class="container">
+                <div class="col-md-12">
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <span class="checkmark"></span>
+                </div>
+            </div>
+        </div> <button class="accordion active">ENGELLİYE UYGUN<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i> </button>
+        <div class="panel1" style="display: none;border:1px solid #d0deec;">
+            <div class="container">
+                <div class="col-md-12">
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <span class="checkmark"></span>
+                </div>
+            </div>
+        </div> <button class="accordion active">MUHİT<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i> </button>
+        <div class="panel1" style="display: none;border:1px solid #d0deec;">
+            <div class="container">
+                <div class="col-md-12">
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <span class="checkmark"></span>
+                </div>
+            </div>
+        </div>
+        <button class="accordion active">ULAŞIM<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i> </button>
+        <div class="panel1" style="display: none;border:1px solid #d0deec;">
+            <div class="container">
+                <div class="col-md-12">
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <span class="checkmark"></span>
+                </div>
+            </div>
+        </div>
+        <button class="accordion active">MANZARA<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i> </button>
+        <div class="panel1" style="display: none;border:1px solid #d0deec;">
+            <div class="container">
+                <div class="col-md-12">
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <input type="radio" checked="checked" name="radio">1
+                    <span class="checkmark"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row" style="width:100%;">
+        <div class="satilikKiralikOnayform" style="display:none; text-align:center;margin:0px auto;margin-top:2%;">
+            <img src="~/Assets/img/satilikonay.png" />
+            <h1>İlan girişiniz tamamlanmıştır.</h1>
+            <h3>İlanınız kontrol edilmek üzere bize ulaşmıştır.</h3>
+            <button style="height:40px;width:250px;color:white;font-size:16px;font-family:Roboto;background:#144957;border:none;margin-top:5%;">Yeni İlan Ver</button>
+            <h2 style="margin-top:5%;font-family:Roboto;">İlan numaranız: 71B812C73</h2>
+            <button type="button" style="height:40px;width:100px;border-radius:0;margin-left:auto;margin-right:auto;margin-bottom:20px;" id="prevsatilikKiralikOnay">Geri</button>
+            <button type="button" style="height:40px;width:100px;border-radius:0;margin-left:auto;margin-right:auto;margin-bottom:20px;" id="nextsatilikKiralikOnay">Devam</button>
+        </div>
+    </div>
+</div>

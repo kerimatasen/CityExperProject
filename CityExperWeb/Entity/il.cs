@@ -18,18 +18,14 @@ namespace CityExperWeb.Entity
         public il()
         {
             this.ilce = new HashSet<ilce>();
-            this.tasinmaz = new HashSet<tasinmaz>();
         }
     
         public int il_id { get; set; }
         public string ilAdi { get; set; }
-        public Nullable<decimal> Enlem { get; set; }
-        public Nullable<decimal> boylam { get; set; }
-        public System.Data.Entity.Spatial.DbGeography geography { get; set; }
+        public Nullable<decimal> lat { get; set; }
+        public Nullable<decimal> @long { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ilce> ilce { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tasinmaz> tasinmaz { get; set; }
     }
 }

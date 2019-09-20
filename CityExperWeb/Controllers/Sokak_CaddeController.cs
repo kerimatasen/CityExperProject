@@ -10,7 +10,7 @@ namespace CityExperWeb.Controllers
     
     public class Sokak_CaddeController : Controller
     {
-        CityExperDb2Entities entity = new CityExperDb2Entities();
+        CityExperDbEntities entity = new CityExperDbEntities();
 
         public JsonResult caddeSokakBymahalleid(int mahalleid)
         {
