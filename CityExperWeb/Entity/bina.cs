@@ -14,13 +14,6 @@ namespace CityExperWeb.Entity
     
     public partial class bina
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public bina()
-        {
-            this.bagimsiz = new HashSet<bagimsiz>();
-            this.malik = new HashSet<malik>();
-        }
-    
         public int bina_id { get; set; }
         public Nullable<int> caddeSokak_id { get; set; }
         public Nullable<int> ada_id { get; set; }
@@ -69,11 +62,5 @@ namespace CityExperWeb.Entity
         public string asansor { get; set; }
         public string muhit { get; set; }
         public string durum { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<bagimsiz> bagimsiz { get; set; }
-        public virtual parsel parsel { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<malik> malik { get; set; }
     }
 }

@@ -1,11 +1,18 @@
 ﻿@model CityExperWeb.Models.Gayrimenkul.TapuKadastroBilgiViewModel
+@{
+    var sessionModel = (CityExperWeb.Models.User.UserSessionModel)Session["UserSessionModel"];
 
+}
 <div class="tapubilgileri" style="display:block;margin-top:1%;">
     <button class="accordion1" disabled>TAPU VE KADASTRO BİLGİLERİ</button>
     <div class="panel2">
         <div class="" style="margin:1% 0px;">
             <div class="col-md-12" style="padding:0px;">
                 <div class="col-md-3">
+                    @if (sessionModel != null)
+                    {
+                        <input type="hidden" id="userId" value="@sessionModel.Id" />
+                    }
                     <select class="form-control" id="ilListesi" name="ilListesi">
                         <option value="0">İl Seçiniz</option>
                         @foreach (var il in Model.Iller)
@@ -33,7 +40,7 @@
 
             <div class="col-md-12" style="padding:0px;">
 
-                <div class="col-md-3"id="hisseliSecim" style="border:1px solid #d8dde2;
+                <div class="col-md-3" id="hisseliSecim" style="border:1px solid #d8dde2;
 height:35px;
 margin-top:0.6%;
 border-radius:5px;
@@ -100,15 +107,15 @@ margin-right: 3px;">
                 </div>
             </div>
             <div class="col-md-12" id="aciklamaAlani" style="padding:0px;">
-                    <form action="#">
-                        <div class="form-group col-md-6" style="padding:0px 0.4% 0px 0.4%;">
-                            <textarea class="form-control" rows="4" id="parselTKAciklama" name="text" placeholder="Açıklama">@Model.Aciklama</textarea>
-                        </div>
-                        <div class="form-group col-md-6" style="padding:0px 0.4% 0px 0.4%;">
-                            <textarea class="form-control" rows="4" id="parselTKGorus" name="text" placeholder="Görüşler"></textarea>
-                        </div>
-                    </form>
-                <div class="col-md-12"id="dragDropAlani" style="padding:0px;margin:0.4% 0px 0 0;">
+                <form action="#">
+                    <div class="form-group col-md-6" style="padding:0px 0.4% 0px 0.4%;">
+                        <textarea class="form-control" rows="4" id="parselTKAciklama" name="text" placeholder="Açıklama">@Model.Aciklama</textarea>
+                    </div>
+                    <div class="form-group col-md-6" style="padding:0px 0.4% 0px 0.4%;">
+                        <textarea class="form-control" rows="4" id="parselTKGorus" name="text" placeholder="Görüşler"></textarea>
+                    </div>
+                </form>
+                <div class="col-md-12" id="dragDropAlani" style="padding:0px;margin:0.4% 0px 0 0;">
                     <form action="/" method="post" class="dropzone" id="my-awesome-dropzone"></form>
                 </div>
                 <div class="gwc-drag-drop-wrapper">
@@ -187,34 +194,34 @@ margin-right: 3px;">
                         <div class="" style="margin:1% 0px;">
                             <div class="col-md-12" style="padding:0px;">
                                 <div class="col-md-3">
-                                    <select class="form-control" id="MahalleListAdres" name="input">
+                                    <select class="form-control" id="malikTuru" name="input">
                                         <option value="" disabled selected>Malik Türü</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="text" value="" class="form-control" placeholder="Tc" />
+                                    <input type="text" value="" class="form-control" id="malikTcNo" placeholder="Tc" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="text" value="" class="form-control" placeholder="Ad" />
+                                    <input type="text" value="" class="form-control" id="malikAd" placeholder="Ad" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="text" value="" class="form-control" placeholder="Soyad" />
-                                </div>
-                            </div>
-                            <div class="col-md-12" style="padding:0px;">
-                                <div class="col-md-3">
-                                    <input type="text" value="" class="form-control" placeholder="Baba Adı" />
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="text" value="" class="form-control" placeholder="Hisse Oranı" />
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="text" value="" class="form-control" placeholder="Hisse Miktarı" />
+                                    <input type="text" value="" class="form-control" id="malikSoyad" placeholder="Soyad" />
                                 </div>
                             </div>
                             <div class="col-md-12" style="padding:0px;">
                                 <div class="col-md-3">
-                                    <input type="text" value="" class="form-control" placeholder="Edinme Sebebi" />
+                                    <input type="text" value="" class="form-control" id="malikBabaAdi" placeholder="Baba Adı" />
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" value="" class="form-control" id="malikHisseOrani" placeholder="Hisse Oranı" />
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" value="" class="form-control" id="malikHisseMiktari" placeholder="Hisse Miktarı" />
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding:0px;">
+                                <div class="col-md-3">
+                                    <input type="text" value="" id="malikEdinmeSebebi" class="form-control" placeholder="Edinme Sebebi" />
                                 </div>
                                 <div class='col-md-3'>
                                     <input id="datepicker5" placeholder="Edinme Tarihi" />
@@ -239,7 +246,7 @@ margin-right: 3px;">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background: #328e8d;">Kapat</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background: #328e8d;">Kaydet</button>
+                        <button type="button" class="btn btn-secondary" id="parselMalikEkle" data-dismiss="modal" style="background: #328e8d;">Kaydet</button>
                     </div>
                 </div>
             </div>
@@ -261,10 +268,10 @@ margin-right: 3px;">
         </ul>
     </button>
     <div class="panel1">
-        <div class="malikBilgiAlanı col-md-10" style="height:40px;display:table;">
-            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Malik bilgilerinden türetilecektir</p>
-            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Şerh Tarih:</p>
-            <p style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Şerh Açıklama:</p>
+        <div class="serhBilgiAlani col-md-10" style="height:40px;display:table;">
+            <b style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Şerh No</b>
+            <b style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Şerh Tarih</b>
+            <b style="display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;">Şerh Açıklama</b>
         </div>
         <div class="buttons col-md-2" style="float:right;">
             <button type="button" class="malikSilButton" style="height:40px;width:50px;">
@@ -288,7 +295,7 @@ margin-right: 3px;">
                 <div class="modal-body">
                     <div class="col-md-12" style="padding:0px;">
                         <div class="col-md-6" style="padding:0px 0.4% 0px 0;border-radius:5px;">
-                            <input type="text" value="" class="form-control" placeholder="Şerh No" />
+                            <input type="text" value="" class="form-control" id="parselSerhNo" placeholder="Şerh No" />
                         </div>
                         <div class="col-md-6" style="padding:0px 0.4% 0px 0;border-radius:5px;">
                             <input id="datepicker6" placeholder="Şerh Tarihi" />
@@ -297,14 +304,14 @@ margin-right: 3px;">
                     <div class="col-md-12" style="padding:0px;">
                         <form action="#">
                             <div class="form-group col-md-12" style="padding:0px 0.8% 0 0;border-radius:5px;">
-                                <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Yevmiye Açıklama"></textarea>
+                                <textarea class="form-control" rows="4" name="text" id="parselSerhAciklama" placeholder="Yevmiye Açıklama"></textarea>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydet</button>
+                    <button type="button" class="btn btn-secondary" id="parselSerhEkle" data-dismiss="modal">Kaydet</button>
                 </div>
             </div>
         </div>
@@ -349,7 +356,7 @@ margin-right: 3px;">
                 <div class="modal-body">
                     <div class="col-md-12" style="padding:0px;">
                         <div class="col-md-6" style="padding:0px 0.4% 0px 0;border-radius:5px;">
-                            <input type="text" value="" class="form-control" placeholder="Beyan No" />
+                            <input type="text" value="" class="form-control" id="beyanNo" placeholder="Beyan No" />
                         </div>
                         <div class="col-md-6" style="padding:0px 0px 0.4% 0%;border-radius:5px;">
                             <input id="datepicker7" placeholder="Beyan Tarihi" />
@@ -358,14 +365,14 @@ margin-right: 3px;">
                     <div class="col-md-12" style="padding:0px;">
                         <form action="#">
                             <div class="form-group col-md-12" style="padding:0px 0.8% 0 0;border-radius:5px;">
-                                <textarea class="form-control" rows="4" id="comment" name="text" placeholder="Beyan Açıklama"></textarea>
+                                <textarea class="form-control" rows="4" id="beyanAciklama" name="text" placeholder="Beyan Açıklama"></textarea>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydet</button>
+                    <button type="button" class="btn btn-secondary" id="beyanKaydet"data-dismiss="modal">Kaydet</button>
                 </div>
             </div>
         </div>
@@ -411,7 +418,7 @@ margin-right: 3px;">
                 <div class="modal-body">
                     <div class="col-md-12" style="padding:0px;">
                         <div class="col-md-6" style="padding:0px 0.4% 0px 0;border-radius:5px;">
-                            <input type="text" value="" class="form-control" placeholder="İşgalci No" />
+                            <input type="text" value="" class="form-control" id="" placeholder="İşgalci No" />
                         </div>
                         <div class="col-md-6" style="padding:0px 0px 0.4% 0%;border-radius:5px;">
                             <input id="datepicker8" placeholder="İşgalci Tarihi" />

@@ -14,22 +14,8 @@ namespace CityExperWeb.Entity
     
     public partial class tapuMahalle
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tapuMahalle()
-        {
-            this.ada = new HashSet<ada>();
-            this.parsel = new HashSet<parsel>();
-        }
-    
-        public int tapuMahalle_id { get; set; }
+        public Nullable<int> Id { get; set; }
         public int ilce_id { get; set; }
         public string tapuMahalleAdi { get; set; }
-        public Nullable<int> id { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ada> ada { get; set; }
-        public virtual ilce ilce { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<parsel> parsel { get; set; }
     }
 }

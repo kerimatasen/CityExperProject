@@ -9,6 +9,7 @@ namespace CityExperWeb.Models.Gayrimenkul.POST
     {
         public int il { get; set; }
         public int ilce { get; set; }
+        public int UserId { get; set; }
         public int tapuMahalle { get; set; }
         public string mulkiyet { get; set; }
         public string hisseliDurum { get; set; }

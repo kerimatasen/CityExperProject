@@ -18,7 +18,6 @@ namespace CityExperWeb.Entity
         public ilce()
         {
             this.mahalle = new HashSet<mahalle>();
-            this.tapuMahalle = new HashSet<tapuMahalle>();
         }
     
         public int ilce_id { get; set; }
@@ -30,7 +29,5 @@ namespace CityExperWeb.Entity
         public virtual il il { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<mahalle> mahalle { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tapuMahalle> tapuMahalle { get; set; }
     }
 }

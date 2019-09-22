@@ -12,11 +12,12 @@ namespace CityExperWeb.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class ada
+    public partial class sysdiagrams
     {
-        public int ada_id { get; set; }
-        public int tapuMahalle_id { get; set; }
-        public int adaNo { get; set; }
-        public string aciklama { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

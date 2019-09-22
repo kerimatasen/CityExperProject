@@ -17,60 +17,62 @@ namespace CityExperWeb.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public parsel()
         {
-            this.bina = new HashSet<bina>();
-            this.malik1 = new HashSet<malik>();
+            this.ParselBeyan = new HashSet<ParselBeyan>();
+            this.ParselHaciz = new HashSet<ParselHaciz>();
+            this.ParselIpotek = new HashSet<ParselIpotek>();
+            this.ParselIrtifak = new HashSet<ParselIrtifak>();
+            this.ParselIsgalci = new HashSet<ParselIsgalci>();
+            this.ParselMalikRelation = new HashSet<ParselMalikRelation>();
+            this.ParselSerh = new HashSet<ParselSerh>();
         }
     
-        public int parsel_id { get; set; }
-        public Nullable<int> ada_id { get; set; }
-        public Nullable<int> tapuMahalle_id { get; set; }
-        public string mülkiyet { get; set; }
-        public string hisseli { get; set; }
-        public string paftaNo { get; set; }
-        public string adaNo { get; set; }
-        public string parselNo { get; set; }
-        public string nitelik { get; set; }
-        public Nullable<decimal> tapuAlani { get; set; }
-        public string rayicBedel { get; set; }
-        public string zemintipi { get; set; }
-        public string cilt { get; set; }
-        public string sayfa { get; set; }
-        public string tespitYapan { get; set; }
-        public Nullable<System.DateTime> tespitTarih { get; set; }
-        public string aciklama { get; set; }
-        public string gorusler { get; set; }
-        public string planFonksiyonu { get; set; }
-        public string emsal { get; set; }
-        public Nullable<decimal> insaatAlani { get; set; }
-        public Nullable<decimal> hmax { get; set; }
-        public string kaks { get; set; }
-        public string taks { get; set; }
-        public string planAdi { get; set; }
-        public string planaGöreİnsaatAlani { get; set; }
-        public Nullable<System.DateTime> tespittarihi { get; set; }
-        public string kurumAdi { get; set; }
-        public string alinanTarih { get; set; }
-        public string belgeNo { get; set; }
-        public string belgeTarih { get; set; }
-        public string zeminReferansNo { get; set; }
-        public string durum { get; set; }
-        public Nullable<decimal> metreKareBirimFiyat { get; set; }
-        public string arsaDegeri { get; set; }
-        public Nullable<int> isgalci { get; set; }
-        public string beyan { get; set; }
-        public string serh { get; set; }
-        public string haciz { get; set; }
-        public string irtifak { get; set; }
-        public string rehin { get; set; }
-        public Nullable<int> malik { get; set; }
-        public Nullable<int> mahkeme { get; set; }
-        public Nullable<System.DateTime> mahkemeTarih { get; set; }
-        public string yevmiye { get; set; }
+        public int Id { get; set; }
+        public int TapuMahalleId { get; set; }
+        public Nullable<int> AdaId { get; set; }
+        public Nullable<int> MulkiyetId { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public Nullable<bool> Hisseli { get; set; }
+        public string PaftaNo { get; set; }
+        public string ParselNo { get; set; }
+        public string Nitelik { get; set; }
+        public Nullable<decimal> TapuAlan { get; set; }
+        public string RayicBedel { get; set; }
+        public string ZeminTipi { get; set; }
+        public string Cilt { get; set; }
+        public string Sayfa { get; set; }
+        public string TespitYapan { get; set; }
+        public Nullable<System.DateTime> TapuKadastroTespitTarih { get; set; }
+        public string Aciklama { get; set; }
+        public string Gorusler { get; set; }
+        public string PlanFonksiyonu { get; set; }
+        public string Emsal { get; set; }
+        public Nullable<decimal> İnsaatAlani { get; set; }
+        public Nullable<decimal> Hmax { get; set; }
+        public string Kaks { get; set; }
+        public string Taks { get; set; }
+        public string PlanAdi { get; set; }
+        public string PlanaGöreİnsaatAlani { get; set; }
+        public string BelediyeTespitTarih { get; set; }
+        public string KurumId { get; set; }
+        public string DigerKurumAlinanTarih { get; set; }
+        public string BelgeNo { get; set; }
+        public string DigerKurumBelgeTarih { get; set; }
+        public string AdaNo { get; set; }
     
+        public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<bina> bina { get; set; }
+        public virtual ICollection<ParselBeyan> ParselBeyan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<malik> malik1 { get; set; }
-        public virtual tapuMahalle tapuMahalle { get; set; }
+        public virtual ICollection<ParselHaciz> ParselHaciz { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ParselIpotek> ParselIpotek { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ParselIrtifak> ParselIrtifak { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ParselIsgalci> ParselIsgalci { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ParselMalikRelation> ParselMalikRelation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ParselSerh> ParselSerh { get; set; }
     }
 }

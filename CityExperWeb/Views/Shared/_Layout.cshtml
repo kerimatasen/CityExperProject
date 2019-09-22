@@ -278,8 +278,8 @@
         $('#loadingtapu').css("display", "block");
         var il = $('#ilListesi').val();
         var ilce = $('#ilceListesi').val();
-        var tapuMahalle = $('#tapuMahalle').val();
-        var mulkiyet = $('#mulkiyet').val();
+        //var tapuMahalle = $('#tapuMahalle').val();
+        //var mulkiyet = $('#mulkiyet').val();
         var hisseliDurum = $("input[name='rdHisseli']:checked").val();
         var paftaNo = $('#paftaNo').val();
         var adaNo = $('#adaNo').val();
@@ -294,9 +294,11 @@
         var tespitTarihi = $('#datepicker4').val();
         var aciklama = $('#parselTKAciklama').val();
         var gorusler = $('#parselTKGorus').val();
+        var userId = $("#userId").val();
+
 
         var tapuModel = {
-            il, ilce, tapuMahalle, mulkiyet, hisseliDurum, paftaNo, adaNo, parselNo, nitelik, tapuAlani, rayicBedel, zeminTipi, cilt, sayfa, tespitYapan, tespitTarihi, aciklama, gorusler,
+            il, ilce, hisseliDurum, userId, paftaNo, adaNo, parselNo, nitelik, tapuAlani, rayicBedel, zeminTipi, cilt, sayfa, tespitYapan, tespitTarihi, aciklama, gorusler,
         };
         var tapuModelJson = JSON.stringify(tapuModel);
 
@@ -320,6 +322,108 @@
             }
         });
     });
+    $('#parselMalikEkle').on('click', function () {
+        var malikTuru = $("#malikTuru").val();
+        var malikTcNo = $("#malikTcNo").val();
+        var malikAd = $("#malikAd").val();
+        var malikSoyad = $("#malikSoyad").val();
+        var malikBabaAdi = $("#malikBabaAdi").val();
+        var malikHisseOrani = $("#malikHisseOrani").val();
+        var malikHisseMiktari = $("#malikHisseMiktari").val();
+        var malikEdinmeSebebi = $("#malikEdinmeSebebi").val();
+
+        var model = {
+            malikTuru, malikTcNo, malikAd, malikSoyad, malikBabaAdi, malikHisseOrani, malikHisseMiktari, malikEdinmeSebebi
+        };
+        var jsonModel = JSON.stringify(model);
+        $.ajax({
+            type: "POST",
+            url: "/Gayrimenkul/ParselMalikEkle",
+            contentType: "application/json; charset=utf-8",
+            data: jsonModel,
+            dataType: "json",
+            success: function (data) {
+                if (data.Success) {
+                    alert(data.Message);
+                }
+                else {
+                    alert(data.Message);
+                }
+            },
+            failure: function (errMsg) {
+                alert("No response");
+            }
+        });
+
+    });
+
+
+    $('#parselSerhEkle').on('click', function () {
+        var parselSerhAciklama = $("#parselSerhAciklama").val();
+        var parselSerhaTarih = $("#datepicker6").val();
+        var parselSerhNo = $("#parselSerhNo").val();
+
+
+        var model = {
+            parselSerhAciklama, parselSerhaTarih, parselSerhNo
+        };
+        var jsonModel = JSON.stringify(model);
+        $.ajax({
+            type: "POST",
+            url: "/Gayrimenkul/ParselSerhEkle",
+            contentType: "application/json; charset=utf-8",
+            data: jsonModel,
+            dataType: "json",
+            success: function (data) {
+                if (data.Success) {
+                    $(".serhBilgiAlani").append("<br/>");
+                    $(".serhBilgiAlani").append("<p style='display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;'>" + data.Data.ParselSerhNo + "</p>");
+                    $(".serhBilgiAlani").append("<p style='display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;'>" + data.Data.ParselSerhAciklama + "</p>");
+                    $(".serhBilgiAlani").append("<p style='display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;'>" + data.Data.ParselSerhTarih + "</p>");
+                }
+                else {
+                    alert(data.Message);
+                }
+            },
+            failure: function (errMsg) {
+                alert("No response");
+            }
+        });
+
+    });
+    $('#beyanKaydet').on('click', function () {
+        var parselBeyanNo = $("#beyanNo").val();
+        var parselBeyanTarih = $("#datepicker7").val();
+        var parselBeyanAciklama = $("#beyanAciklama").val();
+
+
+        var model = {
+            parselBeyanNo, parselBeyanTarih, parselBeyanAciklama
+        };
+        var jsonModel = JSON.stringify(model);
+        $.ajax({
+            type: "POST",
+            url: "/Gayrimenkul/ParselBeyanEkle",
+            contentType: "application/json; charset=utf-8",
+            data: jsonModel,
+            dataType: "json",
+            success: function (data) {
+                if (data.Success) {
+                    alert(data.Message);
+                }
+                else {
+                    alert(data.Message);
+                }
+            },
+            failure: function (errMsg) {
+                alert("No response");
+            }
+        });
+
+    });
+
+
+
 
     $('#nextBelediye').on('click', function () {
         $('.belediyeBilgileri').css('display', 'none');
@@ -435,8 +539,8 @@
     $('#prevsatilikKiralikOnay').on('click', function () {
         $('.katagoriSecimi').css('display', 'none');
         $('.ilanDetaylari').css('display', 'none');
-        $('.satilikDuzenleForm').css('display','block');
-        $('.satilikKiralikOnayform').css('display','none');
+        $('.satilikDuzenleForm').css('display', 'block');
+        $('.satilikKiralikOnayform').css('display', 'none');
         $('#mainstep3').addClass('active');
         $('#mainstep1').removeClass('active');
         $('#mainstep2').removeClass('active');
@@ -452,7 +556,7 @@
     });
     //-------------------------------------------------------- Satılık kiralık ekleme js -------------------------------------------
     $(".list-group-item").on('click', function () {
-    $(this).siblings().removeClass('active')
-    $(this).addClass('active');
-})
+        $(this).siblings().removeClass('active')
+        $(this).addClass('active');
+    })
 </script>

@@ -12,27 +12,28 @@ namespace CityExperWeb.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class ParselMalik
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public ParselMalik()
         {
-            this.UserRoleRelation = new HashSet<UserRoleRelation>();
-            this.parsel = new HashSet<parsel>();
+            this.ParselMalikRelation = new HashSet<ParselMalikRelation>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string TelNo { get; set; }
-        public Nullable<int> Status { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string Adi { get; set; }
+        public string Soyadi { get; set; }
+        public Nullable<int> Tc { get; set; }
+        public string BabaAdi { get; set; }
+        public string HisseOrani { get; set; }
+        public string HisseMiktari { get; set; }
+        public string EdinmeSebebi { get; set; }
+        public Nullable<System.DateTime> ParselEdinmeTarihi { get; set; }
+        public Nullable<int> ParselNo { get; set; }
+        public string ParselMalikAdi { get; set; }
+        public string ParselMalikSoyadi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserRoleRelation> UserRoleRelation { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<parsel> parsel { get; set; }
+        public virtual ICollection<ParselMalikRelation> ParselMalikRelation { get; set; }
     }
 }

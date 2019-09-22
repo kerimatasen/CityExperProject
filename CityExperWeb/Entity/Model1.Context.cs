@@ -32,14 +32,22 @@ namespace CityExperWeb.Entity
         public virtual DbSet<il> il { get; set; }
         public virtual DbSet<ilce> ilce { get; set; }
         public virtual DbSet<mahalle> mahalle { get; set; }
-        public virtual DbSet<malik> malik { get; set; }
         public virtual DbSet<Mulkiyet> Mulkiyet { get; set; }
-        public virtual DbSet<parsel> parsel { get; set; }
+        public virtual DbSet<ParselBeyan> ParselBeyan { get; set; }
+        public virtual DbSet<ParselHaciz> ParselHaciz { get; set; }
+        public virtual DbSet<ParselIpotek> ParselIpotek { get; set; }
+        public virtual DbSet<ParselIrtifak> ParselIrtifak { get; set; }
+        public virtual DbSet<ParselIsgalci> ParselIsgalci { get; set; }
+        public virtual DbSet<ParselMalik> ParselMalik { get; set; }
+        public virtual DbSet<ParselMalikRelation> ParselMalikRelation { get; set; }
         public virtual DbSet<sahiplikDurum> sahiplikDurum { get; set; }
-        public virtual DbSet<tapuMahalle> tapuMahalle { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tasinmazTürü> tasinmazTürü { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
         public virtual DbSet<UserRoleRelation> UserRoleRelation { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<tapuMahalle> tapuMahalle { get; set; }
+        public virtual DbSet<parsel> parsel { get; set; }
+        public virtual DbSet<ParselSerh> ParselSerh { get; set; }
     }
 }

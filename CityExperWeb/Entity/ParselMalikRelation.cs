@@ -12,11 +12,13 @@ namespace CityExperWeb.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class ada
+    public partial class ParselMalikRelation
     {
-        public int ada_id { get; set; }
-        public int tapuMahalle_id { get; set; }
-        public int adaNo { get; set; }
-        public string aciklama { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> FkParselId { get; set; }
+        public Nullable<int> FkParselMalikId { get; set; }
+    
+        public virtual ParselMalik ParselMalik { get; set; }
+        public virtual parsel parsel { get; set; }
     }
 }

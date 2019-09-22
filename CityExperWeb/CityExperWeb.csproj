@@ -4062,9 +4062,6 @@
     <Compile Include="Entity\mahalle.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\malik.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entity\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -4086,7 +4083,34 @@
     <Compile Include="Entity\parsel.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\ParselBeyan.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ParselHaciz.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ParselIpotek.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ParselIrtifak.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ParselIsgalci.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ParselMalik.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ParselMalikRelation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ParselSerh.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\sahiplikDurum.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tapuMahalle.cs">
@@ -4120,11 +4144,16 @@
     <Compile Include="Models\Gayrimenkul\DigerKurumBilgiViewModel.cs" />
     <Compile Include="Models\Gayrimenkul\GayrimenkulViewModel.cs" />
     <Compile Include="Models\Gayrimenkul\ParselViewModel.cs" />
+    <Compile Include="Models\Gayrimenkul\POST\ParselBeyanViewModel.cs" />
+    <Compile Include="Models\Gayrimenkul\POST\ParselMalikViewModel.cs" />
+    <Compile Include="Models\Gayrimenkul\POST\ParselSerhViewModel.cs" />
     <Compile Include="Models\Gayrimenkul\POST\TapuKadastroPostViewModel.cs" />
     <Compile Include="Models\Gayrimenkul\TapuKadastroBilgiViewModel.cs" />
     <Compile Include="Models\IlceViewModel.cs" />
     <Compile Include="Models\IlViewModel.cs" />
     <Compile Include="Models\MahalleViewModel.cs" />
+    <Compile Include="Models\Response\Parsel\ParselSerhResponseModel.cs" />
+    <Compile Include="Models\ResultModel\ResponseModel.cs" />
     <Compile Include="Models\ResultModel\ResultViewModel.cs" />
     <Compile Include="Models\TapuKadastroModel.cs" />
     <Compile Include="Models\User\UserLoginViewModel.cs" />
