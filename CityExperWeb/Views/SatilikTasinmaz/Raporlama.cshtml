@@ -1,4 +1,7 @@
-﻿<html lang="en">
+﻿@{
+    var sessionModel = (CityExperWeb.Models.User.UserSessionModel)Session["UserSessionModel"];
+}
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -27,7 +30,6 @@
 
             .right_col .row .col-md-2 {
                 text-align: center;
-
             }
 
             .x_content .col-md-9 .tiles {
@@ -36,10 +38,13 @@
         }
 
         @@media (max-width: 768PX) {
-         
+            .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-55, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+                padding-right:0px!important;
+                padding-left:0px!important;
+            }
             .right_col .row .col-md-2 {
                 text-align: center;
-                float: left!important;
+                float: left !important;
             }
         }
     </style>
@@ -56,7 +61,25 @@
                         </div>
                         <div class="profile_info">
                             <span>Hoşgeldiniz,</span>
-                            <h2>İsim Soyisim</h2>
+                            <div class="userInformation">
+                                @{
+
+                                    if (sessionModel != null)
+                                    {
+                                        <div style="font-family:'Roboto',serif;font-size:16px;margin:auto;">
+                                            <h2 class="nav-item nav-link" href="#">
+                                                <span class="glyphicon glyphicon-user"></span> @sessionModel.AdSoyad
+                                            </h2>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <a class="nav-item nav-link" href="@Url.Action("HomePage","Home")" style="font-family:'Roboto',serif;font-size:16px;">
+                                            <span class="glyphicon glyphicon-user"></span>Giriş Yap
+                                        </a>
+                                    }
+                                }
+                            </div>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -65,77 +88,83 @@
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
                             <h3>Yönetici</h3>
+
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-home"></i> Dashboard<span class="fa fa-chevron-down"></span></a>
+                                    <a href="/anasayfa"><i class="fa fa-globe" aria-hidden="true"></i> Map</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-street-view" aria-hidden="true"></i>Konumum</a>
+                                </li>
+
+                                <li>
+                                    <a class="nav-link" href="#"><i class="fa fa-calendar-o" aria-hidden="true"></i>Günlük Takip Görünümü</a>
+                                </li>
+
+                                <li>
+                                    <a><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Gayrimenkul Durumu<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="index.html">Dashboard1</a></li>
-                                        <li><a href="index2.html">Dashboard2</a></li>
-                                        <li><a href="index3.html">Dashboard3</a></li>
+                                        <li><a href="#">Güncel Durum</a></li>
+                                        <li>
+                                            <a class="nav-link" href="@Url.Action("Tasinmaz","Yonetim")">Gayrimenkul Ekle</a>
+                                        </li>
+                                        <li><a href="#">Kira Kontrat Durumu</a></li>
+                                        <li><a href="#">deneme</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-line-chart" aria-hidden="true"></i> Analizler <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="form.html">General Form</a></li>
-                                        <li><a href="form_advanced.html">Advanced Components</a></li>
-                                        <li><a href="form_validation.html">Form Validation</a></li>
-                                        <li><a href="form_wizards.html">Form Wizard</a></li>
-                                        <li><a href="form_upload.html">Form Upload</a></li>
-                                        <li><a href="form_buttons.html">Form Buttons</a></li>
+                                        <li><a href="#">Sosyal Doku Analizi</a></li>
+                                        <li><a href="#">Foursquare Analizi</a></li>
+                                        <li><a href="#">3. Analiz</a></li>
+                                        <li><a href="#">4. Analiz</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-building-o" aria-hidden="true"></i> Firma Bilgileri <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="general_elements.html">General Elements</a></li>
-                                        <li><a href="media_gallery.html">Media Gallery</a></li>
-                                        <li><a href="typography.html">Typography</a></li>
-                                        <li><a href="icons.html">Icons</a></li>
-                                        <li><a href="glyphicons.html">Glyphicons</a></li>
-                                        <li><a href="widgets.html">Widgets</a></li>
-                                        <li><a href="invoice.html">Invoice</a></li>
-                                        <li><a href="inbox.html">Inbox</a></li>
-                                        <li><a href="calendar.html">Calendar</a></li>
+                                        <li><a href="#">Firma İsmi</a></li>
+                                        <li><a href="#">Firma Hakkında</a></li>
+                                        <li><a href="#">Kurucular</a></li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="tables.html">Tables</a></li>
-                                        <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="chartjs.html">Chart JS</a></li>
-                                        <li><a href="chartjs2.html">Chart JS2</a></li>
-                                        <li><a href="morisjs.html">Moris JS</a></li>
-                                        <li><a href="echarts.html">ECharts</a></li>
-                                        <li><a href="other_charts.html">Other Charts</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                                        <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                                    </ul>
-                                </li>
+                                @*<li>
+                                        <a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="#">Tables</a></li>
+                                            <li><a href="#">Table Dynamic</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="chartjs.html">Chart JS</a></li>
+                                            <li><a href="chartjs2.html">Chart JS2</a></li>
+                                            <li><a href="morisjs.html">Moris JS</a></li>
+                                            <li><a href="echarts.html">ECharts</a></li>
+                                            <li><a href="other_charts.html">Other Charts</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
+                                            <li><a href="fixed_footer.html">Fixed Footer</a></li>
+                                        </ul>
+                                    </li>*@
                             </ul>
                         </div>
                         <div class="menu_section">
-                            <h3>Live On</h3>
+                            <h3>Ayarlar</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-cogs" aria-hidden="true"></i> Kulanıcı Yönetimi <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="e_commerce.html">E-commerce</a></li>
-                                        <li><a href="projects.html">Projects</a></li>
-                                        <li><a href="project_detail.html">Project Detail</a></li>
-                                        <li><a href="contacts.html">Contacts</a></li>
-                                        <li><a href="profile.html">Profile</a></li>
+                                        <li><a href="#">Kullanıcı Ekle</a></li>
+                                        <li><a href="#">Kullanıcı Yetkileri</a></li>
+                                        <li><a href="#">Kullanıcı Düzenle</a></li>
+                                        <li><a href="project_detail.html">Kullanıcı Geçmişleri</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -205,7 +234,15 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img style="width:30px;height:30px;" src="~/Assets/dashboard/production/images/user.png" alt="">İsim Soyisim
+                                <img style="width:30px;height:30px;" src="~/Assets/dashboard/production/images/user.png" alt="">
+                                @if (sessionModel != null)
+                                {
+                                    <span>@sessionModel.AdSoyad</span>
+                                }
+                                else
+                                {
+                                    <span>Giriş Yap</span>
+                                }
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -217,7 +254,7 @@
                                     </a>
                                 </li>
                                 <li><a href="javascript:;">Yardım</a></li>
-                                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                <li><a href="@Url.Action("HomePage","Home")"><i class="fa fa-sign-out pull-right"></i> Çıkış Yap</a></li>
                             </ul>
                         </li>
                         <li role="presentation" class="dropdown">
@@ -284,8 +321,6 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a class="nav-item nav-link" href="/anasayfa"><span class="glyphicon glyphicon-home" style="margin-right:2px;"></span>Siteye Devam Et</a></li>
-
                     </ul>
                 </div>
             </div>
@@ -325,7 +360,7 @@
                         <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> Haftalık Ziyaretçi Sayısı</span>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-left:0px!important;margin-right:0px!important;">
                     <div class="col-md-12">
                         <div class="dashboard_graph">
 
@@ -352,41 +387,41 @@
                                 <div id="container" style="min-width: 310px; max-width: 500px; height: 400px; margin: 0 auto"></div>
 
                                 @*<div class="col-md-12 col-sm-12 col-xs-12">
-                                        <div>
-                                            <p>Kira Kontrat Süresi Bitecek Olanlar Gayrimenkuller</p>
-                                            <div class="">
-                                                <div class="progress progress_sm" style="width: 100%;">
-                                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="20"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p>Ödeme Yapılan Gayrimenkuller Sayısı</p>
-                                            <div class="">
-                                                <div class="progress progress_sm" style="width: 100%;">
-                                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div>
+                                <p>Kira Kontrat Süresi Bitecek Olanlar Gayrimenkuller</p>
+                                <div class="">
+                                    <div class="progress progress_sm" style="width: 100%;">
+                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="20"></div>
                                     </div>
-                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <div>
-                                            <p>Makbuz Onaylanması Yapılmamış Gayrimenkuller</p>
-                                            <div class="">
-                                                <div class="progress progress_sm" style="width: 100%;">
-                                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p>Ödeme Yapılmayan Gayrimenkuller Sayısı</p>
-                                            <div class="">
-                                                <div class="progress progress_sm" style="width: 100%;">
-                                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>*@
+                                </div>
+                            </div>
+                            <div>
+                                <p>Ödeme Yapılan Gayrimenkuller Sayısı</p>
+                                <div class="">
+                                    <div class="progress progress_sm" style="width: 100%;">
+                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div>
+                                <p>Makbuz Onaylanması Yapılmamış Gayrimenkuller</p>
+                                <div class="">
+                                    <div class="progress progress_sm" style="width: 100%;">
+                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p>Ödeme Yapılmayan Gayrimenkuller Sayısı</p>
+                                <div class="">
+                                    <div class="progress progress_sm" style="width: 100%;">
+                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
 
                             </div>
 
@@ -394,15 +429,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-bottom:1%;">
-                    <div class="col-md-8">
-                        <div id="mainb" style="height:350px;margin-top:7%;"></div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="" id="main-map" style="height:477px;"></div>
-                    </div>
-                </div>
-                <div class="row">
+
+                <div class="row" style="margin-top:1%;">
                     <div class="col-md-8">
                         <div class="x_panel">
                             <div class="x_title">
@@ -704,18 +732,25 @@
                             </div>
                             <div class="x_content">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    dasjhsdkahs
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        parsel pdf
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                            Parsel  Bazlı Rapor İndir
+                                        </button>
+                                    </div>
                                 </div>
 
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    parsel pdf
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Parsel  Bazlı Rapor İndir
-                    </button>
+                <div class="row" style="margin-bottom:1%;">
+                    @*<div class="col-md-8">
+                <div id="mainb" style="height:350px;margin-top:7%;"></div>
+            </div>*@
+                    <div class="col-md-12">
+                        <div class="" id="main-map" style="height:477px;"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -724,7 +759,6 @@
     <script src="~/Assets/dashboard/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="~/Assets/dashboard/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
     @*<script src="~/Assets/dashboard/vendors/fastclick/lib/fastclick.js"></script>*@
     <!-- NProgress -->
     @*<script src="~/Assets/dashboard/vendors/nprogress/nprogress.js"></script>*@

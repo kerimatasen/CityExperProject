@@ -78,6 +78,7 @@
     .form-horisontal .shadow-lg .row .col-md-2 {
         color: #565656;
         font-size: 16px;
+        font-weight: 500;
         font-family: 'Roboto', serif;
         border: 1px solid #7bb1e0;
         height: 40px !important;
@@ -88,6 +89,7 @@
         color: #565656;
         border: 1px solid #7bb1e0;
         font-size: 16px;
+        font-weight: 500;
         font-family: 'Roboto', serif;
         height: 40px !important;
         max-width: 225px !important;
@@ -123,7 +125,8 @@
     }
 
     .form-horisontal .shadow-lg .row button {
-        background: #104050;
+        background: #236f74;
+        border: none;
         color: white;
         font-family: 'Roboto', serif;
         font-size: 16px;
@@ -181,8 +184,9 @@
         margin-right: auto;
         margin-top: 4%;
     }
+
     .form-horisontal .shadow-lg .row button {
-        background: #104050;
+        background: #236f74;
         color: white;
         border: none;
         font-family: 'Roboto', serif;
@@ -321,11 +325,16 @@
         padding: 0 15px;
     }
 
+
     .form-horisontal .shadow-lg .row button {
-        max-width: 100px;
+        background: #236f74;
+        border: none;
+        color: white;
+        font-family: 'Roboto', serif;
         font-size: 16px;
         height: 38px;
-        border-radius: 2px;
+        max-width: 100px;
+        margin-top: 1px;
     }
 
     .property-preview-f-left {
@@ -453,7 +462,7 @@
 
     #oneCikanFormu {
         max-width: 100% !important;
-        height: 800px;
+       height: 400px!important;
     }
 
     #okIcon {
@@ -461,7 +470,7 @@
     }
 
     .card-group {
-        max-width: 50% !important;
+        max-width: 100% !important;
     }
 
     .form-horisontal .shadow-lg .row .col-md-2 {
@@ -530,6 +539,7 @@
         margin-right: auto;
         margin-top: 4%;
     }
+
     .form-horisontal .shadow-lg .row ::-webkit-input-placeholder { /* Edge */
         color: #565656;
         font-family: 'Roboto', serif;
@@ -588,5 +598,9 @@
 
     .row .anasayfa .main #mobileMenu {
         display: block !important;
+    }
+
+    .card-group {
+        max-width: 50% !important;
     }
 }

@@ -293,7 +293,7 @@
                 .container-fluid .row .col-md-9 .row .places_select .btn {
                     position: relative;
                     height: 40px;
-                    max-width: 15.923%!important;
+                    max-width: 15.923% !important;
                     padding-left: 5px !important;
                     padding-right: 5px !important;
                     margin-right: 5px;
@@ -314,6 +314,10 @@
         .container-fluid .panel .panel-body .panel #demo {
             padding: 15px !important;
         }
+
+   .container-fluid .panel .panel-body {
+        padding: 0 15px!important;
+    }
 
     #detayTitle {
         font-size: 24px;
@@ -353,7 +357,7 @@
         padding-right: 10px;
         margin-bottom: 1%;
         height: 40px;
-        max-width: 31.8%;
+        max-width: 32.6%;
     }
 
         .slButton p {
@@ -376,7 +380,8 @@
         overflow: auto;
         border: 1px solid #E7DCCB;
         height: 1009px;
-        margin-bottom:2%;
+        margin-bottom: 2%;
+        margin-top:7.5%;
     }
 
     .container-fluid .panel-body .panel .row .col-md-12 .mdb-lightbox .col-md-4 {
@@ -684,7 +689,7 @@
                 .container-fluid .row .col-md-9 .row .places_select .btn {
                     position: relative;
                     height: 40px;
-                    max-width: 15.5%!important;
+                    max-width: 15.5% !important;
                     padding-left: 5px !important;
                     padding-right: 5px !important;
                     margin-right: 5px;
@@ -767,7 +772,8 @@
         overflow: auto;
         border: 1px solid #E7DCCB;
         height: 1197px;
-        margin-bottom:3%;
+        margin-bottom: 3%;
+        margin-top: 7.5%;
     }
 
     .container-fluid .panel-body .panel .row .col-md-12 .mdb-lightbox .col-md-4 {
@@ -817,6 +823,7 @@
         border: 1px solid #E7DCCB;
         overflow: auto;
         margin-bottom: 2% !important;
+        margin-top: 7.5%;
     }
 
     .panel-default #detayliBilgi {
@@ -860,7 +867,7 @@
         .container-fluid .panel .panel-body .panel #tapuPhoto,
         .container-fluid .panel .panel-body .panel #belediyePhoto,
         .container-fluid .panel .panel-body .panel #digerPhoto {
-            margin: 0px !important;
+            margin: 5px !important;
         }
 
     .slButton {

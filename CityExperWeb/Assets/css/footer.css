@@ -3,12 +3,12 @@
     height: 40px;
     background: #195560;
     margin-top: 3px;
+    margin-bottom: 3px;
 }
 
     .footer .footer .company {
         font-family: 'Roboto';
         font-size: 14px;
-        padding: 9px;
         float: left !important;
         margin-left: 10px;
         border: none;

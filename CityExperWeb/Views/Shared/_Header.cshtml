@@ -1,7 +1,9 @@
 ﻿<link href="~/Assets/css/header.css" rel="stylesheet" />
+<link href="~/Assets/dashboard/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Assets/dashboard/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <header class="header">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a href="#" class="navbar-brand">
+        <a href="/anasayfa" class="navbar-brand">
             <img src="/Assets/img/CityExper3.png" style="height:100%;width:100%;" />
         </a>
         <button type="button" class="navbar-toggler " data-toggle="collapse" data-target="#navbarCollapse" aria-expanded="true" style="margin:0px;">
@@ -10,9 +12,8 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav" style="margin:0;">
                 <div id="verticle" style=" width: 1px;height: 45px;background-color: #a99975;"></div>
-                <a class="nav-item nav-link" href="/anasayfa"><span class="glyphicon glyphicon-home" style="margin-right:2px;"></span>Anasayfa</a>
-                <a class="nav-link" href="@Url.Action("Tasinmaz","Yonetim")"><span class="glyphicon glyphicon-edit" style="margin-right:2px;"></span>Gayrimenkul Ekle</a>
-                <a class="nav-link" href="@Url.Action("Index","SatilikTasinmaz")"><span class="glyphicon glyphicon-edit" style="margin-right:2px;"></span>Satılık Ekle</a>
+                <a class="nav-item nav-link" href="/anasayfa"><i class="fa fa-home" aria-hidden="true"></i>Anasayfa</a>
+                <a class="nav-link" href="@Url.Action("Index","SatilikTasinmaz")"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Satılık Ekle</a>
                 <a class="nav-link" href="@Url.Action("Raporlama","SatilikTasinmaz")"><span class="glyphicon glyphicon-dashboard" style="margin-right:2px;"></span>Raporlama</a>
             </div>
             <div class="navbar-nav ml-auto" style="float:right;">
@@ -36,6 +37,98 @@
                         </a>
                     }
                 }
+            </div>
+            <div class="navbar-nav ml-auto" style="float:right;">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="">
+                        <a class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="color: #ffffff!important;font-family:'Roboto',serif;font-size:16px;">
+                            <img style="width:20px;height:20px;" src="~/Assets/dashboard/production/images/user.png" alt="">
+                            @if (sessionModel != null)
+                            {
+                                <span>@sessionModel.AdSoyad</span>
+                            }
+                            else
+                            {
+                                <span>Giriş Yap</span>
+                            }
+                        </a>
+                        <ul class="dropdown-menu dropdown-usermenu pull-right">
+                            <li><a href="@Url.Action("Profil","SatilikTasinmaz")"> Profil</a></li>
+                            <li>
+                                <a href="javascript:;">
+                                    <span class="badge bg-red pull-right">50%</span>
+                                    <span>Ayarlar</span>
+                                </a>
+                            </li>
+                            <li><a href="javascript:;">Yardım</a></li>
+                            <li><a href="@Url.Action("HomePage","Home")"><i class="fa fa-sign-out pull-right"></i> Çıkış Yap</a></li>
+                        </ul>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false" style="color: #ffffff!important;">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="badge bg-green">6</span>
+                        </a>
+                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                            <li>
+                                <a>
+                                    <span class="image"><img src="~/Assets/dashboard/production/images/user.png" alt="Profile Image" /></span>
+                                    <span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <span class="image"><img src="~/Assets/dashboard/production/images/user.png" alt="Profile Image" /></span>
+                                    <span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <span class="image"><img src="~/Assets/dashboard/production/images/user.png" alt="Profile Image" /></span>
+                                    <span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <span class="image"><img src="~/Assets/dashboard/production/images/user.png" alt="Profile Image" /></span>
+                                    <span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="text-center">
+                                    <a>
+                                        <strong>Tüm Uyarıları Gör</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>

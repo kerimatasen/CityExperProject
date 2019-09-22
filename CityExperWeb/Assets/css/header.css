@@ -2,6 +2,16 @@
     margin-left: 0px;
     margin-right: auto;
 }
+.header .navbar {
+    border-radius: 0px !important;
+    height: 40px;
+    margin-bottom: 0px !important;
+}
+.navbar-dark {
+    background: none;
+    font-size: 18px;
+    border: none;
+}
 
 .navbar-light {
     margin-bottom: 0px;
@@ -23,8 +33,9 @@
 }
 
 .navbar-light .navbar-nav .nav-link {
-    font-size: 14px;
-    margin: auto;
+    font-size: 16px;
+    font-weight: 400;
+    margin:5% auto;
     color: white;
     font-family: 'Roboto', serif;
 }
@@ -34,17 +45,19 @@
         color: white;
         font-family: 'Roboto', serif;
     }
+
 @media (min-width: 768px) {
     .header .navbar {
-        border-radius: 0px!important;
-        height:40px;
+        border-radius: 0px !important;
+        height: 40px;
+        margin-bottom: 0px !important;
     }
-
 }
+
 .navbar-brand {
-    float:left;
-    padding: 0px!important;
-    height: 28px!important;
+    float: left;
+    padding: 0px !important;
+    height: 28px !important;
     margin-top: 1px;
     font-family: 'Roboto', serif;
 }
@@ -71,15 +84,19 @@
     .header .navbar .collapse .navbar-nav {
         margin: 0px;
     }
-    .navbar-collapse{
-        margin-top:1%;
+
+    .navbar-collapse {
+        margin-top: 1%;
     }
+
     #verticle {
         display: none;
     }
-   .navbar-collapse .navbar-nav{
-        float:left;
+
+    .navbar-collapse .navbar-nav {
+        float: left;
     }
+
     .navbar-light .navbar-nav .nav-link {
         margin: 0px;
     }

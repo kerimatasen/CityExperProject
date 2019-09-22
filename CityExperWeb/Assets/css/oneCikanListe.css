@@ -2,6 +2,15 @@
     margin-bottom: 10px;
 }
 
+.card .card-body #addFavorite {
+    right: -12px !important;
+    float: right;
+    max-width: 55px;
+    top: calc(64%);
+    position: absolute;
+    font-size: 35px;
+}
+
 .property-card-value {
     margin: 0px 5px;
 }
@@ -160,7 +169,7 @@
 .hide_list {
     position: absolute;
     z-index: 100;
-    top: calc(60%);
+    top: calc(52%);
     border-radius: 25px;
     background-color: white;
 }
@@ -170,7 +179,7 @@
     position: absolute;
     right: 0px;
     border-radius: 25px;
-    background-color: white;
+    background-color: #419e9d;
 }
 
 .loading {
@@ -346,42 +355,44 @@ i.fas {
     overflow: hidden;
     color: #fff;
 }
+
 @media only screen and (min-width : 1025px) and (max-width : 1366px) {
-    .anasayfa  #main-map{
-        height:504px!important;
+    .anasayfa #main-map {
+        height: 504px !important;
     }
-    .anasayfa #oneCikanFormu{
-        height:504px!important;
+
+    .anasayfa #oneCikanFormu {
+        height: 504px !important;
     }
 }
 
 
-    @media only screen and (max-width:990px) {
-        .box14 {
-            margin-bottom: 30px
-        }
+@media only screen and (max-width:990px) {
+    .box14 {
+        margin-bottom: 30px
+    }
+}
+
+@media(max-width:768px) {
+    .anasayfa #main-map {
+        height: 390px !important;
     }
 
-    @media(max-width:768px) {
-        .anasayfa #main-map {
-            height: 390px !important;
-        }
-
-        .anasayfa .col-md-10 {
-            max-width: 100% !important;
-        }
-
-        #oneCikanFormu {
-            max-width: 100% !important;
-        }
-
-        .card-group {
-            max-width: 50% !important;
-        }
+    .anasayfa .col-md-10 {
+        max-width: 100% !important;
     }
 
-    @media (max-width: 576px) {
-        .card-group {
-            max-width: 50% !important;
-        }
+    #oneCikanFormu {
+        max-width: 100% !important;
     }
+
+    .card-group {
+        max-width: 50% !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-group {
+        max-width: 100% !important;
+    }
+}

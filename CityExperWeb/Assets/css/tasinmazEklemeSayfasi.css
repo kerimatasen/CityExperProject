@@ -366,8 +366,11 @@ input:focus, select:focus, textarea:focus, button:focus {
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
     }
-
-.modal .modal-dialog .modal-content .modal-body .col-md-6 .form-control {
+    .panel2 .col-md-12 .col-md-3 .gj-datepicker span {
+        position:absolute;
+        right:-4px;
+    }
+        .modal .modal-dialog .modal-content .modal-body .col-md-6 .form-control {
     margin: 1% 0;
     height: 35px;
     font-size: 16px;
