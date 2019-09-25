@@ -15,9 +15,10 @@ namespace CityExperWeb.Entity
     public partial class ParselIsgalci
     {
         public int Id { get; set; }
-        public Nullable<int> FkParselId { get; set; }
-        public string Adi { get; set; }
-        public string Soyadi { get; set; }
+        public int FkParselId { get; set; }
+        public Nullable<int> ParselIsgalciNo { get; set; }
+        public string ParselIsgalciAciklama { get; set; }
+        public Nullable<System.DateTime> ParselIsgalciTarih { get; set; }
     
         public virtual parsel parsel { get; set; }
     }

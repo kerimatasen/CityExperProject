@@ -16,7 +16,6 @@ namespace CityExperWeb.Entity
     {
         public int Id { get; set; }
         public Nullable<int> FkParselId { get; set; }
-        public string ParselIrtifak1 { get; set; }
         public string ParselIrtifakAciklama { get; set; }
         public string ParselIrtifakYevmiyeNo { get; set; }
         public Nullable<System.DateTime> ParselIrtifakTarih { get; set; }

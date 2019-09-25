@@ -18,12 +18,12 @@ namespace CityExperWeb.Entity
         public parsel()
         {
             this.ParselBeyan = new HashSet<ParselBeyan>();
-            this.ParselHaciz = new HashSet<ParselHaciz>();
             this.ParselIpotek = new HashSet<ParselIpotek>();
             this.ParselIrtifak = new HashSet<ParselIrtifak>();
             this.ParselIsgalci = new HashSet<ParselIsgalci>();
             this.ParselMalikRelation = new HashSet<ParselMalikRelation>();
             this.ParselSerh = new HashSet<ParselSerh>();
+            this.ParselHaciz = new HashSet<ParselHaciz>();
         }
     
         public int Id { get; set; }
@@ -63,8 +63,6 @@ namespace CityExperWeb.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ParselBeyan> ParselBeyan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ParselHaciz> ParselHaciz { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ParselIpotek> ParselIpotek { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ParselIrtifak> ParselIrtifak { get; set; }
@@ -74,5 +72,7 @@ namespace CityExperWeb.Entity
         public virtual ICollection<ParselMalikRelation> ParselMalikRelation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ParselSerh> ParselSerh { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ParselHaciz> ParselHaciz { get; set; }
     }
 }

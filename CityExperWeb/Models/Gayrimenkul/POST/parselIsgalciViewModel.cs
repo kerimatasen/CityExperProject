@@ -5,11 +5,11 @@ using System.Web;
 
 namespace CityExperWeb.Models.Gayrimenkul.POST
 {
-    public class ParselSerhViewModel
+    public class ParselIsgalciViewModel
     {
-        public string parselSerhAciklama { get; set; }
+        public string parselIsgalciAciklama { get; set; }
         public string parselSerhTarih { get; set; }
-        public string parselSerhNo { get; set; }
+        public string parselIsgalciNo { get; set; }
 
     }
 }

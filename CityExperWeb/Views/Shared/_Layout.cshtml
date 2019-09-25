@@ -138,9 +138,38 @@
 <script src="~/Assets/js/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="~/Assets/js/printThis/printThis.js"></script>
+
 
 @RenderSection("Scripts", required: false)
 <script>
+    $('.tdButton ').on('click', function () {
+        $("#detayliBilgi").printThis();
+        $("#detayliBilgi").css('display', 'block');
+        $("#ozetRapor").css('display', 'none');
+        $("#detayliRapor").css('display', 'none');
+
+    });
+    $('.tdddButton').on('click', function () {
+        $("#ozetRapor").css('display', 'block');
+        $("#detayliBilgi").css('display', 'none');
+        $("#detayliRapor").css('display', 'none');
+        $("#ozetRapor").printThis();
+    });
+    $('.tddButton ').on('click', function () {
+        $("#ozetRapor").css('display', 'none');
+        $("#detayliBilgi").css('display', 'none');
+        $("#detayliRapor").css('display', 'block');
+        $("#detayliRapor").printThis();
+    });
+    $('#bigPhotoClose').on('click', function () {
+        $('#bigPhoto').css('display', 'none');
+    });
+    $('.fa-search').on('click', function () {
+        $('#bigPhoto').css('display', 'block');
+        document.getElementById("changeBigPhoto").src = "../Assets/img/mustakilEv/house5.jpg";
+    });
+
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
@@ -227,31 +256,9 @@
                 $('#mainstep1').addClass('active');
             }
         });
-        //geri
-        $('#prevBelediye').on('click', function () {
-            if (i > 0) {
-                i--;
-                $('.active').removeClass('active');
-                $('.step').eq(i).addClass('active');
-                $('#mainstep1').addClass('active');
-            }
-        });
-        $('#nextDigerKurum').on('click', function () {
+        $('#nextParselOnay').on('click', function () {
             $('#mainstep2').addClass('active');
             $('#mainstep1').removeClass('active');
-        });
-        //geri
-        $('#prevDigerKurum').on('click', function () {
-            if (i > 0) {
-                i--;
-                $('.active').removeClass('active');
-                $('.step').eq(i).addClass('active');
-                $('#mainstep2').removeClass('active');
-                $('#mainstep1').addClass('active');
-            }
-
-
-
         });
 
         $('#nextBina').on('click', function () {
@@ -356,16 +363,14 @@
         });
 
     });
-
-
     $('#parselSerhEkle').on('click', function () {
         var parselSerhAciklama = $("#parselSerhAciklama").val();
-        var parselSerhaTarih = $("#datepicker6").val();
+        var parselSerhTarih = $("#datepicker6").val();
         var parselSerhNo = $("#parselSerhNo").val();
 
 
         var model = {
-            parselSerhAciklama, parselSerhaTarih, parselSerhNo
+            parselSerhAciklama, parselSerhTarih, parselSerhNo
         };
         var jsonModel = JSON.stringify(model);
         $.ajax({
@@ -391,7 +396,7 @@
         });
 
     });
-    $('#beyanKaydet').on('click', function () {
+    $('#parselBeyanEkle').on('click', function () {
         var parselBeyanNo = $("#beyanNo").val();
         var parselBeyanTarih = $("#datepicker7").val();
         var parselBeyanAciklama = $("#beyanAciklama").val();
@@ -421,34 +426,149 @@
         });
 
     });
+    $('#parselIsgalciEkle').on('click', function () {
+        var parselIsgalciNo = $("#parselIsgalciNo").val();
+        var parselSerhTarih = $("#datepicker8").val();
+        var parselIsgalciAciklama = $("#parselIsgalciAciklama").val();
 
 
+        var model = {
+            parselIsgalciNo, parselSerhTarih, parselIsgalciAciklama
 
+        };
+        var jsonModel = JSON.stringify(model);
+        $.ajax({
+            type: "POST",
+            url: "/Gayrimenkul/ParselIsgalciEkle",
+            contentType: "application/json; charset=utf-8",
+            data: jsonModel,
+            dataType: "json",
+            success: function (data) {
+                if (data.Success) {
+                    alert(data.Message);
+                }
+                else {
+                    alert(data.Message);
+                }
+            },
+            failure: function (errMsg) {
+                alert("No response");
+            }
+        });
+
+    });
+    $('#ParselIrtifakEkle').on('click', function () {
+        var parselIrtifakNo = $("#ParselIrtifakNo").val();
+        var parselIrtifakTarih = $("#datepicker9").val();
+        var parselIrtifakAciklama = $("#ParselIrtifakAciklama").val();
+        var model = {
+            parselIrtifakNo, parselIrtifakTarih, parselIrtifakAciklama
+        };
+        var jsonModel = JSON.stringify(model);
+        $.ajax({
+            type: "POST",
+            url: "/Gayrimenkul/ParselIrtifakEkle",
+            contentType: "application/json; charset=utf-8",
+            data: jsonModel,
+            dataType: "json",
+            success: function (data) {
+                if (data.Success) {
+                    alert(data.Message);
+                }
+                else {
+                    alert(data.Message);
+                }
+            },
+            failure: function (errMsg) {
+                alert("No response");
+            }
+        });
+
+    });
+    $('#parselIpotekEkle').on('click', function () {
+        var parselIpotekNo = $("#parselIpotekNo").val();
+        var parselIpotekTarih = $("#datepicker11").val();
+        var parselIpotekAciklama = $("#parselIpotekAciklama").val();
+        var model = {
+            parselIpotekNo, parselIpotekTarih, parselIpotekAciklama
+        };
+        var jsonModel = JSON.stringify(model);
+        $.ajax({
+            type: "POST",
+            url: "/Gayrimenkul/ParselIpotekEkle",
+            contentType: "application/json; charset=utf-8",
+            data: jsonModel,
+            dataType: "json",
+            success: function (data) {
+                if (data.Success) {
+                    alert(data.Message);
+                }
+                else {
+                    alert(data.Message);
+                }
+            },
+            failure: function (errMsg) {
+                alert("No response");
+            }
+        });
+    });
+
+
+    $('#parselHacizEkle').on('click', function () {
+        debugger;
+
+        var parselHacizNo = $("#parselHacizNo").val();
+        var parselHacizTarih = $("#datepicker10").val();
+        var parselHacizAciklama = $("#parselHacizAciklama").val();
+        var model = {
+            parselHacizNo,
+            parselHacizTarih,
+            parselHacizAciklama
+
+        };
+        var jsonModel = JSON.stringify(model);
+        $.ajax({
+            type: "POST",
+            url: "/Gayrimenkul/ParselHacizEkle",
+            contentType: "application/json; charset=utf-8",
+            data: jsonModel,
+            dataType: "json",
+            success: function (data) {
+                if (data.Success) {
+                    alert(data.Message);
+                }
+                else {
+                    alert(data.Message);
+                }
+            },
+            failure: function (errMsg) {
+                alert("No response");
+            }
+        });
+
+    });
 
     $('#nextBelediye').on('click', function () {
         $('.belediyeBilgileri').css('display', 'none');
         $('.digerKurumBilgileri').css('display', 'block');
 
     });
-    //geri
-    $('#prevBelediye').on('click', function () {
-        $('.tapubilgileri').css('display', 'block');
-        $('.belediyeBilgileri').css('display', 'none');
 
-    });
     $('#nextDigerKurum').on('click', function () {
         $('#altStep').css('display', 'none');
         $('.digerKurumBilgileri').css('display', 'none');
+        $('.ParselOnaySayfası').css('display', 'block');
+
+    });
+    $('#nextParselOnay').on('click', function () {
+        $('#altStep').css('display', 'none');
+        $('.digerKurumBilgileri').css('display', 'none');
+        $('.ParselOnaySayfası').css('display', 'none');
         $('.binaBilgileri').css('display', 'block');
 
     });
-    //geri
-    $('#prevDigerKurum').on('click', function () {
-        $('#altStep').css('display', 'block');
-        $('.belediyeBilgileri').css('display', 'block');
-        $('.digerKurumBilgileri').css('display', 'none');
 
-    });
+
     $('#nextBina').on('click', function () {
         $('.bagimsizBilgileri').css('display', 'block');
         $('.binaBilgileri').css('display', 'none');
@@ -457,8 +577,7 @@
     });
     //geri
     $('#prevBina').on('click', function () {
-        $('#altStep').css('display', 'block');
-        $('.digerKurumBilgileri').css('display', 'block');
+        $('.ParselOnaySayfası').css('display', 'block');
         $('.binaBilgileri').css('display', 'none');
 
     });

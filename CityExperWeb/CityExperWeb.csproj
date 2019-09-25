@@ -2418,6 +2418,14 @@
     <Content Include="Assets\img\markers\red\house.png" />
     <Content Include="Assets\img\markers\red\land.png" />
     <Content Include="Assets\img\markers\yesilMarker.png" />
+    <Content Include="Assets\img\mustakilEv\house1.jpg" />
+    <Content Include="Assets\img\mustakilEv\house2.jpg" />
+    <Content Include="Assets\img\mustakilEv\house3.jpg" />
+    <Content Include="Assets\img\mustakilEv\house4.jpg" />
+    <Content Include="Assets\img\mustakilEv\house5.jpg" />
+    <Content Include="Assets\img\mustakilEv\house6.jpg" />
+    <Content Include="Assets\img\mustakilEv\house7.jpg" />
+    <Content Include="Assets\img\mustakilEv\house8.jpg" />
     <Content Include="Assets\img\owl-btn-left.png" />
     <Content Include="Assets\img\owl-btn-right.png" />
     <Content Include="Assets\img\ozetrapor.png" />
@@ -2600,6 +2608,7 @@
     <Content Include="Assets\js\moment-with-locales.min.js" />
     <Content Include="Assets\js\notify.min.js" />
     <Content Include="Assets\js\palette.js" />
+    <Content Include="Assets\js\printThis\printThis.js" />
     <Content Include="Assets\js\tasınmaz-bilgileri.jpg" />
     <Content Include="Assets\js\winter-flat.js" />
     <Content Include="Assets\js\worldmapgenerator_custom.js" />
@@ -4145,6 +4154,10 @@
     <Compile Include="Models\Gayrimenkul\GayrimenkulViewModel.cs" />
     <Compile Include="Models\Gayrimenkul\ParselViewModel.cs" />
     <Compile Include="Models\Gayrimenkul\POST\ParselBeyanViewModel.cs" />
+    <Compile Include="Models\Gayrimenkul\POST\ParselHacizViewModel.cs" />
+    <Compile Include="Models\Gayrimenkul\POST\ParselIpotekViewModel.cs" />
+    <Compile Include="Models\Gayrimenkul\POST\ParselIrtifakViewModel.cs" />
+    <Compile Include="Models\Gayrimenkul\POST\ParselIsgalciViewModel.cs" />
     <Compile Include="Models\Gayrimenkul\POST\ParselMalikViewModel.cs" />
     <Compile Include="Models\Gayrimenkul\POST\ParselSerhViewModel.cs" />
     <Compile Include="Models\Gayrimenkul\POST\TapuKadastroPostViewModel.cs" />

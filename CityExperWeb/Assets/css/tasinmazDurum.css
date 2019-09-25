@@ -331,7 +331,7 @@
         border-bottom: 1px solid #E7DCCB;
     }
 
-    .tdButton {
+    .tdButton, .tddButton, .tdddButton {
         background-color: #236f74;
         color: #fcffcf;
         border: none;
@@ -342,7 +342,9 @@
         max-width: 30%;
     }
 
-        .tdButton p {
+        .tdButton p,
+        .tddButton p,
+        .tdddButton p {
             color: white;
             font-family: 'Roboto', serif;
             font-size: 16px;
@@ -689,7 +691,7 @@
                 .container-fluid .row .col-md-9 .row .places_select .btn {
                     position: relative;
                     height: 40px;
-                    max-width: 15.5% !important;
+                    max-width: 15.59% !important;
                     padding-left: 5px !important;
                     padding-right: 5px !important;
                     margin-right: 5px;
@@ -832,13 +834,17 @@
         margin: 1.8% 0 2% 0;
     }
 
-    .tdButton {
+    .tdButton,
+    .tddButton,
+    .tdddButton {
         text-align: center;
         max-width: 30% !important;
         padding: 0px 3px;
     }
 
-        .tdButton p {
+        .tdButton p,
+        .tddButton p,
+        .tdddButton p {
             font-family: 'Roboto',serif;
             font-size: 14px;
             color: white;

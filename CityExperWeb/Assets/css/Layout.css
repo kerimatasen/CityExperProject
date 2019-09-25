@@ -280,7 +280,7 @@ input:checked + .slider:before {
 
     .malikEkleButton:hover, .malikDuzenleButton:hover, .malikSilButton:hover, .serhEkleButton:hover, .beyanEkleButton:hover, .isgalciEkleButton:hover, .irtifakEkleButton:hover, .hacizEkleButton:hover, .ipotekEkleButton:hover {
         /*background-color: #103f4f;*/
-        background-image: linear-gradient(to top,#2f8c8b,#0d394a);
+        background-color: #2f8c8b!important;
         border: none;
     }
 
@@ -336,7 +336,8 @@ input:checked + .slider:before {
     overflow: hidden;
 }
 
-    .panel2 .col-md-12 .col-md-3 .form-control {
+    .panel2 .col-md-12 .col-md-3 .form-control
+    .panel2 .col-md-12 .col-md-4 .form-control {
         margin: 1% 0;
         height: 35px;
         font-size: 16px;
@@ -356,21 +357,26 @@ input:checked + .slider:before {
         padding-right: 0px;
     }
 
-    .panel2 .col-md-12 .col-md-3 ::-webkit-input-placeholder {
+    .panel2 .col-md-12 .col-md-3 ::-webkit-input-placeholder,
+    .panel2 .col-md-12 .col-md-4 ::-webkit-input-placeholder {
         color: #00000087;
         font-size: 16px;
         font-family: 'Roboto', serif;
     }
 
-    .panel2 .col-md-12 .col-md-3 {
+    .panel2 .col-md-12 .col-md-3,
+    .panel2 .col-md-12 .col-md-4 {
         padding: 0.3% 0.4%;
     }
 
-.bilgigoruntuleme .panel1 .col-md-12 .col-md-3 {
+.bilgigoruntuleme .panel1 .col-md-12 .col-md-3,
+.bilgigoruntuleme .panel1 .col-md-12 .col-md-4 {
     padding: 0.3% 0.4%;
 }
 
-    .bilgigoruntuleme .panel1 .col-md-12 .col-md-3 .form-control {
+    .bilgigoruntuleme .panel1 .col-md-12 .col-md-3 .form-control,
+    .bilgigoruntuleme .panel1 .col-md-12 .col-md-4 .form-control {
+    
         margin: 1% 0;
         height: 35px;
         font-size: 14px;    

@@ -1,4 +1,55 @@
-﻿
+﻿.panel2 .col-md-12 .col-md-3 .gj-datepicker .btn:hover,
+.panel2 .col-md-12 .col-md-4 .gj-datepicker .btn:hover,
+.panel2 .col-md-12 .col-md-6 .gj-datepicker .btn:hover {
+    background: #0d394a;
+    height: 35px;
+    color: #328e8d;
+    border: none;
+}
+
+.panel2 .col-md-12 .col-md-3 .gj-datepicker span,
+.panel2 .col-md-12 .col-md-4 .gj-datepicker span,
+.panel2 .col-md-12 .col-md-6 .gj-datepicker span {
+    position: absolute;
+    right: 1px;
+}
+
+    .panel2 .col-md-12 .col-md-3 .gj-datepicker span button,
+    .panel2 .col-md-12 .col-md-6 .gj-datepicker span button,
+    .panel2 .col-md-12 .col-md-4 .gj-datepicker span button {
+        background: #328e8d;
+        height: 34px;
+        border: none;
+        color: #0f3d4d;
+        top: 3px;
+    }
+
+        .panel2 .col-md-12 .col-md-3 .gj-datepicker span button i,
+        .panel2 .col-md-12 .col-md-6 .gj-datepicker span button i,
+        .panel2 .col-md-12 .col-md-4 .gj-datepicker span button i {
+            position: absolute;
+            font-size: 22px !important;
+            top: 7px !important;
+            left: 9px;
+        }
+
+            .panel2 .col-md-12 .col-md-3 .gj-datepicker span button i:hover,
+            .panel2 .col-md-12 .col-md-6 .gj-datepicker span button i:hover,
+            .panel2 .col-md-12 .col-md-4 .gj-datepicker span button i:hover {
+                color: white;
+            }
+
+
+#hisseliSecim {
+    height: 35px;
+    margin-top: 0.6%;
+    border-radius: 5px;
+    padding: 0px;
+    max-width: 273px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
 .col-md-12 .col-md-3 .col-md-2 p {
     font-size: 16px;
     font-family: 'Roboto',serif;
@@ -35,7 +86,7 @@
             position: relative;
             font-weight: 300;
             font-size: 1.35em;
-            padding: 6px 0px 25px 37px;
+            padding: 7px 0px 25px 37px;
             height: 20px;
             z-index: 9;
             cursor: pointer;
@@ -73,10 +124,10 @@
             position: absolute;
             content: '';
             border-radius: 100%;
-            height: 5px;
-            width: 5px;
-            top: 2.1px;
-            left: 2.6px;
+            height: 8px;
+            width: 8px;
+            top: 1px;
+            left: 1px;
             margin: auto;
             transition: background 0.25s linear;
             -webkit-transition: background 0.25s linear;
@@ -105,17 +156,17 @@
         margin-right: 10px;
     }
 
-        .accordion > .nav > li > a {
+        .accordion > .nav > li > i{
             padding: 0px;
             margin-right: 1%;
             margin-top: 5px;
         }
 
-            .accordion > .nav > li > a:hover {
-                background: #48bce8;
+            .accordion > .nav > li > i:hover {
+                background: #0f3d4d;
             }
 
-            .accordion > .nav > li > a > i {
+            .accordion > .nav > li  > i {
                 font-size: 20px;
             }
 
@@ -126,7 +177,6 @@ input:focus, select:focus, textarea:focus, button:focus {
 .gwc-drag-drop-wrapper {
     padding: 0.4%;
     width: 100%;
-    height: 100%;
     background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -202,15 +252,33 @@ input:focus, select:focus, textarea:focus, button:focus {
 .malikEkleButton, .malikDuzenleButton, .malikSilButton, .serhEkleButton,
 .beyanEkleButton, .isgalciEkleButton, .irtifakEkleButton, .hacizEkleButton,
 .ipotekEkleButton {
-    background-color: #999999;
-    margin-left: 1%;
-    color: black;
+    background-color: #082e3a !important;
     border: none;
-    width: 150px;
-    font-family: 'Roboto', serif;
-    font-size: 16px;
+    width: 35px;
+    height: 35px;
+    border-radius: 3px;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 /*------------------------------------------------------------------------------------------------------------- Datepicker Css ------------------------------------------------------------------------------------------------*/
+.bilgigoruntuleme .panel1, .panel2 .panel1 {
+    background: #ecfeff;
+}
+
+.tapubilgileri .panel2 .bilgigoruntuleme .panel1 .col-md-12, .tapubilgileri .panel2 .panel1 .col-md-12 {
+    border: dashed 1px #247176;
+}
+
+    .tapubilgileri .panel2 .bilgigoruntuleme .panel1 .col-md-12 p, .tapubilgileri .panel2 .panel1 .col-md-12 div,
+    .tapubilgileri .panel2 .bilgigoruntuleme .panel1 .col-md-12 p, .tapubilgileri .panel2 .panel1 .col-md-12 div p {
+        font-family: 'Roboto',serif !important;
+        font-size: 16px !important;
+        font-weight: 300 !important;
+        color: #666666 !important;
+        display: table-cell !important;
+        vertical-align: middle !important;
+    }
+
 .panel1 .col-md-12 .col-md-2 {
     max-width: 106px;
     text-align: center;
@@ -222,7 +290,7 @@ input:focus, select:focus, textarea:focus, button:focus {
     margin-right: 6px;
 }
 
-.panel1 .col-md-12 .malikBilgiAlanı {
+.panel1 .col-md-12 .bilgiAlanı {
     border: 1px dashed #ced4da;
     max-width: 993px !important;
 }
@@ -244,20 +312,6 @@ input:focus, select:focus, textarea:focus, button:focus {
     color: #666666;
 }
 
-.panel2 .col-md-12 .col-md-3 .gj-datepicker .btn {
-    background: #328e8d;
-    height: 35px;
-    border: none;
-    color: white;
-    top: 3px;
-}
-
-    .panel2 .col-md-12 .col-md-3 .gj-datepicker .btn:hover {
-        background: #bcb9b9;
-        height: 35px;
-        color: #328e8d;
-        border: none;
-    }
 
 .tapubilgileri .panel2 .modal .modal-dialog .modal-content .modal-heder .modal-body .col-md-12 .col-md-6 .gj-datepicker .input-group-append .btn {
     background: #328e8d;
@@ -302,13 +356,6 @@ input:focus, select:focus, textarea:focus, button:focus {
     font-size: 16px;
 }
 
-.malikEkleButton:hover, .malikDuzenleButton:hover, .malikSilButton:hover, .serhEkleButton:hover, .beyanEkleButton:hover,
-.isgalciEkleButton:hover, .irtifakEkleButton:hover, .hacizEkleButton:hover, .ipotekEkleButton:hover {
-    /*background-color: #103f4f;*/
-    background-image: linear-gradient(to top,#2f8c8b,#0d394a);
-    border: none;
-}
-
 
 .accordionMalik {
     padding-left: 0px;
@@ -347,30 +394,36 @@ input:focus, select:focus, textarea:focus, button:focus {
     overflow: hidden;
 }
 
-    .panel2 .col-md-12 .col-md-3 .form-control {
-        margin: 1% 0;
-        height: 35px;
-        font-size: 16px;
-        font-family: 'Roboto', serif;
-        color: #00000087;
-        border-radius: 5px;
+    .panel2 .col-md-12 .col-md-4 {
+        padding: 0 4px;
     }
 
-    .panel2 .col-md-12 .col-md-3 .gj-datepicker .form-control {
-        margin: 1% 0;
-        height: 35px;
-        font-size: 16px;
-        font-family: 'Roboto', serif;
-        color: #00000087;
-        border-radius: 5px;
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-    }
-    .panel2 .col-md-12 .col-md-3 .gj-datepicker span {
-        position:absolute;
-        right:-4px;
-    }
-        .modal .modal-dialog .modal-content .modal-body .col-md-6 .form-control {
+        .panel2 .col-md-12 .col-md-3 .form-control, .panel2 .col-md-12 .col-md-4 .form-control,
+        .panel2 .col-md-12 .col-md-3 input::placeholder {
+            color: #5c5c60;
+            height:35px;
+            opacity: 1;
+        }
+
+{
+    margin: 1% 0;
+    height: 35px;
+    font-size: 16px;
+    font-family: 'Roboto', serif;
+    color: #000000d4;
+    border-radius: 5px;
+}
+
+.panel2 .col-md-12 .col-md-3 .gj-datepicker .form-control {
+    margin: 1% 0;
+    height: 35px;
+    font-size: 16px;
+    font-family: 'Roboto', serif;
+    color: #00000087;
+    border-radius: 5px;
+}
+
+.modal .modal-dialog .modal-content .modal-body .col-md-6 .form-control {
     margin: 1% 0;
     height: 35px;
     font-size: 16px;
@@ -413,7 +466,8 @@ input:focus, select:focus, textarea:focus, button:focus {
     font-family: 'Roboto', serif;
 }
 
-.panel2 .col-md-12 .col-md-3 {
+.panel2 .col-md-12 .col-md-3,
+.panel2 .col-md-12 .col-md-4 {
     padding: 0.3% 0.4%;
     float: left;
 }
@@ -513,13 +567,20 @@ input:focus, select:focus, textarea:focus, button:focus {
     width: 100%;
     box-sizing: border-box;
 }
+.belediyeBilgileri,
+.digerKurumBilgileri{
+    height:705px;
+}
+.bagimsizBilgileri{
+    height:775px;
+}
 
-#prev, #next, #nextTapu, #prevTapu, #nextBelediye, #prevBelediye, #nextDigerKurum, #prevDigerKurum, #nextBina, #prevBina, #nextBagimsiz, #prevBagimsiz {
+#prev, #next, #nextTapu, #prevTapu, #nextBelediye, #prevBelediye, #nextDigerKurum, #prevDigerKurum, #nextBina, #prevBina, #nextBagimsiz, #prevBagimsiz, #nextParselOnay, #DüzenlemeYap {
     float: right;
-    margin-right: 1%;
     border: none;
-    border-radius: 5px;
-    background: #104050;
+    margin-left:5px;
+    border-radius: 2px;
+    background: #2c8485;
     color: white;
     font-family: 'Roboto', serif;
     padding: 10px 0;
@@ -531,7 +592,7 @@ input:focus, select:focus, textarea:focus, button:focus {
 }
 
     #prev:hover, #next:hover, #nextTapu:hover, #prevTapu:hover, #nextBelediye:hover, #prevBelediye:hover, #nextDigerKurum:hover, #prevDigerKurum:hover, #nextBina:hover, #prevBina:hover, #nextBagimsiz:hover, #prevBagimsiz:hover {
-        background: #2c8485;
+        background: #104050;
     }
 
 .modal.fade .modal-dialog {
@@ -552,7 +613,7 @@ input:focus, select:focus, textarea:focus, button:focus {
         margin: -1px 13px !important;
     }
 
-    .panel1 .col-md-12 .malikBilgiAlanı {
+    .panel1 .col-md-12 .bilgiAlanı {
         max-width: 826px !important;
     }
 
@@ -568,6 +629,7 @@ input:focus, select:focus, textarea:focus, button:focus {
         margin-bottom: 2px !important;
         margin-top: 2px !important;
     }
+
     .panel2 .col-md-12 {
         float: left;
         max-width: 25% !important;
@@ -578,7 +640,7 @@ input:focus, select:focus, textarea:focus, button:focus {
         }
 
     .col-md-6 {
-      float:left;
+        float: left;
     }
 
     #noHisseli {
@@ -606,11 +668,11 @@ input:focus, select:focus, textarea:focus, button:focus {
         display: none;
     }
 
-    .panel1 .col-md-12 .malikBilgiAlanı {
+    .panel1 .col-md-12 .bilgiAlanı {
         max-width: 530px !important;
     }
 
-    .panel2 .col-md-12 .col-md-3 .gj-datepicker .btn {
+    .panel2 .col-md-12 .col-md-3 .gj-datepicker .btn, .panel2 .col-md-12 .col-md-4 .gj-datepicker .btn {
         top: 0px !important;
     }
 }
@@ -620,13 +682,14 @@ input:focus, select:focus, textarea:focus, button:focus {
         float: left;
         max-width: 25% !important;
     }
+
     #aciklamaAlani,
     aciklamaAlani .col-md-12,
     #dragDropAlani,
-    #dragDropAlani .col-md-12
-    {
+    #dragDropAlani .col-md-12 {
         max-width: 100% !important;
     }
+
     .panel2 .col-md-12 .col-md-3 {
         float: left;
         max-width: 100% !important;
@@ -657,11 +720,13 @@ input:focus, select:focus, textarea:focus, button:focus {
         border-radius: 5px;
     }
 }
+
 @media (max-width:450px) {
-    .panel2 .col-md-12{
-    float: left;
-    max-width: 100% !important;
+    .panel2 .col-md-12 {
+        float: left;
+        max-width: 100% !important;
     }
+
     #noHisseli {
         display: block !important;
         float: left;

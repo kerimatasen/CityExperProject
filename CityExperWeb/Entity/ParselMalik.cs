@@ -25,11 +25,11 @@ namespace CityExperWeb.Entity
         public string Soyadi { get; set; }
         public Nullable<int> Tc { get; set; }
         public string BabaAdi { get; set; }
+        public Nullable<int> ParselNo { get; set; }
         public string HisseOrani { get; set; }
         public string HisseMiktari { get; set; }
         public string EdinmeSebebi { get; set; }
         public Nullable<System.DateTime> ParselEdinmeTarihi { get; set; }
-        public Nullable<int> ParselNo { get; set; }
         public string ParselMalikAdi { get; set; }
         public string ParselMalikSoyadi { get; set; }
     

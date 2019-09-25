@@ -172,8 +172,8 @@
           <Property Name="Gorusler" Type="nvarchar" MaxLength="500" />
           <Property Name="PlanFonksiyonu" Type="nvarchar" MaxLength="50" />
           <Property Name="Emsal" Type="nvarchar" MaxLength="50" />
-          <Property Name="İnsaatAlani" Type="decimal" Precision="18" Scale="8" />
-          <Property Name="Hmax" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="İnsaatAlani" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Hmax" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Kaks" Type="nvarchar" MaxLength="50" />
           <Property Name="Taks" Type="nvarchar" MaxLength="50" />
           <Property Name="PlanAdi" Type="nvarchar" MaxLength="50" />
@@ -191,8 +191,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FkParselId" Type="int" />
-          <Property Name="ParselBeyanAciklama" Type="nchar" MaxLength="10" />
-          <Property Name="ParselBeyanYevmiyeNo" Type="nchar" MaxLength="10" />
+          <Property Name="ParselBeyanAciklama" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParselBeyanYevmiyeNo" Type="nvarchar" MaxLength="50" />
           <Property Name="ParselBeyanTarih" Type="datetime" />
         </EntityType>
         <EntityType Name="ParselHaciz">
@@ -201,8 +201,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FkParselId" Type="int" />
-          <Property Name="ParselHacizAciklama" Type="nchar" MaxLength="10" />
-          <Property Name="ParselHacizYevmiyeNo" Type="nchar" MaxLength="10" />
+          <Property Name="ParselHacizAciklama" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParselHacizYevmiyeNo" Type="nvarchar" MaxLength="50" />
           <Property Name="ParselHacizTarih" Type="datetime" />
         </EntityType>
         <EntityType Name="ParselIpotek">
@@ -211,8 +211,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FkParselId" Type="int" />
-          <Property Name="ParselIpotekAciklama" Type="nchar" MaxLength="10" />
-          <Property Name="ParselIpotekYevmiyeNo" Type="nchar" MaxLength="10" />
+          <Property Name="ParselIpotekAciklama" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParselIpotekYevmiyeNo" Type="nvarchar" MaxLength="50" />
           <Property Name="ParselIpotekTarih" Type="datetime" />
         </EntityType>
         <EntityType Name="ParselIrtifak">
@@ -221,9 +221,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FkParselId" Type="int" />
-          <Property Name="ParselIrtifak" Type="nchar" MaxLength="10" />
-          <Property Name="ParselIrtifakAciklama" Type="nchar" MaxLength="10" />
-          <Property Name="ParselIrtifakYevmiyeNo" Type="nchar" MaxLength="10" />
+          <Property Name="ParselIrtifakAciklama" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParselIrtifakYevmiyeNo" Type="nvarchar" MaxLength="50" />
           <Property Name="ParselIrtifakTarih" Type="datetime" />
         </EntityType>
         <EntityType Name="ParselIsgalci">
@@ -231,24 +230,25 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FkParselId" Type="int" />
-          <Property Name="Adi" Type="nchar" MaxLength="10" />
-          <Property Name="Soyadi" Type="nchar" MaxLength="10" />
+          <Property Name="FkParselId" Type="int" Nullable="false" />
+          <Property Name="ParselIsgalciNo" Type="int" />
+          <Property Name="ParselIsgalciAciklama" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParselIsgalciTarih" Type="datetime" />
         </EntityType>
         <EntityType Name="ParselMalik">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Adi" Type="nchar" MaxLength="50" />
-          <Property Name="Soyadi" Type="nchar" MaxLength="50" />
+          <Property Name="Adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyadi" Type="nvarchar" MaxLength="50" />
           <Property Name="Tc" Type="int" />
-          <Property Name="BabaAdi" Type="nchar" MaxLength="50" />
-          <Property Name="HisseOrani" Type="nchar" MaxLength="50" />
-          <Property Name="HisseMiktari" Type="nchar" MaxLength="50" />
-          <Property Name="EdinmeSebebi" Type="nchar" MaxLength="50" />
-          <Property Name="ParselEdinmeTarihi" Type="datetime" />
+          <Property Name="BabaAdi" Type="nvarchar" MaxLength="50" />
           <Property Name="ParselNo" Type="int" />
+          <Property Name="HisseOrani" Type="nvarchar" MaxLength="50" />
+          <Property Name="HisseMiktari" Type="nvarchar" MaxLength="50" />
+          <Property Name="EdinmeSebebi" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParselEdinmeTarihi" Type="datetime" />
           <Property Name="ParselMalikAdi" Type="nvarchar" MaxLength="50" />
           <Property Name="ParselMalikSoyadi" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -436,7 +436,7 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ParselIsgalci_parsel">
-          <End Role="parsel" Type="Self.parsel" Multiplicity="0..1" />
+          <End Role="parsel" Type="Self.parsel" Multiplicity="1" />
           <End Role="ParselIsgalci" Type="Self.ParselIsgalci" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="parsel">
@@ -599,88 +599,6 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CityExperDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="CityExperDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ada" EntityType="CityExperDbModel.ada" />
-          <EntitySet Name="bagimsiz" EntityType="CityExperDbModel.bagimsiz" />
-          <EntitySet Name="bina" EntityType="CityExperDbModel.bina" />
-          <EntitySet Name="caddeSokak" EntityType="CityExperDbModel.caddeSokak" />
-          <EntitySet Name="il" EntityType="CityExperDbModel.il" />
-          <EntitySet Name="ilce" EntityType="CityExperDbModel.ilce" />
-          <EntitySet Name="mahalle" EntityType="CityExperDbModel.mahalle" />
-          <EntitySet Name="Mulkiyet" EntityType="CityExperDbModel.Mulkiyet" />
-          <EntitySet Name="ParselBeyan" EntityType="CityExperDbModel.ParselBeyan" />
-          <EntitySet Name="ParselHaciz" EntityType="CityExperDbModel.ParselHaciz" />
-          <EntitySet Name="ParselIpotek" EntityType="CityExperDbModel.ParselIpotek" />
-          <EntitySet Name="ParselIrtifak" EntityType="CityExperDbModel.ParselIrtifak" />
-          <EntitySet Name="ParselIsgalci" EntityType="CityExperDbModel.ParselIsgalci" />
-          <EntitySet Name="ParselMalik" EntityType="CityExperDbModel.ParselMalik" />
-          <EntitySet Name="ParselMalikRelation" EntityType="CityExperDbModel.ParselMalikRelation" />
-          <EntitySet Name="sahiplikDurum" EntityType="CityExperDbModel.sahiplikDurum" />
-          <EntitySet Name="sysdiagrams" EntityType="CityExperDbModel.sysdiagrams" />
-          <EntitySet Name="tasinmazTürü" EntityType="CityExperDbModel.tasinmazTürü" />
-          <EntitySet Name="UserRole" EntityType="CityExperDbModel.UserRole" />
-          <EntitySet Name="UserRoleRelation" EntityType="CityExperDbModel.UserRoleRelation" />
-          <EntitySet Name="Users" EntityType="CityExperDbModel.Users" />
-          <EntitySet Name="tapuMahalle" EntityType="CityExperDbModel.tapuMahalle" />
-          <AssociationSet Name="FK_caddeSokak_mahalle" Association="CityExperDbModel.FK_caddeSokak_mahalle">
-            <End Role="mahalle" EntitySet="mahalle" />
-            <End Role="caddeSokak" EntitySet="caddeSokak" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ilce_il" Association="CityExperDbModel.FK_ilce_il">
-            <End Role="il" EntitySet="il" />
-            <End Role="ilce" EntitySet="ilce" />
-          </AssociationSet>
-          <AssociationSet Name="FK_mahalle_ilce" Association="CityExperDbModel.FK_mahalle_ilce">
-            <End Role="ilce" EntitySet="ilce" />
-            <End Role="mahalle" EntitySet="mahalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ParselMalikRelation_ParselMalik" Association="CityExperDbModel.FK_ParselMalikRelation_ParselMalik">
-            <End Role="ParselMalik" EntitySet="ParselMalik" />
-            <End Role="ParselMalikRelation" EntitySet="ParselMalikRelation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserRoleRelation_UserRole" Association="CityExperDbModel.FK_UserRoleRelation_UserRole">
-            <End Role="UserRole" EntitySet="UserRole" />
-            <End Role="UserRoleRelation" EntitySet="UserRoleRelation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserRoleRelation_Users" Association="CityExperDbModel.FK_UserRoleRelation_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UserRoleRelation" EntitySet="UserRoleRelation" />
-          </AssociationSet>
-          <EntitySet Name="parsel" EntityType="CityExperDbModel.parsel" />
-          <AssociationSet Name="FK_parsel_parsel" Association="CityExperDbModel.FK_parsel_parsel">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="parsel" EntitySet="parsel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ParselBeyan_parsel" Association="CityExperDbModel.FK_ParselBeyan_parsel">
-            <End Role="parsel" EntitySet="parsel" />
-            <End Role="ParselBeyan" EntitySet="ParselBeyan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ParselHaciz_parsel" Association="CityExperDbModel.FK_ParselHaciz_parsel">
-            <End Role="parsel" EntitySet="parsel" />
-            <End Role="ParselHaciz" EntitySet="ParselHaciz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ParselIpotek_parsel" Association="CityExperDbModel.FK_ParselIpotek_parsel">
-            <End Role="parsel" EntitySet="parsel" />
-            <End Role="ParselIpotek" EntitySet="ParselIpotek" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ParselIrtifak_parsel" Association="CityExperDbModel.FK_ParselIrtifak_parsel">
-            <End Role="parsel" EntitySet="parsel" />
-            <End Role="ParselIrtifak" EntitySet="ParselIrtifak" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ParselIsgalci_parsel" Association="CityExperDbModel.FK_ParselIsgalci_parsel">
-            <End Role="parsel" EntitySet="parsel" />
-            <End Role="ParselIsgalci" EntitySet="ParselIsgalci" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ParselMalikRelation_parsel" Association="CityExperDbModel.FK_ParselMalikRelation_parsel">
-            <End Role="parsel" EntitySet="parsel" />
-            <End Role="ParselMalikRelation" EntitySet="ParselMalikRelation" />
-          </AssociationSet>
-          <EntitySet Name="ParselSerh" EntityType="CityExperDbModel.ParselSerh" />
-          <AssociationSet Name="FK_ParselSerh_parsel" Association="CityExperDbModel.FK_ParselSerh_parsel">
-            <End Role="parsel" EntitySet="parsel" />
-            <End Role="ParselSerh" EntitySet="ParselSerh" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="ada">
           <Key>
             <PropertyRef Name="ada_id" />
@@ -688,7 +606,7 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
           <Property Name="ada_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tapuMahalle_id" Type="Int32" Nullable="false" />
           <Property Name="adaNo" Type="Int32" Nullable="false" />
-          <Property Name="aciklama" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="bagimsiz">
           <Key>
@@ -788,18 +706,18 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
           </Key>
           <Property Name="caddeSokak_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="mahalle_id" Type="Int32" Nullable="false" />
-          <Property Name="caddeSokakAdi" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="mahalle" Relationship="CityExperDbModel.FK_caddeSokak_mahalle" FromRole="caddeSokak" ToRole="mahalle" />
+          <Property Name="caddeSokakAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="mahalle" Relationship="Self.FK_caddeSokak_mahalle" FromRole="caddeSokak" ToRole="mahalle" />
         </EntityType>
         <EntityType Name="il">
           <Key>
             <PropertyRef Name="il_id" />
           </Key>
           <Property Name="il_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ilAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ilAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="lat" Type="Decimal" Precision="18" Scale="8" />
           <Property Name="long" Type="Decimal" Precision="18" Scale="8" />
-          <NavigationProperty Name="ilce" Relationship="CityExperDbModel.FK_ilce_il" FromRole="il" ToRole="ilce" />
+          <NavigationProperty Name="ilce" Relationship="Self.FK_ilce_il" FromRole="il" ToRole="ilce" />
         </EntityType>
         <EntityType Name="ilce">
           <Key>
@@ -807,11 +725,11 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
           </Key>
           <Property Name="ilce_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="il_id" Type="Int32" Nullable="false" />
-          <Property Name="ilceAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ilceAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="lat" Type="Decimal" Precision="18" Scale="8" />
           <Property Name="long" Type="Decimal" Precision="18" Scale="8" />
-          <NavigationProperty Name="il" Relationship="CityExperDbModel.FK_ilce_il" FromRole="ilce" ToRole="il" />
-          <NavigationProperty Name="mahalle" Relationship="CityExperDbModel.FK_mahalle_ilce" FromRole="ilce" ToRole="mahalle" />
+          <NavigationProperty Name="il" Relationship="Self.FK_ilce_il" FromRole="ilce" ToRole="il" />
+          <NavigationProperty Name="mahalle" Relationship="Self.FK_mahalle_ilce" FromRole="ilce" ToRole="mahalle" />
         </EntityType>
         <EntityType Name="mahalle">
           <Key>
@@ -819,9 +737,9 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
           </Key>
           <Property Name="mahalle_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ilce_id" Type="Int32" Nullable="false" />
-          <Property Name="mahalleAdi" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="caddeSokak" Relationship="CityExperDbModel.FK_caddeSokak_mahalle" FromRole="mahalle" ToRole="caddeSokak" />
-          <NavigationProperty Name="ilce" Relationship="CityExperDbModel.FK_mahalle_ilce" FromRole="mahalle" ToRole="ilce" />
+          <Property Name="mahalleAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="caddeSokak" Relationship="Self.FK_caddeSokak_mahalle" FromRole="mahalle" ToRole="caddeSokak" />
+          <NavigationProperty Name="ilce" Relationship="Self.FK_mahalle_ilce" FromRole="mahalle" ToRole="ilce" />
         </EntityType>
         <EntityType Name="Mulkiyet">
           <Key>
@@ -830,233 +748,6 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="mülkiyetAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="ParselBeyan">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FkParselId" Type="Int32" />
-          <Property Name="ParselBeyanAciklama" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ParselBeyanYevmiyeNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ParselBeyanTarih" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="parsel" Relationship="CityExperDbModel.FK_ParselBeyan_parsel" FromRole="ParselBeyan" ToRole="parsel" />
-        </EntityType>
-        <EntityType Name="ParselHaciz">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FkParselId" Type="Int32" />
-          <Property Name="ParselHacizAciklama" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ParselHacizYevmiyeNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ParselHacizTarih" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="parsel" Relationship="CityExperDbModel.FK_ParselHaciz_parsel" FromRole="ParselHaciz" ToRole="parsel" />
-        </EntityType>
-        <EntityType Name="ParselIpotek">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FkParselId" Type="Int32" />
-          <Property Name="ParselIpotekAciklama" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ParselIpotekYevmiyeNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ParselIpotekTarih" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="parsel" Relationship="CityExperDbModel.FK_ParselIpotek_parsel" FromRole="ParselIpotek" ToRole="parsel" />
-        </EntityType>
-        <EntityType Name="ParselIrtifak">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FkParselId" Type="Int32" />
-          <Property Name="ParselIrtifak1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ParselIrtifakAciklama" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ParselIrtifakYevmiyeNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ParselIrtifakTarih" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="parsel" Relationship="CityExperDbModel.FK_ParselIrtifak_parsel" FromRole="ParselIrtifak" ToRole="parsel" />
-        </EntityType>
-        <EntityType Name="ParselIsgalci">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FkParselId" Type="Int32" />
-          <Property Name="Adi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Soyadi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="parsel" Relationship="CityExperDbModel.FK_ParselIsgalci_parsel" FromRole="ParselIsgalci" ToRole="parsel" />
-        </EntityType>
-        <EntityType Name="ParselMalik">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Adi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Soyadi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Tc" Type="Int32" />
-          <Property Name="BabaAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="HisseOrani" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="HisseMiktari" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="EdinmeSebebi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="ParselEdinmeTarihi" Type="DateTime" Precision="3" />
-          <Property Name="ParselNo" Type="Int32" />
-          <Property Name="ParselMalikAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ParselMalikSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ParselMalikRelation" Relationship="CityExperDbModel.FK_ParselMalikRelation_ParselMalik" FromRole="ParselMalik" ToRole="ParselMalikRelation" />
-        </EntityType>
-        <EntityType Name="ParselMalikRelation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FkParselId" Type="Int32" />
-          <Property Name="FkParselMalikId" Type="Int32" />
-          <NavigationProperty Name="ParselMalik" Relationship="CityExperDbModel.FK_ParselMalikRelation_ParselMalik" FromRole="ParselMalikRelation" ToRole="ParselMalik" />
-          <NavigationProperty Name="parsel" Relationship="CityExperDbModel.FK_ParselMalikRelation_parsel" FromRole="ParselMalikRelation" ToRole="parsel" />
-        </EntityType>
-        <EntityType Name="sahiplikDurum">
-          <Key>
-            <PropertyRef Name="sahiplikDurum_id" />
-          </Key>
-          <Property Name="sahiplikDurum_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="bagimsiz_id" Type="Int32" />
-          <Property Name="bina_id" Type="Int32" />
-          <Property Name="sahiplikAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="tasinmazTürü">
-          <Key>
-            <PropertyRef Name="tasinmazTür_id" />
-          </Key>
-          <Property Name="tasinmazTür_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tasimazTürAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="bina_id" Type="Int32" />
-          <Property Name="bagimsiz_id" Type="Int32" />
-        </EntityType>
-        <EntityType Name="UserRole">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserRoleRelation" Relationship="CityExperDbModel.FK_UserRoleRelation_UserRole" FromRole="UserRole" ToRole="UserRoleRelation" />
-        </EntityType>
-        <EntityType Name="UserRoleRelation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FkUserId" Type="Int32" />
-          <Property Name="FkUserRoleId" Type="Int32" />
-          <Property Name="Status" Type="Int32" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="UserRole" Relationship="CityExperDbModel.FK_UserRoleRelation_UserRole" FromRole="UserRoleRelation" ToRole="UserRole" />
-          <NavigationProperty Name="Users" Relationship="CityExperDbModel.FK_UserRoleRelation_Users" FromRole="UserRoleRelation" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Surname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TelNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Int32" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="UserRoleRelation" Relationship="CityExperDbModel.FK_UserRoleRelation_Users" FromRole="Users" ToRole="UserRoleRelation" />
-          <NavigationProperty Name="parsel" Relationship="CityExperDbModel.FK_parsel_parsel" FromRole="Users" ToRole="parsel" />
-        </EntityType>
-        <EntityType Name="tapuMahalle">
-          <Key>
-            <PropertyRef Name="ilce_id" />
-            <PropertyRef Name="tapuMahalleAdi" />
-          </Key>
-          <Property Name="Id" Type="Int32" />
-          <Property Name="ilce_id" Type="Int32" Nullable="false" />
-          <Property Name="tapuMahalleAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK_caddeSokak_mahalle">
-          <End Type="CityExperDbModel.mahalle" Role="mahalle" Multiplicity="1" />
-          <End Type="CityExperDbModel.caddeSokak" Role="caddeSokak" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="mahalle">
-              <PropertyRef Name="mahalle_id" />
-            </Principal>
-            <Dependent Role="caddeSokak">
-              <PropertyRef Name="mahalle_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ilce_il">
-          <End Type="CityExperDbModel.il" Role="il" Multiplicity="1" />
-          <End Type="CityExperDbModel.ilce" Role="ilce" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="il">
-              <PropertyRef Name="il_id" />
-            </Principal>
-            <Dependent Role="ilce">
-              <PropertyRef Name="il_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_mahalle_ilce">
-          <End Type="CityExperDbModel.ilce" Role="ilce" Multiplicity="1" />
-          <End Type="CityExperDbModel.mahalle" Role="mahalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ilce">
-              <PropertyRef Name="ilce_id" />
-            </Principal>
-            <Dependent Role="mahalle">
-              <PropertyRef Name="ilce_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ParselMalikRelation_ParselMalik">
-          <End Type="CityExperDbModel.ParselMalik" Role="ParselMalik" Multiplicity="0..1" />
-          <End Type="CityExperDbModel.ParselMalikRelation" Role="ParselMalikRelation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ParselMalik">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ParselMalikRelation">
-              <PropertyRef Name="FkParselMalikId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserRoleRelation_UserRole">
-          <End Type="CityExperDbModel.UserRole" Role="UserRole" Multiplicity="0..1" />
-          <End Type="CityExperDbModel.UserRoleRelation" Role="UserRoleRelation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserRole">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserRoleRelation">
-              <PropertyRef Name="FkUserRoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserRoleRelation_Users">
-          <End Type="CityExperDbModel.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="CityExperDbModel.UserRoleRelation" Role="UserRoleRelation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserRoleRelation">
-              <PropertyRef Name="FkUserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="parsel">
           <Key>
             <PropertyRef Name="Id" />
@@ -1081,8 +772,8 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
           <Property Name="Gorusler" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="PlanFonksiyonu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Emsal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="İnsaatAlani" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="Hmax" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="İnsaatAlani" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Hmax" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Kaks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Taks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PlanAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1093,18 +784,209 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
           <Property Name="BelgeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DigerKurumBelgeTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AdaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Users" Relationship="CityExperDbModel.FK_parsel_parsel" FromRole="parsel" ToRole="Users" />
-          <NavigationProperty Name="ParselBeyan" Relationship="CityExperDbModel.FK_ParselBeyan_parsel" FromRole="parsel" ToRole="ParselBeyan" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_parsel_parsel" FromRole="parsel" ToRole="Users" />
+          <NavigationProperty Name="ParselBeyan" Relationship="Self.FK_ParselBeyan_parsel" FromRole="parsel" ToRole="ParselBeyan" />
+          <NavigationProperty Name="ParselIpotek" Relationship="Self.FK_ParselIpotek_parsel" FromRole="parsel" ToRole="ParselIpotek" />
+          <NavigationProperty Name="ParselIrtifak" Relationship="Self.FK_ParselIrtifak_parsel" FromRole="parsel" ToRole="ParselIrtifak" />
+          <NavigationProperty Name="ParselIsgalci" Relationship="Self.FK_ParselIsgalci_parsel" FromRole="parsel" ToRole="ParselIsgalci" />
+          <NavigationProperty Name="ParselMalikRelation" Relationship="Self.FK_ParselMalikRelation_parsel" FromRole="parsel" ToRole="ParselMalikRelation" />
+          <NavigationProperty Name="ParselSerh" Relationship="Self.FK_ParselSerh_parsel" FromRole="parsel" ToRole="ParselSerh" />
           <NavigationProperty Name="ParselHaciz" Relationship="CityExperDbModel.FK_ParselHaciz_parsel" FromRole="parsel" ToRole="ParselHaciz" />
-          <NavigationProperty Name="ParselIpotek" Relationship="CityExperDbModel.FK_ParselIpotek_parsel" FromRole="parsel" ToRole="ParselIpotek" />
-          <NavigationProperty Name="ParselIrtifak" Relationship="CityExperDbModel.FK_ParselIrtifak_parsel" FromRole="parsel" ToRole="ParselIrtifak" />
-          <NavigationProperty Name="ParselIsgalci" Relationship="CityExperDbModel.FK_ParselIsgalci_parsel" FromRole="parsel" ToRole="ParselIsgalci" />
-          <NavigationProperty Name="ParselMalikRelation" Relationship="CityExperDbModel.FK_ParselMalikRelation_parsel" FromRole="parsel" ToRole="ParselMalikRelation" />
-          <NavigationProperty Name="ParselSerh" Relationship="CityExperDbModel.FK_ParselSerh_parsel" FromRole="parsel" ToRole="ParselSerh" />
         </EntityType>
+        <EntityType Name="ParselBeyan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkParselId" Type="Int32" />
+          <Property Name="ParselBeyanAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParselBeyanYevmiyeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParselBeyanTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="parsel" Relationship="Self.FK_ParselBeyan_parsel" FromRole="ParselBeyan" ToRole="parsel" />
+        </EntityType>
+        <EntityType Name="ParselIpotek">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkParselId" Type="Int32" />
+          <Property Name="ParselIpotekAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParselIpotekYevmiyeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParselIpotekTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="parsel" Relationship="Self.FK_ParselIpotek_parsel" FromRole="ParselIpotek" ToRole="parsel" />
+        </EntityType>
+        <EntityType Name="ParselIrtifak">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkParselId" Type="Int32" />
+          <Property Name="ParselIrtifakAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParselIrtifakYevmiyeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParselIrtifakTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="parsel" Relationship="Self.FK_ParselIrtifak_parsel" FromRole="ParselIrtifak" ToRole="parsel" />
+        </EntityType>
+        <EntityType Name="ParselIsgalci">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkParselId" Type="Int32" Nullable="false" />
+          <Property Name="ParselIsgalciNo" Type="Int32" />
+          <Property Name="ParselIsgalciAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParselIsgalciTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="parsel" Relationship="Self.FK_ParselIsgalci_parsel" FromRole="ParselIsgalci" ToRole="parsel" />
+        </EntityType>
+        <EntityType Name="ParselMalik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tc" Type="Int32" />
+          <Property Name="BabaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParselNo" Type="Int32" />
+          <Property Name="HisseOrani" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HisseMiktari" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EdinmeSebebi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParselEdinmeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="ParselMalikAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParselMalikSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ParselMalikRelation" Relationship="Self.FK_ParselMalikRelation_ParselMalik" FromRole="ParselMalik" ToRole="ParselMalikRelation" />
+        </EntityType>
+        <EntityType Name="ParselMalikRelation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkParselId" Type="Int32" />
+          <Property Name="FkParselMalikId" Type="Int32" />
+          <NavigationProperty Name="parsel" Relationship="Self.FK_ParselMalikRelation_parsel" FromRole="ParselMalikRelation" ToRole="parsel" />
+          <NavigationProperty Name="ParselMalik" Relationship="Self.FK_ParselMalikRelation_ParselMalik" FromRole="ParselMalikRelation" ToRole="ParselMalik" />
+        </EntityType>
+        <EntityType Name="ParselSerh">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkParselId" Type="Int32" />
+          <Property Name="ParselSerhTarih" Type="DateTime" Precision="3" />
+          <Property Name="ParselSerhAciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ParselSerhYevmiyeNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="parsel" Relationship="Self.FK_ParselSerh_parsel" FromRole="ParselSerh" ToRole="parsel" />
+        </EntityType>
+        <EntityType Name="sahiplikDurum">
+          <Key>
+            <PropertyRef Name="sahiplikDurum_id" />
+          </Key>
+          <Property Name="sahiplikDurum_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bagimsiz_id" Type="Int32" />
+          <Property Name="bina_id" Type="Int32" />
+          <Property Name="sahiplikAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tasinmazTürü">
+          <Key>
+            <PropertyRef Name="tasinmazTür_id" />
+          </Key>
+          <Property Name="tasinmazTür_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tasimazTürAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bina_id" Type="Int32" />
+          <Property Name="bagimsiz_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserRoleRelation" Relationship="Self.FK_UserRoleRelation_UserRole" FromRole="UserRole" ToRole="UserRoleRelation" />
+        </EntityType>
+        <EntityType Name="UserRoleRelation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkUserId" Type="Int32" />
+          <Property Name="FkUserRoleId" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK_UserRoleRelation_UserRole" FromRole="UserRoleRelation" ToRole="UserRole" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UserRoleRelation_Users" FromRole="UserRoleRelation" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="parsel" Relationship="Self.FK_parsel_parsel" FromRole="Users" ToRole="parsel" />
+          <NavigationProperty Name="UserRoleRelation" Relationship="Self.FK_UserRoleRelation_Users" FromRole="Users" ToRole="UserRoleRelation" />
+        </EntityType>
+        <EntityType Name="tapuMahalle">
+          <Key>
+            <PropertyRef Name="ilce_id" />
+            <PropertyRef Name="tapuMahalleAdi" />
+          </Key>
+          <Property Name="Id" Type="Int32" />
+          <Property Name="ilce_id" Type="Int32" Nullable="false" />
+          <Property Name="tapuMahalleAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_caddeSokak_mahalle">
+          <End Role="mahalle" Type="Self.mahalle" Multiplicity="1" />
+          <End Role="caddeSokak" Type="Self.caddeSokak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mahalle">
+              <PropertyRef Name="mahalle_id" />
+            </Principal>
+            <Dependent Role="caddeSokak">
+              <PropertyRef Name="mahalle_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ilce_il">
+          <End Role="il" Type="Self.il" Multiplicity="1" />
+          <End Role="ilce" Type="Self.ilce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="il">
+              <PropertyRef Name="il_id" />
+            </Principal>
+            <Dependent Role="ilce">
+              <PropertyRef Name="il_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mahalle_ilce">
+          <End Role="ilce" Type="Self.ilce" Multiplicity="1" />
+          <End Role="mahalle" Type="Self.mahalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilce">
+              <PropertyRef Name="ilce_id" />
+            </Principal>
+            <Dependent Role="mahalle">
+              <PropertyRef Name="ilce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_parsel_parsel">
-          <End Type="CityExperDbModel.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="CityExperDbModel.parsel" Role="parsel" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="parsel" Type="Self.parsel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="Id" />
@@ -1115,8 +997,8 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ParselBeyan_parsel">
-          <End Type="CityExperDbModel.parsel" Role="parsel" Multiplicity="0..1" />
-          <End Type="CityExperDbModel.ParselBeyan" Role="ParselBeyan" Multiplicity="*" />
+          <End Role="parsel" Type="Self.parsel" Multiplicity="0..1" />
+          <End Role="ParselBeyan" Type="Self.ParselBeyan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="parsel">
               <PropertyRef Name="Id" />
@@ -1126,6 +1008,195 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ParselIpotek_parsel">
+          <End Role="parsel" Type="Self.parsel" Multiplicity="0..1" />
+          <End Role="ParselIpotek" Type="Self.ParselIpotek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parsel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParselIpotek">
+              <PropertyRef Name="FkParselId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParselIrtifak_parsel">
+          <End Role="parsel" Type="Self.parsel" Multiplicity="0..1" />
+          <End Role="ParselIrtifak" Type="Self.ParselIrtifak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parsel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParselIrtifak">
+              <PropertyRef Name="FkParselId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParselIsgalci_parsel">
+          <End Role="parsel" Type="Self.parsel" Multiplicity="1" />
+          <End Role="ParselIsgalci" Type="Self.ParselIsgalci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parsel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParselIsgalci">
+              <PropertyRef Name="FkParselId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParselMalikRelation_parsel">
+          <End Role="parsel" Type="Self.parsel" Multiplicity="0..1" />
+          <End Role="ParselMalikRelation" Type="Self.ParselMalikRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parsel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParselMalikRelation">
+              <PropertyRef Name="FkParselId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParselSerh_parsel">
+          <End Role="parsel" Type="Self.parsel" Multiplicity="0..1" />
+          <End Role="ParselSerh" Type="Self.ParselSerh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parsel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParselSerh">
+              <PropertyRef Name="FkParselId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParselMalikRelation_ParselMalik">
+          <End Role="ParselMalik" Type="Self.ParselMalik" Multiplicity="0..1" />
+          <End Role="ParselMalikRelation" Type="Self.ParselMalikRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParselMalik">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParselMalikRelation">
+              <PropertyRef Name="FkParselMalikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleRelation_UserRole">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1" />
+          <End Role="UserRoleRelation" Type="Self.UserRoleRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleRelation">
+              <PropertyRef Name="FkUserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleRelation_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UserRoleRelation" Type="Self.UserRoleRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleRelation">
+              <PropertyRef Name="FkUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CityExperDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ada" EntityType="Self.ada" />
+          <EntitySet Name="bagimsiz" EntityType="Self.bagimsiz" />
+          <EntitySet Name="bina" EntityType="Self.bina" />
+          <EntitySet Name="caddeSokak" EntityType="Self.caddeSokak" />
+          <EntitySet Name="il" EntityType="Self.il" />
+          <EntitySet Name="ilce" EntityType="Self.ilce" />
+          <EntitySet Name="mahalle" EntityType="Self.mahalle" />
+          <EntitySet Name="Mulkiyet" EntityType="Self.Mulkiyet" />
+          <EntitySet Name="parsel" EntityType="Self.parsel" />
+          <EntitySet Name="ParselBeyan" EntityType="Self.ParselBeyan" />
+          <EntitySet Name="ParselIpotek" EntityType="Self.ParselIpotek" />
+          <EntitySet Name="ParselIrtifak" EntityType="Self.ParselIrtifak" />
+          <EntitySet Name="ParselIsgalci" EntityType="Self.ParselIsgalci" />
+          <EntitySet Name="ParselMalik" EntityType="Self.ParselMalik" />
+          <EntitySet Name="ParselMalikRelation" EntityType="Self.ParselMalikRelation" />
+          <EntitySet Name="ParselSerh" EntityType="Self.ParselSerh" />
+          <EntitySet Name="sahiplikDurum" EntityType="Self.sahiplikDurum" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tasinmazTürü" EntityType="Self.tasinmazTürü" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" />
+          <EntitySet Name="UserRoleRelation" EntityType="Self.UserRoleRelation" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="tapuMahalle" EntityType="Self.tapuMahalle" />
+          <AssociationSet Name="FK_caddeSokak_mahalle" Association="Self.FK_caddeSokak_mahalle">
+            <End Role="mahalle" EntitySet="mahalle" />
+            <End Role="caddeSokak" EntitySet="caddeSokak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ilce_il" Association="Self.FK_ilce_il">
+            <End Role="il" EntitySet="il" />
+            <End Role="ilce" EntitySet="ilce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mahalle_ilce" Association="Self.FK_mahalle_ilce">
+            <End Role="ilce" EntitySet="ilce" />
+            <End Role="mahalle" EntitySet="mahalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_parsel_parsel" Association="Self.FK_parsel_parsel">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="parsel" EntitySet="parsel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParselBeyan_parsel" Association="Self.FK_ParselBeyan_parsel">
+            <End Role="parsel" EntitySet="parsel" />
+            <End Role="ParselBeyan" EntitySet="ParselBeyan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParselIpotek_parsel" Association="Self.FK_ParselIpotek_parsel">
+            <End Role="parsel" EntitySet="parsel" />
+            <End Role="ParselIpotek" EntitySet="ParselIpotek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParselIrtifak_parsel" Association="Self.FK_ParselIrtifak_parsel">
+            <End Role="parsel" EntitySet="parsel" />
+            <End Role="ParselIrtifak" EntitySet="ParselIrtifak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParselIsgalci_parsel" Association="Self.FK_ParselIsgalci_parsel">
+            <End Role="parsel" EntitySet="parsel" />
+            <End Role="ParselIsgalci" EntitySet="ParselIsgalci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParselMalikRelation_parsel" Association="Self.FK_ParselMalikRelation_parsel">
+            <End Role="parsel" EntitySet="parsel" />
+            <End Role="ParselMalikRelation" EntitySet="ParselMalikRelation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParselSerh_parsel" Association="Self.FK_ParselSerh_parsel">
+            <End Role="parsel" EntitySet="parsel" />
+            <End Role="ParselSerh" EntitySet="ParselSerh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParselMalikRelation_ParselMalik" Association="Self.FK_ParselMalikRelation_ParselMalik">
+            <End Role="ParselMalik" EntitySet="ParselMalik" />
+            <End Role="ParselMalikRelation" EntitySet="ParselMalikRelation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleRelation_UserRole" Association="Self.FK_UserRoleRelation_UserRole">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="UserRoleRelation" EntitySet="UserRoleRelation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleRelation_Users" Association="Self.FK_UserRoleRelation_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoleRelation" EntitySet="UserRoleRelation" />
+          </AssociationSet>
+          <EntitySet Name="ParselHaciz" EntityType="CityExperDbModel.ParselHaciz" />
+          <AssociationSet Name="FK_ParselHaciz_parsel" Association="CityExperDbModel.FK_ParselHaciz_parsel">
+            <End Role="parsel" EntitySet="parsel" />
+            <End Role="ParselHaciz" EntitySet="ParselHaciz" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ParselHaciz">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FkParselId" Type="Int32" />
+          <Property Name="ParselHacizAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParselHacizYevmiyeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParselHacizTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="parsel" Relationship="CityExperDbModel.FK_ParselHaciz_parsel" FromRole="ParselHaciz" ToRole="parsel" />
+        </EntityType>
         <Association Name="FK_ParselHaciz_parsel">
           <End Type="CityExperDbModel.parsel" Role="parsel" Multiplicity="0..1" />
           <End Type="CityExperDbModel.ParselHaciz" Role="ParselHaciz" Multiplicity="*" />
@@ -1138,78 +1209,7 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ParselIpotek_parsel">
-          <End Type="CityExperDbModel.parsel" Role="parsel" Multiplicity="0..1" />
-          <End Type="CityExperDbModel.ParselIpotek" Role="ParselIpotek" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="parsel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ParselIpotek">
-              <PropertyRef Name="FkParselId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ParselIrtifak_parsel">
-          <End Type="CityExperDbModel.parsel" Role="parsel" Multiplicity="0..1" />
-          <End Type="CityExperDbModel.ParselIrtifak" Role="ParselIrtifak" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="parsel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ParselIrtifak">
-              <PropertyRef Name="FkParselId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ParselIsgalci_parsel">
-          <End Type="CityExperDbModel.parsel" Role="parsel" Multiplicity="0..1" />
-          <End Type="CityExperDbModel.ParselIsgalci" Role="ParselIsgalci" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="parsel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ParselIsgalci">
-              <PropertyRef Name="FkParselId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ParselMalikRelation_parsel">
-          <End Type="CityExperDbModel.parsel" Role="parsel" Multiplicity="0..1" />
-          <End Type="CityExperDbModel.ParselMalikRelation" Role="ParselMalikRelation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="parsel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ParselMalikRelation">
-              <PropertyRef Name="FkParselId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="ParselSerh">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FkParselId" Type="Int32" />
-          <Property Name="ParselSerhTarih" Type="DateTime" Precision="3" />
-          <Property Name="ParselSerhAciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="ParselSerhYevmiyeNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="parsel" Relationship="CityExperDbModel.FK_ParselSerh_parsel" FromRole="ParselSerh" ToRole="parsel" />
-        </EntityType>
-        <Association Name="FK_ParselSerh_parsel">
-          <End Type="CityExperDbModel.parsel" Role="parsel" Multiplicity="0..1" />
-          <End Type="CityExperDbModel.ParselSerh" Role="ParselSerh" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="parsel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ParselSerh">
-              <PropertyRef Name="FkParselId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1218,162 +1218,344 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
           <EntitySetMapping Name="ada">
             <EntityTypeMapping TypeName="CityExperDbModel.ada">
               <MappingFragment StoreEntitySet="ada">
-                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
-                <ScalarProperty Name="adaNo" ColumnName="adaNo" />
-                <ScalarProperty Name="tapuMahalle_id" ColumnName="tapuMahalle_id" />
                 <ScalarProperty Name="ada_id" ColumnName="ada_id" />
+                <ScalarProperty Name="tapuMahalle_id" ColumnName="tapuMahalle_id" />
+                <ScalarProperty Name="adaNo" ColumnName="adaNo" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="bagimsiz">
             <EntityTypeMapping TypeName="CityExperDbModel.bagimsiz">
               <MappingFragment StoreEntitySet="bagimsiz">
-                <ScalarProperty Name="durum" ColumnName="durum" />
-                <ScalarProperty Name="murfakTipi" ColumnName="murfakTipi" />
-                <ScalarProperty Name="konutTipi" ColumnName="konutTipi" />
-                <ScalarProperty Name="aidat" ColumnName="aidat" />
-                <ScalarProperty Name="esyaDurum" ColumnName="esyaDurum" />
-                <ScalarProperty Name="hisseDurum" ColumnName="hisseDurum" />
-                <ScalarProperty Name="toplamBedel" ColumnName="toplamBedel" />
-                <ScalarProperty Name="metreKareBirimFiyat" ColumnName="metreKareBirimFiyat" />
-                <ScalarProperty Name="balkon" ColumnName="balkon" />
-                <ScalarProperty Name="mutfakTipi" ColumnName="mutfakTipi" />
-                <ScalarProperty Name="banyoSayisi" ColumnName="banyoSayisi" />
-                <ScalarProperty Name="odaSayisi" ColumnName="odaSayisi" />
-                <ScalarProperty Name="manzara" ColumnName="manzara" />
-                <ScalarProperty Name="cephe" ColumnName="cephe" />
-                <ScalarProperty Name="katNo" ColumnName="katNo" />
-                <ScalarProperty Name="bagimsizNo" ColumnName="bagimsizNo" />
-                <ScalarProperty Name="yapiKayitBelgesi" ColumnName="yapiKayitBelgesi" />
-                <ScalarProperty Name="dogalGazNo" ColumnName="dogalGazNo" />
-                <ScalarProperty Name="isinmaTürü" ColumnName="isinmaTürü" />
-                <ScalarProperty Name="suNo" ColumnName="suNo" />
-                <ScalarProperty Name="elektrikNo" ColumnName="elektrikNo" />
-                <ScalarProperty Name="nitelik" ColumnName="nitelik" />
-                <ScalarProperty Name="bagimsizAlani" ColumnName="bagimsizAlani" />
-                <ScalarProperty Name="kullanimTürü" ColumnName="kullanimTürü" />
-                <ScalarProperty Name="malik_id" ColumnName="malik_id" />
-                <ScalarProperty Name="parsel_id" ColumnName="parsel_id" />
-                <ScalarProperty Name="ada_id" ColumnName="ada_id" />
-                <ScalarProperty Name="caddeSokak_id" ColumnName="caddeSokak_id" />
-                <ScalarProperty Name="tapuMahalle_id" ColumnName="tapuMahalle_id" />
-                <ScalarProperty Name="mahalle_id" ColumnName="mahalle_id" />
-                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
-                <ScalarProperty Name="il_id" ColumnName="il_id" />
-                <ScalarProperty Name="bina_id" ColumnName="bina_id" />
                 <ScalarProperty Name="bagimsiz_id" ColumnName="bagimsiz_id" />
+                <ScalarProperty Name="bina_id" ColumnName="bina_id" />
+                <ScalarProperty Name="il_id" ColumnName="il_id" />
+                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
+                <ScalarProperty Name="mahalle_id" ColumnName="mahalle_id" />
+                <ScalarProperty Name="tapuMahalle_id" ColumnName="tapuMahalle_id" />
+                <ScalarProperty Name="caddeSokak_id" ColumnName="caddeSokak_id" />
+                <ScalarProperty Name="ada_id" ColumnName="ada_id" />
+                <ScalarProperty Name="parsel_id" ColumnName="parsel_id" />
+                <ScalarProperty Name="malik_id" ColumnName="malik_id" />
+                <ScalarProperty Name="kullanimTürü" ColumnName="kullanimTürü" />
+                <ScalarProperty Name="bagimsizAlani" ColumnName="bagimsizAlani" />
+                <ScalarProperty Name="nitelik" ColumnName="nitelik" />
+                <ScalarProperty Name="elektrikNo" ColumnName="elektrikNo" />
+                <ScalarProperty Name="suNo" ColumnName="suNo" />
+                <ScalarProperty Name="isinmaTürü" ColumnName="isinmaTürü" />
+                <ScalarProperty Name="dogalGazNo" ColumnName="dogalGazNo" />
+                <ScalarProperty Name="yapiKayitBelgesi" ColumnName="yapiKayitBelgesi" />
+                <ScalarProperty Name="bagimsizNo" ColumnName="bagimsizNo" />
+                <ScalarProperty Name="katNo" ColumnName="katNo" />
+                <ScalarProperty Name="cephe" ColumnName="cephe" />
+                <ScalarProperty Name="manzara" ColumnName="manzara" />
+                <ScalarProperty Name="odaSayisi" ColumnName="odaSayisi" />
+                <ScalarProperty Name="banyoSayisi" ColumnName="banyoSayisi" />
+                <ScalarProperty Name="mutfakTipi" ColumnName="mutfakTipi" />
+                <ScalarProperty Name="balkon" ColumnName="balkon" />
+                <ScalarProperty Name="metreKareBirimFiyat" ColumnName="metreKareBirimFiyat" />
+                <ScalarProperty Name="toplamBedel" ColumnName="toplamBedel" />
+                <ScalarProperty Name="hisseDurum" ColumnName="hisseDurum" />
+                <ScalarProperty Name="esyaDurum" ColumnName="esyaDurum" />
+                <ScalarProperty Name="aidat" ColumnName="aidat" />
+                <ScalarProperty Name="konutTipi" ColumnName="konutTipi" />
+                <ScalarProperty Name="murfakTipi" ColumnName="murfakTipi" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="bina">
             <EntityTypeMapping TypeName="CityExperDbModel.bina">
               <MappingFragment StoreEntitySet="bina">
-                <ScalarProperty Name="durum" ColumnName="durum" />
-                <ScalarProperty Name="muhit" ColumnName="muhit" />
-                <ScalarProperty Name="asansor" ColumnName="asansor" />
-                <ScalarProperty Name="catiTip" ColumnName="catiTip" />
-                <ScalarProperty Name="degerleme" ColumnName="degerleme" />
-                <ScalarProperty Name="yapiKayitNo" ColumnName="yapiKayitNo" />
-                <ScalarProperty Name="yapiKayitTarih" ColumnName="yapiKayitTarih" />
-                <ScalarProperty Name="yapiKayit" ColumnName="yapiKayit" />
-                <ScalarProperty Name="projeTarih" ColumnName="projeTarih" />
-                <ScalarProperty Name="proje" ColumnName="proje" />
-                <ScalarProperty Name="yapiRuhsatNo" ColumnName="yapiRuhsatNo" />
-                <ScalarProperty Name="yapiRuhsatTarihi" ColumnName="yapiRuhsatTarihi" />
-                <ScalarProperty Name="yapiRuhsat" ColumnName="yapiRuhsat" />
-                <ScalarProperty Name="iskanNo" ColumnName="iskanNo" />
-                <ScalarProperty Name="iskanTarih" ColumnName="iskanTarih" />
-                <ScalarProperty Name="iskan" ColumnName="iskan" />
-                <ScalarProperty Name="görüsler" ColumnName="görüsler" />
-                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
-                <ScalarProperty Name="tespitTarih" ColumnName="tespitTarih" />
-                <ScalarProperty Name="tespitYapan" ColumnName="tespitYapan" />
-                <ScalarProperty Name="tespitDurum" ColumnName="tespitDurum" />
-                <ScalarProperty Name="toplamKatAdedi" ColumnName="toplamKatAdedi" />
-                <ScalarProperty Name="catiKat" ColumnName="catiKat" />
-                <ScalarProperty Name="normalKat" ColumnName="normalKat" />
-                <ScalarProperty Name="asmaKat" ColumnName="asmaKat" />
-                <ScalarProperty Name="zemin" ColumnName="zemin" />
-                <ScalarProperty Name="bodrum" ColumnName="bodrum" />
-                <ScalarProperty Name="binaDegeri" ColumnName="binaDegeri" />
-                <ScalarProperty Name="metreKareBirimFiyat" ColumnName="metreKareBirimFiyat" />
-                <ScalarProperty Name="binaYüksekligi" ColumnName="binaYüksekligi" />
-                <ScalarProperty Name="kullanımAmacı" ColumnName="kullanımAmacı" />
-                <ScalarProperty Name="otopark" ColumnName="otopark" />
-                <ScalarProperty Name="binaYasi" ColumnName="binaYasi" />
-                <ScalarProperty Name="bagimsizAdedi" ColumnName="bagimsizAdedi" />
-                <ScalarProperty Name="konutAdedi" ColumnName="konutAdedi" />
-                <ScalarProperty Name="isYeriAdadi" ColumnName="isYeriAdadi" />
-                <ScalarProperty Name="katAdedi" ColumnName="katAdedi" />
-                <ScalarProperty Name="yapıNizami" ColumnName="yapıNizami" />
-                <ScalarProperty Name="insaatAlani" ColumnName="insaatAlani" />
-                <ScalarProperty Name="nitelik" ColumnName="nitelik" />
-                <ScalarProperty Name="tabanAlani" ColumnName="tabanAlani" />
-                <ScalarProperty Name="kapiNo" ColumnName="kapiNo" />
-                <ScalarProperty Name="koav" ColumnName="koav" />
-                <ScalarProperty Name="uavt" ColumnName="uavt" />
-                <ScalarProperty Name="parsel_id" ColumnName="parsel_id" />
-                <ScalarProperty Name="ada_id" ColumnName="ada_id" />
-                <ScalarProperty Name="caddeSokak_id" ColumnName="caddeSokak_id" />
                 <ScalarProperty Name="bina_id" ColumnName="bina_id" />
+                <ScalarProperty Name="caddeSokak_id" ColumnName="caddeSokak_id" />
+                <ScalarProperty Name="ada_id" ColumnName="ada_id" />
+                <ScalarProperty Name="parsel_id" ColumnName="parsel_id" />
+                <ScalarProperty Name="uavt" ColumnName="uavt" />
+                <ScalarProperty Name="koav" ColumnName="koav" />
+                <ScalarProperty Name="kapiNo" ColumnName="kapiNo" />
+                <ScalarProperty Name="tabanAlani" ColumnName="tabanAlani" />
+                <ScalarProperty Name="nitelik" ColumnName="nitelik" />
+                <ScalarProperty Name="insaatAlani" ColumnName="insaatAlani" />
+                <ScalarProperty Name="yapıNizami" ColumnName="yapıNizami" />
+                <ScalarProperty Name="katAdedi" ColumnName="katAdedi" />
+                <ScalarProperty Name="isYeriAdadi" ColumnName="isYeriAdadi" />
+                <ScalarProperty Name="konutAdedi" ColumnName="konutAdedi" />
+                <ScalarProperty Name="bagimsizAdedi" ColumnName="bagimsizAdedi" />
+                <ScalarProperty Name="binaYasi" ColumnName="binaYasi" />
+                <ScalarProperty Name="otopark" ColumnName="otopark" />
+                <ScalarProperty Name="kullanımAmacı" ColumnName="kullanımAmacı" />
+                <ScalarProperty Name="binaYüksekligi" ColumnName="binaYüksekligi" />
+                <ScalarProperty Name="metreKareBirimFiyat" ColumnName="metreKareBirimFiyat" />
+                <ScalarProperty Name="binaDegeri" ColumnName="binaDegeri" />
+                <ScalarProperty Name="bodrum" ColumnName="bodrum" />
+                <ScalarProperty Name="zemin" ColumnName="zemin" />
+                <ScalarProperty Name="asmaKat" ColumnName="asmaKat" />
+                <ScalarProperty Name="normalKat" ColumnName="normalKat" />
+                <ScalarProperty Name="catiKat" ColumnName="catiKat" />
+                <ScalarProperty Name="toplamKatAdedi" ColumnName="toplamKatAdedi" />
+                <ScalarProperty Name="tespitDurum" ColumnName="tespitDurum" />
+                <ScalarProperty Name="tespitYapan" ColumnName="tespitYapan" />
+                <ScalarProperty Name="tespitTarih" ColumnName="tespitTarih" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="görüsler" ColumnName="görüsler" />
+                <ScalarProperty Name="iskan" ColumnName="iskan" />
+                <ScalarProperty Name="iskanTarih" ColumnName="iskanTarih" />
+                <ScalarProperty Name="iskanNo" ColumnName="iskanNo" />
+                <ScalarProperty Name="yapiRuhsat" ColumnName="yapiRuhsat" />
+                <ScalarProperty Name="yapiRuhsatTarihi" ColumnName="yapiRuhsatTarihi" />
+                <ScalarProperty Name="yapiRuhsatNo" ColumnName="yapiRuhsatNo" />
+                <ScalarProperty Name="proje" ColumnName="proje" />
+                <ScalarProperty Name="projeTarih" ColumnName="projeTarih" />
+                <ScalarProperty Name="yapiKayit" ColumnName="yapiKayit" />
+                <ScalarProperty Name="yapiKayitTarih" ColumnName="yapiKayitTarih" />
+                <ScalarProperty Name="yapiKayitNo" ColumnName="yapiKayitNo" />
+                <ScalarProperty Name="degerleme" ColumnName="degerleme" />
+                <ScalarProperty Name="catiTip" ColumnName="catiTip" />
+                <ScalarProperty Name="asansor" ColumnName="asansor" />
+                <ScalarProperty Name="muhit" ColumnName="muhit" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="caddeSokak">
             <EntityTypeMapping TypeName="CityExperDbModel.caddeSokak">
               <MappingFragment StoreEntitySet="caddeSokak">
-                <ScalarProperty Name="caddeSokakAdi" ColumnName="caddeSokakAdi" />
-                <ScalarProperty Name="mahalle_id" ColumnName="mahalle_id" />
                 <ScalarProperty Name="caddeSokak_id" ColumnName="caddeSokak_id" />
+                <ScalarProperty Name="mahalle_id" ColumnName="mahalle_id" />
+                <ScalarProperty Name="caddeSokakAdi" ColumnName="caddeSokakAdi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="il">
             <EntityTypeMapping TypeName="CityExperDbModel.il">
               <MappingFragment StoreEntitySet="il">
-                <ScalarProperty Name="long" ColumnName="long" />
-                <ScalarProperty Name="lat" ColumnName="lat" />
-                <ScalarProperty Name="ilAdi" ColumnName="ilAdi" />
                 <ScalarProperty Name="il_id" ColumnName="il_id" />
+                <ScalarProperty Name="ilAdi" ColumnName="ilAdi" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="long" ColumnName="long" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ilce">
             <EntityTypeMapping TypeName="CityExperDbModel.ilce">
               <MappingFragment StoreEntitySet="ilce">
-                <ScalarProperty Name="long" ColumnName="long" />
-                <ScalarProperty Name="lat" ColumnName="lat" />
-                <ScalarProperty Name="ilceAdi" ColumnName="ilceAdi" />
-                <ScalarProperty Name="il_id" ColumnName="il_id" />
                 <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
+                <ScalarProperty Name="il_id" ColumnName="il_id" />
+                <ScalarProperty Name="ilceAdi" ColumnName="ilceAdi" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="long" ColumnName="long" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="mahalle">
             <EntityTypeMapping TypeName="CityExperDbModel.mahalle">
               <MappingFragment StoreEntitySet="mahalle">
-                <ScalarProperty Name="mahalleAdi" ColumnName="mahalleAdi" />
-                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
                 <ScalarProperty Name="mahalle_id" ColumnName="mahalle_id" />
+                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
+                <ScalarProperty Name="mahalleAdi" ColumnName="mahalleAdi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Mulkiyet">
             <EntityTypeMapping TypeName="CityExperDbModel.Mulkiyet">
               <MappingFragment StoreEntitySet="Mulkiyet">
-                <ScalarProperty Name="mülkiyetAdi" ColumnName="mülkiyetAdi" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="mülkiyetAdi" ColumnName="mülkiyetAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parsel">
+            <EntityTypeMapping TypeName="CityExperDbModel.parsel">
+              <MappingFragment StoreEntitySet="parsel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TapuMahalleId" ColumnName="TapuMahalleId" />
+                <ScalarProperty Name="AdaId" ColumnName="AdaId" />
+                <ScalarProperty Name="MulkiyetId" ColumnName="MulkiyetId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Hisseli" ColumnName="Hisseli" />
+                <ScalarProperty Name="PaftaNo" ColumnName="PaftaNo" />
+                <ScalarProperty Name="ParselNo" ColumnName="ParselNo" />
+                <ScalarProperty Name="Nitelik" ColumnName="Nitelik" />
+                <ScalarProperty Name="TapuAlan" ColumnName="TapuAlan" />
+                <ScalarProperty Name="RayicBedel" ColumnName="RayicBedel" />
+                <ScalarProperty Name="ZeminTipi" ColumnName="ZeminTipi" />
+                <ScalarProperty Name="Cilt" ColumnName="Cilt" />
+                <ScalarProperty Name="Sayfa" ColumnName="Sayfa" />
+                <ScalarProperty Name="TespitYapan" ColumnName="TespitYapan" />
+                <ScalarProperty Name="TapuKadastroTespitTarih" ColumnName="TapuKadastroTespitTarih" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Gorusler" ColumnName="Gorusler" />
+                <ScalarProperty Name="PlanFonksiyonu" ColumnName="PlanFonksiyonu" />
+                <ScalarProperty Name="Emsal" ColumnName="Emsal" />
+                <ScalarProperty Name="İnsaatAlani" ColumnName="İnsaatAlani" />
+                <ScalarProperty Name="Hmax" ColumnName="Hmax" />
+                <ScalarProperty Name="Kaks" ColumnName="Kaks" />
+                <ScalarProperty Name="Taks" ColumnName="Taks" />
+                <ScalarProperty Name="PlanAdi" ColumnName="PlanAdi" />
+                <ScalarProperty Name="PlanaGöreİnsaatAlani" ColumnName="PlanaGöreİnsaatAlani" />
+                <ScalarProperty Name="BelediyeTespitTarih" ColumnName="BelediyeTespitTarih" />
+                <ScalarProperty Name="KurumId" ColumnName="KurumId" />
+                <ScalarProperty Name="DigerKurumAlinanTarih" ColumnName="DigerKurumAlinanTarih" />
+                <ScalarProperty Name="BelgeNo" ColumnName="BelgeNo" />
+                <ScalarProperty Name="DigerKurumBelgeTarih" ColumnName="DigerKurumBelgeTarih" />
+                <ScalarProperty Name="AdaNo" ColumnName="AdaNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ParselBeyan">
             <EntityTypeMapping TypeName="CityExperDbModel.ParselBeyan">
               <MappingFragment StoreEntitySet="ParselBeyan">
-                <ScalarProperty Name="ParselBeyanTarih" ColumnName="ParselBeyanTarih" />
-                <ScalarProperty Name="ParselBeyanYevmiyeNo" ColumnName="ParselBeyanYevmiyeNo" />
-                <ScalarProperty Name="ParselBeyanAciklama" ColumnName="ParselBeyanAciklama" />
-                <ScalarProperty Name="FkParselId" ColumnName="FkParselId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FkParselId" ColumnName="FkParselId" />
+                <ScalarProperty Name="ParselBeyanAciklama" ColumnName="ParselBeyanAciklama" />
+                <ScalarProperty Name="ParselBeyanYevmiyeNo" ColumnName="ParselBeyanYevmiyeNo" />
+                <ScalarProperty Name="ParselBeyanTarih" ColumnName="ParselBeyanTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParselIpotek">
+            <EntityTypeMapping TypeName="CityExperDbModel.ParselIpotek">
+              <MappingFragment StoreEntitySet="ParselIpotek">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FkParselId" ColumnName="FkParselId" />
+                <ScalarProperty Name="ParselIpotekAciklama" ColumnName="ParselIpotekAciklama" />
+                <ScalarProperty Name="ParselIpotekYevmiyeNo" ColumnName="ParselIpotekYevmiyeNo" />
+                <ScalarProperty Name="ParselIpotekTarih" ColumnName="ParselIpotekTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParselIrtifak">
+            <EntityTypeMapping TypeName="CityExperDbModel.ParselIrtifak">
+              <MappingFragment StoreEntitySet="ParselIrtifak">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FkParselId" ColumnName="FkParselId" />
+                <ScalarProperty Name="ParselIrtifakAciklama" ColumnName="ParselIrtifakAciklama" />
+                <ScalarProperty Name="ParselIrtifakYevmiyeNo" ColumnName="ParselIrtifakYevmiyeNo" />
+                <ScalarProperty Name="ParselIrtifakTarih" ColumnName="ParselIrtifakTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParselIsgalci">
+            <EntityTypeMapping TypeName="CityExperDbModel.ParselIsgalci">
+              <MappingFragment StoreEntitySet="ParselIsgalci">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FkParselId" ColumnName="FkParselId" />
+                <ScalarProperty Name="ParselIsgalciNo" ColumnName="ParselIsgalciNo" />
+                <ScalarProperty Name="ParselIsgalciAciklama" ColumnName="ParselIsgalciAciklama" />
+                <ScalarProperty Name="ParselIsgalciTarih" ColumnName="ParselIsgalciTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParselMalik">
+            <EntityTypeMapping TypeName="CityExperDbModel.ParselMalik">
+              <MappingFragment StoreEntitySet="ParselMalik">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Soyadi" ColumnName="Soyadi" />
+                <ScalarProperty Name="Tc" ColumnName="Tc" />
+                <ScalarProperty Name="BabaAdi" ColumnName="BabaAdi" />
+                <ScalarProperty Name="ParselNo" ColumnName="ParselNo" />
+                <ScalarProperty Name="HisseOrani" ColumnName="HisseOrani" />
+                <ScalarProperty Name="HisseMiktari" ColumnName="HisseMiktari" />
+                <ScalarProperty Name="EdinmeSebebi" ColumnName="EdinmeSebebi" />
+                <ScalarProperty Name="ParselEdinmeTarihi" ColumnName="ParselEdinmeTarihi" />
+                <ScalarProperty Name="ParselMalikAdi" ColumnName="ParselMalikAdi" />
+                <ScalarProperty Name="ParselMalikSoyadi" ColumnName="ParselMalikSoyadi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParselMalikRelation">
+            <EntityTypeMapping TypeName="CityExperDbModel.ParselMalikRelation">
+              <MappingFragment StoreEntitySet="ParselMalikRelation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FkParselId" ColumnName="FkParselId" />
+                <ScalarProperty Name="FkParselMalikId" ColumnName="FkParselMalikId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParselSerh">
+            <EntityTypeMapping TypeName="CityExperDbModel.ParselSerh">
+              <MappingFragment StoreEntitySet="ParselSerh">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FkParselId" ColumnName="FkParselId" />
+                <ScalarProperty Name="ParselSerhTarih" ColumnName="ParselSerhTarih" />
+                <ScalarProperty Name="ParselSerhAciklama" ColumnName="ParselSerhAciklama" />
+                <ScalarProperty Name="ParselSerhYevmiyeNo" ColumnName="ParselSerhYevmiyeNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sahiplikDurum">
+            <EntityTypeMapping TypeName="CityExperDbModel.sahiplikDurum">
+              <MappingFragment StoreEntitySet="sahiplikDurum">
+                <ScalarProperty Name="sahiplikDurum_id" ColumnName="sahiplikDurum_id" />
+                <ScalarProperty Name="bagimsiz_id" ColumnName="bagimsiz_id" />
+                <ScalarProperty Name="bina_id" ColumnName="bina_id" />
+                <ScalarProperty Name="sahiplikAdi" ColumnName="sahiplikAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CityExperDbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tasinmazTürü">
+            <EntityTypeMapping TypeName="CityExperDbModel.tasinmazTürü">
+              <MappingFragment StoreEntitySet="tasinmazTürü">
+                <ScalarProperty Name="tasinmazTür_id" ColumnName="tasinmazTür_id" />
+                <ScalarProperty Name="tasimazTürAd" ColumnName="tasimazTürAd" />
+                <ScalarProperty Name="bina_id" ColumnName="bina_id" />
+                <ScalarProperty Name="bagimsiz_id" ColumnName="bagimsiz_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRole">
+            <EntityTypeMapping TypeName="CityExperDbModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleRelation">
+            <EntityTypeMapping TypeName="CityExperDbModel.UserRoleRelation">
+              <MappingFragment StoreEntitySet="UserRoleRelation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FkUserId" ColumnName="FkUserId" />
+                <ScalarProperty Name="FkUserRoleId" ColumnName="FkUserRoleId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CityExperDbModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="TelNo" ColumnName="TelNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tapuMahalle">
+            <EntityTypeMapping TypeName="CityExperDbModel.tapuMahalle">
+              <MappingFragment StoreEntitySet="tapuMahalle">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
+                <ScalarProperty Name="tapuMahalleAdi" ColumnName="tapuMahalleAdi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1383,188 +1565,6 @@ warning 6002: The table/view 'CityExperDb.dbo.tapuMahalle' does not have a prima
                 <ScalarProperty Name="ParselHacizTarih" ColumnName="ParselHacizTarih" />
                 <ScalarProperty Name="ParselHacizYevmiyeNo" ColumnName="ParselHacizYevmiyeNo" />
                 <ScalarProperty Name="ParselHacizAciklama" ColumnName="ParselHacizAciklama" />
-                <ScalarProperty Name="FkParselId" ColumnName="FkParselId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ParselIpotek">
-            <EntityTypeMapping TypeName="CityExperDbModel.ParselIpotek">
-              <MappingFragment StoreEntitySet="ParselIpotek">
-                <ScalarProperty Name="ParselIpotekTarih" ColumnName="ParselIpotekTarih" />
-                <ScalarProperty Name="ParselIpotekYevmiyeNo" ColumnName="ParselIpotekYevmiyeNo" />
-                <ScalarProperty Name="ParselIpotekAciklama" ColumnName="ParselIpotekAciklama" />
-                <ScalarProperty Name="FkParselId" ColumnName="FkParselId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ParselIrtifak">
-            <EntityTypeMapping TypeName="CityExperDbModel.ParselIrtifak">
-              <MappingFragment StoreEntitySet="ParselIrtifak">
-                <ScalarProperty Name="ParselIrtifakTarih" ColumnName="ParselIrtifakTarih" />
-                <ScalarProperty Name="ParselIrtifakYevmiyeNo" ColumnName="ParselIrtifakYevmiyeNo" />
-                <ScalarProperty Name="ParselIrtifakAciklama" ColumnName="ParselIrtifakAciklama" />
-                <ScalarProperty Name="ParselIrtifak1" ColumnName="ParselIrtifak" />
-                <ScalarProperty Name="FkParselId" ColumnName="FkParselId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ParselIsgalci">
-            <EntityTypeMapping TypeName="CityExperDbModel.ParselIsgalci">
-              <MappingFragment StoreEntitySet="ParselIsgalci">
-                <ScalarProperty Name="Soyadi" ColumnName="Soyadi" />
-                <ScalarProperty Name="Adi" ColumnName="Adi" />
-                <ScalarProperty Name="FkParselId" ColumnName="FkParselId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ParselMalik">
-            <EntityTypeMapping TypeName="CityExperDbModel.ParselMalik">
-              <MappingFragment StoreEntitySet="ParselMalik">
-                <ScalarProperty Name="ParselMalikSoyadi" ColumnName="ParselMalikSoyadi" />
-                <ScalarProperty Name="ParselMalikAdi" ColumnName="ParselMalikAdi" />
-                <ScalarProperty Name="ParselNo" ColumnName="ParselNo" />
-                <ScalarProperty Name="ParselEdinmeTarihi" ColumnName="ParselEdinmeTarihi" />
-                <ScalarProperty Name="EdinmeSebebi" ColumnName="EdinmeSebebi" />
-                <ScalarProperty Name="HisseMiktari" ColumnName="HisseMiktari" />
-                <ScalarProperty Name="HisseOrani" ColumnName="HisseOrani" />
-                <ScalarProperty Name="BabaAdi" ColumnName="BabaAdi" />
-                <ScalarProperty Name="Tc" ColumnName="Tc" />
-                <ScalarProperty Name="Soyadi" ColumnName="Soyadi" />
-                <ScalarProperty Name="Adi" ColumnName="Adi" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ParselMalikRelation">
-            <EntityTypeMapping TypeName="CityExperDbModel.ParselMalikRelation">
-              <MappingFragment StoreEntitySet="ParselMalikRelation">
-                <ScalarProperty Name="FkParselMalikId" ColumnName="FkParselMalikId" />
-                <ScalarProperty Name="FkParselId" ColumnName="FkParselId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sahiplikDurum">
-            <EntityTypeMapping TypeName="CityExperDbModel.sahiplikDurum">
-              <MappingFragment StoreEntitySet="sahiplikDurum">
-                <ScalarProperty Name="sahiplikAdi" ColumnName="sahiplikAdi" />
-                <ScalarProperty Name="bina_id" ColumnName="bina_id" />
-                <ScalarProperty Name="bagimsiz_id" ColumnName="bagimsiz_id" />
-                <ScalarProperty Name="sahiplikDurum_id" ColumnName="sahiplikDurum_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="CityExperDbModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tasinmazTürü">
-            <EntityTypeMapping TypeName="CityExperDbModel.tasinmazTürü">
-              <MappingFragment StoreEntitySet="tasinmazTürü">
-                <ScalarProperty Name="bagimsiz_id" ColumnName="bagimsiz_id" />
-                <ScalarProperty Name="bina_id" ColumnName="bina_id" />
-                <ScalarProperty Name="tasimazTürAd" ColumnName="tasimazTürAd" />
-                <ScalarProperty Name="tasinmazTür_id" ColumnName="tasinmazTür_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserRole">
-            <EntityTypeMapping TypeName="CityExperDbModel.UserRole">
-              <MappingFragment StoreEntitySet="UserRole">
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserRoleRelation">
-            <EntityTypeMapping TypeName="CityExperDbModel.UserRoleRelation">
-              <MappingFragment StoreEntitySet="UserRoleRelation">
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="FkUserRoleId" ColumnName="FkUserRoleId" />
-                <ScalarProperty Name="FkUserId" ColumnName="FkUserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="CityExperDbModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="TelNo" ColumnName="TelNo" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tapuMahalle">
-            <EntityTypeMapping TypeName="CityExperDbModel.tapuMahalle">
-              <MappingFragment StoreEntitySet="tapuMahalle">
-                <ScalarProperty Name="tapuMahalleAdi" ColumnName="tapuMahalleAdi" />
-                <ScalarProperty Name="ilce_id" ColumnName="ilce_id" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="parsel">
-            <EntityTypeMapping TypeName="CityExperDbModel.parsel">
-              <MappingFragment StoreEntitySet="parsel">
-                <ScalarProperty Name="AdaNo" ColumnName="AdaNo" />
-                <ScalarProperty Name="DigerKurumBelgeTarih" ColumnName="DigerKurumBelgeTarih" />
-                <ScalarProperty Name="BelgeNo" ColumnName="BelgeNo" />
-                <ScalarProperty Name="DigerKurumAlinanTarih" ColumnName="DigerKurumAlinanTarih" />
-                <ScalarProperty Name="KurumId" ColumnName="KurumId" />
-                <ScalarProperty Name="BelediyeTespitTarih" ColumnName="BelediyeTespitTarih" />
-                <ScalarProperty Name="PlanaGöreİnsaatAlani" ColumnName="PlanaGöreİnsaatAlani" />
-                <ScalarProperty Name="PlanAdi" ColumnName="PlanAdi" />
-                <ScalarProperty Name="Taks" ColumnName="Taks" />
-                <ScalarProperty Name="Kaks" ColumnName="Kaks" />
-                <ScalarProperty Name="Hmax" ColumnName="Hmax" />
-                <ScalarProperty Name="İnsaatAlani" ColumnName="İnsaatAlani" />
-                <ScalarProperty Name="Emsal" ColumnName="Emsal" />
-                <ScalarProperty Name="PlanFonksiyonu" ColumnName="PlanFonksiyonu" />
-                <ScalarProperty Name="Gorusler" ColumnName="Gorusler" />
-                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
-                <ScalarProperty Name="TapuKadastroTespitTarih" ColumnName="TapuKadastroTespitTarih" />
-                <ScalarProperty Name="TespitYapan" ColumnName="TespitYapan" />
-                <ScalarProperty Name="Sayfa" ColumnName="Sayfa" />
-                <ScalarProperty Name="Cilt" ColumnName="Cilt" />
-                <ScalarProperty Name="ZeminTipi" ColumnName="ZeminTipi" />
-                <ScalarProperty Name="RayicBedel" ColumnName="RayicBedel" />
-                <ScalarProperty Name="TapuAlan" ColumnName="TapuAlan" />
-                <ScalarProperty Name="Nitelik" ColumnName="Nitelik" />
-                <ScalarProperty Name="ParselNo" ColumnName="ParselNo" />
-                <ScalarProperty Name="PaftaNo" ColumnName="PaftaNo" />
-                <ScalarProperty Name="Hisseli" ColumnName="Hisseli" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="MulkiyetId" ColumnName="MulkiyetId" />
-                <ScalarProperty Name="AdaId" ColumnName="AdaId" />
-                <ScalarProperty Name="TapuMahalleId" ColumnName="TapuMahalleId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ParselSerh">
-            <EntityTypeMapping TypeName="CityExperDbModel.ParselSerh">
-              <MappingFragment StoreEntitySet="ParselSerh">
-                <ScalarProperty Name="ParselSerhYevmiyeNo" ColumnName="ParselSerhYevmiyeNo" />
-                <ScalarProperty Name="ParselSerhAciklama" ColumnName="ParselSerhAciklama" />
-                <ScalarProperty Name="ParselSerhTarih" ColumnName="ParselSerhTarih" />
                 <ScalarProperty Name="FkParselId" ColumnName="FkParselId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

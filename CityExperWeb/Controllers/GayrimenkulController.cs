@@ -100,7 +100,6 @@ namespace CityExperWeb.Controllers
 
             return Json(data);
         }
-
         public JsonResult ParselSerhEkle(ParselSerhViewModel model)
         {
             //var data = new ResultViewModel();
@@ -139,7 +138,6 @@ namespace CityExperWeb.Controllers
 
             return Json(response);
         }
-
         public JsonResult ParselBeyanEkle(ParselBeyanViewModel model)
         {
             var data = new ResultViewModel();
@@ -172,5 +170,126 @@ namespace CityExperWeb.Controllers
 
             return Json(data);
         }
+        public JsonResult ParselIsgalciEkle(ParselIsgalciViewModel model)
+        {
+            var data = new ResultViewModel();
+            try
+            {
+                var parselIsgalci = new ParselIsgalci()
+                {
+                    ParselIsgalciAciklama = model.parselIsgalciAciklama,
+                    ParselIsgalciNo = Convert.ToInt32(model.parselIsgalciNo),
+                    ParselIsgalciTarih = DateTime.Now
+
+                };
+                var parselAdded = db.ParselIsgalci.Add(parselIsgalci);
+                db.SaveChanges();
+                data = new ResultViewModel
+                {
+                    Message = "İşgalci eklendi!",
+                    Success = true
+                };
+
+            }
+            catch (Exception ex)
+            {
+                data = new ResultViewModel
+                {
+                    Message = ex.Message,
+                    Success = false
+                };
+            }
+
+            return Json(data);
+        }
+        public JsonResult ParselIrtifakEkle(ParselIrtifakViewModel model)
+        {
+            var data = new ResultViewModel();
+            try
+            {
+                var parselIrtifak = new ParselIrtifak()
+                {
+                    ParselIrtifakAciklama = model.parselIrtifakAciklama,
+                    ParselIrtifakTarih = DateTime.Now,
+                    ParselIrtifakYevmiyeNo = model.parselIrtifakNo
+                };
+                var parselAdded = db.ParselIrtifak.Add(parselIrtifak);
+                db.SaveChanges();
+                data = new ResultViewModel
+                {
+                    Message = "İrtifak eklendi!",
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+                data = new ResultViewModel
+                {
+                    Message = ex.Message,
+                    Success = false
+                };
+            }
+            return Json(data);
+        }
+        public JsonResult ParselIpotekEkle(ParselIpotekViewModel model)
+        {
+            var data = new ResultViewModel();
+            try
+            {
+                var parselIpotek = new ParselIpotek()
+                {
+                   ParselIpotekAciklama=model.parselIpotekAciklama,
+                   ParselIpotekTarih=DateTime.Now,
+                   ParselIpotekYevmiyeNo=model.parselIpotekNo,
+                };
+                var parselAdded = db.ParselIpotek.Add(parselIpotek);
+                db.SaveChanges();
+                data = new ResultViewModel
+                {
+                    Message = "İpotek eklendi!",
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+                data = new ResultViewModel
+                {
+                    Message = ex.Message,
+                    Success = false
+                };
+            }
+            return Json(data);
+        }
+
+        public JsonResult ParselHacizEkle(ParselHacizViewModel model)
+        {
+            var data = new ResultViewModel();
+            try
+            {
+                var parselHaciz = new ParselHaciz()
+                {
+                   ParselHacizAciklama=model.parselHacizAciklama,
+                    ParselHacizTarih = DateTime.Now,
+                    ParselHacizYevmiyeNo = model.parselHacizNo
+                };
+                var parselAdded = db.ParselHaciz.Add(parselHaciz);
+                db.SaveChanges();
+                data = new ResultViewModel
+                {
+                    Message = "Haciz eklendi!",
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+                data = new ResultViewModel
+                {
+                    Message = ex.Message,
+                    Success = false
+                };
+            }
+            return Json(data);
+        }
     }
+
 }

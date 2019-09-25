@@ -4,7 +4,7 @@
 
 }
 <link href="~/Assets/css/tasinmazDurum.css" rel="stylesheet" />
-<div class="container-fluid">
+<div class="container-fluid" id="tasinmazDurumPage">
     <div class="panel-heading" style="font-size:24px;font-family:Roboto">
         Taşınmaz Durum
     </div>
@@ -12,40 +12,29 @@
         <div class="col-md-9 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="places_select">
-                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="hospital,health" title="Hastane" style="background:#236f74;argin-top:auto;  margin-bottom:auto;">
-
+                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="hospital,health" title="Hastane" style="background:#236f74;margin-top:auto;  margin-bottom:auto;">
                         <img src="~/Assets/img/places_icons/hospital.png" alt='hospital,health' style="height:30px; width:30px;" />
                         <p>HASTANE </p>
-
                     </a>
                     <a class="btn col-md-2" data-toggle="tooltip" data-rel="park" title="Yeşil Alan" style="background:#236f74; margin-top:auto;  margin-bottom:auto;">
-
-                        <img src="~/Assets/img/places_icons/park.png" alt='park' style="height:30px; width:30px;"/>
-
+                        <img src="~/Assets/img/places_icons/park.png" alt='park' style="height:30px; width:30px;" />
                         <p> YEŞİL ALAN</p>
                     </a>
                     <a class="btn col-md-2" data-toggle="tooltip" data-rel="atm,bank" title="Bankamatik" style="background:#236f74; margin-top:auto;  margin-bottom:auto;">
-
-                        <img src="~/Assets/img/places_icons/atm.png" alt='atm' style="height:30px; width:30px;"/>
+                        <img src="~/Assets/img/places_icons/atm.png" alt='atm' style="height:30px; width:30px;" />
                         <p> ATM</p>
-
                     </a>
-                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="gas_station" title="Petrol Ofisi" style="background:#236f74; argin-top:auto;  margin-bottom:auto;">
-
-                        <img src="~/Assets/img/places_icons/benzinlik.png" alt="gas_station" style="height:30px; width:30px;"/>
+                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="gas_station" title="Petrol Ofisi" style="background:#236f74; margin-top:auto;  margin-bottom:auto;">
+                        <img src="~/Assets/img/places_icons/benzinlik.png" alt="gas_station" style="height:30px; width:30px;" />
                         <p> BENZİNLİK</p>
-
                     </a>
-                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="food,bar,cafe,restourant" title="Restaurant" style="background:#236f74;argin-top:auto;  margin-bottom:auto; ">
-
+                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="food,bar,cafe,restourant" title="Restaurant" style="background:#236f74;margin-top:auto;  margin-bottom:auto; ">
                         <img src="~/Assets/img/places_icons/restaurant.png" alt="food" style="height:30px; width:30px;" />
                         <p> RESTAURANT </p>
                     </a>
-                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="store" title="Mağaza" style="background:#236f74;argin-top:auto;  margin-bottom:auto;">
-
-                        <img src="~/Assets/img/places_icons/magaza.png" alt="store" style="height:30px; width:30px;"/>
+                    <a class="btn col-md-2" data-toggle="tooltip" data-rel="store" title="Mağaza" style="background:#236f74;margin-top:auto;  margin-bottom:auto;">
+                        <img src="~/Assets/img/places_icons/magaza.png" alt="store" style="height:30px; width:30px;" />
                         <p>MAĞAZA </p>
-
                     </a>
                 </div>
             </div>
@@ -138,154 +127,141 @@
                     </div>
                     <div class="row" id="tapuPhoto">
                         <div class="col-md-12">
+                            <img />
                             <div id="mdb-lightbox-ui" style="text-align:center;font-family:'Roboto',serif;font-size:16px;"> Tapu ve Kadastro Görselleri</div>
                             <div class="container mdb-lightbox no-margin" style="padding:0px;">
-                                <div class="col-md-12">
+                                <div class="col-md-12" id="bigPhoto" style="display:none;">
                                     <figure class="btn01">
-                                        <img alt="picture" src="~/Assets/img/placeholders/450x300.png" class="img-fluid">
+                                        <img alt="picture" id="changeBigPhoto" src="~/Assets/img/placeholders/450x300.png" class="img-fluid">
                                         <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-close"></a>
+                                        <div class="buttons" id="bigPhotoClose">
+                                            <a class="fa fa-close"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house2.jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house3.jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg" class="img-fluid">
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house4.jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(115).jpg" class="img-fluid">
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house5.jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house6.jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house7.jpg" class="img-fluid" />
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid" />
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house8.jpg" class="img-fluid" />
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid" />
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house4.jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(98).jpg" class="img-fluid">
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house2.jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(131).jpg" class="img-fluid">
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house6.jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house3.jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg" class="img-fluid">
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house8.jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(115).jpg" class="img-fluid">
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house1.jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-4">
                                     <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
+                                        <img alt="picture" src="~/Assets/img/mustakilEv/house1.jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -296,158 +272,26 @@
                         <div class="col-md-12">
                             <div id="mdb-lightbox-ui" style="text-align:center;font-family:'Roboto',serif;font-size:16px;"> Tapu ve Kadastro Görselleri</div>
                             <div class="container mdb-lightbox no-margin" style="padding:0px;">
-                                <div class="col-md-12">
-                                    <figure class="btn01">
-                                        <img alt="picture" src="~/Assets/img/placeholders/450x300.png" class="img-fluid">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-close"></a>
-                                        </div>
-                                    </figure>
+                                <div class="container">
+                                    <div id="imgtext"></div>
+
+                                    <img id="expandedImg" style="width:100%;padding:1%;">
                                 </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg" class="img-fluid">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(115).jpg" class="img-fluid">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid" />
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid" />
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(98).jpg" class="img-fluid">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(131).jpg" class="img-fluid">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg" class="img-fluid">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(115).jpg" class="img-fluid">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="btn08">
-                                        <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
-                                        <div class="ovrly"></div>
-                                        <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
-                                        </div>
-                                    </figure>
+                                <div class="row">
+                                    <img src="~/Assets/img/mustakilEv/house2.jpg" style="width:33.2%;padding:1%;" onclick="myFunction(this);">
+                                    <img src="~/Assets/img/mustakilEv/house3.jpg" style="width:33.2%;padding:1%;" onclick="myFunction(this);">
+                                    <img src="~/Assets/img/mustakilEv/house4.jpg" style="width:33.2%;padding:1%;" onclick="myFunction(this);">
+                                    <img src="~/Assets/img/mustakilEv/house5.jpg" style="width:33.2%;padding:1%;" onclick="myFunction(this);">
+                                    <img src="~/Assets/img/mustakilEv/house6.jpg" style="width:33.2%;padding:1%;" onclick="myFunction(this);">
+                                    <img src="~/Assets/img/mustakilEv/house7.jpg" style="width:33.2%;padding:1%;" onclick="myFunction(this);">
+                                    <img src="~/Assets/img/mustakilEv/house8.jpg" style="width:33.2%;padding:1%;" onclick="myFunction(this);">
+                                    <img src="~/Assets/img/mustakilEv/house1.jpg" style="width:33.2%;padding:1%;" onclick="myFunction(this);">
+
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="row" id="digerPhoto" style="overflow: auto;border:1px solid #E7DCCB;margin: 6.1% 0px 0 0;height: 1033px;display:none;">
                         <div class="col-md-12">
                             <div id="mdb-lightbox-ui" style="text-align:center;font-family:'Roboto',serif;font-size:16px;"> Tapu ve Kadastro Görselleri</div>
@@ -457,7 +301,7 @@
                                         <img alt="picture" src="~/Assets/img/placeholders/450x300.png" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-close"></a>
+                                            <a href="" class="fa fa-close"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -466,8 +310,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -476,8 +319,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -486,8 +328,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -496,8 +337,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(115).jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -506,8 +346,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -516,8 +355,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -526,8 +364,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid" />
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -536,8 +373,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid" />
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -546,8 +382,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(98).jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -556,8 +391,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(131).jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -566,8 +400,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -576,8 +409,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -586,8 +418,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(115).jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -596,8 +427,7 @@
                                         <img alt="picture" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg" class="img-fluid">
                                         <div class="ovrly"></div>
                                         <div class="buttons">
-                                            <a href="#" class="fa fa-link"></a>
-                                            <a href="#" class="fa fa-search"></a>
+                                            <a href="" class="fa fa-search"></a>
                                         </div>
                                     </figure>
                                 </div>
@@ -606,8 +436,8 @@
                     </div>
                 </div>
                 <div class="panel panel-default col-md-6 col-sm-12 col-xs-12">
-                    <div class="panel-heading" id="detayTitle">DETAYLI BİLGİ</div>
-                    <div class="container" id="detayliBilgi" style="border:1px solid #E7DCCB;">
+                    <div class="panel-heading">DETAYLI BİLGİ</div>
+                    <div class="container" id="detayliBilgi" style="border:1px solid #E7DCCB;display:block;">
                         <div class="col-md-12" style="text-align:center; margin-top:1%;">
                             <img src="~/Assets/img/placeholders/420x245.png" />
                         </div>
@@ -719,11 +549,33 @@
                                 </span>
                             </p>
                         </div>
-                        <div class="col-md-12">
-                            <button class="tdButton col-md-4" style="float:left;"><img class="tdImg" src="~/Assets/img/tBilgileri.png" style="float:left;" /><p style="color:white!important;font-family:'Roboto',serif;font-size:16px;">Tapu Bilgileri </p></button>
-                            <button class="tdButton col-md-4" style="float:right;"><img class="tdImg" src="~/Assets/img/detaylırapor.png" style="float:left;" /><p style="color:white!important;font-family:'Roboto',serif;font-size:16px;">Detaylı Rapor </p></button>
-                            <button class="tdButton col-md-4" style="float:right; margin-right:1%;"><img class="tdImg" src="~/Assets/img/ozetrapor.png" style="float:left;" /><p style="color:white!important;font-family:'Roboto',serif;font-size:16px;">Özet Rapor </p></button>
+
+                    </div>
+                    <div class="container" id="ozetRapor" style="display:none;">
+                        özet rapor alınıcaktır
+                        <div class="col-md-12" style="text-align:center; margin-top:1%;">
+                            <img src="~/Assets/img/placeholders/420x245.png" />
                         </div>
+                        <div class="col-md-12" style="margin-top:3%;text-align:center;">
+                            <p style="font-family:'Roboto',serif;font-size:16px;font-weight:bold;color:#134a57;">
+                                İstanbul İli,  Bahçelievler İlçesi,  Kartaltepe Mahallesi’nde  15 Bağımsız Bölümden Oluşan Taşınmaz
+                            </p>
+                        </div>
+                    </div>
+                    <div class="container" id="detayliRapor" style="display:none;">
+                        detaylı rapor alıjnacaktır
+                        <div class="row">
+                            <div class="col-md-12" id="ozet">
+                                <h3 style="text-align:center;font-family:'Roboto',serif;margin-right:5%;">İstanbul İli</h3>
+                                <p style="font-family:'Roboto',serif;font-size:16px;"> Rapor No:</p>
+                                ddd<span style="font-family:'Roboto',serif;font-size:16px;"> 2019_GalataProje_052</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button class="tdButton col-md-4" style="float:left;"><img class="tdImg" src="~/Assets/img/tBilgileri.png" style="float:left;" /><p style="color:white!important;font-family:'Roboto',serif;font-size:16px;">Tapu Bilgileri </p></button>
+                        <button class="tddButton col-md-4" style="float:right;"><img class="tdImg" src="~/Assets/img/detaylırapor.png" style="float:left;" /><p style="color:white!important;font-family:'Roboto',serif;font-size:16px;">Detaylı Rapor </p></button>
+                        <button class="tdddButton col-md-4" style="float:right; margin-right:1%;"><img class="tdImg" src="~/Assets/img/ozetrapor.png" style="float:left;" /><p style="color:white!important;font-family:'Roboto',serif;font-size:16px;">Özet Rapor </p></button>
                     </div>
                 </div>
             </div>
@@ -736,7 +588,17 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
+@*------------------------------------- tasinmaz durumgaleri script -------------------------------------------------*@
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
+    function myFunction(imgs) {
+        var expandImg = document.getElementById("expandedImg");
+        var imgText = document.getElementById("imgtext");
+        expandImg.src = imgs.src;
+        imgText.innerHTML = imgs.alt;
+        expandImg.parentElement.style.display = "block";
+    }
+
     $('#tapuPhotoButton').on('click', function () {
         $('#belediyePhoto').css('display', 'none');
         $('#digerPhoto').css('display', 'none');

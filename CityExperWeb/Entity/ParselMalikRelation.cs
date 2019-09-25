@@ -18,7 +18,7 @@ namespace CityExperWeb.Entity
         public Nullable<int> FkParselId { get; set; }
         public Nullable<int> FkParselMalikId { get; set; }
     
-        public virtual ParselMalik ParselMalik { get; set; }
         public virtual parsel parsel { get; set; }
+        public virtual ParselMalik ParselMalik { get; set; }
     }
 }
