@@ -109,14 +109,12 @@
                     <div class="form-group col-md-6" style="padding:0px 0.4% 0px 0.4%;">
                         <textarea class="form-control" rows="4" id="parselTKAciklama" name="text" placeholder="Açıklama">@Model.Aciklama</textarea>
                     </div>
-                    <div class="form-group col-md-6" style="padding:0px 0.4% 0px 0.4%;">
+                    <div class="form-group col-md-6" style="pa
+    dding:0px 0.4% 0px 0.4%;">
                         <textarea class="form-control" rows="4" id="parselTKGorus" name="text" placeholder="Görüşler"></textarea>
                     </div>
                 </form>
-                <div class="col-md-12" id="dragDropAlani" style="padding:0px;margin:0.4% 0px 0 0;">
-                    <form action="/" method="post" class="dropzone" id="my-awesome-dropzone"></form>
-                </div>
-                <div class="gwc-drag-drop-wrapper">
+                <div class="gwc-drag-drop-wrapper" style="padding-left:0px;padding-right:0px;">
                     <div class="gwc-drag-drop-wrapper__dashes">
                         <div class="gwc-drag-drop-wrapper__dashes__message">
                             <i class="material-icons text-muted">cloud_upload</i>
@@ -125,6 +123,95 @@
                             </div>
                             <div class="gwc-drag-drop-wrapper__dashes__message__desc">
                                 your files here
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding-left:0px!important;padding-right:0px!important;">
+                <div class="x_panel tile fixed_height_320" style="padding:0px!important;">
+                    <div class="x_title" style="height:40px;background-image: linear-gradient(to right,#0d394a,#2f8c8b)">
+                        <a style="font-family:'Roboto',serif;font-size:16px;color:white;"> MALİK BİLGİLERİ </a>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a class="far fa-plus-square" data-toggle="modal" data-target="#modal"></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="dashboard-widget-content">
+                            <div class="BilgiAlani col-md-12">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col">Malik Türü</th>
+                                            <th scope="col">Adı Soyadı</th>
+                                            <th scope="col">Hisse Oranı</th>
+                                            <th scope="col">Hisse Miktarı</th>
+                                            <th scope="col">Edinme Sebebi</th>
+                                            <th scope="col">Edinme Tarihi</th>
+                                            <th scope="col" style="text-align:center;width: 118px;height: 54.3px;">Sil / Düzenle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Kendisi</td>
+                                            <td>Kerim Ataşen</td>
+                                            <td>50%</td>
+                                            <td></td>
+                                            <td>Sahiplik</td>
+                                            <td>25.08.2019</td>
+                                            <td style="text-align:center">
+                                                <button type="button" class="malikSilButton">
+                                                    <img src="~/Assets/img/sil.png" />
+                                                </button>
+                                                <button type="button" class="malikDuzenleButton">
+                                                    <img src="~/Assets/duzenleicon.png" />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Kendisi</td>
+                                            <td>Ezgi Düzenlier</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Kiracı</td>
+                                            <td>25.08.2019</td>
+                                            <td style="text-align:center">
+                                                <button type="button" class="malikSilButton">
+                                                    <img src="~/Assets/img/sil.png" />
+                                                </button>
+                                                <button type="button" class="malikDuzenleButton">
+                                                    <img src="~/Assets/duzenleicon.png" />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Kendisi</td>
+                                            <td>Çağrı Beşli</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Kiracı</td>
+                                            <td>25.08.2019</td>
+                                            <td style="text-align:center">
+                                                <button type="button" class="malikSilButton">
+                                                    <img src="~/Assets/img/sil.png" />
+                                                </button>
+                                                <button type="button" class="malikDuzenleButton">
+                                                    <img src="~/Assets/duzenleicon.png" />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -213,7 +300,6 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -268,7 +354,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12" style="padding:0px;margin:1% 0px;">
-                                    <div class="gwc-drag-drop-wrapper">
+                                    <div class="gwc-drag-drop-wrapper" style="padding-left:0px;padding-right:0px;">
                                         <div class="gwc-drag-drop-wrapper__dashes">
                                             <div class="gwc-drag-drop-wrapper__dashes__message">
                                                 <i class="material-icons text-muted">cloud_upload</i>
@@ -615,10 +701,10 @@
             İRTİFAK BİLGİLERİ
             <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
                 <li>
-                  <i class="fa fa-chevron-down"></i>
+                    <i class="fa fa-chevron-down"></i>
                 </li>
                 <li>
-                   <i class="far fa-plus-square" data-toggle="modal" data-target="#modalIrtifak"></i>
+                    <i class="far fa-plus-square" data-toggle="modal" data-target="#modalIrtifak"></i>
                 </li>
             </ul>
         </button>
@@ -831,10 +917,10 @@
             İPOTEK BİLGİLERİ
             <ul class="nav navbar-right panel_toolbox" style="margin-right:1px;">
                 <li>
-                   <i class="fa fa-chevron-down"></i>
+                    <i class="fa fa-chevron-down"></i>
                 </li>
                 <li>
-                   <i class="far fa-plus-square" data-toggle="modal" data-target="#modalIpotek"></i>
+                    <i class="far fa-plus-square" data-toggle="modal" data-target="#modalIpotek"></i>
                 </li>
             </ul>
         </button>

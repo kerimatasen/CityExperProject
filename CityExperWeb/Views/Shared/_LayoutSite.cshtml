@@ -1,0 +1,922 @@
+﻿
+@{
+    var sessionModel = (CityExperWeb.Models.User.UserSessionModel)Session["UserSessionModel"];
+}
+<html lang="en">
+<head>
+    <title>Raporlama</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Assets/dashboard/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Assets/dashboard/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Assets/dashboard/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="~/Assets/dashboard/build/css/custom.min.css" rel="stylesheet">
+    <link href="~/Assets/dashboard/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link rel="icon" href="~/Assets/img/favicon.ico" type="image/x-icon" />
+    <link href="~/Assets/css/Layout.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Assets/dashboard/custom2.min.css" rel="stylesheet" />
+
+    <style>
+        .container .nav-tabs.wizard li {
+            width: 33%;
+            height: 40px;
+            float: none;
+            margin-bottom: 3px;
+        }
+
+            .container .nav-tabs.wizard li > * {
+                position: relative;
+                color: #999999;
+                background-color: #dedede;
+                border-color: #dedede;
+            }
+
+            .container .nav-tabs.wizard li.completed > * {
+                color: #fff !important;
+                background-color: #1e646c !important;
+                border-color: #1e646c !important;
+                border-bottom: none !important;
+            }
+
+            .container .nav-tabs.wizard li.active > * {
+                color: #fff !important;
+                font-family: 'Roboto',serif;
+                font-size: 16px;
+                background-color: #1e646c !important;
+                border-color: #1e646c !important;
+                border-bottom: none !important;
+            }
+
+        .container .nav-tabs.wizard a:hover {
+            color: #fff;
+            background-color: #2c3f4c;
+            border-color: #2c3f4c
+        }
+
+        .container .nav-tabs.wizard > li > a,
+        .container .nav-tabs.wizard > li > a p {
+            opacity: 1;
+            color: black;
+            font-weight: 300 !important;
+            text-align: center;
+            height: 40px;
+            font-size: 16px;
+            font-family: 'Roboto', serif;
+        }
+
+        .container span.nmbr {
+            display: inline-block;
+            background: #ffffff;
+            width: 20px;
+            height: 20px;
+            margin: auto;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 16px;
+            color: #555;
+            text-align: center;
+        }
+
+
+        .container .nav-tabs.wizard li {
+            position: relative;
+            padding: 0;
+            margin: 4px 0px 4px 0;
+            width: 33.3%;
+            float: left;
+            text-align: center;
+        }
+
+            .container .nav-tabs.wizard li:last-child a {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+
+            .container .nav-tabs.wizard li:last-child {
+                margin-right: 0;
+            }
+
+        @@media (max-width: 420px) {
+            .container ul li p b {
+                display: none;
+            }
+        }
+
+        @@media (max-width: 1000px) {
+
+            .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-55, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+                float: unset !important;
+            }
+
+            .right_col .row .col-md-2 {
+                text-align: center;
+            }
+
+            .x_content .col-md-9 .tiles {
+                text-align: center;
+            }
+        }
+
+        @@media (max-width: 768PX) {
+            .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-55, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+                padding-right: 0px !important;
+                padding-left: 0px !important;
+            }
+
+            .right_col .row .col-md-2 {
+                text-align: center;
+                float: left !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="~/Assets/dashboard/production/images/user.png" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Hoşgeldiniz,</span>
+                            <div class="userInformation">
+                                @{
+
+                                    if (sessionModel != null)
+                                    {
+                                        <div style="font-family:'Roboto',serif;font-size:16px;margin:auto;">
+                                            <h2 class="nav-item nav-link" href="#">
+                                                <span class="glyphicon glyphicon-user"></span> @sessionModel.AdSoyad
+                                            </h2>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <a class="nav-item nav-link" href="@Url.Action("HomePage","Home")" style="font-family:'Roboto',serif;font-size:16px;">
+                                            <span class="glyphicon glyphicon-user"></span>Giriş Yap
+                                        </a>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>Yönetici</h3>
+
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a class="nav-item nav-link" href="@Url.Action("Raporlama","SatilikTasinmaz")"><i class="fa fa-home" aria-hidden="true"></i>Anasayfa</a>
+                                </li>
+                                <li>
+                                    <a href="/anasayfa"><i class="fa fa-globe" aria-hidden="true"></i>Harita Gayrimenkul Dağılımı</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-street-view" aria-hidden="true"></i>Anlık Konum</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="@Url.Action("Tasinmaz","Yonetim")"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Gayrimenkul Ekle</a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Gayrimenkul<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#">dassdds</a></li>
+                                        <li><a href="#">dasdsasa Durumu</a></li>
+                                        <li><a href="#">adsdsa Türü</a></li>
+                                        <li><a href="#">Düzdsadsadsaenleme Tarihi</a></li>
+                                        <li><a href="#">dsadsa Tarihi</a></li>
+                                        <li><a href="#">Katasddsaagori</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-line-chart" aria-hidden="true"></i> Analizler <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#">Sosyal Doku Analizi</a></li>
+                                        <li><a href="#">Foursquare Analizi</a></li>
+                                        <li><a href="#">3. Analiz</a></li>
+                                        <li><a href="#">4. Analiz</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="#"><i class="fa fa-calendar-o" aria-hidden="true"></i>Günlük Takip Görünümü</a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-building-o" aria-hidden="true"></i> Firma Bilgileri</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menu_section">
+                            <h3>Ayarlar</h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a><i class="fa fa-cogs" aria-hidden="true"></i> Kulanıcı Yönetimi <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#">Kullanıcı Ekle</a></li>
+                                        <li><a href="#">Kullanıcı Yetkileri</a></li>
+                                        <li><a href="#">Kullanıcı Düzenle</a></li>
+                                        <li><a href="project_detail.html">Kullanıcı Geçmişleri</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="page_403.html">403 Error</a></li>
+                                        <li><a href="page_404.html">404 Error</a></li>
+                                        <li><a href="page_500.html">500 Error</a></li>
+                                        <li><a href="plain_page.html">Plain Page</a></li>
+                                        <li><a href="login.html">Login Page</a></li>
+                                        <li><a href="pricing_tables.html">Pricing Tables</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#level1_1">Level One</a>
+                                        <li>
+                                            <a>Level One<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li class="sub_menu">
+                                                    <a href="level2.html">Level Two</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#level2_1">Level Two</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#level2_2">Level Two</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#level1_2">Level One</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img style="width:30px;height:30px;" src="~/Assets/dashboard/production/images/user.png" alt="">
+                                @if (sessionModel != null)
+                                {
+                                    <span>@sessionModel.AdSoyad</span>
+                                }
+                                else
+                                {
+                                    <span>Giriş Yap</span>
+                                }
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li><a href="@Url.Action("Profil","SatilikTasinmaz")"> Profil</a></li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <span class="badge bg-red pull-right">50%</span>
+                                        <span>Ayarlar</span>
+                                    </a>
+                                </li>
+                                <li><a href="javascript:;">Yardım</a></li>
+                                <li><a href="@Url.Action("HomePage","Home")"><i class="fa fa-sign-out pull-right"></i> Çıkış Yap</a></li>
+                            </ul>
+                        </li>
+                        <li role="presentation" class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="badge bg-green">6</span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="~/Assets/dashboard/production/images/user.png" alt="Profile Image" /></span>
+                                        <span>
+                                            <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="~/Assets/dashboard/production/images/user.png" alt="Profile Image" /></span>
+                                        <span>
+                                            <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="~/Assets/dashboard/production/images/user.png" alt="Profile Image" /></span>
+                                        <span>
+                                            <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="~/Assets/dashboard/production/images/user.png" alt="Profile Image" /></span>
+                                        <span>
+                                            <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="text-center">
+                                        <a>
+                                            <strong>Tüm Uyarıları Gör</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+    <script src="~/Assets/dashboard/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="~/Assets/dashboard/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/Assets/dashboard/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="~/Assets/dashboard/vendors/Flot/jquery.flot.js"></script>
+    <script src="~/Assets/dashboard/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="~/Assets/dashboard/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="~/Assets/dashboard/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="~/Assets/dashboard/vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="~/Assets/dashboard/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="~/Assets/dashboard/vendors/DateJS/build/date.js"></script>
+    <script src="~/Assets/dashboard/vendors/moment/min/moment.min.js"></script>
+    <script src="~/Assets/dashboard/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/Assets/dashboard/vendors/echarts/dist/echarts.min.js"></script>
+    <script src="~/Assets/dashboard/build/js/custom.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+    @RenderSection("Scripts", required: false)
+    <script>
+        //---------------------------------------------------------------------------------------------------------FORM GEÇİŞ JS-------------------------------------------------------------------------------------------
+        $('#nextTapu').on('click', function () {
+            $('#loadingtapu').css("display", "block");
+            var il = $('#ilListesi').val();
+            var ilce = $('#ilceListesi').val();
+            //var tapuMahalle = $('#tapuMahalle').val();
+            //var mulkiyet = $('#mulkiyet').val();
+            var hisseliDurum = $("input[name='rdHisseli']:checked").val();
+            var paftaNo = $('#paftaNo').val();
+            var adaNo = $('#adaNo').val();
+            var parselNo = $('#parselNo').val();
+            var nitelik = $('#nitelik').val();
+            var tapuAlani = $('#tapuAlani').val();
+            var rayicBedel = $('#rayicBedel').val();
+            var zeminTipi = $('#zeminTipi').val();
+            var cilt = $('#cilt').val();
+            var sayfa = $('#sayfa').val();
+            var tespitYapan = $('#tespitYapan').val();
+            var tespitTarihi = $('#datepicker4').val();
+            var aciklama = $('#parselTKAciklama').val();
+            var gorusler = $('#parselTKGorus').val();
+            var userId = $("#userId").val();
+
+
+            var tapuModel = {
+                il, ilce, hisseliDurum, userId, paftaNo, adaNo, parselNo, nitelik, tapuAlani, rayicBedel, zeminTipi, cilt, sayfa, tespitYapan, tespitTarihi, aciklama, gorusler,
+            };
+            var tapuModelJson = JSON.stringify(tapuModel);
+
+            $.ajax({
+                type: "POST",
+                url: "/Gayrimenkul/ParselTapuKadastroEkle",
+                contentType: "application/json; charset=utf-8",
+                data: tapuModelJson,
+                dataType: "json",
+                success: function (data) {
+                    if (data.Success) {
+                        $('.tapubilgileri').css('display', 'none');
+                        $('.belediyeBilgileri').css('display', 'block');
+                    }
+                    else {
+                        //$.notify(data.Message, "error");
+                    }
+                },
+                failure: function (errMsg) {
+                    alert("No response");
+                }
+            });
+        });
+        $('#parselMalikEkle').on('click', function () {
+            var malikTuru = $("#malikTuru").val();
+            var malikTcNo = $("#malikTcNo").val();
+            var malikAd = $("#malikAd").val();
+            var malikSoyad = $("#malikSoyad").val();
+            var malikBabaAdi = $("#malikBabaAdi").val();
+            var malikHisseOrani = $("#malikHisseOrani").val();
+            var malikHisseMiktari = $("#malikHisseMiktari").val();
+            var malikEdinmeSebebi = $("#malikEdinmeSebebi").val();
+
+            var model = {
+                malikTuru, malikTcNo, malikAd, malikSoyad, malikBabaAdi, malikHisseOrani, malikHisseMiktari, malikEdinmeSebebi
+            };
+            var jsonModel = JSON.stringify(model);
+            $.ajax({
+                type: "POST",
+                url: "/Gayrimenkul/ParselMalikEkle",
+                contentType: "application/json; charset=utf-8",
+                data: jsonModel,
+                dataType: "json",
+                success: function (data) {
+                    if (data.Success) {
+                        alert(data.Message);
+                    }
+                    else {
+                        alert(data.Message);
+                    }
+                },
+                failure: function (errMsg) {
+                    alert("No response");
+                }
+            });
+
+        });
+        $('#parselSerhEkle').on('click', function () {
+            var parselSerhAciklama = $("#parselSerhAciklama").val();
+            var parselSerhTarih = $("#datepicker6").val();
+            var parselSerhNo = $("#parselSerhNo").val();
+
+
+            var model = {
+                parselSerhAciklama, parselSerhTarih, parselSerhNo
+            };
+            var jsonModel = JSON.stringify(model);
+            $.ajax({
+                type: "POST",
+                url: "/Gayrimenkul/ParselSerhEkle",
+                contentType: "application/json; charset=utf-8",
+                data: jsonModel,
+                dataType: "json",
+                success: function (data) {
+                    if (data.Success) {
+                        $(".serhBilgiAlani").append("<br/>");
+                        $(".serhBilgiAlani").append("<p style='display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;'>" + data.Data.ParselSerhNo + "</p>");
+                        $(".serhBilgiAlani").append("<p style='display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;'>" + data.Data.ParselSerhAciklama + "</p>");
+                        $(".serhBilgiAlani").append("<p style='display:table-cell;vertical-align:middle;font-family:Roboto;font-size:16px;color:#666666;'>" + data.Data.ParselSerhTarih + "</p>");
+                    }
+                    else {
+                        alert(data.Message);
+                    }
+                },
+                failure: function (errMsg) {
+                    alert("No response");
+                }
+            });
+
+        });
+        $('#parselBeyanEkle').on('click', function () {
+            var parselBeyanNo = $("#beyanNo").val();
+            var parselBeyanTarih = $("#datepicker7").val();
+            var parselBeyanAciklama = $("#beyanAciklama").val();
+
+
+            var model = {
+                parselBeyanNo, parselBeyanTarih, parselBeyanAciklama
+            };
+            var jsonModel = JSON.stringify(model);
+            $.ajax({
+                type: "POST",
+                url: "/Gayrimenkul/ParselBeyanEkle",
+                contentType: "application/json; charset=utf-8",
+                data: jsonModel,
+                dataType: "json",
+                success: function (data) {
+                    if (data.Success) {
+                        alert(data.Message);
+                    }
+                    else {
+                        alert(data.Message);
+                    }
+                },
+                failure: function (errMsg) {
+                    alert("No response");
+                }
+            });
+
+        });
+        $('#parselIsgalciEkle').on('click', function () {
+            var parselIsgalciNo = $("#parselIsgalciNo").val();
+            var parselSerhTarih = $("#datepicker8").val();
+            var parselIsgalciAciklama = $("#parselIsgalciAciklama").val();
+
+
+            var model = {
+                parselIsgalciNo, parselSerhTarih, parselIsgalciAciklama
+
+            };
+            var jsonModel = JSON.stringify(model);
+            $.ajax({
+                type: "POST",
+                url: "/Gayrimenkul/ParselIsgalciEkle",
+                contentType: "application/json; charset=utf-8",
+                data: jsonModel,
+                dataType: "json",
+                success: function (data) {
+                    if (data.Success) {
+                        alert(data.Message);
+                    }
+                    else {
+                        alert(data.Message);
+                    }
+                },
+                failure: function (errMsg) {
+                    alert("No response");
+                }
+            });
+
+        });
+        $('#ParselIrtifakEkle').on('click', function () {
+            var parselIrtifakNo = $("#ParselIrtifakNo").val();
+            var parselIrtifakTarih = $("#datepicker9").val();
+            var parselIrtifakAciklama = $("#ParselIrtifakAciklama").val();
+            var model = {
+                parselIrtifakNo, parselIrtifakTarih, parselIrtifakAciklama
+            };
+            var jsonModel = JSON.stringify(model);
+            $.ajax({
+                type: "POST",
+                url: "/Gayrimenkul/ParselIrtifakEkle",
+                contentType: "application/json; charset=utf-8",
+                data: jsonModel,
+                dataType: "json",
+                success: function (data) {
+                    if (data.Success) {
+                        alert(data.Message);
+                    }
+                    else {
+                        alert(data.Message);
+                    }
+                },
+                failure: function (errMsg) {
+                    alert("No response");
+                }
+            });
+
+        });
+        $('#parselIpotekEkle').on('click', function () {
+            var parselIpotekNo = $("#parselIpotekNo").val();
+            var parselIpotekTarih = $("#datepicker11").val();
+            var parselIpotekAciklama = $("#parselIpotekAciklama").val();
+            var model = {
+                parselIpotekNo, parselIpotekTarih, parselIpotekAciklama
+            };
+            var jsonModel = JSON.stringify(model);
+            $.ajax({
+                type: "POST",
+                url: "/Gayrimenkul/ParselIpotekEkle",
+                contentType: "application/json; charset=utf-8",
+                data: jsonModel,
+                dataType: "json",
+                success: function (data) {
+                    if (data.Success) {
+                        alert(data.Message);
+                    }
+                    else {
+                        alert(data.Message);
+                    }
+                },
+                failure: function (errMsg) {
+                    alert("No response");
+                }
+            });
+        });
+        $('#parselHacizEkle').on('click', function () {
+            debugger;
+
+            var parselHacizNo = $("#parselHacizNo").val();
+            var parselHacizTarih = $("#datepicker10").val();
+            var parselHacizAciklama = $("#parselHacizAciklama").val();
+            var model = {
+                parselHacizNo,
+                parselHacizTarih,
+                parselHacizAciklama
+
+            };
+            var jsonModel = JSON.stringify(model);
+            $.ajax({
+                type: "POST",
+                url: "/Gayrimenkul/ParselHacizEkle",
+                contentType: "application/json; charset=utf-8",
+                data: jsonModel,
+                dataType: "json",
+                success: function (data) {
+                    if (data.Success) {
+                        alert(data.Message);
+                    }
+                    else {
+                        alert(data.Message);
+                    }
+                },
+                failure: function (errMsg) {
+                    alert("No response");
+                }
+            });
+
+        });
+        $('#nextBelediye').on('click', function () {
+            $('.belediyeBilgileri').css('display', 'none');
+            $('.digerKurumBilgileri').css('display', 'block');
+        });
+        $('#nextDigerKurum').on('click', function () {
+            $('#altStep').css('display', 'none');
+            $('.digerKurumBilgileri').css('display', 'none');
+            $('.ParselOnaySayfası').css('display', 'block');
+
+        });
+        $('#nextParselOnay').on('click', function () {
+            $('#altStep').css('display', 'none');
+            $('.digerKurumBilgileri').css('display', 'none');
+            $('.ParselOnaySayfası').css('display', 'none');
+            $('.binaBilgileri').css('display', 'block');
+
+        });
+        $('#nextBina').on('click', function () {
+            $('.bagimsizBilgileri').css('display', 'block');
+            $('.binaBilgileri').css('display', 'none');
+
+
+        });
+        $('#prevBina').on('click', function () {
+            $('.ParselOnaySayfası').css('display', 'block');
+            $('.binaBilgileri').css('display', 'none');
+
+        });
+        $('#nextBagimsiz').on('click', function () {
+        });
+        $('#prevBagimsiz').on('click', function () {
+            $('.binaBilgileri').css('display', 'block');
+            $('.bagimsizBilgileri').css('display', 'none');
+        });
+        $('#kadastroSorgu').on('click', function () {
+            $('#KadastroForm').css('display', 'block');
+            $('#AdresSorguForm').css('display', 'none');
+
+        });
+        $('#adresSorgu').on('click', function () {
+            $('#KadastroForm').css('display', 'none');
+            $('#AdresSorguForm').css('display', 'block');
+
+        });
+        $('#mobileKadastroSorgu').on('click', function () {
+            $('#mobileKadastroSorguForm').css('display', 'block');
+            $('#mobileAdresSorguForm').css('display', 'none');
+
+        });
+        $('#mobileAdresSorgu').on('click', function () {
+            $('#mobileKadastroSorguForm').css('display', 'none');
+            $('#mobileAdresSorguForm').css('display', 'block');
+        });
+        $('#nextKatagoriButton').on('click', function () {
+            $('.ilanDetaylari').css('display', 'block');
+            $('.katagoriSecimi').css('display', 'none');
+            $('.satilikKiralikOnayform').css('display', 'none');
+            $('#mainstep2').addClass('active');
+            $('#mainstep1').removeClass('active');
+        });
+        $('#prevİlanDetayButton').on('click', function () {
+            $('.katagoriSecimi').css('display', 'block');
+            $('.ilanDetaylari').css('display', 'none');
+            $('.satilikKiralikOnayform').css('display', 'none');
+            $('#mainstep1').addClass('active');
+            $('#mainstep2').removeClass('active');
+        });
+        $('#nextİlanDetayButton').on('click', function () {
+            $('.katagoriSecimi').css('display', 'none');
+            $('.ilanDetaylari').css('display', 'none');
+            $('.satilikDuzenleForm').css('display', 'block');
+            $('.satilikKiralikOnayform').css('display', 'none');
+            $('#mainstep3').addClass('active');
+            $('#mainstep1').removeClass('active');
+            $('#mainstep2').removeClass('active');
+            $('#mainstep4').removeClass('active');
+        });
+        $('#satilikDuzenleButton').on('click', function () {
+            $('.katagoriSecimi').css('display', 'none');
+            $('.ilanDetaylari').css('display', 'block');
+            $('.satilikDuzenleForm').css('display', 'none');
+            $('.satilikKiralikOnayform').css('display', 'none');
+            $('#mainstep2').addClass('active');
+            $('#mainstep1').removeClass('active');
+            $('#mainstep3').removeClass('active');
+            $('#mainstep4').removeClass('active');
+        });
+        $('#satilikDevamButton').on('click', function () {
+            $('.katagoriSecimi').css('display', 'none');
+            $('.ilanDetaylari').css('display', 'none');
+            $('.satilikDuzenleForm').css('display', 'none');
+            $('.satilikKiralikOnayform').css('display', 'block');
+            $('#mainstep4').addClass('active');
+            $('#mainstep1').removeClass('active');
+            $('#mainstep2').removeClass('active');
+            $('#mainstep3').removeClass('active');
+        });
+        $('#prevsatilikKiralikOnay').on('click', function () {
+            $('.katagoriSecimi').css('display', 'none');
+            $('.ilanDetaylari').css('display', 'none');
+            $('.satilikDuzenleForm').css('display', 'block');
+            $('.satilikKiralikOnayform').css('display', 'none');
+            $('#mainstep3').addClass('active');
+            $('#mainstep1').removeClass('active');
+            $('#mainstep2').removeClass('active');
+            $('#mainstep4').removeClass('active');
+        });
+        $(".list-group-item").on('click', function () {
+            $(this).siblings().removeClass('active')
+            $(this).addClass('active');
+        });
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel1 = this.nextElementSibling;
+                if (panel1.style.display === "block") {
+                    panel1.style.display = "none";
+                } else {
+                    panel1.style.display = "block";
+                }
+            });
+        }
+        $('document').ready(function () {
+            var count = 0;
+            $('.step').each(function () {
+                count++;
+
+            });
+
+            var i = 0;
+            //ileri
+            $('#nextTapu').on('click', function () {
+                if (count > i + 1) {
+                    i++;
+                    $('.active').removeClass('active');
+                    $('.step').eq(i).addClass('active');
+                    $('#mainstep1').addClass('active');
+
+                }
+            });
+            $('#nextBelediye').on('click', function () {
+                if (count > i + 1) {
+                    i++;
+                    $('.active').removeClass('active');
+                    $('.step').eq(i).addClass('active');
+                    $('#mainstep1').addClass('active');
+                }
+            });
+            $('#nextParselOnay').on('click', function () {
+                $('#mainstep2').addClass('active');
+                $('#mainstep1').removeClass('active');
+            });
+
+            $('#nextBina').on('click', function () {
+                $('#mainstep3').addClass('active');
+                $('#mainstep2').removeClass('active');
+            });
+            //geri
+            $('#prevBina').on('click', function () {
+                $('#mainstep2').removeClass('active');
+                $('#mainstep1').addClass('active');
+            });
+            $('#nextBagimsiz').on('click', function () {
+                //
+            });
+            //geri
+            $('#prevBagimsiz').on('click', function () {
+                $('#mainstep3').removeClass('active');
+                $('#mainstep2').addClass('active');
+            });
+        });
+        Highcharts.chart('container2', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Gayrimenkul Durum'
+            },
+            xAxis: {
+                categories: ['İstanbul', 'Sakarya', 'İzmir', 'Trabzon']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Toplam Gayrimenkul Sayısı'
+                },
+                max: 0,
+                tickPositions: [0, 10, 20, 30, 40, 50, 100, 150]
+            },
+            legend: {
+                reversed: true
+            },
+            plotOptions: {
+                series: {
+                    stacking: 'normal'
+                }
+            },
+            series: [{
+                name: 'Ödeme yapılan',
+                data: [50, 30, 40, 70]
+            }, {
+                name: 'Makbuz onaysız',
+                data: [20, 20, 30, 22]
+            }, {
+                name: 'Ödeme yapılmayan',
+                data: [30, 40, 45, 24]
+            }]
+        });
+        Highcharts.chart('container', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Gayrimenkul Emlak Endeksi'
+            },
+            subtitle: {
+                text: 'Eylül 2019 Ortalaması: ****** TL'
+            },
+            xAxis: {
+                categories: ['Ockak', 'Şubat', 'Mart', 'Nissan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
+            },
+            yAxis: {
+                max: 000,
+                tickPositions: [0, 250, 500, 1000, 1500, 2000, 2500, 3000],
+                title: {
+                    text: 'TL'
+                }
+            },
+            series: [{
+                name: 'Ağustos 2019',
+                data: [305, 378, 510, 185, 439, 152, 170, 766, 580],
+            }, {
+                name: 'Eylül 2019',
+                data: [675, 560, 570, 985, 1009, 752, 1570, 166, 302],
+            },
+            {
+                name: 'Ekim 2019',
+                data: [1375, 350, 500, 1085, 2309, 1352, 2770, 566, 642],
+            },
+            {
+                name: 'Kasım 2019',
+                data: [075, 350, 400, 2085, 2309, 1352, 2770, 566, 642],
+            }, {
+                name: 'Aralık 2019',
+                data: [3000, 2500, 2400, 2000, 1000, 1500, 1000, 600, 750],
+            }
+
+            ]
+        });
+    </script>
+</body>
+</html>

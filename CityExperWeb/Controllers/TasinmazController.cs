@@ -13,5 +13,9 @@ namespace CityExperWeb.Views.Shared
         {
             return View();
         }
+        public ActionResult Ezgi()
+        {
+            return View();
+        }
     }
 }

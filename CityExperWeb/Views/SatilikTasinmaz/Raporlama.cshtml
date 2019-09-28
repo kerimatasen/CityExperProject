@@ -1,884 +1,255 @@
 ﻿@{
-    var sessionModel = (CityExperWeb.Models.User.UserSessionModel)Session["UserSessionModel"];
+    ViewBag.Title = "Raporlama";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
 }
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="~/Assets/dashboard/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Assets/dashboard/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="~/Assets/dashboard/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    <link href="~/Assets/dashboard/build/css/custom.min.css" rel="stylesheet">
-    <link href="~/Assets/dashboard/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-    <style>
-
-        @@media (max-width: 1000px) {
-
-            .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-55, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
-                float: unset !important;
-            }
-
-            .right_col .row .col-md-2 {
-                text-align: center;
-            }
-
-            .x_content .col-md-9 .tiles {
-                text-align: center;
-            }
-        }
-
-        @@media (max-width: 768PX) {
-            .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-55, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
-                padding-right: 0px !important;
-                padding-left: 0px !important;
-            }
-
-            .right_col .row .col-md-2 {
-                text-align: center;
-                float: left !important;
-            }
-        }
-    </style>
-</head>
-
-<body class="nav-md">
-    <div class="container body">
-        <div class="main_container">
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
-                    <div class="profile clearfix">
-                        <div class="profile_pic">
-                            <img src="~/Assets/dashboard/production/images/user.png" alt="..." class="img-circle profile_img">
-                        </div>
-                        <div class="profile_info">
-                            <span>Hoşgeldiniz,</span>
-                            <div class="userInformation">
-                                @{
-
-                                    if (sessionModel != null)
-                                    {
-                                        <div style="font-family:'Roboto',serif;font-size:16px;margin:auto;">
-                                            <h2 class="nav-item nav-link" href="#">
-                                                <span class="glyphicon glyphicon-user"></span> @sessionModel.AdSoyad
-                                            </h2>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <a class="nav-item nav-link" href="@Url.Action("HomePage","Home")" style="font-family:'Roboto',serif;font-size:16px;">
-                                            <span class="glyphicon glyphicon-user"></span>Giriş Yap
-                                        </a>
-                                    }
-                                }
-                            </div>
+<div class="right_col" role="main">
+    <!-- top tiles -->
+    <div class="row tile_count">
+        <div class="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> Toplam Gayrimenkul Sayısı</span>
+            <div class="count">2500</div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
+            <span class="count_top"><i class="fa fa-clock-o"></i> Kirada Olan Gayrimenkul Sayısı</span>
+            <div class="count">123.50</div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> Boşta Olan Gayrimenkul Sayısı</span>
+            <div class="count green">2,500</div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> Toplam Arsa Sayısı</span>
+            <div class="count">4,567</div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> Ticari Gayrimenkul Sayısı</span>
+            <div class="count">2,315</div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-12  tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> Mesken Sayısı</span>
+            <div class="count">7,325</div>
+        </div>
+    </div>
+    <div class="row" style="margin-left:0px!important;margin-right:0px!important;">
+        <div class="col-md-12" style="border: 1px solid #E6E9ED;padding-right:0px;padding-left: 0px;">
+            <div class="dashboard_graph">
+                <div class="row x_title">
+                    <div class="col-md-6">
+                        <h3>Gelir Durumu <small>Yıllık</small></h3>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                            <span> 30, 2014 - Ocak 28, 2015</span> <b class="caret"></b>
                         </div>
                     </div>
-                    <!-- /menu profile quick info -->
-                    <br />
-                    <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                        <div class="menu_section">
-                            <h3>Yönetici</h3>
-
-                            <ul class="nav side-menu">
-                                <li>
-                                    <a href="/anasayfa"><i class="fa fa-globe" aria-hidden="true"></i>Harita Gayrimenkul Dağılımı</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-street-view" aria-hidden="true"></i>Anlık Konum</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="@Url.Action("Tasinmaz","Yonetim")"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Gayrimenkul Ekle</a>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Gayrimenkul<span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="#">Ödeme Durumu</a></li>
-                                        <li><a href="#">Tahsilat Durumu</a></li>
-                                        <li><a href="#">Gider Türü</a></li>
-                                        <li><a href="#">Düzenleme Tarihi</a></li>
-                                        <li><a href="#">Vade Tarihi</a></li>
-                                        <li><a href="#">Katagori</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-line-chart" aria-hidden="true"></i> Analizler <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="#">Sosyal Doku Analizi</a></li>
-                                        <li><a href="#">Foursquare Analizi</a></li>
-                                        <li><a href="#">3. Analiz</a></li>
-                                        <li><a href="#">4. Analiz</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="#"><i class="fa fa-calendar-o" aria-hidden="true"></i>Günlük Takip Görünümü</a>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-building-o" aria-hidden="true"></i> Firma Bilgileri</a>
-                                </li>
-                                @*<li>
-                                        <a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="#">Tables</a></li>
-                                            <li><a href="#">Table Dynamic</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="chartjs.html">Chart JS</a></li>
-                                            <li><a href="chartjs2.html">Chart JS2</a></li>
-                                            <li><a href="morisjs.html">Moris JS</a></li>
-                                            <li><a href="echarts.html">ECharts</a></li>
-                                            <li><a href="other_charts.html">Other Charts</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                                            <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                                        </ul>
-                                    </li>*@
-                            </ul>
-                        </div>
-                        <div class="menu_section">
-                            <h3>Ayarlar</h3>
-                            <ul class="nav side-menu">
-                                <li>
-                                    <a><i class="fa fa-cogs" aria-hidden="true"></i> Kulanıcı Yönetimi <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="#">Kullanıcı Ekle</a></li>
-                                        <li><a href="#">Kullanıcı Yetkileri</a></li>
-                                        <li><a href="#">Kullanıcı Düzenle</a></li>
-                                        <li><a href="project_detail.html">Kullanıcı Geçmişleri</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="page_403.html">403 Error</a></li>
-                                        <li><a href="page_404.html">404 Error</a></li>
-                                        <li><a href="page_500.html">500 Error</a></li>
-                                        <li><a href="plain_page.html">Plain Page</a></li>
-                                        <li><a href="login.html">Login Page</a></li>
-                                        <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="#level1_1">Level One</a>
-                                        <li>
-                                            <a>Level One<span class="fa fa-chevron-down"></span></a>
-                                            <ul class="nav child_menu">
-                                                <li class="sub_menu">
-                                                    <a href="level2.html">Level Two</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#level2_1">Level Two</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#level2_2">Level Two</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#level1_2">Level One</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <!-- /sidebar menu -->
-                    <!-- /menu footer buttons -->
-                    <div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="Settings">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Lock">
-                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                        </a>
-                    </div>
-                    <!-- /menu footer buttons -->
                 </div>
+                <div class="col-md-8">
+                    <div id="container" style="min-width: 310px; height: 350px; margin: 0 auto;padding: 0 15px;"></div>
+                    @*<div id="chart_plot_01" class="demo-placeholder"></div>*@
+                </div>
+                <div class="col-md-4 bg-white">
+                    <div id="container2" style="min-width: 310px; max-width: 500px; height: 350px; margin: 0 auto"></div>
+                </div>
+                <div class="clearfix"></div>
             </div>
-            <!-- top navigation -->
-            <div class="top_nav">
-                <div class="nav_menu">
-                    <div class="nav toggle">
-                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                    </div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="">
-                            <a class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img style="width:30px;height:30px;" src="~/Assets/dashboard/production/images/user.png" alt="">
-                                @if (sessionModel != null)
-                                {
-                                    <span>@sessionModel.AdSoyad</span>
-                                }
-                                else
-                                {
-                                    <span>Giriş Yap</span>
-                                }
-                                <span class=" fa fa-angle-down"></span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="@Url.Action("Profil","SatilikTasinmaz")"> Profil</a></li>
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px;">
+        <div class="col-md-6">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Son Hareketler <small>Oturumlar</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="javascript:;">
-                                        <span class="badge bg-red pull-right">50%</span>
-                                        <span>Ayarlar</span>
-                                    </a>
+                                    <a href="#">Ayarlar</a>
                                 </li>
-                                <li><a href="javascript:;">Yardım</a></li>
-                                <li><a href="@Url.Action("HomePage","Home")"><i class="fa fa-sign-out pull-right"></i> Çıkış Yap</a></li>
+                                <li>
+                                    <a href="#">Ayarlar 2</a>
+                                </li>
                             </ul>
                         </li>
-                        <li role="presentation" class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-envelope-o"></i>
-                                <span class="badge bg-green">6</span>
-                            </a>
-                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                <li>
-                                    <a>
-                                        <span class="image"><img src="~/Assets/dashboard/production/images/user.png" alt="Profile Image" /></span>
-                                        <span>
-                                            <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                        </span>
-                                        <span class="message">
-                                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <span class="image"><img src="~/Assets/dashboard/production/images/user.png" alt="Profile Image" /></span>
-                                        <span>
-                                            <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                        </span>
-                                        <span class="message">
-                                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <span class="image"><img src="~/Assets/dashboard/production/images/user.png" alt="Profile Image" /></span>
-                                        <span>
-                                            <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                        </span>
-                                        <span class="message">
-                                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <span class="image"><img src="~/Assets/dashboard/production/images/user.png" alt="Profile Image" /></span>
-                                        <span>
-                                            <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                        </span>
-                                        <span class="message">
-                                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <div class="text-center">
-                                        <a>
-                                            <strong>Tüm Uyarıları Gör</strong>
-                                            <i class="fa fa-angle-right"></i>
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
                         </li>
                     </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" style="height: 213px;overflow: auto;">
+                    <div class="dashboard-widget-content">
+
+                        <ul class="list-unstyled timeline widget">
+                            <li>
+                                <div class="block">
+                                    <div class="block_content">
+                                        <h2 class="title">
+                                            <a>Ödememi gerçekleş tirdim fakat hala ödenmedi gözüküyor?</a>
+                                        </h2>
+                                        <div class="byline">
+                                            <span>13 hours ago</span> by <a>Radamel Falcao García Zárate</a>
+                                        </div>
+                                        <p class="excerpt">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block">
+                                    <div class="block_content">
+                                        <h2 class="title">
+                                            <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                        </h2>
+                                        <div class="byline">
+                                            <span>13 hours ago</span> by <a>Janexxx Smith</a>
+                                        </div>
+                                        <p class="excerpt">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block">
+                                    <div class="block_content">
+                                        <h2 class="title">
+                                            <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                        </h2>
+                                        <div class="byline">
+                                            <span>13 hours ago</span> by <a>Janexxx Smith</a>
+                                        </div>
+                                        <p class="excerpt">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block">
+                                    <div class="block_content">
+                                        <h2 class="title">
+                                            <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                        </h2>
+                                        <div class="byline">
+                                            <span>13 hours ago</span> by <a>Janexxx Smith</a>
+                                        </div>
+                                        <p class="excerpt">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <!-- /top navigation -->
-            <!-------------------------------------------------------------------------------                Dashboard 1          ----------------------------------------------------------------------------------->
-            <div class="right_col" role="main">
-                <!-- top tiles -->
-                <div class="row tile_count">
-                    <div class="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
-                        <span class="count_top"><i class="fa fa-user"></i> Toplam Gayrimenkul Sayısı</span>
-                        <div class="count">2500</div>
-                        <span class="count_bottom"><i class="green">4% </i> Haftalık Ziyaretçi Sayısı</span>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
-                        <span class="count_top"><i class="fa fa-clock-o"></i> Kirada Olan Gayrimenkul Sayısı</span>
-                        <div class="count">123.50</div>
-                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> Haftalık Ziyaretçi Sayısı</span>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
-                        <span class="count_top"><i class="fa fa-user"></i> Boşta Olan Gayrimenkul Sayısı</span>
-                        <div class="count green">2,500</div>
-                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> Haftalık Ziyaretçi Sayısı</span>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
-                        <span class="count_top"><i class="fa fa-user"></i> Toplam Arsa Sayısı</span>
-                        <div class="count">4,567</div>
-                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> Haftalık Ziyaretçi Sayısı</span>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
-                        <span class="count_top"><i class="fa fa-user"></i> Ticari Gayrimenkul Sayısı</span>
-                        <div class="count">2,315</div>
-                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> Haftalık Ziyaretçi Sayısı</span>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-12  tile_stats_count">
-                        <span class="count_top"><i class="fa fa-user"></i> Mesken Sayısı</span>
-                        <div class="count">7,325</div>
-                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> Haftalık Ziyaretçi Sayısı</span>
+        </div>
+        <div class="col-md-3">
+            <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                    <h2>Hızlı Ayarlar</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="dashboard-widget-content">
+                        <ul class="quick-list">
+                            <li>
+                                <i class="fa fa-calendar-o"></i><a href="#">Ayarlar</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-bars"></i><a href="#">Abone</a>
+                            </li>
+                            <li><i class="fa fa-bar-chart"></i><a href="#">Otomatik Yenileme</a> </li>
+                            <li>
+                                <i class="fa fa-line-chart"></i><a href="#">Başarılar</a>
+                            </li>
+                            <li><i class="fa fa-bar-chart"></i><a href="#">Otomatik Yenileme</a> </li>
+                            <li>
+                                <i class="fa fa-line-chart"></i><a href="#">Başarılar</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-area-chart"></i><a href="#">Çıkış</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="row" style="margin-left:0px!important;margin-right:0px!important;">
-                    <div class="col-md-12">
-                        <div class="dashboard_graph">
-
-                            <div class="row x_title">
-                                <div class="col-md-6">
-                                    <h3>Gelir Durumu <small>Yıllık</small></h3>
-                                </div>
-                                <div class="col-md-6">
-                                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                        <span> 30, 2014 - Ocak 28, 2015</span> <b class="caret"></b>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-8">
-                                <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto;padding: 0 15px;"></div>
-                                @*<div id="chart_plot_01" class="demo-placeholder"></div>*@
-                            </div>
-                            <div class="col-md-4 bg-white">
-                                <div class="x_title">
-                                    <h2>Hatırlatmalar <small></small></h2>
-                                    <div class="clearfix">Adet</div>
-                                </div>
-                                <div id="container2" style="min-width: 310px; max-width: 500px; height: 400px; margin: 0 auto"></div>
-
-                                @*<div class="col-md-12 col-sm-12 col-xs-12">
-                                        <div>
-                                            <p>Kira Kontrat Süresi Bitecek Olanlar Gayrimenkuller</p>
-                                            <div class="">
-                                                <div class="progress progress_sm" style="width: 100%;">
-                                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="20"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p>Ödeme Yapılan Gayrimenkuller Sayısı</p>
-                                            <div class="">
-                                                <div class="progress progress_sm" style="width: 100%;">
-                                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <div>
-                                            <p>Makbuz Onaylanması Yapılmamış Gayrimenkuller</p>
-                                            <div class="">
-                                                <div class="progress progress_sm" style="width: 100%;">
-                                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p>Ödeme Yapılmayan Gayrimenkuller Sayısı</p>
-                                            <div class="">
-                                                <div class="progress progress_sm" style="width: 100%;">
-                                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>*@
-
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                    <h2>Hızlı Ayarlar</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
                 </div>
-
-                <div class="row" style="margin-top:1%;">
-                    <div class="col-md-8">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Son Hareketler <small>Oturumlar</small></h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li>
-                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <a href="#">Ayarlar</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Ayarlar 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="close-link"><i class="fa fa-close"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-                                <div class="dashboard-widget-content">
-
-                                    <ul class="list-unstyled timeline widget">
-                                        <li>
-                                            <div class="block">
-                                                <div class="block_content">
-                                                    <h2 class="title">
-                                                        <a>Ödememi gerçekleş tirdim fakat hala ödenmedi gözüküyor?</a>
-                                                    </h2>
-                                                    <div class="byline">
-                                                        <span>13 hours ago</span> by <a>Radamel Falcao García Zárate</a>
-                                                    </div>
-                                                    <p class="excerpt">
-                                                        Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="block">
-                                                <div class="block_content">
-                                                    <h2 class="title">
-                                                        <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                                    </h2>
-                                                    <div class="byline">
-                                                        <span>13 hours ago</span> by <a>Janexxx Smith</a>
-                                                    </div>
-                                                    <p class="excerpt">
-                                                        Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="block">
-                                                <div class="block_content">
-                                                    <h2 class="title">
-                                                        <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                                    </h2>
-                                                    <div class="byline">
-                                                        <span>13 hours ago</span> by <a>Harley Smith</a>
-                                                    </div>
-                                                    <p class="excerpt">
-                                                        Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="block">
-                                                <div class="block_content">
-                                                    <h2 class="title">
-                                                        <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                                    </h2>
-                                                    <div class="byline">
-                                                        <span>13 hours ago</span> by <a>Seri Smith</a>
-                                                    </div>
-                                                    <p class="excerpt">
-                                                        Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="block">
-                                                <div class="block_content">
-                                                    <h2 class="title">
-                                                        <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                                    </h2>
-                                                    <div class="byline">
-                                                        <span>13 hours ago</span> by <a>Janexxx Smith</a>
-                                                    </div>
-                                                    <p class="excerpt">
-                                                        Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="x_panel tile fixed_height_320">
-                            <div class="x_title">
-                                <h2>Hatırlatmalar 2</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li>
-                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <a href="#">Settings 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Settings 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="close-link"><i class="fa fa-close"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-                                <h4>Uygulamanın Diğer Versiyonlar Karşısında Kullanımı</h4>
-                                <div class="widget_summary">
-                                    <div class="w_left w_25">
-                                        <span>0.1.5.2</span>
-                                    </div>
-                                    <div class="w_center w_55">
-                                        <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
-                                                <span class="sr-only">60% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="w_right w_20">
-                                        <span>123k</span>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                <div class="widget_summary">
-                                    <div class="w_left w_25">
-                                        <span>0.1.5.3</span>
-                                    </div>
-                                    <div class="w_center w_55">
-                                        <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-                                                <span class="sr-only">60% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="w_right w_20">
-                                        <span>53k</span>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="widget_summary">
-                                    <div class="w_left w_25">
-                                        <span>0.1.5.4</span>
-                                    </div>
-                                    <div class="w_center w_55">
-                                        <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
-                                                <span class="sr-only">60% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="w_right w_20">
-                                        <span>23k</span>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="widget_summary">
-                                    <div class="w_left w_25">
-                                        <span>0.1.5.5</span>
-                                    </div>
-                                    <div class="w_center w_55">
-                                        <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
-                                                <span class="sr-only">60% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="w_right w_20">
-                                        <span>3k</span>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="widget_summary">
-                                    <div class="w_left w_25">
-                                        <span>0.1.5.6</span>
-                                    </div>
-                                    <div class="w_center w_55">
-                                        <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
-                                                <span class="sr-only">60% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="w_right w_20">
-                                        <span>1k</span>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="x_panel tile fixed_height_320">
-                            <div class="x_title">
-                                <h2>Hızlı Ayarlar</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li>
-                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <a href="#">Settings 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Settings 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="close-link"><i class="fa fa-close"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-                                <div class="dashboard-widget-content">
-                                    <ul class="quick-list">
-                                        <li>
-                                            <i class="fa fa-calendar-o"></i><a href="#">Ayarlar</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bars"></i><a href="#">Abone</a>
-                                        </li>
-                                        <li><i class="fa fa-bar-chart"></i><a href="#">Otomatik Yenileme</a> </li>
-                                        <li>
-                                            <i class="fa fa-line-chart"></i><a href="#">Başarılar</a>
-                                        </li>
-                                        <li><i class="fa fa-bar-chart"></i><a href="#">Otomatik Yenileme</a> </li>
-                                        <li>
-                                            <i class="fa fa-line-chart"></i><a href="#">Başarılar</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-area-chart"></i><a href="#">Çıkış</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Boş alan<small>Doldurulacaktır</small></h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li>
-                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <a href="#">Settings 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Settings 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="close-link"><i class="fa fa-close"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                        parsel pdf
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                            Parsel  Bazlı Rapor İndir
-                                        </button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" style="margin-bottom:1%;">
-                    @*<div class="col-md-8">
-                            <div id="mainb" style="height:350px;margin-top:7%;"></div>
-                        </div>*@
-                    <div class="col-md-12">
-                        <div class="" id="main-map" style="height:477px;"></div>
+                <div class="x_content">
+                    <div class="dashboard-widget-content">
+                        <ul class="quick-list">
+                            <li>
+                                <i class="fa fa-calendar-o"></i><a href="#">Ayarlar</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-bars"></i><a href="#">Abone</a>
+                            </li>
+                            <li><i class="fa fa-bar-chart"></i><a href="#">Otomatik Yenileme</a> </li>
+                            <li>
+                                <i class="fa fa-line-chart"></i><a href="#">Başarılar</a>
+                            </li>
+                            <li><i class="fa fa-bar-chart"></i><a href="#">Otomatik Yenileme</a> </li>
+                            <li>
+                                <i class="fa fa-line-chart"></i><a href="#">Başarılar</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-area-chart"></i><a href="#">Çıkış</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- jQuery -->
-    <script src="~/Assets/dashboard/vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="~/Assets/dashboard/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    @*<script src="~/Assets/dashboard/vendors/fastclick/lib/fastclick.js"></script>*@
-    <!-- NProgress -->
-    @*<script src="~/Assets/dashboard/vendors/nprogress/nprogress.js"></script>*@
-    <!-- Chart.js -->
-    @*<script src="~/Assets/dashboard/vendors/Chart.js/dist/Chart.min.js"></script>*@
-    <!-- gauge.js -->
-    @*<script src="~/Assets/dashboard/vendors/gauge.js/dist/gauge.min.js"></script>*@
-    <!-- bootstrap-progressbar -->
-    <script src="~/Assets/dashboard/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    @*<script src="~/Assets/dashboard/vendors/iCheck/icheck.min.js"></script>*@
-    <!-- Skycons -->
-    @*<script src="~/Assets/dashboard/vendors/skycons/skycons.js"></script>*@
-    <!-- Flot -->
-    <script src="~/Assets/dashboard/vendors/Flot/jquery.flot.js"></script>
-    <script src="~/Assets/dashboard/vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="~/Assets/dashboard/vendors/Flot/jquery.flot.time.js"></script>
-    <script src="~/Assets/dashboard/vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="~/Assets/dashboard/vendors/Flot/jquery.flot.resize.js"></script>
-    <!-- Flot plugins -->
-    @*<script src="~/Assets/dashboard/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>*@
-    <script src="~/Assets/dashboard/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    @*<script src="~/Assets/dashboard/vendors/flot.curvedlines/curvedLines.js"></script>*@
-    <!-- DateJS -->
-    <script src="~/Assets/dashboard/vendors/DateJS/build/date.js"></script>
-    <!-- JQVMap -->
-    @* <script src="~/Assets/dashboard/vendors/jqvmap/dist/jquery.vmap.js"></script>
-        <script src="~/Assets/dashboard/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-             <script src="~/Assets/dashboard/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>*@
-    <!-- bootstrap-daterangepicker -->
-    <script src="~/Assets/dashboard/vendors/moment/min/moment.min.js"></script>
-    <script src="~/Assets/dashboard/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- ECharts -->
-    <script src="~/Assets/dashboard/vendors/echarts/dist/echarts.min.js"></script>
-    <!-- Custom Theme Scripts -->
-    <script src="~/Assets/dashboard/build/js/custom.min.js"></script>
-
-    @*Loyout script*@
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=weather,geometry,visualization,places,drawing&amp;&key=AIzaSyDQfFpH3Z5iltbzOT-p9Z3JtajWT5HVUfY
-&amp;" type="text/javascript"></script>
-    <script src="~/Assets/js/map.js"></script>
-    <script src="~/Assets/js/map_infobox.js"></script>
-    <script src="~/Assets/libraries/jquery.mobile/jquery.mobile.custom.min.js"></script>
-    <script src="~/Assets/js/modernizr.custom.js"></script>
-    <script src="~/Assets/js/bootstrap-select.min.js"></script>
-    <script src="~/Assets/js/winter-flat.js"></script>
-    <script src="~/Assets/libraries/owl.carousel/owl.carousel.min.js"></script>
-    <script src="~/Assets/js/markerclusterer.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script>
-        Highcharts.chart('container2', {
-            chart: {
-                type: 'bar'
-            },
-            title: {
-                text: 'Gayrimenkul Durum'
-            },
-            xAxis: {
-                categories: ['İstanbul', 'Sakarya', 'İzmir', 'Trabzon', 'Afyon']
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Toplam Gayrimenkul Sayısı'
-                }
-            },
-            legend: {
-                reversed: true
-            },
-            plotOptions: {
-                series: {
-                    stacking: 'normal'
-                }
-            },
-            series: [{
-                name: 'Ödemesi gerçekleştirilmiş gayrimenkul sayısı',
-                data: [5, 3, 4, 7, 2]
-            }, {
-                name: 'Makbuz onayı gerçekleştirilmemiş gayrimenkul sayısı',
-                data: [2, 2, 3, 2, 1]
-            }, {
-                name: 'Ödemesi yapılmamış gayrimenkul sayısı',
-                data: [3, 4, 4, 2, 5]
-            }]
-        });
-
-
-
-        Highcharts.chart('container', {
-            chart: {
-                type: 'line'
-            },
-            title: {
-                text: 'Gayrimenkul Emlak Endeksi'
-            },
-            subtitle: {
-                text: 'Eylül 2019 Ortalaması: ****** TL'
-            },
-            xAxis: {
-                categories: ['Ockak', 'Şubat', 'Mart', 'Nissan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
-            },
-            yAxis: {
-
-                title: {
-                    text: 'Fiyat(TL)'
-                },
-                
-            },
-            plotOptions: {
-                line: {
-                    dataLabels: {
-                        enabled: true
-                    },
-                    enableMouseTracking: false
-                }
-            },
-            series: [{
-                name: 'Ekim 2019',
-                data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-            }, {
-                name: 'Eylül 2019',
-                data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-            }]
-        });
-    </script>
-</body>
-</html>
+</div>

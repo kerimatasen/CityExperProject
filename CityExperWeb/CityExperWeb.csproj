@@ -155,6 +155,7 @@
     <Content Include="Assets\css\styles_rtl.css" />
     <Content Include="Assets\css\winter-flat.css" />
     <Content Include="Assets\dashboard\build\css\custom.css" />
+    <Content Include="Assets\dashboard\custom2.min.css" />
     <Content Include="Assets\dashboard\build\css\custom.min.css" />
     <Content Include="Assets\dashboard\build\images\back_disabled.png" />
     <Content Include="Assets\dashboard\build\images\back_enabled.png" />
@@ -4814,6 +4815,8 @@
     <Content Include="Views\SatilikTasinmaz\Profil.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\User\YetkisizSayfa.cshtml" />
+    <Content Include="Views\Shared\_LayoutSite.cshtml" />
+    <Content Include="Views\Tasinmaz\Ezgi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
